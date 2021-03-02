@@ -18,7 +18,7 @@ Welcome to the EDX team. This first ticket will get you up to speed on the proje
 
 As you work through this issue, please remember that it is a living checklist and may require updates or corrections. You can propose updates to the template by editing it at https://github.com/GSA/EDX/blob/main/.github/ISSUE_TEMPLATE/onboarding.md. 
 
-- [ ] Click and drag this issue into Doing column of the project board
+- [ ] Click and drag this issue into the In Progress column of the project board
 - [ ] Read [Team Norms](https://github.com/GSA/EDX/wiki/Norms)
 - [ ] Read [Project Organization](https://github.com/GSA/EDX/wiki/Project-Organization)
 - [ ] Read [Roadmap for the Digital Future of GSA](https://docs.google.com/document/d/1XjFGM-bN7lOLtWMDxrQbR9q6lG5iDsgYf_Z2E1yIyu8/edit?ts=602d4452#heading=h.xief23a14tjm)
