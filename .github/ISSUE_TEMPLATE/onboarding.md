@@ -11,7 +11,7 @@ Welcome to the EDX team. This first ticket will get you up to speed on the proje
 
 1. **Assign to yourself** - Show others that you are working this issue by assigning it to yourself. To do so, click the cog wheel next to the Assignees section just to the right of this issue. 
 1. **Add to EDX Project** - Add this issue to the EDX Project by clicking the cog wheel next to the Projects section which is just below Assignee. Now your issue is on the project kanban board.
-1. **Add to Onboarding Mileston** - Add this issue to the Onboarding Milestone by clicking the cog wheel next to the Milestone section which is just below Projects. This adds the issue to a larger group of tickets specific to onboarding. You'll learn more about Milestones in the [Project Organization](https://github.com/GSA/EDX/wiki/Project-Organization) article below.
+1. **Add to Onboarding Milestone** - Add this issue to the Onboarding Milestone by clicking the cog wheel next to the Milestone section which is just below Projects. This adds the issue to a larger group of tickets specific to onboarding. You'll learn more about Milestones in the [Project Organization](https://github.com/GSA/EDX/wiki/Project-Organization) article below.
 1. **Go to EDX Project** - Navigate to the EDX Project by clicking the Project tab at the top of the page.
 1. Your new card will be found in the To Do column, click and drag it to the In Progress column
 1. Now you have a ticket and placed it on the project board. 
