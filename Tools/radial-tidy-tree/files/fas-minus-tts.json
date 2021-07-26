@@ -1,5 +1,5 @@
 {
-    "name": "FAS",
+    "name": "FAS -TTS",
     "children": [
    {"name": "afadvantage.gov", "children": [{"name": "afadvantage.gov", "value": 1}]},
    {"name": "cloud.gov", "children": [{"name": "app.cloud.gov", "value": 1}]},
@@ -19,9 +19,11 @@
    {"name": "arm.fas.gsa.gov", "value": 1},
    {"name": "ask.gsa.gov", "value": 1},
    {"name": "autoauctions.gsa.gov", "value": 1},
+   {"name": "autochoice.fas.gsa.gov", "value": 1},
    {"name": "autovendor.fas.gsa.gov", "value": 1},
    {"name": "calc.gsa.gov", "value": 1},
    {"name": "cars.fas.gsa.gov", "value": 1},
+   {"name": "cic.gsa.gov", "value": 1},
    {"name": "cmls.gsa.gov", "value": 1},
    {"name": "cpsearch.fas.gsa.gov", "value": 1},
    {"name": "dhsadvantage.gsa.gov", "value": 1},
@@ -42,11 +44,10 @@
    {"name": "gsaxcesspractice.fas.gsa.gov", "value": 1},
    {"name": "hallways.cap.gsa.gov", "value": 1},
    {"name": "interact.gsa.gov", "value": 1},
-   {"name": "join.tts.gsa.gov", "value": 1},
    {"name": "mysales.fas.gsa.gov", "value": 1},
    {"name": "navigator.gsa.gov", "value": 1},
-   {"name": "oasispet.gsa.gov", "value": 1},
-   {"name": "p3.cap.gsa.gov", "value": 1},
+   {"name": "oasispet.gsa.gov/cpet/view", "value": 1},
+   {"name": "p3.cap.gsa.gov/gui", "value": 1},
    {"name": "smartpay.gsa.gov", "value": 1},
    {"name": "str.gsa.gov", "value": 1},
    {"name": "training.smartpay.gsa.gov", "value": 1},
@@ -62,7 +63,9 @@
    {"name": "gsaauctions.gov", "children": [{"name": "gsaauctions.gov", "value": 1}]},
    {"name": "gsaxcess.gov", "children": [{"name": "gsaxcess.gov", "value": 1}]},
    {"name": "SAM.gov", "children": [{"name": "beta.SAM.gov", "value": 1},
+   {"name": "fbohome.sam.gov", "value": 1},
    {"name": "open.sam.gov", "value": 1},
    {"name": "sam.gov", "value": 1},
    {"name": "wdolhome.sam.gov", "value": 1}]},
-   {"name": "wdol.gov", "children": [{"name": "wdol.gov", "value": 1}]}]}
+   {"name": "wdol.gov", "children": [{"name": "wdol.gov", "value": 1}]}
+   ]}

@@ -5,12 +5,18 @@ export default function define(runtime, observer) {
   /* Point at appropriate file here 
    *
   */
-  const fileAttachments = new Map([["flare-2.json",new URL("./files/tts.json",import.meta.url)]]);
+  const fileAttachments = new Map([["flare-2.json",new URL("./files/gsa.json",import.meta.url)]]);
 
 
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["md"], function(md){return(
 md`# Radial Tidy Tree
+
+## Screenshots
+
+Screenshots are best captured by resizing the browser window rather than zooming in/out.
+
+## About
 
 D3’s [tree layout](https://github.com/d3/d3-hierarchy/blob/master/README.md#tree) implements the [Reingold–Tilford “tidy” algorithm](http://reingold.co/tidier-drawings.pdf) for constructing hierarchical node-link diagrams, improved to run in linear time by [Buchheim *et al.*](http://dirk.jivas.de/papers/buchheim02improving.pdf) Tidy trees are typically more compact than [cluster dendrograms](/@d3/radial-dendrogram), which place all leaves at the same level. See also the [Cartesian variant](/@d3/tidy-tree).`
 )});
@@ -85,7 +91,7 @@ d3.tree()
     .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth)
 )});
   main.variable(observer("width")).define("width", function(){return(
-600
+900
 )});
   main.variable(observer("radius")).define("radius", ["width"], function(width){return(
 width / 2
