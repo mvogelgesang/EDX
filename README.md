@@ -21,5 +21,4 @@ GSA’s work to improve digital governance and implement the [21st Century IDEA]
 * Coordinating enterprise web modernization efforts related to 21st Century IDEA
 * Collaborating with the Office of Strategic Communication and GSA IT to lead the Digital Council, support the Executive Board, and improve knowledge sharing across GSA on initiatives to improve digital experience.
 
-Questions about EDX?  
-[Get in touch](https://touchpoints.app.cloud.gov/touchpoints/1fc9c962/submit)
+Questions about EDX? [Get in touch 💭](https://touchpoints.app.cloud.gov/touchpoints/1fc9c962/submit)
