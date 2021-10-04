@@ -16,7 +16,7 @@ Learn more about the Council and Board:
 
 GSA’s work to improve digital governance and implement the [21st Century IDEA](https://digital.gov/resources/21st-century-integrated-digital-experience-act/) legislation resulted in the creation of the EDX Team, the Council, and the Board. EDX Team initiatives include:
 
-* Validation of GSA’s (Website Inventory)[https://touchpoints.app.cloud.gov/admin/websites/] via Touchpoints
+* Validation of GSA’s [Website Inventory](https://touchpoints.app.cloud.gov/admin/websites/) via Touchpoints
 * Documenting a Digital Lifecycle Program to improve creation, management, and sunsetting of GSA websites and * digital properties
 * Coordinating enterprise web modernization efforts related to 21st Century IDEA
 * Collaborating with the Office of Strategic Communication and GSA IT to lead the Digital Council, support the Executive Board, and improve knowledge sharing across GSA on initiatives to improve digital experience.
