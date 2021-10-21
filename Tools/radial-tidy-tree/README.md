@@ -14,6 +14,12 @@ example:
 python -m SimpleHTTPServer
 ```
 
+If using Python 3 with Windows Command Prompt, use the following: 
+
+```sh
+python -m http.server
+```
+
 ## Background
 
 Originally from https://observablehq.com/@d3/radial-tidy-tree@200
