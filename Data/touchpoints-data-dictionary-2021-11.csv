@@ -5,11 +5,11 @@ Parent Domain,parent_domain,URL of the second-level domain for the domain.,strin
 Agency Branch,,The branch of government to which the site belongs.,string
 Office,office,"Primary office that manages the site, typically the service or staff office (SSO) (one-letter office).",string
 Sub-office,sub_office,"Sub-office that owns the site, typically a two-letter office or deeper.",string
-Contact Email,contact_email,Email address of site contact (person or team) who manages the technical components of the website. This contact does not necessarily control website content or resourcing.,string
+Contact Email,contact_email,Email address of site contact (person or team) who manages the technical components of the website.,string
 Website Manager Email,site_owner_email,Email address of site business owner. This must be a (1) person not a team and (2) a federal employee (not a contractor).,string
 Status,production_status,The current status of the website in its lifecycle.,string
 Type of Site,type_of_site,The primary category or function of the site,string
-Digital Brand Category,digital_brand_category,The affiliation the site has to GSA and its business offerings; determines the Office of Strategic Communication's (OSC) branding requirements a site must follow.,string
+Digital Brand Category,digital_brand_category,The affiliation the site has to GSA and its business offerings; determines the OSC branding requirements a site must follow.,string
 Redirects to,redirects_to,"Provides the URL that a site URL redirects to, if applicable.",string
 Content Management Platform,cms_platform,The system/platform the site uses to manage its content,string
 Required by Law or Policy,required_by_law_or_policy,Explanation of statutory requirements supporting creation of the site,string
