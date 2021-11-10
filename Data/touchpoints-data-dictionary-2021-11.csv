@@ -1,0 +1,35 @@
+name,field id,description,data type
+Id,id,The unique identifier for the site.,integer
+Domain,domain,"URL of public facing site, typically second, third, or fourth level domain.",string
+Parent Domain,parent_domain,URL of the second-level domain for the domain.,string
+Agency Branch,,The branch of government to which the site belongs.,string
+Office,office,"Primary office that manages the site, typically the service or staff office (SSO) (one-letter office).",string
+Sub-office,sub_office,"Sub-office that owns the site, typically a two-letter office or deeper.",string
+Contact Email,contact_email,Email address of site contact (person or team) who manages the technical components of the website. This contact does not necessarily control website content or resourcing.,string
+Website Manager Email,site_owner_email,Email address of site business owner. This must be a (1) person not a team and (2) a federal employee (not a contractor).,string
+Status,production_status,The current status of the website in its lifecycle.,string
+Type of Site,type_of_site,The primary category or function of the site,string
+Digital Brand Category,digital_brand_category,The affiliation the site has to GSA and its business offerings; determines the Office of Strategic Communication's (OSC) branding requirements a site must follow.,string
+Redirects to,redirects_to,"Provides the URL that a site URL redirects to, if applicable.",string
+Content Management Platform,cms_platform,The system/platform the site uses to manage its content,string
+Required by Law or Policy,required_by_law_or_policy,Explanation of statutory requirements supporting creation of the site,string
+Has DAP?,has_dap,States whether or not the site is running the Digital Analytics Program (DAP) code (Google Analytics),boolean
+DAP GTM Code,dap_gtm_code,The DAP Google Tag Manager (GTM) Code is a unique Id for a website's analytics. A Google tag enables Google Analytics to access usage stats on a website.,string
+DAP Parameters,,Provides the agency and subagency that are reported from the site's Digital Analytics Program (DAP) script.,string
+Analytics URL,analytics_url,The URL of the site's analytics dashboard.,string
+Customer Feedback Tool,feedback_tool,The tool or mechanism the site uses to solicit user feedback.,string
+Sitemap URL,sitemap_url,"The URL of the site's sitemap, which provides information about the site's pages and content files and the relationships between them.",string
+Robots TXT URL,,The URL of the site's robots.txt file,string
+Mobile Friendly,mobile_friendly,States whether the site is optimized for use on mobile devices.,boolean
+Has Search?,has_search,States whether the site has a search feature.,boolean
+Uses Tracking Cookies?,uses_tracking_cookies,States whether the site uses cookies to track users.,boolean
+Authentication Tool,authentication_tool,The type of tool or mechanism by which the site authenticates its users.,string
+Notes,notes,Additional comments about the site.,string
+Last Updated At,updated_at,Date and time the the site was last edited in Touchpoints.,string
+Repository URL,repository_url,The URL of the site's source code repository (typically a GitHub URL),string
+Hosting Platform,hosting_platform,The platform or service provider the site uses for its web hosting.,string
+USWDS Version,uswds_version,The release version of the US Web Design System that the site uses.,string
+Uses https?,https,States whether the site uses https encryption.,boolean
+Tags,tag_list,Searchable tags to identify various attributes of the site (e.g. 'candidate for decommission').,string
+Latest Version,,The current stable release version of the US Web Design Service code.,string
+Third Party Domains,,A list of novel third party domains detected,string
