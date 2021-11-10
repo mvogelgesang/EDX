@@ -14,7 +14,7 @@ Redirects to,redirects_to,"Provides the URL that a site URL redirects to, if app
 Content Management Platform,cms_platform,The system/platform the site uses to manage its content,string
 Required by Law or Policy,required_by_law_or_policy,Explanation of statutory requirements supporting creation of the site,string
 Has DAP?,has_dap,States whether or not the site is running the Digital Analytics Program (DAP) code (Google Analytics),boolean
-DAP GTM Code,dap_gtm_code,The DAP Google Tag Manager (GTM) Code is a unique Id for a website's analytics. A Google tag enables Google Analytics to access usage stats on a website.,string
+DAP GTM Code,dap_gtm_code,The DAP Google Tag Manager (GTM) Code is a unique Id that enables Google Analytics to access usage stats on a website.,string
 DAP Parameters,,Provides the agency and subagency that are reported from the site's Digital Analytics Program (DAP) script.,string
 Analytics URL,analytics_url,The URL of the site's analytics dashboard.,string
 Customer Feedback Tool,feedback_tool,The tool or mechanism the site uses to solicit user feedback.,string
