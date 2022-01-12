@@ -1,0 +1,548 @@
+domain,scan url,category
+1.usa.gov,https://1.usa.gov,HSTS
+10x.gsa.gov,https://10x.gsa.gov,HSTS
+10x.gsa.gov,https://10x.gsa.gov,Identifier FOIA
+10x.gsa.gov,https://10x.gsa.gov,Banner
+10x.gsa.gov,https://10x.gsa.gov,Contact
+10x.gsa.gov,https://10x.gsa.gov,DAP
+18f.gsa.gov,https://18f.gsa.gov,HSTS
+18f.gsa.gov,https://18f.gsa.gov,Identifier
+18f.gsa.gov,https://18f.gsa.gov,Identifier FOIA
+18f.gsa.gov,https://18f.gsa.gov,Banner
+18f.gsa.gov,https://18f.gsa.gov,Contact
+18f.gsa.gov,https://18f.gsa.gov,DAP
+tech.gsa.gov,https://tech.gsa.gov,HSTS
+tech.gsa.gov,https://tech.gsa.gov,Identifier
+tech.gsa.gov,https://tech.gsa.gov,Identifier Privacy
+tech.gsa.gov,https://tech.gsa.gov,Identifier Accessibility
+tech.gsa.gov,https://tech.gsa.gov,Identifier FOIA
+tech.gsa.gov,https://tech.gsa.gov,Banner
+tech.gsa.gov,https://tech.gsa.gov,Contact
+tech.gsa.gov,https://tech.gsa.gov,DAP
+aas.gsa.gov,https://aas.gsa.gov,HSTS
+aas.gsa.gov,https://aas.gsa.gov,Identifier Privacy
+aas.gsa.gov,https://aas.gsa.gov,Identifier Accessibility
+aas.gsa.gov,https://aas.gsa.gov,Identifier FOIA
+aas.gsa.gov,https://aas.gsa.gov,Banner
+aas.gsa.gov,https://aas.gsa.gov,Contact
+aas.gsa.gov,https://aas.gsa.gov,DAP
+fedsim.gsa.gov,https://fedsim.gsa.gov,HSTS
+fedsim.gsa.gov,https://fedsim.gsa.gov,Identifier Privacy
+fedsim.gsa.gov,https://fedsim.gsa.gov,Identifier Accessibility
+fedsim.gsa.gov,https://fedsim.gsa.gov,Identifier FOIA
+fedsim.gsa.gov,https://fedsim.gsa.gov,Banner
+fedsim.gsa.gov,https://fedsim.gsa.gov,Contact
+fedsim.gsa.gov,https://fedsim.gsa.gov,DAP
+gsa.gov,https://www.gsa.gov/,HSTS
+gsa.gov,https://www.gsa.gov/,Identifier Privacy
+gsa.gov,https://www.gsa.gov/,Identifier Accessibility
+gsa.gov,https://www.gsa.gov/,Banner
+gsa.gov,https://www.gsa.gov/,Contact
+gsa.gov,https://www.gsa.gov/,DAP
+apps.ocfo.gsa.gov,https://apps.ocfo.gsa.gov,HSTS
+apps.ocfo.gsa.gov,https://apps.ocfo.gsa.gov,Identifier Privacy
+apps.ocfo.gsa.gov,https://apps.ocfo.gsa.gov,Identifier Accessibility
+apps.ocfo.gsa.gov,https://apps.ocfo.gsa.gov,Identifier FOIA
+apps.ocfo.gsa.gov,https://apps.ocfo.gsa.gov,Contact
+agile-labor-categories.18f.gov,https://agile-labor-categories.18f.gov,HSTS
+ussm.gsa.gov,https://ussm.gsa.gov,HSTS
+ussm.gsa.gov,https://ussm.gsa.gov,Identifier FOIA
+ussm.gsa.gov,https://ussm.gsa.gov,Banner
+ussm.gsa.gov,https://ussm.gsa.gov,Contact
+ussm.gsa.gov,https://ussm.gsa.gov,DAP
+analytics.usa.gov,https://analytics.usa.gov,HSTS
+analytics.usa.gov,https://analytics.usa.gov,Contact
+cdo.gov,https://www.cdo.gov/,HSTS
+cdo.gov,https://www.cdo.gov/,Banner
+cdo.gov,https://www.cdo.gov/,Contact
+cdo.gov,https://www.cdo.gov/,DAP
+api.data.gov,https://api.data.gov,HSTS
+api.data.gov,https://api.data.gov,DAP
+api.usa.gov,https://api.usa.gov,HSTS
+cfo.gov,https://www.cfo.gov/,HSTS
+cfo.gov,https://www.cfo.gov/,Banner
+cfo.gov,https://www.cfo.gov/,Contact
+cfo.gov,https://www.cfo.gov/,DAP
+cio.gov,https://www.cio.gov/,HSTS
+cio.gov,https://www.cio.gov/,Banner
+cio.gov,https://www.cio.gov/,Contact
+cio.gov,https://www.cio.gov/,DAP
+asis.search.usa.gov,https://asis.search.usa.gov,HSTS
+devicepki.idmanagement.gov,https://devicepki.idmanagement.gov,HSTS
+devicepki.idmanagement.gov,https://devicepki.idmanagement.gov,Banner
+devicepki.idmanagement.gov,https://devicepki.idmanagement.gov,Contact
+devicepki.idmanagement.gov,https://devicepki.idmanagement.gov,DAP
+evaluation.gov,https://www.evaluation.gov/,HSTS
+evaluation.gov,https://www.evaluation.gov/,Banner
+evaluation.gov,https://www.evaluation.gov/,Contact
+evaluation.gov,https://www.evaluation.gov/,DAP
+feedback.usa.gov,https://feedback.usa.gov,HSTS
+feedback.usa.gov,https://feedback.usa.gov,Banner
+feedback.usa.gov,https://feedback.usa.gov,Contact
+feedback.usa.gov,https://feedback.usa.gov,DAP
+fpc.gov,https://www.fpc.gov/,HSTS
+fpc.gov,https://www.fpc.gov/,Banner
+fpc.gov,https://www.fpc.gov/,Contact
+fpc.gov,https://www.fpc.gov/,DAP
+idmanagement.gov,https://www.idmanagement.gov/,HSTS
+idmanagement.gov,https://www.idmanagement.gov/,Banner
+idmanagement.gov,https://www.idmanagement.gov/,Contact
+idmanagement.gov,https://www.idmanagement.gov/,DAP
+blog.usa.gov,https://blog.usa.gov,HSTS
+blog.usa.gov,https://blog.usa.gov,Contact
+itvmo.gsa.gov,https://itvmo.gsa.gov,HSTS
+itvmo.gsa.gov,https://itvmo.gsa.gov,Banner
+itvmo.gsa.gov,https://itvmo.gsa.gov,Contact
+itvmo.gsa.gov,https://itvmo.gsa.gov,DAP
+oes.gsa.gov,https://oes.gsa.gov,HSTS
+oes.gsa.gov,https://oes.gsa.gov,Banner
+oes.gsa.gov,https://oes.gsa.gov,Contact
+oes.gsa.gov,https://oes.gsa.gov,DAP
+open.gsa.gov,https://open.gsa.gov,HSTS
+open.gsa.gov,https://open.gsa.gov,Banner
+open.gsa.gov,https://open.gsa.gov,Contact
+open.gsa.gov,https://open.gsa.gov,DAP
+catalog-next.data.gov,https://catalog-next.data.gov,HSTS
+catalog.data.gov,https://catalog.data.gov/dataset,HSTS
+catalog.data.gov,https://catalog.data.gov/dataset,DAP
+paymentaccuracy.gov,https://www.paymentaccuracy.gov/,HSTS
+paymentaccuracy.gov,https://www.paymentaccuracy.gov/,Banner
+paymentaccuracy.gov,https://www.paymentaccuracy.gov/,Contact
+paymentaccuracy.gov,https://www.paymentaccuracy.gov/,DAP
+performance.gov,https://www.performance.gov/,HSTS
+performance.gov,https://www.performance.gov/,Identifier FOIA
+performance.gov,https://www.performance.gov/,Contact
+performance.gov,https://www.performance.gov/,DAP
+challenge.gov,https://www.challenge.gov/,HSTS
+challenge.gov,https://www.challenge.gov/,Banner
+challenge.gov,https://www.challenge.gov/,Contact
+challenge.gov,https://www.challenge.gov/,DAP
+playbooks.idmanagement.gov,https://playbooks.idmanagement.gov,HSTS
+playbooks.idmanagement.gov,https://playbooks.idmanagement.gov,Banner
+playbooks.idmanagement.gov,https://playbooks.idmanagement.gov,Contact
+playbooks.idmanagement.gov,https://playbooks.idmanagement.gov,DAP
+section508.gov,https://www.section508.gov/,HSTS
+section508.gov,https://www.section508.gov/,Banner
+section508.gov,https://www.section508.gov/,Contact
+section508.gov,https://www.section508.gov/,DAP
+citizenscience.gov,https://www.citizenscience.gov/,HSTS
+citizenscience.gov,https://www.citizenscience.gov/,Banner
+citizenscience.gov,https://www.citizenscience.gov/,DAP
+techfarhub.cio.gov,https://techfarhub.cio.gov,HSTS
+techfarhub.cio.gov,https://techfarhub.cio.gov,Banner
+techfarhub.cio.gov,https://techfarhub.cio.gov,Contact
+techfarhub.cio.gov,https://techfarhub.cio.gov,DAP
+cloud.gov,https://cloud.gov,HSTS
+cloud.gov,https://cloud.gov,Banner
+cloud.gov,https://cloud.gov,Contact
+cloud.gov,https://cloud.gov,DAP
+tmf.cio.gov,https://tmf.cio.gov,HSTS
+tmf.cio.gov,https://tmf.cio.gov,Banner
+tmf.cio.gov,https://tmf.cio.gov,Contact
+tmf.cio.gov,https://tmf.cio.gov,DAP
+travel.reporting.gov,https://www.travel.reporting.gov/TRAVEL/TRAVELLogin,HSTS
+travel.reporting.gov,https://www.travel.reporting.gov/TRAVEL/TRAVELLogin,Banner
+travel.reporting.gov,https://www.travel.reporting.gov/TRAVEL/TRAVELLogin,Contact
+travel.reporting.gov,https://www.travel.reporting.gov/TRAVEL/TRAVELLogin,Identifier FOIA
+travel.reporting.gov,https://www.travel.reporting.gov/TRAVEL/TRAVELLogin,Identifier Privacy
+travel.reporting.gov,https://www.travel.reporting.gov/TRAVEL/TRAVELLogin,Identifier Accessibility
+travel.reporting.gov,https://www.travel.reporting.gov/TRAVEL/TRAVELLogin,Identifier
+code.gov,https://code.gov,HSTS
+code.gov,https://code.gov,DAP
+coe.gsa.gov,https://coe.gsa.gov,HSTS
+coe.gsa.gov,https://coe.gsa.gov,Identifier FOIA
+coe.gsa.gov,https://coe.gsa.gov,Banner
+coe.gsa.gov,https://coe.gsa.gov,Contact
+calc.gsa.gov,https://calc.gsa.gov,HSTS
+calc.gsa.gov,https://calc.gsa.gov,Contact
+calc.gsa.gov,https://calc.gsa.gov,DAP
+conectate.gobiernousa.gov,https://conectate.gobiernousa.gov,HSTS
+conectate.gobiernousa.gov,https://conectate.gobiernousa.gov,DAP
+connect.digitalgov.gov,https://connect.digitalgov.gov,HSTS
+connect.digitalgov.gov,https://connect.digitalgov.gov,Contact
+connect.usa.gov,https://connect.usa.gov,HSTS
+connect.usa.gov,https://connect.usa.gov,Contact
+connect.usa.gov,https://connect.usa.gov,DAP
+content-guide.18f.gov,https://content-guide.18f.gov,HSTS
+content-guide.18f.gov,https://content-guide.18f.gov,Identifier
+content-guide.18f.gov,https://content-guide.18f.gov,Identifier FOIA
+content-guide.18f.gov,https://content-guide.18f.gov,Banner
+content-guide.18f.gov,https://content-guide.18f.gov,DAP
+cloud.cio.gov,https://cloud.cio.gov,HSTS
+cloud.cio.gov,https://cloud.cio.gov,Banner
+cloud.cio.gov,https://cloud.cio.gov,DAP
+corporateapps.gsa.gov,https://corporateapps.gsa.gov,HSTS
+corporateapps.gsa.gov,https://corporateapps.gsa.gov,Banner
+corporateapps.gsa.gov,https://corporateapps.gsa.gov,DAP
+courtsweb.gsa.gov,https://courtsweb.gsa.gov,HSTS
+courtsweb.gsa.gov,https://courtsweb.gsa.gov,Banner
+courtsweb.gsa.gov,https://courtsweb.gsa.gov,DAP
+datacenters.cio.gov,https://datacenters.cio.gov,HSTS
+datacenters.cio.gov,https://datacenters.cio.gov,Banner
+datacenters.cio.gov,https://datacenters.cio.gov,DAP
+digitaldashboard.gov,https://digitaldashboard.gov,HSTS
+digitaldashboard.gov,https://digitaldashboard.gov,Contact
+digitaldashboard.gov,https://digitaldashboard.gov,DAP
+extportal.pbs.gsa.gov,https://extportal.pbs.gsa.gov/pbs/en/portal/home,HSTS
+extportal.pbs.gsa.gov,https://extportal.pbs.gsa.gov/pbs/en/portal/home,Contact
+extportal.pbs.gsa.gov,https://extportal.pbs.gsa.gov/pbs/en/portal/home,DAP
+data.gov,https://www.data.gov/,HSTS
+data.gov,https://www.data.gov/,Contact
+data.gov,https://www.data.gov/,DAP
+fbohome.sam.gov,https://fbohome.sam.gov,HSTS
+fbohome.sam.gov,https://fbohome.sam.gov,Banner
+fbohome.sam.gov,https://fbohome.sam.gov,DAP
+design.login.gov,https://design.login.gov,HSTS
+design.login.gov,https://design.login.gov,Identifier
+design.login.gov,https://design.login.gov,Identifier Privacy
+design.login.gov,https://design.login.gov,Identifier Accessibility
+design.login.gov,https://design.login.gov,Identifier FOIA
+design.login.gov,https://design.login.gov,Banner
+design.login.gov,https://design.login.gov,DAP
+designsystem.digital.gov,https://designsystem.digital.gov,HSTS
+designsystem.digital.gov,https://designsystem.digital.gov,Identifier
+designsystem.digital.gov,https://designsystem.digital.gov,Identifier Privacy
+designsystem.digital.gov,https://designsystem.digital.gov,Identifier Accessibility
+designsystem.digital.gov,https://designsystem.digital.gov,Identifier FOIA
+designsystem.digital.gov,https://designsystem.digital.gov,Banner
+designsystem.digital.gov,https://designsystem.digital.gov,DAP
+dev.identitysandbox.gov,https://idp.dev.identitysandbox.gov/,HSTS
+dev.identitysandbox.gov,https://idp.dev.identitysandbox.gov/,Banner
+dev.identitysandbox.gov,https://idp.dev.identitysandbox.gov/,DAP
+developers.login.gov,https://developers.login.gov,HSTS
+developers.login.gov,https://developers.login.gov,Banner
+developers.login.gov,https://developers.login.gov,DAP
+fedpay.gsa.gov,https://fedpay.gsa.gov,HSTS
+fedpay.gsa.gov,https://fedpay.gsa.gov,Contact
+fedpay.gsa.gov,https://fedpay.gsa.gov,DAP
+https.cio.gov,https://https.cio.gov,HSTS
+https.cio.gov,https://https.cio.gov,Banner
+https.cio.gov,https://https.cio.gov,DAP
+digital.gov,https://digital.gov,HSTS
+digital.gov,https://digital.gov,Identifier FOIA
+digital.gov,https://digital.gov,Banner
+digital.gov,https://digital.gov,Contact
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,HSTS
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,Identifier
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,Identifier Privacy
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,Identifier Accessibility
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,Identifier FOIA
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,Banner
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,Contact
+digitalcorps.gsa.gov,https://digitalcorps.gsa.gov,DAP
+labs.gsa.gov,https://labs.gsa.gov/s/,HSTS
+labs.gsa.gov,https://labs.gsa.gov/s/,DAP
+mobile.reginfo.gov,https://mobile.reginfo.gov/public/,HSTS
+mobile.reginfo.gov,https://mobile.reginfo.gov/public/,Banner
+mobile.reginfo.gov,https://mobile.reginfo.gov/public/,Contact
+ncrrecycles.gsa.gov,https://ncrrecycles.gsa.gov/recycle/,HSTS
+ncrrecycles.gsa.gov,https://ncrrecycles.gsa.gov/recycle/,Contact
+ncrrecycles.gsa.gov,https://ncrrecycles.gsa.gov/recycle/,DAP
+reginfo.gov,https://www.reginfo.gov/public/,HSTS
+reginfo.gov,https://www.reginfo.gov/public/,Banner
+reginfo.gov,https://www.reginfo.gov/public/,Contact
+reporting.gov,https://www.reporting.gov/,HSTS
+reporting.gov,https://www.reporting.gov/,Banner
+reporting.gov,https://www.reporting.gov/,DAP
+saferfederalworkforce.gov,https://www.saferfederalworkforce.gov/,HSTS
+saferfederalworkforce.gov,https://www.saferfederalworkforce.gov/,Banner
+saferfederalworkforce.gov,https://www.saferfederalworkforce.gov/,DAP
+wdol.gov,https://wdolhome.sam.gov/,HSTS
+wdol.gov,https://wdolhome.sam.gov/,Banner
+wdol.gov,https://wdolhome.sam.gov/,DAP
+wdolhome.sam.gov,https://wdolhome.sam.gov,HSTS
+wdolhome.sam.gov,https://wdolhome.sam.gov,Banner
+wdolhome.sam.gov,https://wdolhome.sam.gov,DAP
+8astars.fas.gsa.gov,https://8astars.fas.gsa.gov/GWACPriceTool/priceFilter/create,HSTS
+8astars.fas.gsa.gov,https://8astars.fas.gsa.gov/GWACPriceTool/priceFilter/create,Contact
+acquisition.gov,https://www.acquisition.gov/,HSTS
+acquisition.gov,https://www.acquisition.gov/,Contact
+arm.fas.gsa.gov,https://secureauth.gsa.gov/SecureAuth165/?SAMLRequest=jZHLTsMwEEV%2FxfLeeZG0jVW3KqCKChBRm7Jg5ziTNFJiB48Twd8TtVQskBDrOVd35sxy%2FdG1ZASLjdGChl5ACWhlykbXgh7zLVvQ9WqJsmt7vhncSe%2FhfQB0ZMpp5OeBoIPV3EhskGvZAXKn%2BGHz%2FMQjL%2BC9Nc4o01KyQQTrpqI7o3HowB7Ajo2C4%2F5J0JNzPXLfr1oAh2i8GqVXm9E%2FV7RD3WhfKlw3Zf8In6KESg6to2RrrILzZoJWskWgZHcvaJIuklk6nzEZlzGLSxmwIkwrlhTlQikZFmmSTiRmErEZ4SeLOMBOo5PaCRoFUcSCkIVRHiY8CvhN4s1n8Rsl2fdVt42%2BuPpLQXGBkD%2Fkecayl0NOyevV%2BQTQq%2BFzu%2F2%2FW3k1Sv3V0v%2F9pdUX&RelayState=https://arm.fas.gsa.gov/WebARM/ValidateSSO&idpKey=default,HSTS
+autoauctions.gsa.gov,https://autoauctions.gsa.gov/GSAAutoAuctions/,HSTS
+autoauctions.gsa.gov,https://autoauctions.gsa.gov/GSAAutoAuctions/,Contact
+autochoice.fas.gsa.gov,https://autochoice.fas.gsa.gov/AutoChoice/Home,HSTS
+autochoice.fas.gsa.gov,https://autochoice.fas.gsa.gov/AutoChoice/Home,DAP
+autovendor.fas.gsa.gov,https://autovendor.fas.gsa.gov/AutoVendor/Home,HSTS
+autovendor.fas.gsa.gov,https://autovendor.fas.gsa.gov/AutoVendor/Home,DAP
+cao.gov,https://cao.gov/cao-home,HSTS
+cao.gov,https://cao.gov/cao-home,Contact
+cic.gsa.gov,https://cic.gsa.gov,HSTS
+cic.gsa.gov,https://cic.gsa.gov,DAP
+federalist-proxy.app.cloud.gov,https://federalist-proxy.app.cloud.gov,HSTS
+federalistapp.18f.gov,https://federalistapp.18f.gov,HSTS
+federalistapp.18f.gov,https://federalistapp.18f.gov,Banner
+federalistapp.18f.gov,https://federalistapp.18f.gov,DAP
+federation.data.gov,https://federation.data.gov,HSTS
+federation.data.gov,https://federation.data.gov,Banner
+federation.data.gov,https://federation.data.gov,DAP
+cmls.gsa.gov,https://cmls.gsa.gov/s/,HSTS
+cmls.gsa.gov,https://cmls.gsa.gov/s/,DAP
+cpars.gov,https://cpars.gov,HSTS
+cpars.gov,https://cpars.gov,Identifier FOIA
+fedramp.gov,https://www.fedramp.gov/,HSTS
+fedramp.gov,https://www.fedramp.gov/,Identifier Privacy
+fedramp.gov,https://www.fedramp.gov/,Identifier Accessibility
+fedramp.gov,https://www.fedramp.gov/,Identifier FOIA
+fedramp.gov,https://www.fedramp.gov/,Banner
+disposal.gsa.gov,https://disposal.gsa.gov/s/,HSTS
+disposal.gsa.gov,https://disposal.gsa.gov/s/,DAP
+eoffer.gsa.gov,https://eoffer.gsa.gov,HSTS
+eoffer.gsa.gov,https://eoffer.gsa.gov,Contact
+esrs.gov,https://www.esrs.gov/,HSTS
+esrs.gov,https://www.esrs.gov/,Contact
+fedspecs.gsa.gov,https://fedspecs.gsa.gov,HSTS
+fedspecs.gsa.gov,https://fedspecs.gsa.gov,DAP
+financeweb.gsa.gov,https://financeweb.gsa.gov,HSTS
+financeweb.gsa.gov,https://financeweb.gsa.gov,Contact
+fsd.gov,https://www.fsd.gov/gsafsd_sp,HSTS
+fsd.gov,https://www.fsd.gov/gsafsd_sp,Banner
+fsrs.gov,https://www.fsrs.gov/,HSTS
+fsrs.gov,https://www.fsrs.gov/,Contact
+gsaxcess.gov,https://gsaxcess.gov,HSTS
+gsaxcess.gov,https://gsaxcess.gov,Contact
+gsaxcesspractice.fas.gsa.gov,https://gsaxcesspractice.fas.gsa.gov,HSTS
+gsaxcesspractice.fas.gsa.gov,https://gsaxcesspractice.fas.gsa.gov,Contact
+interact.gsa.gov,https://interact.gsa.gov,HSTS
+interact.gsa.gov,https://interact.gsa.gov,DAP
+login.acquisition.gov,https://login.acquisition.gov,HSTS
+login.acquisition.gov,https://login.acquisition.gov,Contact
+lop.gsa.gov,https://lop.gsa.gov,HSTS
+lop.gsa.gov,https://lop.gsa.gov,DAP
+navigator.gsa.gov,https://navigator.gsa.gov/app/#/,HSTS
+navigator.gsa.gov,https://navigator.gsa.gov/app/#/,Contact
+p3.cap.gsa.gov,https://p3.cap.gsa.gov/gui/,HSTS
+p3.cap.gsa.gov,https://p3.cap.gsa.gov/gui/,Contact
+ret.gsa.gov,https://ret.gsa.gov/realestatetaxes/s/,HSTS
+ret.gsa.gov,https://ret.gsa.gov/realestatetaxes/s/,DAP
+rocis.gov,https://www.rocis.gov/rocis/,HSTS
+rocis.gov,https://www.rocis.gov/rocis/,Contact
+go.usa.gov,https://go.usa.gov,HSTS
+go.usa.gov,https://go.usa.gov,Contact
+go.usa.gov,https://go.usa.gov,DAP
+sam.gov,https://sam.gov/content/home,HSTS
+sam.gov,https://sam.gov/content/home,DAP
+sftool.gov,https://sftool.gov,HSTS
+sftool.gov,https://sftool.gov,Banner
+str.gsa.gov,https://str.gsa.gov/str/,HSTS
+str.gsa.gov,https://str.gsa.gov/str/,DAP
+training.rocis.gov,https://training.rocis.gov/rocis/,HSTS
+training.rocis.gov,https://training.rocis.gov/rocis/,Contact
+vec.gsa.gov,https://vec.gsa.gov/MASTrainingHome,HSTS
+vehiclestd.fas.gsa.gov,https://vehiclestd.fas.gsa.gov/CommentCollector/Home,HSTS
+vehiclestd.fas.gsa.gov,https://vehiclestd.fas.gsa.gov/CommentCollector/Home,DAP
+vsc.gsa.gov,https://vsc.gsa.gov,HSTS
+handbook.tts.gsa.gov,https://handbook.tts.gsa.gov,HSTS
+handbook.tts.gsa.gov,https://handbook.tts.gsa.gov,Banner
+handbook.tts.gsa.gov,https://handbook.tts.gsa.gov,DAP
+advantage.gsa.gov,https://advantage.gsa.gov,HSTS
+i14y.search.usa.gov,https://i14y.search.usa.gov,HSTS
+i14y.usa.gov,https://i14y.usa.gov,HSTS
+afadvantage.gov,https://afadvantage.gov,HSTS
+amp.fas.gsa.gov,https://amp.fas.gsa.gov,HSTS
+api.acquisition.gov,https://api.acquisition.gov,HSTS
+inventory.data.gov,https://inventory.data.gov,HSTS
+inventory.data.gov,https://inventory.data.gov,DAP
+ask.gsa.gov,https://ask.gsa.gov,HSTS
+cars.fas.gsa.gov,https://cars.fas.gsa.gov,HSTS
+join.tts.gsa.gov,https://join.tts.gsa.gov,HSTS
+join.tts.gsa.gov,https://join.tts.gsa.gov,Identifier
+join.tts.gsa.gov,https://join.tts.gsa.gov,Identifier FOIA
+join.tts.gsa.gov,https://join.tts.gsa.gov,Banner
+join.tts.gsa.gov,https://join.tts.gsa.gov,DAP
+cm-jira.usa.gov,https://cm-jira.usa.gov/login.jsp,HSTS
+labs.usa.gov,https://labs.usa.gov,HSTS
+labs.usa.gov,https://labs.usa.gov,Banner
+labs.usa.gov,https://labs.usa.gov,Contact
+labs.usa.gov,https://labs.usa.gov,DAP
+computersforlearning.gov,https://computersforlearning.gov,HSTS
+login.fr.cloud.gov,https://login.fr.cloud.gov/login,HSTS
+login.gov,https://login.gov,HSTS
+login.gov,https://login.gov,Identifier
+login.gov,https://login.gov,Identifier Privacy
+login.gov,https://login.gov,Identifier Accessibility
+login.gov,https://login.gov,Identifier FOIA
+login.gov,https://login.gov,Banner
+login.gov,https://login.gov,Contact
+login.gov,https://login.gov,DAP
+content.fai.gov,https://content.fai.gov,HSTS
+contractdirectory.gov,https://contractdirectory.gov,HSTS
+marketplace.fedramp.gov,https://marketplace.fedramp.gov,HSTS
+marketplace.fedramp.gov,https://marketplace.fedramp.gov,Identifier FOIA
+marketplace.fedramp.gov,https://marketplace.fedramp.gov,Banner
+marketplace.fedramp.gov,https://marketplace.fedramp.gov,DAP
+cpsearch.fas.gsa.gov,https://cpsearch.fas.gsa.gov,HSTS
+dhsadvantage.gsa.gov,https://dhsadvantage.gsa.gov,HSTS
+discovery.gsa.gov,https://buy.gsa.gov/contracts,HSTS
+drivethru.gsa.gov,https://drivethru.gsa.gov,HSTS
+ebuy.gsa.gov,https://ebuy.gsa.gov,HSTS
+facadatabase.gov,https://www.facadatabase.gov/FACA,HSTS
+fai.gov,https://www.fai.gov/,HSTS
+fairs.reporting.gov,https://www.fairs.reporting.gov/FAIRS/FAIRSLogin,HSTS
+fairs.reporting.gov,https://www.fairs.reporting.gov/FAIRS/FAIRSLogin,Banner
+fairs.reporting.gov,https://www.fairs.reporting.gov/FAIRS/FAIRSLogin,Identifier
+fairs.reporting.gov,https://www.fairs.reporting.gov/FAIRS/FAIRSLogin,Identifier FOIA
+fairs.reporting.gov,https://www.fairs.reporting.gov/FAIRS/FAIRSLogin,Identifier Privacy
+fairs.reporting.gov,https://www.fairs.reporting.gov/FAIRS/FAIRSLogin,Contact
+fairs.reporting.gov,https://www.fairs.reporting.gov/FAIRS/FAIRSLogin,Identifier Accessibility
+fapiis.gov,https://www.fapiis.gov/fapiis/index.html,HSTS
+open-staging.usa.gov,https://open-staging.usa.gov,HSTS
+open-staging.usa.gov,https://open-staging.usa.gov,Banner
+open-staging.usa.gov,https://open-staging.usa.gov,Contact
+open-staging.usa.gov,https://open-staging.usa.gov,DAP
+fdms.gov,https://www.fdms.gov/login,HSTS
+fedidcard.gov,https://www.fedidcard.gov/,HSTS
+open.usa.gov,https://open.usa.gov,HSTS
+open.usa.gov,https://open.usa.gov,Banner
+open.usa.gov,https://open.usa.gov,Contact
+open.usa.gov,https://open.usa.gov,DAP
+fellows-in-innovation.pif.gov,https://fellows-in-innovation.pif.gov,HSTS
+partners.login.gov,https://partners.login.gov,HSTS
+partners.login.gov,https://partners.login.gov,Identifier
+partners.login.gov,https://partners.login.gov,Identifier Privacy
+partners.login.gov,https://partners.login.gov,Identifier Accessibility
+partners.login.gov,https://partners.login.gov,Identifier FOIA
+partners.login.gov,https://partners.login.gov,Banner
+partners.login.gov,https://partners.login.gov,Contact
+partners.login.gov,https://partners.login.gov,DAP
+paygap.pif.gov,https://paygap.pif.gov,HSTS
+paygap.pif.gov,https://paygap.pif.gov,DAP
+ffms.fas.gsa.gov,https://ffms.fas.gsa.gov,HSTS
+finance.ocfo.gsa.gov,https://finance.ocfo.gsa.gov,HSTS
+fleet.fas.gsa.gov,https://fleet.fas.gsa.gov,HSTS
+plainlanguage.gov,https://www.plainlanguage.gov/,HSTS
+plainlanguage.gov,https://www.plainlanguage.gov/,Banner
+plainlanguage.gov,https://www.plainlanguage.gov/,Contact
+plainlanguage.gov,https://www.plainlanguage.gov/,DAP
+fleet.gsa.gov,https://fleet.gsa.gov/fleetportal/,HSTS
+fleeteur.fas.gsa.gov,https://fleeteur.fas.gsa.gov,HSTS
+portfolios.18f.gov,https://portfolios.18f.gov,HSTS
+portfolios.18f.gov,https://portfolios.18f.gov,Identifier FOIA
+portfolios.18f.gov,https://portfolios.18f.gov,Banner
+portfolios.18f.gov,https://portfolios.18f.gov,Contact
+portfolios.18f.gov,https://portfolios.18f.gov,DAP
+presidentialinnovationfellows.gov,https://presidentialinnovationfellows.gov,HSTS
+presidentialinnovationfellows.gov,https://presidentialinnovationfellows.gov,Identifier FOIA
+presidentialinnovationfellows.gov,https://presidentialinnovationfellows.gov,Banner
+presidentialinnovationfellows.gov,https://presidentialinnovationfellows.gov,Contact
+presidentialinnovationfellows.gov,https://presidentialinnovationfellows.gov,DAP
+fmvrs.fas.gsa.gov,https://fmvrs.fas.gsa.gov,HSTS
+public-sans.digital.gov,https://public-sans.digital.gov,HSTS
+public-sans.digital.gov,https://public-sans.digital.gov,Identifier
+public-sans.digital.gov,https://public-sans.digital.gov,Identifier Privacy
+public-sans.digital.gov,https://public-sans.digital.gov,Identifier Accessibility
+public-sans.digital.gov,https://public-sans.digital.gov,Identifier FOIA
+public-sans.digital.gov,https://public-sans.digital.gov,Banner
+public-sans.digital.gov,https://public-sans.digital.gov,DAP
+frpg.gov,https://www.frpg.gov/FRPG,HSTS
+gsaadvantage.gov,https://gsaadvantage.gov,HSTS
+gsaadvantage.gsa.gov,https://gsaadvantage.gsa.gov,HSTS
+gsaauctions.gov,https://gsaauctions.gov/index.htm,HSTS
+gsaelibrary.gsa.gov,https://gsaelibrary.gsa.gov,HSTS
+resources.data.gov,https://resources.data.gov,HSTS
+resources.data.gov,https://resources.data.gov,Banner
+resources.data.gov,https://resources.data.gov,Contact
+resources.data.gov,https://resources.data.gov,DAP
+gsaglobalsupply.gsa.gov,https://gsaglobalsupply.gsa.gov,HSTS
+management.cio.gov,https://management.cio.gov,HSTS
+mysales.fas.gsa.gov,https://mysales.fas.gsa.gov,HSTS
+mysmartplans.gsa.gov,https://mysmartplans.gsa.gov/GSA_WEB_Start.htm,HSTS
+odp.gsa.gov,https://github.com/login?return_to=%2Fpages%2Fauth%3Fnonce%3D18630cb8-6f6e-4afb-a342-acdd04a2a754%26page_id%3D18363620%26path%3DLw,HSTS
+sdg.data.gov,https://sdg.data.gov,HSTS
+sdg.data.gov,https://sdg.data.gov,Contact
+sdg.data.gov,https://sdg.data.gov,DAP
+search.gov,https://search.gov,HSTS
+search.gov,https://search.gov,Contact
+search.gov,https://search.gov,DAP
+pic.gov,https://www.pic.gov/,HSTS
+secure.login.gov,https://secure.login.gov,HSTS
+secure.login.gov,https://secure.login.gov,Banner
+secure.login.gov,https://secure.login.gov,DAP
+playbook.cio.gov,https://playbook.cio.gov,HSTS
+property.reporting.gov,https://www.property.reporting.gov/PPRT/PPRTLogin,HSTS
+property.reporting.gov,https://www.property.reporting.gov/PPRT/PPRTLogin,Banner
+property.reporting.gov,https://www.property.reporting.gov/PPRT/PPRTLogin,Contact
+property.reporting.gov,https://www.property.reporting.gov/PPRT/PPRTLogin,Identifier Accessibility
+property.reporting.gov,https://www.property.reporting.gov/PPRT/PPRTLogin,Identifier
+property.reporting.gov,https://www.property.reporting.gov/PPRT/PPRTLogin,Identifier Privacy
+property.reporting.gov,https://www.property.reporting.gov/PPRT/PPRTLogin,Identifier FOIA
+realestatesales.gov,https://realestatesales.gov,HSTS
+realpropertyprofile.gov,https://www.realpropertyprofile.gov/FRPPMS,HSTS
+regulations.gov,https://www.regulations.gov/,DAP
+strategy.data.gov,https://strategy.data.gov,HSTS
+strategy.data.gov,https://strategy.data.gov,Banner
+strategy.data.gov,https://strategy.data.gov,DAP
+tailored.fedramp.gov,https://tailored.fedramp.gov,HSTS
+tailored.fedramp.gov,https://tailored.fedramp.gov,DAP
+sat.reginfo.gov,https://sat.reginfo.gov/public/,HSTS
+spdatawarehouse.gsa.gov,https://spdatawarehouse.gsa.gov/smartpay/,HSTS
+tams.gsa.gov,https://tams.gsa.gov,HSTS
+thenamingcommission.gov,https://www.thenamingcommission.gov/,Contact
+tmss.gsa.gov,https://tmss.gsa.gov/tmss/,HSTS
+usaccess-alp.gsa.gov,https://usaccess-alp.gsa.gov,HSTS
+tophealth.pif.gov,https://tophealth.pif.gov,HSTS
+touchpoints.digital.gov,https://touchpoints.digital.gov,HSTS
+touchpoints.digital.gov,https://touchpoints.digital.gov,Identifier FOIA
+touchpoints.digital.gov,https://touchpoints.digital.gov,Banner
+touchpoints.digital.gov,https://touchpoints.digital.gov,Contact
+usdaadvantage.gsa.gov,https://usdaadvantage.gsa.gov,HSTS
+usmcservmart.gsa.gov,https://usmcservmart.gsa.gov,HSTS
+vaadvantage.gsa.gov,https://vaadvantage.gsa.gov,HSTS
+usa.gov,https://www.usa.gov/,HSTS
+usa.gov,https://www.usa.gov/,Banner
+usability.gov,https://www.usability.gov/,HSTS
+usability.gov,https://www.usability.gov/,Identifier Privacy
+usability.gov,https://www.usability.gov/,Identifier Accessibility
+usability.gov,https://www.usability.gov/,Identifier FOIA
+vcss.ocfo.gsa.gov,https://phdc-pub.gsa.gov/vcssregistration/,HSTS
+vehicledispatch.fas.gsa.gov,https://vehicledispatch.fas.gsa.gov,HSTS
+usdigitalregistry.digitalgov.gov,https://usdigitalregistry.digitalgov.gov,HSTS
+usdigitalregistry.digitalgov.gov,https://usdigitalregistry.digitalgov.gov,Identifier FOIA
+usdigitalregistry.digitalgov.gov,https://usdigitalregistry.digitalgov.gov,Banner
+usdigitalregistry.digitalgov.gov,https://usdigitalregistry.digitalgov.gov,Contact
+usdigitalregistry.digitalgov.gov,https://usdigitalregistry.digitalgov.gov,DAP
+mcm.fas.gsa.gov,https://mcm.fas.gsa.gov,HSTS
+buy.gsa.gov,https://buy.gsa.gov,HSTS
+ux-guide.18f.gov,https://ux-guide.18f.gov,HSTS
+ux-guide.18f.gov,https://ux-guide.18f.gov,Identifier FOIA
+ux-guide.18f.gov,https://ux-guide.18f.gov,Banner
+ux-guide.18f.gov,https://ux-guide.18f.gov,DAP
+domains.dotgov.gov,https://domains.dotgov.gov/dotgov-web/,HSTS
+domains.dotgov.gov,https://domains.dotgov.gov/dotgov-web/,Contact
+domains.dotgov.gov,https://domains.dotgov.gov/dotgov-web/,DAP
+hallways.cap.gsa.gov,https://hallways.cap.gsa.gov/,HSTS
+vote.gov,https://vote.gov,HSTS
+vote.gov,https://vote.gov,Banner
+insite.gsa.gov,https://secureauth.gsa.gov/SecureAuth233?SAMLRequest=fVPbbuIwEH3vV6C8Q27cakGkbGi7SCwgkq5W%2B1IZZ0otJXbW47D072sbSqnU4jfPnDkz53g8QVpXDUlb%2FSI28K8F1DedzqGuBBKXmnqtEkRS5EgErQGJZiRPfy1I1AtIo6SWTFbep6LrNRQRlOZS2KL5bOqtlneL1cN8%2BdSPR8GQUhiX8YhuWUD7MYMR3MIYgmEMIxYNWX8MW1v4GxQajqlnKO19reSel6CWpt%2FUy4o0c%2FSILcwFaiq0gQZR1A3CbhgV4YBEAxIP%2FlrUzKjmgmrH96J1g8T3EVirgBpjejukvZ3c%2B7kLWa%2BiOD41dfJ%2FcFFysbuue3sEIflZFOvuepUXliJ9dyOTAtsaVA5qzxk8bhYfs3CBXMN5Duuxz454LzEkExshTqxKHvL06WPSiX%2BZM9gTuiHWqflsLSvOXl3cnnupaqq%2FFxL2QhfhZffZQQnUlFdpWSpA9M48aVXJ%2F5nxT5vX0KoFr%2BN%2F6n5aNijd6hnxGg66k8m6oYqjfQg4UKa95Ex5FHkJzyqzSxt4Tq6uGyPM4kz4zyC4PfnxJc1xPv%2FKgMnNe%2FryxyRv&RelayState=https%3A%2F%2Finsite.gsa.gov%2F,HSTS
+wp-bsp.data.gov,https://wp-bsp.data.gov,HSTS
+scopereview.gsa.gov,https://scopereview.gsa.gov/node,HSTS
+tscportal.fas.gsa.gov,https://tscportal.fas.gsa.gov,HSTS
+portal.eos.gsa.gov,https://portal.eos.gsa.gov,HSTS
+piv.golearnportal.org,https://piv.golearnportal.org,HSTS
+piv.golearnportal.org,https://piv.golearnportal.org,Contact
+labs.gsa.gov,https://labs.gsa.gov/s/,HSTS
+labs.gsa.gov,https://labs.gsa.gov/s/,Contact
+labs.gsa.gov,https://labs.gsa.gov/s/,DAP
+labs.gsa.gov,https://labs.gsa.gov/s/,Identifier FOIA
+labs.gsa.gov,https://labs.gsa.gov/s/,Identifier
+labs.gsa.gov,https://labs.gsa.gov/s/,Banner
+labs.gsa.gov,https://labs.gsa.gov/s/,Identifier Accessibility
+labs.gsa.gov,https://labs.gsa.gov/s/,Identifier Privacy
+labs.gsa.gov,https://labs.gsa.gov/s/,Search
+cmls.gsa.gov,https://cmls.gsa.gov/s/,HSTS
+cmls.gsa.gov,https://cmls.gsa.gov/s/,Contact
+cmls.gsa.gov,https://cmls.gsa.gov/s/,DAP
+cmls.gsa.gov,https://cmls.gsa.gov/s/,Identifier FOIA
+cmls.gsa.gov,https://cmls.gsa.gov/s/,Identifier
+cmls.gsa.gov,https://cmls.gsa.gov/s/,Banner
+cmls.gsa.gov,https://cmls.gsa.gov/s/,Identifier Accessibility
+cmls.gsa.gov,https://cmls.gsa.gov/s/,Identifier Privacy
+cmls.gsa.gov,https://cmls.gsa.gov/s/,Search
+disposal.gsa.gov,https://disposal.gsa.gov/s/,HSTS
+disposal.gsa.gov,https://disposal.gsa.gov/s/,Contact
+disposal.gsa.gov,https://disposal.gsa.gov/s/,DAP
+disposal.gsa.gov,https://disposal.gsa.gov/s/,Identifier FOIA
+disposal.gsa.gov,https://disposal.gsa.gov/s/,Identifier
+disposal.gsa.gov,https://disposal.gsa.gov/s/,Banner
+disposal.gsa.gov,https://disposal.gsa.gov/s/,Identifier Accessibility
+disposal.gsa.gov,https://disposal.gsa.gov/s/,Identifier Privacy
+disposal.gsa.gov,https://disposal.gsa.gov/s/,Search
