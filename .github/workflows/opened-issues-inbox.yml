@@ -11,4 +11,4 @@ jobs:
         with:
           project: EDX Backlog
           column: Inbox
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.EDXPROJECT_TOKEN }}
