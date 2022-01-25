@@ -7,12 +7,13 @@ assignees: ''
 
 ---
 
-Sprint covering teams x through y
+Website Evaluation of (site) - (Site manager)
 
-- [ ] set appointments - https://docs.google.com/spreadsheets/d/1-zSAASvxoiVnhNlbvQU2zq50mhB3ErWjdtpVlFvPTgk/edit?usp=sharing
-- [ ] View site
-- [ ] check website
-- [ ] View dashboard
+- [ ] Set appointment
+- [ ] view dashboard
+- [ ] View website
+- [ ] load notes to github
+- [ ] load additional lighthouse data
 - [ ] meet with website manager
 - [ ] include notes
 - [ ] Report
