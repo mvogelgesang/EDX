@@ -4,19 +4,50 @@ const packagejson = require("../package.json");
  * Class representing a full website report which consists of scan attributes and sub-classes
  */
 class Website {
+  scanDate;
+  startTime;
+  endTime;
+  /* over time, the contents of scans will change and should follow semantic versioning principles. Pulling from package.json reduces the total number of manual steps when updating the version number */
+  scanVersion = packagejson.version;
+  url;
+  performanceMetric;
+  uswdsComponents;
+  digitalAnalytics;
+  screenCapture;
+  siteScanner;
+  lighthouse;
+
   constructor() {
     this.scanDate = "";
     this.startTime = "";
     this.endTime = "";
-    /* over time, the contents of scans will change and should follow semantic versioning principles. Pulling from package.json reduces the total number of manual steps when updating the version number */
-    this.scanVersion = packagejson.version;
     this.url = "";
-    this.performanceMetric = new PerformanceMetric();
-    this.uswdsComponents = new UswdsComponents.UswdsComponents();
+    //this.uswdsComponents = new UswdsComponents.UswdsComponents();
     this.digitalAnalytics = new DigitalAnalytics();
-    this.screenCapture = new GenericDataObj();
-    this.siteScanner = new GenericDataObj();
-    this.lighthouse = new Lighthouse();
+    //this.screenCapture = new GenericDataObj();
+    //this.siteScanner = new GenericDataObj();
+    //this.lighthouse = new Lighthouse();
+  }
+  setPerformanceMetric(PerformanceMetric) {
+    this.performanceMetric = PerformanceMetric;
+  }
+  setUswdsComponents(UswdsComponents) {
+    this.uswdsComponents = UswdsComponents;
+  }
+  setSiteScanner(data) {
+    this.siteScanner = new GenericDataObj(
+      "Data results from GSA's Site Scanner engine (https://github.com/GSA/site-scanning-documentation).",
+      data
+    );
+  }
+  setScreenCapture(data) {
+    this.screenCapture = new GenericDataObj(
+      "Holds screenshots of website homepage on both desktop and mobile viewport sizes",
+      data
+    );
+  }
+  setLighthouse(data) {
+    this.lighthouse = new Lighthouse(data);
   }
 }
 
@@ -42,10 +73,10 @@ class PerformanceMetric {
  * Class to hold Lighthouse outputs for both desktop and mobile devices. Note, this is very loosely defined as Lighthouse's object model can change over time and is quite lengthy.
  */
 class Lighthouse {
-  constructor() {
+  constructor(data) {
     this.description = "Lighthouse outputs for both desktop and mobile devices";
-    this.desktopData = {};
-    this.mobileData = {};
+    this.desktopData = data.desktop || {};
+    this.mobileData = data.mobile || {};
   }
 }
 
@@ -76,9 +107,9 @@ class DigitalAnalytics {
 }
 
 class GenericDataObj {
-  constructor(description) {
+  constructor(description, data) {
     this.description = description;
-    this.data = [];
+    this.data = data || [];
   }
 }
 
