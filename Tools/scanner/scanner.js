@@ -52,7 +52,7 @@ async function scan(domain, headless = true) {
   website.scanDate = formattedDate;
   website.startTime = start;
   website.url = domain;
-  website.setScreenCapture = await screenshots(browser, domain);
+  website.setScreenCapture(await screenshots(browser, domain));
   website.setLighthouse(await lighthouseReport(browser, domain));
   website.setPerformanceMetric(await itPerfMetricReport(browser, domain));
   website.setUswdsComponents(await uswdsComponentsReport(browser, domain));
@@ -223,7 +223,7 @@ const createUrl = async function (domain) {
   }
 };
 
-const domains = ["gsa.gov"];
+const domains = ["fedsim.gsa.gov"];
 
 (async () => {
   for (let domain in domains) {
