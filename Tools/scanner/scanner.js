@@ -10,7 +10,7 @@ const UswdsComponents = require("./models/uswdsComponents");
 const date = new Date();
 const formattedDate = `${date.getFullYear()}${date.getMonth() < 10 ? "0" : ""}${
   date.getMonth() + 1
-}${date.getDate()}`; //_${date.getHours()}${date.getMinutes() < 10 ? "0" : ""}${date.getMinutes()}`;
+}${date.getDate() < 10 ? "0" : ""}`; //_${date.getHours()}${date.getMinutes() < 10 ? "0" : ""}${date.getMinutes()}`;
 const path = `data/${formattedDate}/`;
 
 const devices = {
@@ -70,7 +70,10 @@ const lighthouseReport = async function (browser, domain) {
   for (var device in devices) {
     const page = await browser.newPage();
     await page.emulate(devices[device]);
-    await page.goto(url, { waitUntil: "networkidle2" });
+    await page.goto(url, { waitUntil: "networkidle2" }).catch((e) => {
+      console.error("Lighthouse error: ", e);
+      return;
+    });
     const options = {
       port: new URL(browser.wsEndpoint()).port,
       output: "json",
@@ -92,7 +95,13 @@ const screenshots = async function (browser, domain) {
   for (var device in devices) {
     const page = await browser.newPage();
     await page.emulate(devices[device]);
-    await page.goto(await createUrl(domain), { waitUntil: "networkidle2" });
+    await page
+      .goto(await createUrl(domain), { waitUntil: "networkidle2" })
+      .catch((e) => {
+        console.error("screenshots error: ", e);
+        return;
+      });
+
     const imgPath = `data/${formattedDate}/${domain}_${device}.png`;
 
     await page.screenshot({
@@ -133,10 +142,16 @@ const itPerfMetricReport = async function (browser, domain) {
 
   const data = new Website.PerformanceMetric();
   const page = await browser.newPage();
-  page.once("response", (response) => {
-    data.hsts = response.headers().hasOwnProperty("strict-transport-security");
-  });
-  await page.goto(await createUrl(domain), { waitUntil: "networkidle2" });
+  await page.setCacheEnabled(false);
+  const response = await page
+    .goto(await createUrl(domain), {
+      waitUntil: "networkidle2",
+    })
+    .catch((e) => {
+      console.error("IT Metric error: ", e);
+      return;
+    });
+  data.hsts = response.headers().hasOwnProperty("strict-transport-security");
 
   //data.hsts = httpResponse.headers()
   for (let regex in regexs) {
@@ -149,7 +164,12 @@ const itPerfMetricReport = async function (browser, domain) {
 const uswdsComponentsReport = async function (browser, domain) {
   const data = new UswdsComponents.UswdsComponents();
   const page = await browser.newPage();
-  await page.goto(await createUrl(domain), { waitUntil: "networkidle2" });
+  await page
+    .goto(await createUrl(domain), { waitUntil: "networkidle2" })
+    .catch((e) => {
+      console.error("USWDS error: ", e);
+      return;
+    });
   const content = await page.content();
 
   data.accordion = /usa-accordion__heading/.test(content);
@@ -223,7 +243,247 @@ const createUrl = async function (domain) {
   }
 };
 
-const domains = ["fedsim.gsa.gov"];
+const domains = [
+  "accessibility.18f.gov",
+  "18f.gsa.gov",
+  "usdigitalregistry.digitalgov.gov",
+  "8astars.fas.gsa.gov",
+  "acquisition.gov",
+  "fmitservices.gsa.gov",
+  "aas.gsa.gov",
+  "analytics.usa.gov",
+  "kibana.search.usa.gov",
+  "api.data.gov",
+  "idp.dev.identitysandbox.gov",
+  "agile-labor-categories.18f.gov",
+  "arm.fas.gsa.gov",
+  "amp.fas.gsa.gov",
+  "asis.search.usa.gov",
+  "digitalcorps.gsa.gov",
+  "1.usa.gov",
+  "paymentaccuracy.gov",
+  "atf-eregs.18f.gov",
+  "apps.ocfo.gsa.gov",
+  "staging.login.gov",
+  "gsaxcess.gov",
+  "ask.gsa.gov",
+  "autoauctions.gsa.gov",
+  "roads.fas.gsa.gov",
+  "autovendor.fas.gsa.gov",
+  "pbs-billing.gsa.gov",
+  "api.usa.gov",
+  "ussm.gsa.gov",
+  "markdown-helper.18f.gov",
+  "blog.usa.gov",
+  "brand.18f.gov",
+  "private-eye.18f.gov",
+  "fmvrs.fas.gsa.gov",
+  "hallways.cap.gsa.gov",
+  "techradar.gsa.gov",
+  "pra.digital.gov",
+  "wdolhome.sam.gov",
+  "extportal.pbs.gsa.gov",
+  "usagov.platform.gsa.gov",
+  "calc.gsa.gov",
+  "fleet.gov",
+  "mcm.fas.gsa.gov",
+  "accessibility.digital.gov",
+  "madeinamerica.gov",
+  "fms.fas.gsa.gov",
+  "find.search.gov",
+  "cao.gov",
+  "tailored.fedramp.gov",
+  "identitysandbox.gov",
+  "chat.18f.gov",
+  "fmseec.fas.gsa.gov",
+  "cars.fas.gsa.gov",
+  "connect.usa.gov",
+  "idp.staging.login.gov",
+  "scopereview.gsa.gov",
+  "cfo.gov",
+  "join.tts.gsa.gov",
+  "citizenscience.gov",
+  "touchpoints.digital.gov",
+  "labs.gsa.gov",
+  "tscportal.fas.gsa.gov",
+  "connect.digitalgov.gov",
+  "lop.gsa.gov",
+  "management.cio.gov",
+  "autochoice.fas.gsa.gov",
+  "section508.gov",
+  "pivcac.staging.login.gov",
+  "cloud.gov",
+  "portal.eos.gsa.gov",
+  "catalog.data.gov",
+  "pivcac.prod.login.gov",
+  "cloud.cio.gov",
+  "cio.gov",
+  "code.gov",
+  "preview.login.gov",
+  "app.cloud.gov",
+  "resque.search.usa.gov",
+  "cmls.gsa.gov",
+  "coe.gsa.gov",
+  "cm-jira.usa.gov",
+  "portfolios.18f.gov",
+  "computersforlearning.gov",
+  "conectate.gobiernousa.gov",
+  "tmf.cio.gov",
+  "playbooks.idmanagement.gov",
+  "challenge.gov",
+  "search.gov",
+  "search.usa.gov",
+  "content.fai.gov",
+  "contractdirectory.gov",
+  "corporateapps.gsa.gov",
+  "content-guide.18f.gov",
+  "reporting.gov",
+  "datacenters.cio.gov",
+  "cpsearch.fas.gsa.gov",
+  "dap.digitalgov.gov",
+  "saferfederalworkforce.gov",
+  "derisking-guide.18f.gov",
+  "d2d.gsa.gov",
+  "itvmo.gsa.gov",
+  "thenamingcommission.gov",
+  "cpars.gov",
+  "discovery.gsa.gov",
+  "digital.gov",
+  "realestatesales.gov",
+  "drivethru.gsa.gov",
+  "disposal.gsa.gov",
+  "files.18f.gov",
+  "devicepki.idmanagement.gov",
+  "digitaldashboard.gov",
+  "developers.login.gov",
+  "fedramp.gov",
+  "designsystem.digital.gov",
+  "agile.18f.gov",
+  "esrs.gov",
+  "facadatabase.gov",
+  "fai.gov",
+  "dev.identitysandbox.gov",
+  "fdms.gov",
+  "federalist-proxy.app.cloud.gov",
+  "fedidcard.gov",
+  "eoffer.gsa.gov",
+  "ebuy.gsa.gov",
+  "federalist.18f.gov",
+  "fapiis.gov",
+  "fairs.reporting.gov",
+  "eng-hiring.18f.gov",
+  "engineering.18f.gov",
+  "fsrs.gov",
+  "federation.data.gov",
+  "fedsim.gsa.gov",
+  "financeweb.gsa.gov",
+  "go.usa.gov",
+  "fleeteur.fas.gsa.gov",
+  "finance.ocfo.gsa.gov",
+  "federalist-builder.18f.gov",
+  "fleet.fas.gsa.gov",
+  "fellows-in-innovation.pif.gov",
+  "federalistapp.18f.gov",
+  "fsd.gov",
+  "ffms.fas.gsa.gov",
+  "fleet.gsa.gov",
+  "fedpay.gsa.gov",
+  "odp.gsa.gov",
+  "fedspecs.gsa.gov",
+  "feedback.usa.gov",
+  "fpc.gov",
+  "gsaelibrary.gsa.gov",
+  "gsa.gov",
+  "10x.gsa.gov",
+  "frpg.gov",
+  "fpds.gov",
+  "gsaxcesspractice.fas.gsa.gov",
+  "ncrrecycles.gsa.gov",
+  "login.fr.cloud.gov",
+  "gsaauctions.gov",
+  "i14y.usa.gov",
+  "gsaadvantage.gov",
+  "idmanagement.gov",
+  "gsaglobalsupply.gsa.gov",
+  "i14y.search.usa.gov",
+  "handbook.tts.gsa.gov",
+  "oes.gsa.gov",
+  "inventory.data.gov",
+  "interact.gsa.gov",
+  "mobile.reginfo.gov",
+  "oasispet.gsa.gov/cpet/view",
+  "methods.18f.gov",
+  "navigator.gsa.gov",
+  "labs.usa.gov",
+  "mysmartplans.gsa.gov",
+  "open.gsa.gov",
+  "open.sam.gov",
+  "open-staging.usa.gov",
+  "playbook.cio.gov",
+  "regulations.gov",
+  "rocis.gov",
+  "ret.gsa.gov",
+  "pic.gov",
+  "sam.gov",
+  "paygap.pif.gov",
+  "performance.gov",
+  "mysales.fas.gsa.gov",
+  "public-sans.digital.gov",
+  "resources.data.gov",
+  "realpropertyprofile.gov",
+  "open.usa.gov",
+  "evaluation.gov",
+  "login.gov",
+  "plainlanguage.gov",
+  "product-guide.18f.gov",
+  "marketplace.fedramp.gov",
+  "reginfo.gov",
+  "sat.reginfo.gov",
+  "presidentialinnovationfellows.gov",
+  "property.reporting.gov",
+  "techfarhub.cio.gov",
+  "sdg.data.gov",
+  "vsc.gsa.gov",
+  "tech.gsa.gov",
+  "training.rocis.gov",
+  "tophealth.pif.gov",
+  "vehicledispatch.fas.gsa.gov",
+  "smartpay.gsa.gov",
+  "sftool.gov",
+  "travel.reporting.gov",
+  "usmcservmart.gsa.gov",
+  "strategy.data.gov",
+  "usaccess-alp.gsa.gov",
+  "training.smartpay.gsa.gov",
+  "vehiclestd.fas.gsa.gov",
+  "usa.gov",
+  "str.gsa.gov",
+  "vote.gov",
+  "secure.login.gov",
+  "usability.gov",
+  "https.cio.gov",
+  "data.gov",
+  "api.acquisition.gov",
+  "spdatawarehouse.gsa.gov",
+  "wdol.gov",
+  "cic.gsa.gov",
+  "advantage.gsa.gov",
+  "slc.gsa.gov",
+  "ux-guide.18f.gov",
+  "courtsweb.gsa.gov",
+  "gsaadvantage.gsa.gov",
+  "dhsadvantage.gsa.gov",
+  "afadvantage.gov",
+  "usdaadvantage.gsa.gov",
+  "fbohome.sam.gov",
+  "partners.login.gov",
+  "cdo.gov",
+  "login.acquisition.gov",
+  "tams.gsa.gov",
+  "vaadvantage.gsa.gov",
+  "tmss.gsa.gov",
+  "design.login.gov",
+];
 
 (async () => {
   for (let domain in domains) {
