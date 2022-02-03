@@ -5,7 +5,7 @@ const _ = require("lodash");
 const date = new Date();
 const formattedDate = `${date.getFullYear()}${date.getMonth() < 10 ? "0" : ""}${
   date.getMonth() + 1
-}${date.getDate()}_${date.getHours()}${
+}${date.getDate() < 10 ? "0" : ""}${date.getDate()}_${date.getHours()}${
   date.getMinutes() < 10 ? "0" : ""
 }${date.getMinutes()}`;
 
@@ -13,6 +13,7 @@ const csvWriter = createCsvWriter({
   path: `data/output_${formattedDate}.csv`,
   // create map of csv headers to json elements
   header: [
+    { id: "domain", title: "Domain" },
     { id: "url", title: "URL" },
     { id: "scanDate", title: "Scan Date" },
     { id: "scanVersion", title: "Scan Version" },
@@ -35,6 +36,10 @@ const csvWriter = createCsvWriter({
     { id: "uswdsComponents.card", title: "USWDS Card" },
     { id: "uswdsComponents.footer", title: "USWDS Footer" },
     { id: "uswdsComponents.header", title: "USWDS Header" },
+    {
+      id: "lighthouse.desktopData.lhr.categories.performance.score",
+      title: "(M) Performance Score",
+    },
     {
       id: "lighthouse.desktopData.lhr.audits['speed-index'].score",
       title: "(D) Speed Index",
@@ -113,9 +118,7 @@ const extractDataPoints = async function (data) {
   }
   return extract;
 };
-// loop files in a given directory (recursively)
-// grab the elements we want (long list)
-//output contents into a csv as a row
+
 (async function () {
   const dirName = path.join(__dirname, "data");
 

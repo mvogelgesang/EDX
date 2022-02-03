@@ -21,6 +21,7 @@ class Website {
     this.scanDate = "";
     this.startTime = "";
     this.endTime = "";
+    this.domain = "";
     this.url = "";
     //this.uswdsComponents = new UswdsComponents.UswdsComponents();
     this.digitalAnalytics = new DigitalAnalytics();
