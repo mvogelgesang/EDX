@@ -8,29 +8,19 @@ assignees: ''
 ---
 
 Website Evaluation of (site) - (Site manager)
-
+**To Do**
 - [ ] Set appointment
-- [ ] view dashboard
-- [ ] View website
-- [ ] load notes to github
-- [ ] load additional lighthouse data
-- [ ] meet with website manager
-- [ ] include notes
-- [ ] Report
-
-Summary
-Howd it go?
-
-Full notes from interview. <- Link
-
-tl/dr:
-big takeaways
-
-Immediate To-Dos:
- 
- 
-Reccs doc includes:
-Interview data
-Scan data
-Design note: 
-Design note: 
+- [ ] assigned people
+- [ ] prelim notes
+**Progress**
+- [ ] analytics
+- [ ] interview notes
+- [ ] Interview Spreadsheet
+**Rec Docs Needed**
+- [ ] Summary
+- [ ] Tl:Dr
+- [ ] immediate action
+- [ ] complete interview notes
+- [ ] Complete Interview Spreadsheet
+**Done** 
+- [ ] recc link
