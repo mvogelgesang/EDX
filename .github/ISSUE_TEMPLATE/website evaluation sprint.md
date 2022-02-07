@@ -11,16 +11,13 @@ Website Evaluation of (site) - (Site manager)
 **To Do**
 - [ ] Set appointment
 - [ ] assigned people
-- [ ] prelim notes
 **Progress**
-- [ ] analytics
+- [ ] Scan
 - [ ] interview notes
 - [ ] Interview Spreadsheet
 **Rec Docs Needed**
 - [ ] Summary
 - [ ] Tl:Dr
 - [ ] immediate action
-- [ ] complete interview notes
-- [ ] Complete Interview Spreadsheet
 **Done** 
 - [ ] recc link
