@@ -172,7 +172,7 @@ const itPerfMetricReport = async function (browser, url) {
     },
     search: {
       regex:
-        /https:\/\/search.usa.gov\/search|https:\/\/search.gsa.gov\/search|<label.*?>Search.*?<\/label>|placeholder=('|")Search/i,
+        /https:\/\/search.usa.gov\/search|https:\/\/search.gsa.gov\/search|<label.*?>Search.*?<\/label>|placeholder=('|")Search|aria-label="search.*"/i,
       type: "link",
     },
     banner: {
