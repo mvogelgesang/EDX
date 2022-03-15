@@ -1,16 +1,22 @@
-edxcli
-=================
+# edxcli
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [edxcli](#edxcli)
 <!-- tocstop -->
+
+# Development
+
+`nvm use`
+`npm run prepack`
+`node bin/run`
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g edx_cli
 $ edxcli COMMAND
@@ -22,20 +28,60 @@ USAGE
   $ edxcli COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`edxcli hello PERSON`](#edxcli-hello-person)
-* [`edxcli hello world`](#edxcli-hello-world)
-* [`edxcli help [COMMAND]`](#edxcli-help-command)
-* [`edxcli plugins`](#edxcli-plugins)
-* [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
-* [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
-* [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
-* [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
-* [`edxcli plugins update`](#edxcli-plugins-update)
-* [`edxcli websites`](#edxcli-websites)
-* [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
+
+- [edxcli](#edxcli)
+- [Development](#development)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`edxcli analytics FILE`](#edxcli-analytics-file)
+  - [`edxcli hello PERSON`](#edxcli-hello-person)
+  - [`edxcli hello world`](#edxcli-hello-world)
+  - [`edxcli help [COMMAND]`](#edxcli-help-command)
+  - [`edxcli plugins`](#edxcli-plugins)
+  - [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
+  - [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
+  - [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
+  - [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
+  - [`edxcli plugins update`](#edxcli-plugins-update)
+  - [`edxcli websites`](#edxcli-websites)
+  - [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
+
+## `edxcli analytics FILE`
+
+Consumes Google Analytics reports and returns consolidated files containing the most 'n' visited pages on each hostname
+
+```
+USAGE
+  $ edxcli analytics [FILE] -o <value> [--loglevel error|warn|info|debug] [-n <value>]
+
+ARGUMENTS
+  FILE  File which will be consumed
+
+FLAGS
+  -n, --number=<value>  [default: 2] Top n pages per hostname
+  -o, --output=<value>  (required) Output directory
+  --loglevel=<option>   [default: info]
+                        <options: error|warn|info|debug>
+
+DESCRIPTION
+  Consumes Google Analytics reports and returns consolidated files containing the most 'n' visited pages on each
+  hostname
+
+EXAMPLES
+  $ edxcli analytics myfile.csv
+
+  $ edxcli analytics myfile.csv -o ~/documents
+
+  $ edxcli analytics myfile.csv -n 5
+```
+
+_See code: [dist/commands/analytics/index.ts](https://github.com/gsa/edx/blob/v0.0.0/dist/commands/analytics/index.ts)_
 
 ## `edxcli hello PERSON`
 
@@ -170,7 +216,7 @@ ALIASES
   $ edxcli plugins add
 
 EXAMPLES
-  $ edxcli plugins:install myplugin 
+  $ edxcli plugins:install myplugin
 
   $ edxcli plugins:install https://github.com/someuser/someplugin
 
@@ -292,4 +338,5 @@ EXAMPLES
 
   $ edxcli websites fetch Touchpoints -o ~/mydirectory
 ```
+
 <!-- commandsstop -->
