@@ -1,3 +1,10 @@
+---
+name: Digital Council
+about: DC planning
+title: DC - {website.gov}
+labels: "DC"
+assignees: ""
+---
 ## Winter 2022 Digital Experience Executive Board Meeting
 Meeting prep, participation, and follow-up activities.
 
