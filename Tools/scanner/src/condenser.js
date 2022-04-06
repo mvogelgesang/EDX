@@ -40,7 +40,7 @@ const csvHeaders = [
   { id: "uswdsComponents.header", title: "USWDS Header" },
   {
     id: "lighthouse.desktopData.lhr.categories.performance.score",
-    title: "(M) Performance Score",
+    title: "(D) Performance Score",
   },
   {
     id: "lighthouse.desktopData.lhr.audits['speed-index'].score",
@@ -108,7 +108,7 @@ const condense = async function (folderName) {
       } else {
         if (path.extname(`${folderName}/${file.name}`) === ".json") {
           const data = JSON.parse(
-            await fs.readFile(`${folderName}/${file.name}`, 'utf-8')
+            await fs.readFile(`${folderName}/${file.name}`, "utf-8")
           );
 
           const extract = await extractDataPoints(data);
@@ -129,7 +129,7 @@ const extractDataPoints = async function (data) {
 };
 
 (async function () {
-  const folderArray = ["20220331 copy"];
+  const folderArray = ["20220331", "20220330", "20220329", "202203"];
   for (var folder in folderArray) {
     const dirName = `data/${folderArray[folder]}`;
     await condense(dirName);
