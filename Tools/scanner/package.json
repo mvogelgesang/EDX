@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -b",
+    "build": "rm -rf dist/ && tsc -b",
     "condense": "node dist/condenser.js",
     "move": "node dist/mover.js",
     "pretty": "echo \"Running Prettier against outputs\" && npx prettier --write data/ --loglevel silent",
     "scan": "node dist/scanner.js ",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "npm run test -- --coverage",
+    "test:onlyChanged": "npm run test -- --onlyChanged",
+    "test:detectOpenHandles": "npm run test -- --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
+    "@types/lodash": "^4.14.181",
     "jest": "^27.5.1",
     "mockdate": "^3.0.5",
     "prettier": "^2.5.1",

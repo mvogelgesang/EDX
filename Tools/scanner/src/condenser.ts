@@ -2,14 +2,11 @@
 
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const fs = require("fs").promises;
-const path = require("path");
-const _ = require("lodash");
-const date = new Date();
-const formattedDate = `${date.getFullYear()}${date.getMonth() < 10 ? "0" : ""}${
-  date.getMonth() + 1
-}${date.getDate() < 10 ? "0" : ""}${date.getDate()}_${date.getHours()}${
-  date.getMinutes() < 10 ? "0" : ""
-}${date.getMinutes()}`;
+import path from "path";
+import _ from "lodash";
+import * as utils from "./utils";
+
+const formattedDate = utils.getFormattedDate("YYYYMMDD_HHMM");
 
 const csvHeaders = [
   { id: "domain", title: "Domain" },
@@ -97,30 +94,29 @@ const csvWriter = createCsvWriter({
   header: csvHeaders,
 });
 
-const condense = async function (folderName) {
-  async function findFiles(folderName) {
-    const files = await fs.readdir(folderName, {
-      withFileTypes: true,
-    });
-    for (const file of files) {
-      if (file.isDirectory()) {
-        await findFiles(`${folderName}/${file.name}`);
-      } else {
-        if (path.extname(`${folderName}/${file.name}`) === ".json") {
-          const data = JSON.parse(
-            await fs.readFile(`${folderName}/${file.name}`, "utf-8")
-          );
+export const findFiles = async function (folderName: string): Promise<void> {
+  const files = await fs.readdir(folderName, {
+    withFileTypes: true,
+  });
+  for (const file of files) {
+    if (file.isDirectory()) {
+      await findFiles(`${folderName}/${file.name}`);
+    } else {
+      if (path.extname(`${folderName}/${file.name}`) === ".json") {
+        const data = JSON.parse(
+          await fs.readFile(`${folderName}/${file.name}`, "utf-8")
+        );
 
-          const extract = await extractDataPoints(data);
-          await csvWriter.writeRecords([extract]);
-        }
+        const extract = await extractDataPoints(data);
+        await csvWriter.writeRecords([extract]);
       }
     }
   }
-  await findFiles(folderName);
 };
 
-const extractDataPoints = async function (data) {
+export const extractDataPoints = async (
+  data: any
+): Promise<{ [key: string]: string }> => {
   let extract = {};
   for (const col in csvHeaders) {
     extract[csvHeaders[col].id] = _.get(data, csvHeaders[col].id);
@@ -129,9 +125,9 @@ const extractDataPoints = async function (data) {
 };
 
 (async function () {
-  const folderArray = ["20220331", "20220330", "20220329", "202203"];
+  const folderArray = ["20220331", "20220330", "20220329"];
   for (var folder in folderArray) {
     const dirName = `data/${folderArray[folder]}`;
-    await condense(dirName);
+    await findFiles(dirName);
   }
 })();

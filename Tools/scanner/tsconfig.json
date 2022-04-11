@@ -6,10 +6,11 @@
     "module": "commonjs",
     "outDir": "dist",
     "resolveJsonModule": true,
-    "rootDir": "src",
+    "rootDir": "./",
     //"strict": true,
     "target": "es2019",
     "esModuleInterop": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["src/__mocks__/**/*", "dist/**"]
 }
