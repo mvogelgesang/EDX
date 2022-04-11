@@ -2,6 +2,8 @@ import crypto from "crypto";
 const hash = crypto.createHash("md5");
 import * as wmd from "./websitesMetadata";
 
+export type dateString = "YYYYMMDD" | "YYYYMMDD_HHMM" | null;
+
 /**
  * Constructs a url consisting of scheme, subdomain, domain, tld, path, and query string
  * @param {string} domain
@@ -30,14 +32,22 @@ export const getDomain = async function (url: string): Promise<string> {
 
 /**
  *
- * @returns {string} - Current date as string in YYYYMMDD format
+ * @returns {string} - Current date as string in YYYYMMDD or YYYYMMDD_HHMM format
  */
-export const getFormattedDate = (): string => {
+export function getFormattedDate(format: dateString = "YYYYMMDD"): string {
   const date = new Date();
-  return `${date.getFullYear()}${date.getMonth() < 9 ? "0" : ""}${
-    date.getMonth() + 1
-  }${date.getDate() < 10 ? "0" : ""}${date.getDate()}`;
-};
+  if (format === "YYYYMMDD_HHMM") {
+    `${date.getFullYear()}${date.getMonth() < 9 ? "0" : ""}${
+      date.getMonth() + 1
+    }${date.getDate() < 10 ? "0" : ""}${date.getDate()}_${date.getHours()}${
+      date.getMinutes() < 10 ? "0" : ""
+    }${date.getMinutes()}`;
+  } else {
+    return `${date.getFullYear()}${date.getMonth() < 9 ? "0" : ""}${
+      date.getMonth() + 1
+    }${date.getDate() < 10 ? "0" : ""}${date.getDate()}`;
+  }
+}
 
 /**
  * Given text input, returns a MD5 Hexidecimal hash

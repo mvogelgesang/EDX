@@ -2,14 +2,12 @@
 
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const fs = require("fs").promises;
-const path = require("path");
-const _ = require("lodash");
+import path from "path";
+import _ from "lodash";
+import * as utils from "./utils";
+
 const date = new Date();
-const formattedDate = `${date.getFullYear()}${date.getMonth() < 10 ? "0" : ""}${
-  date.getMonth() + 1
-}${date.getDate() < 10 ? "0" : ""}${date.getDate()}_${date.getHours()}${
-  date.getMinutes() < 10 ? "0" : ""
-}${date.getMinutes()}`;
+const formattedDate = utils.getFormattedDate("YYYYMMDD_HHMM");
 
 const csvHeaders = [
   { id: "domain", title: "Domain" },
@@ -97,8 +95,8 @@ const csvWriter = createCsvWriter({
   header: csvHeaders,
 });
 
-const condense = async function (folderName) {
-  async function findFiles(folderName) {
+const condense = async function (folderName: string): Promise<void> {
+  async function findFiles(folderName: string): Promise<void> {
     const files = await fs.readdir(folderName, {
       withFileTypes: true,
     });
@@ -120,13 +118,15 @@ const condense = async function (folderName) {
   await findFiles(folderName);
 };
 
-const extractDataPoints = async function (data) {
+async function extractDataPoints(
+  data: any
+): Promise<{ [key: string]: string }> {
   let extract = {};
   for (const col in csvHeaders) {
     extract[csvHeaders[col].id] = _.get(data, csvHeaders[col].id);
   }
   return extract;
-};
+}
 
 (async function () {
   const folderArray = ["20220331", "20220330", "20220329", "202203"];
