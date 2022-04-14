@@ -108,7 +108,10 @@ export const findFiles = async function (folderName: string): Promise<void> {
     } else {
       if (path.extname(`${folderName}/${file.name}`) === ".json") {
         const data = JSON.parse(
-          await fs.readFile(`${folderName}/${file.name}`, "utf-8")
+          await fs.readFile(
+            path.join(process.cwd(), folderName, file.name),
+            "utf-8"
+          )
         );
         const extract = await extractDataPoints(data);
         await csvWriter.writeRecords([extract]);
