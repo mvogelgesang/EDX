@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist/ && tsc -b",
-    "condense": "node dist/condenser.js",
+    "condense": "node dist/condenser/index.js",
     "move": "node dist/mover.js",
     "pretty": "echo \"Running Prettier against outputs\" && npx prettier --write data/ --loglevel silent",
     "scan": "node dist/scanner.js ",
@@ -25,6 +25,7 @@
     "flat": "^5.0.2",
     "lighthouse": "^9.2.0",
     "lodash": "^4.17.21",
+    "minimist": "^1.2.6",
     "node-fetch": "^2.6.7",
     "puppeteer": "^13.1.1",
     "ts-jest": "^27.1.4"

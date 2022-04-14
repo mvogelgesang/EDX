@@ -4,10 +4,14 @@ const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 const fs = require("fs").promises;
 import path from "path";
 import _ from "lodash";
-import * as utils from "./utils";
+import * as utils from "../utils";
+let args = require("minimist")(process.argv.slice(2), {
+  string: "folders",
+  alias: { f: "folders" },
+});
 
 const formattedDate = utils.getFormattedDate("YYYYMMDD_HHMM");
-
+export const outputPath = `data/output_${formattedDate}.csv`;
 const csvHeaders = [
   { id: "domain", title: "Domain" },
   { id: "url", title: "URL" },
@@ -89,7 +93,7 @@ const csvHeaders = [
   },
 ];
 const csvWriter = createCsvWriter({
-  path: `data/output_${formattedDate}.csv`,
+  path: outputPath,
   // create map of csv headers to json elements
   header: csvHeaders,
 });
@@ -106,7 +110,6 @@ export const findFiles = async function (folderName: string): Promise<void> {
         const data = JSON.parse(
           await fs.readFile(`${folderName}/${file.name}`, "utf-8")
         );
-
         const extract = await extractDataPoints(data);
         await csvWriter.writeRecords([extract]);
       }
@@ -124,10 +127,19 @@ export const extractDataPoints = async (
   return extract;
 };
 
-(async function () {
-  const folderArray = ["20220331", "20220330", "20220329"];
-  for (var folder in folderArray) {
-    const dirName = `data/${folderArray[folder]}`;
+export const run = async () => {
+  const folderArray = args.folders ? args.folders.split(",") : [];
+  if (folderArray.length > 0) {
+    for (var folder in folderArray) {
+      const dirName = `data/${folderArray[folder]}`;
+      await findFiles(dirName);
+    }
+  } else {
+    console.log(`consolidating entire data/ directory. You can specify a subset of folders by passing the --folders parameter. 
+    npm run condense -- --folders="folder1,folder2"
+    `);
+
+    const dirName = `data/`;
     await findFiles(dirName);
   }
-})();
+};
