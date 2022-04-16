@@ -52,22 +52,57 @@ describe("get domain", () => {
 });
 
 describe("getFormattedDate()", () => {
+  // [date string, yyyymmdd, yyyymmdd_hhmm]
   const testDates = [
-    ["January 1, 1995", "19950101"],
-    ["October 1, 1995", "19951001"],
-    ["December 12, 1995", "19951212"],
+    ["January 1, 1995 03:24:00", "19950101", "19950101_0324"],
+    ["October 1, 1995 13:09:00", "19951001", "19951001_1309"],
+    ["December 12, 1995 23:00:00", "19951212", "19951212_2300"],
   ];
+  const testFormats: utils.dateString[] = ["YYYYMMDD", null];
+  describe.each(testFormats)(`%p`, (format: utils.dateString) => {
+    test.each(testDates)(
+      `If today is %p, date returned is formatted correctly`,
+      (input, shortOutput, longOutput) => {
+        MockDate.set(new Date(input));
+        const formattedDate = utils.getFormattedDate(format);
+        expect(formattedDate).toMatch(shortOutput);
+        MockDate.reset();
+      }
+    );
+  });
   test.each(testDates)(
     `If today is %p, date returned is formatted correctly`,
-    (input, expectedOutput) => {
+    (input, shortOutput, longOutput) => {
       MockDate.set(new Date(input));
-      const formattedDate = utils.getFormattedDate();
-      expect(formattedDate).toMatch(expectedOutput);
+      const formattedDate = utils.getFormattedDate("YYYYMMDD_HHMM");
+      expect(formattedDate).toMatch(longOutput);
       MockDate.reset();
     }
   );
+
+  describe("leadingZeros()", () => {
+    type testNum = [number, string];
+    test.each<testNum>([
+      [0, "00"],
+      [1, "01"],
+      [2, "02"],
+      [9, "09"],
+      [10, "10"],
+      [21, "21"],
+    ])(
+      `Input value of, %p expecting value of %p returned`,
+      function (input, output) {
+        const formattedNumber = utils.leadingZeros(input);
+        expect(formattedNumber).toMatch(output);
+      }
+    );
+  });
+
   test("Returned date format matches expected 'YYYYMMDD'", () => {
     expect(utils.getFormattedDate()).toMatch(/\d{8}/);
+  });
+  test("Returned date format matches expected 'YYYYMMDD_HHMM'", () => {
+    expect(utils.getFormattedDate("YYYYMMDD_HHMM")).toMatch(/\d{8}_\d{4}/);
   });
 });
 
