@@ -1,0 +1,57 @@
+- name: sitea
+  datapointA: 
+    val: 3
+    max: 12
+  datapointB: 
+    val: 7
+    max: 12
+  datapointC: 
+    val: 4
+    max: 12
+  datapointD: 
+    val: 11
+    max: 12
+  datapointE: 
+    val: 8
+    max: 12
+  datapointF: 
+    val: 6
+    max: 12
+- name: siteB
+  datapointA: 
+    val: 3
+    max: 12
+  datapointB: 
+    val: 7
+    max: 12
+  datapointC: 
+    val: 4
+    max: 12
+  datapointD: 
+    val: 11
+    max: 12
+  datapointE: 
+    val: 8
+    max: 12
+  datapointF: 
+    val: 6
+    max: 12
+- name: siteC
+  datapointA: 
+    val: 8
+    max: 12
+  datapointB: 
+    val: 2
+    max: 12
+  datapointC: 
+    val: 3
+    max: 12
+  datapointD: 
+    val: 7
+    max: 12
+  datapointE: 
+    val: 12
+    max: 12
+  datapointF: 
+    val: 4
+    max: 12
