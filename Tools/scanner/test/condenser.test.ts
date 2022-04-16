@@ -1,71 +1,72 @@
+const path = require("path");
 const fsTest = require("fs/promises");
-const createReadStream = require("fs").createReadStream;
 const csv = require("csv-parser");
-const folder = "data/xyz/";
+const folder = path.join("data", "xyz");
+// this replicates the submission of CLI-based args. The folder chosen is one that would never normally be created
 process.argv.push("--folders=xyz");
 const condenser = require("../src/condenser/condenser.module");
 
-describe("Condenser", () => {
-  beforeAll(() => {
-    return new Promise<void>((resolve) => {
-      // generates dummy files which can be consumed by the condenser
-      const content = {
-        domain: "developers.login.gov",
-        url: "developers.login.gov",
-        scanVersion: "0.0.9",
-        scanDate: "20220412",
-        scanStatus: "Page loaded successfully",
-        performanceMetric: {
-          search: false,
-        },
-        siteScanner: {
-          data: {
-            scan_date: "2022-04-12T00:35:47.361Z",
-            uswds_usa_classes: 35,
+beforeAll(async () => {
+  // generates dummy files which can be consumed by the condenser
+  const content = {
+    domain: "developers.login.gov",
+    url: "developers.login.gov",
+    scanVersion: "0.0.9",
+    scanDate: "20220412",
+    scanStatus: "Page loaded successfully",
+    performanceMetric: {
+      search: false,
+    },
+    siteScanner: {
+      data: {
+        scan_date: "2022-04-12T00:35:47.361Z",
+        uswds_usa_classes: 35,
+      },
+    },
+    uswdsComponents: {
+      header: true,
+    },
+    lighthouse: {
+      desktopData: {
+        lhr: {
+          audits: {
+            "content-width": {
+              score: 1,
+            },
           },
-        },
-        uswdsComponents: {
-          header: true,
-        },
-        lighthouse: {
-          desktopData: {
-            lhr: {
-              audits: {
-                "content-width": {
-                  score: 1,
-                },
-              },
-              categories: {
-                seo: {
-                  score: 1,
-                },
-              },
+          categories: {
+            seo: {
+              score: 1,
             },
           },
         },
-      };
-      fsTest.mkdir(folder, { recursive: true });
-      for (let i = 0; i < 5; i++) {
-        // change a small portion of the file to ensure there are differences for comparison
-        content.domain += i;
-        fsTest.writeFile(`${folder}site${i}.json`, JSON.stringify(content), {
-          flag: "w+",
-        });
+      },
+    },
+  };
+  await fsTest.mkdir(folder, { recursive: true });
+  for (let i = 0; i < 5; i++) {
+    // change a small portion of the file to ensure there are differences for comparison
+    content.domain += i;
+    await fsTest.writeFile(
+      path.join(folder, `site${i}.json`),
+      JSON.stringify(content),
+      {
+        flag: "w+",
       }
-      resolve();
-    });
-  });
+    );
+  }
+  const files = await fsTest.readdir(folder);
+});
+
+describe("Condenser", () => {
   describe("fildFiles()", () => {
     test("file condensed", async () => {
       const results = [];
       await condenser.findFiles(folder);
       const outputPath = condenser.outputPath;
-      createReadStream(outputPath)
-        .pipe(csv())
-        .on("data", (data: any) => results.push(data))
-        .on("end", () => {
-          expect(results.length).toEqual(5);
-        });
+      const outputFile = await fsTest.readFile(outputPath, "utf-8");
+      //5 records written, 1 header, and a blank line at the end results in 7 total lines expected
+      expect(outputFile.split("\n").length).toEqual(7);
     });
   });
   describe("extractDataPoints()", () => {
@@ -171,9 +172,10 @@ describe("Condenser", () => {
       );
     });
   });
-  afterAll((done) => {
-    fsTest.rm(folder, { recursive: true });
-    fsTest.rm(condenser.outputPath);
-    done();
-  });
+});
+
+afterAll((done) => {
+  fsTest.rm(folder, { recursive: true });
+  fsTest.rm(condenser.outputPath);
+  done();
 });
