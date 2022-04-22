@@ -1,57 +1,242 @@
-- name: sitea
-  datapointA: 
+- name: aaron.gsa.gov
+  org: TTS
+  platform: Salesforce
+  uswds: true
+  datapointA:
     val: 3
     max: 12
-  datapointB: 
+  datapointB:
     val: 7
     max: 12
-  datapointC: 
+  datapointC:
     val: 4
     max: 12
-  datapointD: 
+  datapointD:
     val: 11
     max: 12
-  datapointE: 
+  datapointE:
     val: 8
     max: 12
-  datapointF: 
+  datapointF:
     val: 6
     max: 12
-- name: siteB
-  datapointA: 
-    val: 3
-    max: 12
-  datapointB: 
+- name: ana.gsa.gov
+  org: OCE
+  platform: Drupal
+  uswds: true
+  datapointA:
     val: 7
     max: 12
-  datapointC: 
-    val: 4
+  datapointB:
+    val: 9
     max: 12
-  datapointD: 
-    val: 11
+  datapointC:
+    val: 10
     max: 12
-  datapointE: 
-    val: 8
-    max: 12
-  datapointF: 
+  datapointD:
     val: 6
     max: 12
-- name: siteC
-  datapointA: 
+  datapointE:
     val: 8
     max: 12
-  datapointB: 
+  datapointF:
+    val: 6
+    max: 12
+- name: gail.gsa.gov
+  org: OHRM
+  platform: Wordpress
+  uswds: true
+  datapointA:
+    val: 8
+    max: 12
+  datapointB:
     val: 2
     max: 12
-  datapointC: 
+  datapointC:
     val: 3
     max: 12
-  datapointD: 
+  datapointD:
     val: 7
     max: 12
-  datapointE: 
+  datapointE:
     val: 12
     max: 12
-  datapointF: 
+  datapointF:
     val: 4
+    max: 12
+- name: monica.gsa.gov
+  org: OHRM
+  platform: Jekyll
+  uswds: true
+  datapointA:
+    val: 8
+    max: 12
+  datapointB:
+    val: 2
+    max: 12
+  datapointC:
+    val: 3
+    max: 12
+  datapointD:
+    val: 7
+    max: 12
+  datapointE:
+    val: 12
+    max: 12
+  datapointF:
+    val: 4
+    max: 12
+- name: mark.gsa.gov
+  org: OCE
+  platform: Gatsby
+  uswds: true
+  datapointA:
+    val: 8
+    max: 12
+  datapointB:
+    val: 2
+    max: 12
+  datapointC:
+    val: 3
+    max: 12
+  datapointD:
+    val: 7
+    max: 12
+  datapointE:
+    val: 12
+    max: 12
+  datapointF:
+    val: 4
+    max: 12
+- name: rachel.gsa.gov
+  org: TTS
+  platform: Drupal
+  uswds: true
+  datapointA:
+    val: 11
+    max: 12
+  datapointB:
+    val: 10
+    max: 12
+  datapointC:
+    val: 12
+    max: 12
+  datapointD:
+    val: 8
+    max: 12
+  datapointE:
+    val: 12
+    max: 12
+  datapointF:
+    val: 9
+    max: 12
+- name: camille.gsa.gov
+  org: OCE
+  platform: Drupal
+  uswds: true
+  datapointA:
+    val: 7
+    max: 12
+  datapointB:
+    val: 9
+    max: 12
+  datapointC:
+    val: 10
+    max: 12
+  datapointD:
+    val: 6
+    max: 12
+  datapointE:
+    val: 8
+    max: 12
+  datapointF:
+    val: 6
+    max: 12
+- name: katy.gsa.gov
+  org: OCE
+  platform: Drupal
+  uswds: true
+  datapointA:
+    val: 7
+    max: 12
+  datapointB:
+    val: 9
+    max: 12
+  datapointC:
+    val: 10
+    max: 12
+  datapointD:
+    val: 6
+    max: 12
+  datapointE:
+    val: 8
+    max: 12
+  datapointF:
+    val: 6
+    max: 12
+- name: sheev.gsa.gov
+  org: OCE
+  platform: Drupal
+  uswds: true
+  datapointA:
+    val: 12
+    max: 12
+  datapointB:
+    val: 12
+    max: 12
+  datapointC:
+    val: 12
+    max: 12
+  datapointD:
+    val: 12
+    max: 12
+  datapointE:
+    val: 1
+    max: 12
+  datapointF:
+    val: 12
+    max: 12
+- name: dionne.gsa.gov
+  org: OCE
+  platform: Drupal
+  uswds: true
+  datapointA:
+    val: 7
+    max: 12
+  datapointB:
+    val: 9
+    max: 12
+  datapointC:
+    val: 10
+    max: 12
+  datapointD:
+    val: 6
+    max: 12
+  datapointE:
+    val: 8
+    max: 12
+  datapointF:
+    val: 6
+    max: 12
+- name: genevieve.gsa.gov
+  org: OCE
+  platform: Drupal
+  uswds: true
+  datapointA:
+    val: 7
+    max: 12
+  datapointB:
+    val: 9
+    max: 12
+  datapointC:
+    val: 10
+    max: 12
+  datapointD:
+    val: 6
+    max: 12
+  datapointE:
+    val: 8
+    max: 12
+  datapointF:
+    val: 6
     max: 12
