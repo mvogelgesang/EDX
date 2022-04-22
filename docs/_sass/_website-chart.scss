@@ -1,5 +1,7 @@
 /* originally from https://codepen.io/anatectureatwork/pen/VwymwoX?editors=1100 */
 $items: 6;
+$arcLengthPercent: calc(1 / $items / 2 * 10);
+$pi: 3.14159265359;
 
 $page-background: #fff;
 $line-background: #eee;
@@ -58,14 +60,20 @@ svg {
 }
 .graph circle {
   fill: none;
-  stroke: var(--color, red);
+  stroke: var(--color, grey);
   stroke-width: calc(50px * (var(--value, 0) / var(--max, 100)));
+  // our background circle has a radius of 50px. When calculating the radius for a wedge, you start with 1/2 the background circle. This is multiplied by the value/max
   r: calc(25px * (var(--value) / var(--max)));
-  stroke-dasharray: 1 $items;
+  /* 
+   * Comprised of two parts, arc length and circumference. 
+   * Arc Length: (1 / number of wedges) * 2 * π * (radius * val/max)
+   * Circumference: 2 * π * (radius * val/max)
+  */
+  stroke-dasharray: calc(
+      0.166666667 * 2 * 3.1415 * (25 * (var(--value, 0) / var(--max, 100)))
+    )
+    calc(2 * 3.1415 * (25 * (var(--value, 0) / var(--max, 100))));
   animation: circle 2s ease-in-out both;
-  &:last-child {
-    stroke-dasharray: 2 $items;
-  }
 }
 
 @keyframes circle {
@@ -77,7 +85,12 @@ svg {
 
 @for $i from 1 through $items {
   circle:nth-child(#{$i}) {
-    stroke-dashoffset: #{-1 * ($i - 1)};
+    //stroke-dashoffset: #{-1 * ($i - 1)};
+    /**
+	 * DOES NOT CURRENTLY WORK- would like to push this into SCSS so the transform is not separated from other CSS actions. It currently lives in the HTML
+	 * transform: each wedge must be rotated so that they are not all stacked. The 2nd and 3rd arguments denote the x,y coordinates to use when rotating. Values of 10 10 ensure you rotate from center of the circle (as prescribed by your cx cy values).
+	 */
+    //transform: rotate(#{$i * 60}deg) translateX(50px) translateY(50px);
     animation-delay: #{0.2s * $i};
   }
 }
