@@ -1,86 +1,83 @@
+/* originally from https://codepen.io/anatectureatwork/pen/VwymwoX?editors=1100 */
 $items: 6;
-html {
-	--page-background: #fff;
-	--line-background: #eee;
-}
+
+$page-background: #fff;
+$line-background: #eee;
+$chart-color1: #0076d6; // .bg-blue
+$chart-color2: #e66f0e; // .bg-orange
+$chart-color3: #538200; // .bg-green
+$chart-color4: #676cc8; // .bg-indigo
+$chart-color5: #ffbe2e; // .bg-gold
+$chart-color6: #e52207; // .bg-red
+
 .graph circle.one {
-	--color: blue;
-	--value: 8;
-	--max: 19;
+  --color: #{$chart-color1};
+  --value: 8;
+  --max: 19;
 }
 
 .graph circle.two {
-	--color: blue;
-	--value: 10;
-	--max: 20;
+  --color: #{$chart-color2};
+  --value: 10;
+  --max: 20;
 }
 
 .graph circle.three {
-	--color: blue;
-	--value: 4;
-	--max: 9;
+  --color: #{$chart-color3};
+  --value: 4;
+  --max: 9;
 }
 
 .graph circle.four {
-	--color: blue;
-	--value: 10;
-	--max: 20;
+  --color: #{$chart-color4};
+  --value: 10;
+  --max: 20;
 }
 
 .graph circle.five {
-	--color: blue;
-	--value: 6;
-	--max: 10;
+  --color: #{$chart-color5};
+  --value: 6;
+  --max: 10;
 }
 
 .graph circle.six {
-	--color: blue;
-	--value: 7;
-	--max: 20;
+  --color: #{$chart-color6};
+  --value: 7;
+  --max: 20;
 }
-
-
-/*body {
-	margin: 0;
-	display: grid;
-	place-content: center;
-	height: 100vh;
-	background: var(--page-background, white);
-}*/
 
 svg {
-	width: 20vmin;
-	height: 20vmin;
-	transform: rotate(12deg);
+  width: 20vmin;
+  height: 20vmin;
+  transform: rotate(12deg);
 }
 
-
-	.background circle {
-		fill: var(--line-background, white);
-		stroke: none;
-	}
-	.graph circle {
-		fill: none;
-		stroke: var(--color, red);
-		stroke-width: calc(50px * (var(--value, 0) / var(--max, 100)));
-		r: calc(25px * (var(--value) / var(--max)));
-		stroke-dasharray: 1 $items;
-		animation: circle 2s ease-in-out both;
-		&:last-child {
-			stroke-dasharray: 2 $items;
-		}
-	}
+.background circle {
+  fill: $line-background;
+  stroke: none;
+}
+.graph circle {
+  fill: none;
+  stroke: var(--color, red);
+  stroke-width: calc(50px * (var(--value, 0) / var(--max, 100)));
+  r: calc(25px * (var(--value) / var(--max)));
+  stroke-dasharray: 1 $items;
+  animation: circle 2s ease-in-out both;
+  &:last-child {
+    stroke-dasharray: 2 $items;
+  }
+}
 
 @keyframes circle {
-	0% {
-		opacity: 0;
-		stroke-width: 0;
-	}
+  0% {
+    opacity: 0;
+    stroke-width: 0;
+  }
 }
 
 @for $i from 1 through $items {
-	circle:nth-child(#{$i}) {
-		stroke-dashoffset: #{-1 * ($i - 1)};
-		animation-delay: #{0.2s * $i};
-	}
+  circle:nth-child(#{$i}) {
+    stroke-dashoffset: #{-1 * ($i - 1)};
+    animation-delay: #{0.2s * $i};
+  }
 }
