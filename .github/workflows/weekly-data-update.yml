@@ -1,6 +1,7 @@
 name: Weekly Data Update
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '30 5 * * 0'
 
