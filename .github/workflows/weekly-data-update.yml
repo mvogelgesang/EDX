@@ -25,7 +25,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-    - run: npm run ci
+    - run: npm ci
       working-directory: ./Tools/scanner
     - run: npm run build
       working-directory: ./Tools/scanner
