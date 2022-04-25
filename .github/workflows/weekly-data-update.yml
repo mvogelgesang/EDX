@@ -16,7 +16,7 @@ jobs:
     - name: create env file
       run: |
         touch .env
-        echo AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }} >> .env
+        echo AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }} >> ./Tools/scanner/.env
     - name: Read .nvmrc
       working-directory: ./Tools/scanner
       run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
