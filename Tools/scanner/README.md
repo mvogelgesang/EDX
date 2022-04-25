@@ -31,6 +31,7 @@ Install all node dependencies:
 Create a .env file and add api.data.gov key.
 
 `echo "API_KEY=" >> .env`
+`echo "AIRTABLE_API_KEY=" >> .env`
 
 Build
 
@@ -64,7 +65,7 @@ data
 
 ### Output to CSV
 
-`npm run condense`
+`npm run condense -- -f {foldername}`
 
 Recursively consumes specified folder of data and organizes the results in a CSV file.
 
