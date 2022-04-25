@@ -20,8 +20,8 @@
         id="search-field-en-big"
         type="search"
         name="search"
-        placeholder="Search"
-        style="border-right: 1px solid #565c65"
+        placeholder="Search e.g. 'FAS' 'Drupal'"
+        style="border-right: 1px solid #565c65; width: 250px"
       />
     </section>
   </div>
@@ -44,133 +44,123 @@
   <div class="grid-row">
     <ul
       class="list"
-      style="display: inline; list-style: none; padding-left: 0px"
+      style="
+        display: flex;
+        list-style: none;
+        padding-left: 0px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        row-gap: 2rem;
+      "
     >
       {% for item in site.data.websites %}
       <li
         data-id="{{forloop.index}}"
         style="display: inline-flex; padding-left: 2rem"
       >
-        <div class="grid-col-12 tablet:grid-col-4">
-          <div class="website-chart">
-            <h2
-              class="name org platform uswds"
-              data-org="{{item.org}}"
-              data-platform="{{ item.platform}}"
-              data-uswds="{{ item.uswds }}"
-            >
-              {{ item.name }}
-            </h2>
+        <div class="website-chart">
+          <h4
+            class="name org platform uswds"
+            data-org="{{item.org}}"
+            data-platform="{{ item.platform}}"
+            data-uswds="{{ item.uswds }}"
+          >
+            {{ item.name }}
+          </h4>
 
-            <svg
-              class=""
-              id="graph"
-              height="100"
-              width="100"
-              viewBox="0 0 100 100"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g class="background">
-                <circle cx="50" cy="50" r="50" pathLength="100" />
-              </g>
+          <svg
+            class=""
+            id="graph"
+            height="100"
+            width="100"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g class="background">
+              <circle cx="50" cy="50" r="50" pathLength="100" />
+            </g>
 
-              <g id="site-{{forloop.index}}" class="graph">
-                <circle
-                  cx="50"
-                  cy="50"
-                  class="one"
-                  data-value="{{ item.datapointA.val }}"
-                  data-max="{{ item.datapointA.max }}"
-                  transform="rotate(-90 50 50)"
-                />
-                <circle
-                  cx="50"
-                  cy="50"
-                  class="two"
-                  data-value="{{ item.datapointB.val }}"
-                  data-max="{{ item.datapointB.max }}"
-                  transform="rotate(-30 50 50)"
-                />
-                <circle
-                  cx="50"
-                  cy="50"
-                  class="three"
-                  data-value="{{ item.datapointC.val }}"
-                  data-max="{{ item.datapointC.max }}"
-                  transform="rotate(30 50 50)"
-                />
-                <circle
-                  cx="50"
-                  cy="50"
-                  class="four"
-                  transform="rotate(90 50 50)"
-                />
-                <!--data-value="{{ item.datapointD.val }}"
+            <g id="site-{{forloop.index}}" class="graph">
+              <circle
+                cx="50"
+                cy="50"
+                class="one"
+                data-value="{{ item.datapointA.val }}"
+                data-max="{{ item.datapointA.max }}"
+                transform="rotate(-90 50 50)"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                class="two"
+                data-value="{{ item.datapointB.val }}"
+                data-max="{{ item.datapointB.max }}"
+                transform="rotate(-30 50 50)"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                class="three"
+                data-value="{{ item.datapointC.val }}"
+                data-max="{{ item.datapointC.max }}"
+                transform="rotate(30 50 50)"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                class="four"
+                transform="rotate(90 50 50)"
+              />
+              <!--data-value="{{ item.datapointD.val }}"
                     data-max="{{ item.datapointD.max }}" -->
-                <circle
-                  cx="50"
-                  cy="50"
-                  class="five"
-                  data-value="{{ item.datapointE.val }}"
-                  data-max="{{ item.datapointE.max }}"
-                  transform="rotate(150 50 50)"
-                />
-                <circle
-                  cx="50"
-                  cy="50"
-                  class="six"
-                  data-value="{{ item.datapointF.val }}"
-                  data-max="{{ item.datapointF.max }}"
-                  transform="rotate(210 50 50)"
-                />
-              </g>
-            </svg>
-          </div>
-          <script>
-            writeCssVar(
-              document.querySelector("#site-{{forloop.index}} .one"),
-              [
-                { name: "value", value: "{{ item.datapointA.val }}" },
-                { name: "max", value: "{{ item.datapointA.max }}" },
-              ]
-            );
-            writeCssVar(
-              document.querySelector("#site-{{forloop.index}} .two"),
-              [
-                { name: "value", value: "{{ item.datapointB.val }}" },
-                { name: "max", value: "{{ item.datapointB.max }}" },
-              ]
-            );
-            writeCssVar(
-              document.querySelector("#site-{{forloop.index}} .three"),
-              [
-                { name: "value", value: "{{ item.datapointC.val }}" },
-                { name: "max", value: "{{ item.datapointC.max }}" },
-              ]
-            );
-            writeCssVar(
-              document.querySelector("#site-{{forloop.index}} .four"),
-              [
-                { name: "value", value: "{{ item.datapointD.val }}" },
-                { name: "max", value: "{{ item.datapointD.max }}" },
-              ]
-            );
-            writeCssVar(
-              document.querySelector("#site-{{forloop.index}} .five"),
-              [
-                { name: "value", value: "{{ item.datapointE.val }}" },
-                { name: "max", value: "{{ item.datapointE.max }}" },
-              ]
-            );
-            writeCssVar(
-              document.querySelector("#site-{{forloop.index}} .six"),
-              [
-                { name: "value", value: "{{ item.datapointF.val }}" },
-                { name: "max", value: "{{ item.datapointF.max }}" },
-              ]
-            );
-          </script>
+              <circle
+                cx="50"
+                cy="50"
+                class="five"
+                data-value="{{ item.datapointE.val }}"
+                data-max="{{ item.datapointE.max }}"
+                transform="rotate(150 50 50)"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                class="six"
+                data-value="{{ item.datapointF.val }}"
+                data-max="{{ item.datapointF.max }}"
+                transform="rotate(210 50 50)"
+              />
+            </g>
+          </svg>
         </div>
+        <script>
+          writeCssVar(document.querySelector("#site-{{forloop.index}} .one"), [
+            { name: "value", value: "{{ item.datapointA.val }}" },
+            { name: "max", value: "{{ item.datapointA.max }}" },
+          ]);
+          writeCssVar(document.querySelector("#site-{{forloop.index}} .two"), [
+            { name: "value", value: "{{ item.datapointB.val }}" },
+            { name: "max", value: "{{ item.datapointB.max }}" },
+          ]);
+          writeCssVar(
+            document.querySelector("#site-{{forloop.index}} .three"),
+            [
+              { name: "value", value: "{{ item.datapointC.val }}" },
+              { name: "max", value: "{{ item.datapointC.max }}" },
+            ]
+          );
+          writeCssVar(document.querySelector("#site-{{forloop.index}} .four"), [
+            { name: "value", value: "{{ item.datapointD.val }}" },
+            { name: "max", value: "{{ item.datapointD.max }}" },
+          ]);
+          writeCssVar(document.querySelector("#site-{{forloop.index}} .five"), [
+            { name: "value", value: "{{ item.datapointE.val }}" },
+            { name: "max", value: "{{ item.datapointE.max }}" },
+          ]);
+          writeCssVar(document.querySelector("#site-{{forloop.index}} .six"), [
+            { name: "value", value: "{{ item.datapointF.val }}" },
+            { name: "max", value: "{{ item.datapointF.max }}" },
+          ]);
+        </script>
       </li>
       {% endfor %}
     </ul>

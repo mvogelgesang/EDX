@@ -1,0 +1,91 @@
+name: Weekly Data Update
+
+on:
+  schedule:
+    - cron: '30 5 * * 0'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d')"
+    - uses: actions/checkout@v3
+    - name: create env file
+      run: |
+        touch .env
+        echo AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }} >> .env
+    - name: Read .nvmrc
+      working-directory: ./Tools/scanner
+      run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+      id: nvm
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+    - run: npm run ci
+      working-directory: ./Tools/scanner
+    - run: npm run build
+      working-directory: ./Tools/scanner
+    - run: npm run get:evals
+      working-directory: ./Tools/scanner
+
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        # Optional. Commit message for the created commit.
+        # Defaults to "Apply automatic changes"
+        commit_message: Automated data pull ${{ steps.nvm.outputs.date }}
+
+        # Optional. Local and remote branch name where commit is going to be pushed
+        #  to. Defaults to the current branch.
+        #  You might need to set `create_branch: true` if the branch does not exist.
+        # branch: feature-123
+
+        # Optional. Options used by `git-commit`.
+        # See https://git-scm.com/docs/git-commit#_options
+        commit_options: '--no-verify --signoff'
+
+        # Optional glob pattern of files which should be added to the commit
+        # Defaults to all (.)
+        # See the `pathspec`-documentation for git
+        # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
+        # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+        # file_pattern: docs/_data/*.yml docs/_data/legacy/*.yml
+
+        # Optional. Local file path to the repository.
+        # Defaults to the root of the repository.
+        repository: .
+
+        # Optional commit user and author settings
+        commit_user_name: My GitHub Actions Bot # defaults to "github-actions[bot]"
+        commit_user_email: my-github-actions-bot@example.org # defaults to "github-actions[bot]@users.noreply.github.com"
+        commit_author: Author <actions@github.com> # defaults to author of the commit that triggered the run
+
+        # Optional. Option used by `git-status` to determine if the repository is 
+        # dirty. See https://git-scm.com/docs/git-status#_options
+        status_options: '--untracked-files=no'
+
+        # Optional. Options used by `git-add`.
+        # See https://git-scm.com/docs/git-add#_options
+        add_options: '-u'
+
+        # Optional. Options used by `git-push`.
+        # See https://git-scm.com/docs/git-push#_options
+        push_options: '--force'
+        
+        # Optional. Disable dirty check and always try to create a commit and push
+        skip_dirty_check: true    
+        
+        # Optional. Skip internal call to `git fetch`
+        skip_fetch: true    
+        
+        # Optional. Skip internal call to `git checkout`
+        skip_checkout: true
+
+        # Optional. Prevents the shell from expanding filenames. 
+        # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
+        disable_globbing: true
+
+        # Optional. Create given branch name in local and remote repository.
+        create_branch: true

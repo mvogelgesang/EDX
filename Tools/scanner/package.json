@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rm -rf dist/ && tsc -b",
     "condense": "node dist/condenser/index.js",
+    "get:evals": "node dist/evals.js",
     "move": "node dist/mover.js",
     "pretty": "echo \"Running Prettier against outputs\" && npx prettier --write data/ --loglevel silent",
     "scan": "node dist/scanner.js ",
@@ -19,10 +20,12 @@
   "license": "ISC",
   "dependencies": {
     "@types/node-fetch": "^2.6.1",
+    "airtable": "^0.11.3",
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
     "dotenv": "^14.3.2",
     "flat": "^5.0.2",
+    "js-yaml": "^4.1.0",
     "lighthouse": "^9.2.0",
     "lodash": "^4.17.21",
     "minimist": "^1.2.6",
