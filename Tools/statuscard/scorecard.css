@@ -2,21 +2,19 @@
 html {
   scroll-behavior: smooth;
 }
-.usa-accordion__content.green {
-  border: 0.25rem solid green;
+.usa-accordion__content {
+  border: 0.25rem solid var(--color, currentColor);
 }
-.usa-accordion__content.red {
-  border: 0.25rem solid red;
+.usa-accordion__button {
+  border-left: 1.25rem solid var(--color, currentColor);
 }
-.usa-accordion__content.navy {
-  border: 0.25rem solid navy;
+
+.green {
+  --color: green;
 }
-.usa-accordion__button.navy {
-  border-left: 1.25rem solid navy;
+.red {
+  --color: red;
 }
-.usa-accordion__button.green {
-  border-left: 1.25rem solid green;
-}
-.usa-accordion__button.red {
-  border-left: 1.25rem solid red;
+.navy {
+  --color: navy;
 }
