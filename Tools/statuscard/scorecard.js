@@ -19,7 +19,11 @@ for (var i = 0; i < guidance.length; i++) {
   // loop through individual guidance records for the category
   for (var j = 0; j < guidance[i].element.length; j++) {
     // create the accordion element and append to the larger content string
-    content += createAccordionElement(guidance[i].id, guidance[i].element[j], j);
+    content += createAccordionElement(
+      guidance[i].id,
+      guidance[i].element[j],
+      j
+    );
   }
   // close off original div that was created at the start of the category section
   content += "</div>";
@@ -40,11 +44,11 @@ function addDependencies() {
   type="text/css"
   rel="stylesheet"
 />
-`
+`;
 }
 
 /**
- * 
+ *
  */
 function createScorecardHeader() {
   return `<div class="grid-container">
@@ -96,7 +100,7 @@ function createScorecardHeader() {
 
 /**
  * Constructs an individual list item which is comprised of a Category Id and Name
- * @param {*} category 
+ * @param {*} category
  */
 function createSideNavItem(category) {
   return `<li class="usa-sidenav__item">
@@ -106,7 +110,7 @@ function createSideNavItem(category) {
 /**
  * Starts construction of a new Category section.
  * note, this produces an open ended div that must be closed after other interior elements have been constructed.
- * @param {string} category 
+ * @param {string} category
  */
 function createCategory(category) {
   return `
@@ -123,16 +127,16 @@ function createCategory(category) {
   >`;
 }
 /**
- * 
+ *
  * @param {string} categoryId ID value from the category object
  * @param {*} categoryElement An instance within the category element array
  * @param {number} i Iteration number within the category element array
  */
 function createAccordionElement(categoryId, categoryElement, i) {
-  var color = '';
+  var color = "";
   // this is temporary so as to demonstrate different colors
 
-  color = (i % 2) ? "green" : (i % 3) ? "red": "navy";
+  color = i % 2 ? "green" : i % 3 ? "red" : "navy";
   // the button.id naming convention is tied to the functionality built out in the ready() function
   return `
     <h4 class="usa-accordion__heading">
@@ -154,7 +158,6 @@ function createAccordionElement(categoryId, categoryElement, i) {
  * Looks for all guidance that has been flagged as red and inserts a button into the accordion menu so that upon reading how to fix the first issue, the user can quickly jump to the second, third, etc
  */
 var ready = function () {
-  
   var badElements = document.getElementsByClassName(
     "usa-accordion__button red"
   );
