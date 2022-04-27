@@ -7,7 +7,7 @@
     "build": "rm -rf dist/ && tsc -b",
     "condense": "node dist/condenser/index.js",
     "get:evals": "node dist/evals.js",
-    "move": "node dist/mover.js",
+    "move": "node dist/mover/index.js",
     "pretty": "echo \"Running Prettier against outputs\" && npx prettier --write data/ --loglevel silent",
     "scan": "node dist/scanner.js ",
     "test": "jest",
@@ -36,6 +36,7 @@
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.181",
+    "@types/node": "^17.0.29",
     "jest": "^27.5.1",
     "mockdate": "^3.0.5",
     "prettier": "^2.5.1",

@@ -1,6 +1,6 @@
-const path = require("path");
-const fsTest = require("fs/promises");
-const csv = require("csv-parser");
+import * as path from "path";
+import { promises as fsPromises } from "fs";
+
 const folder = path.join("data", "xyz");
 // this replicates the submission of CLI-based args. The folder chosen is one that would never normally be created
 process.argv.push("--folders=xyz");
@@ -43,11 +43,11 @@ beforeAll(async () => {
       },
     },
   };
-  await fsTest.mkdir(folder, { recursive: true });
+  await fsPromises.mkdir(folder, { recursive: true });
   for (let i = 0; i < 5; i++) {
     // change a small portion of the file to ensure there are differences for comparison
     content.domain += i;
-    await fsTest.writeFile(
+    await fsPromises.writeFile(
       path.join(folder, `site${i}.json`),
       JSON.stringify(content),
       {
@@ -55,7 +55,7 @@ beforeAll(async () => {
       }
     );
   }
-  const files = await fsTest.readdir(folder);
+  const files = await fsPromises.readdir(folder);
 });
 
 describe("Condenser", () => {
@@ -64,7 +64,7 @@ describe("Condenser", () => {
       const results = [];
       await condenser.findFiles(folder);
       const outputPath = condenser.outputPath;
-      const outputFile = await fsTest.readFile(outputPath, "utf-8");
+      const outputFile = await fsPromises.readFile(outputPath, "utf-8");
       //5 records written, 1 header, and a blank line at the end results in 7 total lines expected
       expect(outputFile.split("\n").length).toEqual(7);
     });
@@ -175,7 +175,7 @@ describe("Condenser", () => {
 });
 
 afterAll((done) => {
-  fsTest.rm(folder, { recursive: true });
-  fsTest.rm(condenser.outputPath);
+  fsPromises.rm(folder, { recursive: true });
+  fsPromises.rm(condenser.outputPath);
   done();
 });

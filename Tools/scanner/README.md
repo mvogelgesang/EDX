@@ -71,7 +71,7 @@ Recursively consumes specified folder of data and organizes the results in a CSV
 
 ### Organize Outputs
 
-`npm run move`
+`npm run move -- -f {folder name} -d {destination folder}`
 
 Consumes an array of directory names and copies files for a given site into their own folder. Using the example output directory from `scan`:
 

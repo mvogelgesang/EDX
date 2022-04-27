@@ -107,10 +107,6 @@ export const findFiles = async function (folderName: string): Promise<void> {
       await findFiles(`${folderName}/${file.name}`);
     } else {
       if (path.extname(`${folderName}/${file.name}`) === ".json") {
-        console.debug(
-          "file exist:",
-          await fs.stat(path.join(process.cwd(), folderName, file.name))
-        );
         const data = JSON.parse(
           await fs.readFile(
             path.join(process.cwd(), folderName, file.name),
