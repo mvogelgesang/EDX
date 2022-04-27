@@ -1,0 +1,15 @@
+{
+  "name": "statuscard",
+  "version": "1.0.0",
+  "description": "This set of files must be run on a localhost to get around CORS requirements. If on a Mac, you can quickly do this via the command line and python.",
+  "main": "guidance.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uswds": "^2.13.3"
+  }
+}
