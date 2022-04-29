@@ -8,10 +8,18 @@
         `--${cssVarPairs[cssVar].name}`,
         cssVarPairs[cssVar].value
       );
+      // --value == 0 results in application of the .zeroValue class which draws a grey arc in place of empty space.
+      if (
+        cssVarPairs[cssVar].name == "value" &&
+        cssVarPairs[cssVar].value == 0
+      ) {
+        element.setAttribute("class", "zeroValue");
+      }
     }
   }
 </script>
-<div id="websites">
+
+<div id="websites" class="website-chart">
   <div class="grid-row margin-bottom-2">
     <section aria-label="Big search component">
       <label class="usa-sr-only" for="search-field-en-big"> Search </label>
@@ -25,7 +33,8 @@
       />
     </section>
   </div>
-  <div class="grid-row margin-bottom-2">
+
+  <div class="grid-col-12 margin-bottom-2">
     <div class="usa-accordion usa-accordion--bordered">
       <h4 class="usa-accordion__heading">
         <button
@@ -41,129 +50,187 @@
       </div>
     </div>
   </div>
+  <div class="grid-col-12">
+    <h4>Legend</h4>
+    <p>
+      The following charts show the relative strengths and weaknesses of each
+      website across 6 areas:
+    </p>
+  </div>
   <div class="grid-row">
-    <ul
-      class="list"
-      style="
-        display: flex;
-        list-style: none;
-        padding-left: 0px;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        row-gap: 2rem;
-      "
-    >
-      {% for item in site.data.websites %}
-      <li
-        data-id="{{forloop.index}}"
-        style="display: inline-flex; padding-left: 2rem"
+    <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
+      <span class="legend one {{include.cssClass}}"></span>Customer Centricity
+    </div>
+    <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
+      <span class="legend two {{include.cssClass}}"></span>Required Links
+    </div>
+    <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
+      <span class="legend three {{include.cssClass}}"></span>Mobile Performance
+    </div>
+    <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
+      <span class="legend four {{include.cssClass}}"></span>Accessibility (AMP)
+    </div>
+    <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
+      <span class="legend five {{include.cssClass}}"></span>Google Analytics
+    </div>
+    <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
+      <span class="legend six {{include.cssClass}}"></span>USWDS
+    </div>
+  </div>
+  <div style="height: 40rem" class="overflow-scroll">
+    <div class="grid-row">
+      <ul
+        class="list"
+        style="
+          display: flex;
+          list-style: none;
+          padding-left: 0px;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          gap: 2rem 2rem;
+        "
       >
-        <div class="website-chart">
-          <h4
-            class="name org platform uswds"
-            data-org="{{item.org}}"
-            data-platform="{{ item.platform}}"
-            data-uswds="{{ item.uswds }}"
-          >
-            {{ item.name }}
-          </h4>
+        {% for item in site.data.websites %}
+        <li
+          data-id="{{forloop.index}}"
+          style="display: inline-flex; flex: 0 0 10em"
+        >
+          <div class="website-chart">
+            <h4
+              class="name platform uswds office subOffice category text-center tooltip"
+              data-name="{{item.name}}"
+              data-office="{{item.office}}"
+              data-subOffice="{{item.subOffice}}"
+              data-category="{{item.category}}"
+              data-platform="{{ item.platform}}"
+              data-uswds="{{ item.uswds }}"
+            >
+              {{ item.name }}
+              <span id="tt-{{forloop.index}}" class="tooltip-text">
+                <strong>URL: </strong> {{item.name}}<br />
+                <strong>Office: </strong> {{item.office}}<br />
+                <strong>Sub-Office: </strong> {{item.subOffice}}<br />
+                <strong>Category: </strong> {{item.category}}<br />
+                <strong>Platform: </strong> {{item.platform}}<br />
+                <br />
+                <strong>Customer Centricity: </strong> {{item.datapointA.val |
+                times:100 | round: 2}}<br />
+                <strong>Required Links: </strong> {{item.datapointB.val |
+                times:100 | round: 2}}<br />
+                <strong>Mobile Performance: </strong>
+                {{item.datapointC.val | times:100 | round: 2}}<br />
+                <strong>Accessibility (AMP): </strong>
+                {{item.datapointD.val | times:100 | round: 2}}<br />
+                <strong>Google Analytics: </strong>
+                {{item.datapointE.val | times:100 | round: 2}}<br />
+                <strong>USWDS: </strong> {{item.datapointF.val | times:100 |
+                round: 2}}<br />
+              </span>
+            </h4>
 
-          <svg
-            class=""
-            id="graph"
-            height="100"
-            width="100"
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g class="background">
-              <circle cx="50" cy="50" r="50" pathLength="100" />
-            </g>
+            <svg
+              class=""
+              style="display: block; margin: 0 auto"
+              id="graph"
+              height="100"
+              width="100"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g class="background">
+                <circle cx="50" cy="50" r="50" pathLength="100" />
+              </g>
 
-            <g id="site-{{forloop.index}}" class="graph">
-              <circle
-                cx="50"
-                cy="50"
-                class="one"
-                data-value="{{ item.datapointA.val }}"
-                data-max="{{ item.datapointA.max }}"
-                transform="rotate(-90 50 50)"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                class="two"
-                data-value="{{ item.datapointB.val }}"
-                data-max="{{ item.datapointB.max }}"
-                transform="rotate(-30 50 50)"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                class="three"
-                data-value="{{ item.datapointC.val }}"
-                data-max="{{ item.datapointC.max }}"
-                transform="rotate(30 50 50)"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                class="four"
-                transform="rotate(90 50 50)"
-              />
-              <!--data-value="{{ item.datapointD.val }}"
-                    data-max="{{ item.datapointD.max }}" -->
-              <circle
-                cx="50"
-                cy="50"
-                class="five"
-                data-value="{{ item.datapointE.val }}"
-                data-max="{{ item.datapointE.max }}"
-                transform="rotate(150 50 50)"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                class="six"
-                data-value="{{ item.datapointF.val }}"
-                data-max="{{ item.datapointF.max }}"
-                transform="rotate(210 50 50)"
-              />
-            </g>
-          </svg>
-        </div>
-        <script>
-          writeCssVar(document.querySelector("#site-{{forloop.index}} .one"), [
-            { name: "value", value: "{{ item.datapointA.val }}" },
-            { name: "max", value: "{{ item.datapointA.max }}" },
-          ]);
-          writeCssVar(document.querySelector("#site-{{forloop.index}} .two"), [
-            { name: "value", value: "{{ item.datapointB.val }}" },
-            { name: "max", value: "{{ item.datapointB.max }}" },
-          ]);
-          writeCssVar(
-            document.querySelector("#site-{{forloop.index}} .three"),
-            [
-              { name: "value", value: "{{ item.datapointC.val }}" },
-              { name: "max", value: "{{ item.datapointC.max }}" },
-            ]
-          );
-          writeCssVar(document.querySelector("#site-{{forloop.index}} .four"), [
-            { name: "value", value: "{{ item.datapointD.val }}" },
-            { name: "max", value: "{{ item.datapointD.max }}" },
-          ]);
-          writeCssVar(document.querySelector("#site-{{forloop.index}} .five"), [
-            { name: "value", value: "{{ item.datapointE.val }}" },
-            { name: "max", value: "{{ item.datapointE.max }}" },
-          ]);
-          writeCssVar(document.querySelector("#site-{{forloop.index}} .six"), [
-            { name: "value", value: "{{ item.datapointF.val }}" },
-            { name: "max", value: "{{ item.datapointF.max }}" },
-          ]);
-        </script>
-      </li>
-      {% endfor %}
-    </ul>
+              <g id="site-{{forloop.index}}" class="graph">
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="one {{include.cssClass}}"
+                  transform="rotate(-90 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="two {{include.cssClass}}"
+                  transform="rotate(-30 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="three {{include.cssClass}}"
+                  transform="rotate(30 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="four {{include.cssClass}}"
+                  transform="rotate(90 50 50)"
+                />
+
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="five {{include.cssClass}}"
+                  transform="rotate(150 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="six {{include.cssClass}}"
+                  transform="rotate(210 50 50)"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <script>
+            writeCssVar(
+              document.querySelector("#site-{{forloop.index}} .one"),
+              [
+                { name: "value", value: "{{ item.datapointA.val }}" },
+                { name: "max", value: "{{ item.datapointA.max }}" },
+              ]
+            );
+            writeCssVar(
+              document.querySelector("#site-{{forloop.index}} .two"),
+              [
+                { name: "value", value: "{{ item.datapointB.val }}" },
+                { name: "max", value: "{{ item.datapointB.max }}" },
+              ]
+            );
+            writeCssVar(
+              document.querySelector("#site-{{forloop.index}} .three"),
+              [
+                { name: "value", value: "{{ item.datapointC.val }}" },
+                { name: "max", value: "{{ item.datapointC.max }}" },
+              ]
+            );
+            writeCssVar(
+              document.querySelector("#site-{{forloop.index}} .four"),
+              [
+                { name: "value", value: "{{ item.datapointD.val }}" },
+                { name: "max", value: "{{ item.datapointD.max }}" },
+              ]
+            );
+            writeCssVar(
+              document.querySelector("#site-{{forloop.index}} .five"),
+              [
+                { name: "value", value: "{{ item.datapointE.val }}" },
+                { name: "max", value: "{{ item.datapointE.max }}" },
+              ]
+            );
+            writeCssVar(
+              document.querySelector("#site-{{forloop.index}} .six"),
+              [
+                { name: "value", value: "{{ item.datapointF.val }}" },
+                { name: "max", value: "{{ item.datapointF.max }}" },
+              ]
+            );
+          </script>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -178,7 +245,9 @@
       { attr: "data-value", name: "four" },
       { attr: "data-value", name: "five" },
       { attr: "data-value", name: "six" },
-      { attr: "data-org", name: "org" },
+      { attr: "data-office", name: "office" },
+      { attr: "data-subOffice", name: "subOffice" },
+      { attr: "data-category", name: "category" },
       { attr: "data-platform", name: "platform" },
       { attr: "data-uswds", name: "uswds" },
     ],

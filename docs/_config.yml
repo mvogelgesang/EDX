@@ -48,7 +48,6 @@ collections:
     permalink: /:name
 collections_dir: "design-consults"
 
-
 #   team:
 #     output: true
 
