@@ -1,7 +1,5 @@
 /* originally from https://codepen.io/anatectureatwork/pen/VwymwoX?editors=1100 */
 $items: 6;
-$arcLengthPercent: calc(1 / $items / 2 * 10);
-$pi: 3.14159265359;
 
 $page-background: #fff;
 $line-background: #eee;
@@ -12,8 +10,68 @@ $chart-color4: #676cc8; // .bg-indigo
 $chart-color5: #ffbe2e; // .bg-gold
 $chart-color6: #e52207; // .bg-red
 
-.graph circle.one {
+.legend {
+  height: 25px;
+  width: 25px;
+  background-color: var(--color, currentColor);
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+.legend.monotone {
+  display: none;
+}
+
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+  //border-bottom: 1px dashed #000; /* little indicater to indicate it's hoverable */
+}
+.tooltip-text {
+  /* basic styles */
+  min-width: 250px;
+  padding: 0.8rem 1.3rem;
+  border: 1px solid rgb(0, 95, 158);
+  border-radius: 10px;
+  background: #eef8ff;
+  color: #000;
+  text-align: left;
+  z-index: 2;
+  font-weight: normal;
+  font-size: 0.9rem;
+  /* display */
+  opacity: 0;
+  transition: 0.5s opacity;
+  //animation: circle 0.5sec ease-in;
+  display: none; /* hide by default */
+}
+.tooltip:hover .tooltip-text,
+.tooltip:hover .tooltip-text:before,
+.tooltip:hover:after {
+  display: block;
+  opacity: 1;
+}
+
+.one {
   --color: #{$chart-color1};
+}
+.two {
+  --color: #{$chart-color2};
+}
+.three {
+  --color: #{$chart-color3};
+}
+.four {
+  --color: #{$chart-color4};
+}
+.five {
+  --color: #{$chart-color5};
+}
+.six {
+  --color: #{$chart-color6};
+}
+
+.graph circle.one {
   --value: 8;
   --max: 19;
 }
@@ -47,6 +105,22 @@ $chart-color6: #e52207; // .bg-red
   --value: 7;
   --max: 20;
 }
+.graph circle.monotone {
+  --color: #0050bf;
+}
+.graph circle.zeroValue {
+  --color: #7d7d7d;
+  stroke-width: 2px;
+  // our background circle has a radius of 50px. When calculating the radius for a wedge, you start with 1/2 the background circle. This is multiplied by the value/max
+  r: 15px;
+  /* 
+   * Comprised of two parts, arc length and circumference. 
+   * Arc Length: (1 / number of wedges) * 2 * π * (radius * val/max)
+   * Circumference: 2 * π * (radius * val/max)
+  */
+  stroke-dasharray: calc(0.166666667 * 2 * 3.1415 * 15) calc(2 * 3.1415 * 15);
+  animation: circle 2s ease-in-out both;
+}
 
 svg {
   width: 20vmin;
@@ -58,10 +132,11 @@ svg {
   fill: $line-background;
   stroke: none;
 }
+
 .graph circle {
   fill: none;
   stroke: var(--color, grey);
-  stroke-width: calc(50px * (var(--value, 0) / var(--max, 100)));
+  stroke-width: calc(25px * (var(--value) / var(--max)) * 2);
   // our background circle has a radius of 50px. When calculating the radius for a wedge, you start with 1/2 the background circle. This is multiplied by the value/max
   r: calc(25px * (var(--value) / var(--max)));
   /* 
