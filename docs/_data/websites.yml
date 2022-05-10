@@ -1017,7 +1017,7 @@
 - name: connect-guide.18f.gov
   office: FAS
   subOffice: TTS
-  digitalBrandCategory: '#N/A'
+  digitalBrandCategory: "#N/A"
   typeOfDomain: Informational
   datapointA:
     val: 0.5
@@ -1040,7 +1040,7 @@
 - name: connect.digital.gov
   office: FAS
   subOffice: TTS
-  digitalBrandCategory: '#N/A'
+  digitalBrandCategory: "#N/A"
   typeOfDomain: Informational
   datapointA:
     val: 0.5
