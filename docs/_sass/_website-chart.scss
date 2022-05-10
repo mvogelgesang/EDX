@@ -23,12 +23,11 @@ $chart-color6: #e52207; // .bg-red
   display: none;
 }
 
-.tooltip {
+h4.tooltip {
   position: relative; /* making the .tooltip span a container for the tooltip text */
-  text-decoration: 1px dashed #000; /* little indicater to indicate it's hoverable */
   padding: 1rem 0rem;
   margin-block-end: 0;
-  text-decoration: underline dotted gray;
+  text-decoration: underline dotted gray; /* little indicater to indicate it's hoverable */
   text-underline-offset: 0.3rem;
 }
 .tooltip-text {
@@ -43,7 +42,9 @@ $chart-color6: #e52207; // .bg-red
   z-index: 2;
   font-weight: normal;
   font-size: 0.9rem;
-  text-decoration: unset;
+  text-decoration: underline dotted #eef8ff;
+  text-underline-offset: unset;
+
   /* display */
   opacity: 0;
   transition: 0.5s opacity;
