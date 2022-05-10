@@ -5,6 +5,7 @@ type: current
 collection: contractdirectory
 css: contractdirectory
 ---
+
 <!-- markdownlint-disable MD033 -->
 <!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
  saved from url=(0048)https://contractdirectory.gov/contractdirectory/ -->
@@ -73,6 +74,7 @@ css: contractdirectory
       id="_fed_an_ua_tag"
       src="../../assets/design-consults/contractdirectory/Universal-Federated-Analytics.1.0.js"
     ></script>
+
   </head>
   <body onload="ClearAS()" onunload="ClearAS()" style="background: #ebebeb">
     <center>
@@ -181,7 +183,9 @@ css: contractdirectory
               <td><input type="hidden" id="as" name="as" value="" /></td>
 
               <!--   <form name="form2" method="get" action="/test">
-   <input type="hidden" name="advSearch" value="true"/></td>
+
+<input type="hidden" name="advSearch" value="true"/></td>
+
    <td><input type="submit" id="button_advanced_search" value="Advanced Search" class="green_button" />
     </td>
 
@@ -514,5 +518,6 @@ css: contractdirectory
     <script type="text/javascript">
       document.all.form1.q.focus();
     </script>
+
   </body>
 </html>

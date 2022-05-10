@@ -5,10 +5,13 @@
 
 No need to reference the full directory or use the underscore that is included in the filename within _sass/. 
 */
+.computersforlearning {
+  @import "_computersforlearning_cfl_stylesheet";
+}
 .contractdirectory {
-    @import 'contractdirectory_default';
+  @import "contractdirectory_default";
 }
 .apps_ocfo_gsa {
-    @import 'apps_ocfo_gsa_aloha_styles';
-    @import 'apps_ocfo_gsa_aloha_desktop_styles';
+  @import "apps_ocfo_gsa_aloha_styles";
+  @import "apps_ocfo_gsa_aloha_desktop_styles";
 }

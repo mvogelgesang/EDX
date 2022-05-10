@@ -40,12 +40,16 @@ private_eye: true
 # Configuration for projects and team collections
 # See https://jekyllrb.com/docs/collections/ for more information about collections.
 collections:
-  contractdirectory:
-    output: true
-    permalink: /:name
   apps_ocfo_gsa:
     output: true
     permalink: /:name
+  computersforlearning:
+    output: true
+    permalink: /:name
+  contractdirectory:
+    output: true
+    permalink: /:name
+
 collections_dir: "design-consults"
 
 #   team:

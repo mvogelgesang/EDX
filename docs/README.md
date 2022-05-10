@@ -58,13 +58,13 @@
 
 ## EDX Design Consults
 
-This microsite provides a means by which EDX can engage with teams across GSA to provide examples of how an existing site might start to adopt the US Web Design System. 
+This microsite provides a means by which EDX can engage with teams across GSA to provide examples of how an existing site might start to adopt the US Web Design System.
 
 ### Adding New Consults
 
 1. Navigate to homepage of site, right click and download as webpage complete.
 2. Copy files from `_drafts` into a new folder under `design-consults` which has the name of the domain. For example, if the design consult is for govtservice.gsa.gov the folder would be named: `govtservice_gsa`.
-3. Create a folder under `assets/design-consults` with the same name as the previous folder. This will house all static assets and stylesheets from the existing site. 
+3. Create a folder under `assets/design-consults` with the same name as the previous folder. This will house all static assets and stylesheets from the existing site.
 4. Update `_config.yml` and add new entry under `collections:` with the following content
 
 ```yml
@@ -74,7 +74,7 @@ govtservice_gsa:
 ```
 
 5. Paste downloaded HTML output into current.md. Update directories for images, styles, js to point at folder within `assets/design-consults/govtservice_gsa`
-6. If the CSS of the site going through a consult changes the overall page (e.g. spacing changes, font colors are different, etc), it is likely due to global scope CSS. To remedy this, update copy stylesheets into the `_sass/` directory and name as follows `_{govtservice_gsa}_{filename}.scss`. In `assets/design-consults.scss` add a new class which uses the same name as the folder previously created and import the files contained in `_sass/`. This will put the CSS into its own namespace. The Design Consults layout will automatically include the class by expecting the CSS class to match the name provided in the pages frontmatter.
+6. If the CSS of the site changes the overall page (e.g. spacing changes, font colors are different, etc), it is likely due to global scope CSS. To remedy this, copy stylesheets into the `_sass/` directory and name as follows `_{govtservice_gsa}_{filename}.scss`. In `assets/css/design-consults.scss` add a new class which uses the same name as the folder previously created and import the files contained in `_sass/`. This will put the CSS into its own namespace. The Design Consults layout will automatically include the class by expecting the CSS class to match the name provided in the pages frontmatter.
 
 ## Jekyll + U.S. Web Design System
 
@@ -335,23 +335,24 @@ To show the last date a page was last modified by:
 
 1. Add these lines to the `edit-page.yml` data file:
 
-    ```yml
-    last_modified:
-      display_date: true
-      date_format: '%B %d, %Y'
-    ```
+   ```yml
+   last_modified:
+     display_date: true
+     date_format: "%B %d, %Y"
+   ```
 
 1. Add the following to your `Gemfile`:
 
-    ```ruby
-    group :jekyll_plugins do
-      gem "jekyll-last-modified-at"
-    end
-    ```
+   ```ruby
+   group :jekyll_plugins do
+     gem "jekyll-last-modified-at"
+   end
+   ```
 
 This will add the date right before the identifier component.
 
 #### Edit page
+
 To add a link which will allow visitors to submit edits to the current page via GitHub, add the following lines to to the `edit-page.yml` data file:
 
 ```yml
@@ -359,6 +360,7 @@ edit_page:
   display_link: true
   text: "Edit this page"
 ```
+
 This will add the edit link right before the identifier component.
 
 #### Anchor JS
@@ -371,7 +373,7 @@ You can show an anchor link next to header tags by uncommenting this section fro
 
 #### Private Eye JS
 
-By default, the USWDS Jekyll theme uses [Private Eye](https://github.com/18F/private-eye) to denote private links. You can turn this on by adding the setting below in your _config.yml. If you would like to customize the default Private Eye configuration, you can find it in `/assets/js/private_eye_conf.js`.
+By default, the USWDS Jekyll theme uses [Private Eye](https://github.com/18F/private-eye) to denote private links. You can turn this on by adding the setting below in your \_config.yml. If you would like to customize the default Private Eye configuration, you can find it in `/assets/js/private_eye_conf.js`.
 
 ```yml
 private_eye: true
@@ -434,13 +436,13 @@ Customize the USWDS Jekyll theme with [USWDS theme settings files](https://desig
 
 1. **Settings:** Add custom USWDS settings to `_sass/_uswds-theme-settings.scss`. Settings control the USWDS output. See all available settings in the [USWDS settings documentation](https://designsystem.digital.gov/documentation/settings/). We recommend adding only your modified settings to the `_uswds-theme-settings.scss` file.
 
-    To see an example of all the settings available to USWDS, see the files [in the USWDS GitHub repo](https://github.com/uswds/uswds/tree/develop/src/stylesheets/theme). The repo splits settings into multiple files. If you want to copy and mimic that structure, download the repo files using a tool like [DownGit](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/uswds/uswds/tree/develop/src/stylesheets/theme). Then add them to the `_sass/` directory and `@import` them from `_uswds-theme-settings.scss`.
+   To see an example of all the settings available to USWDS, see the files [in the USWDS GitHub repo](https://github.com/uswds/uswds/tree/develop/src/stylesheets/theme). The repo splits settings into multiple files. If you want to copy and mimic that structure, download the repo files using a tool like [DownGit](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/uswds/uswds/tree/develop/src/stylesheets/theme). Then add them to the `_sass/` directory and `@import` them from `_uswds-theme-settings.scss`.
 
-    Whether you add only individual settings variables or import from multiple files, `_uswds-theme-settings.scss` needs to be the entry point.
+   Whether you add only individual settings variables or import from multiple files, `_uswds-theme-settings.scss` needs to be the entry point.
 
 1. **Custom Sass and variables:** Add any custom CSS or Sass to `_sass/_uswds-theme-custom-styles.scss`. You can use this custom styles file to `@import` any _additional_ Sass or CSS files your project needs, as long as any additional files exist in the `/_sass` directory.
 
-    Custom Sass loads after the USWDS and default Sass, so you can use it to override the defaults. Individual sites can also [selectively override](#overriding-includes-and-layouts) individual includes and layouts.
+   Custom Sass loads after the USWDS and default Sass, so you can use it to override the defaults. Individual sites can also [selectively override](#overriding-includes-and-layouts) individual includes and layouts.
 
 #### Overriding includes and layouts
 
@@ -490,7 +492,6 @@ This theme provides the following layouts, which you can use by setting the `lay
 ---
 layout: name
 ---
-
 ```
 
 Supported (optional) front matter for page layouts.
@@ -584,7 +585,8 @@ See [this example pull request](https://github.com/18F/before-you-ship/pull/458)
 1. If you have an existing `_sass` folder, it needs to move to the root level, and out of any directory like `/assets`.
 1. Add or move any custom styles or variables to `/_sass/_uswds-theme-custom-styles.scss`.
 
-    If you have multiple custom styles files, add them to the `/_sass` directory and `@import` them from `_uswds-theme-custom-styles.scss`.
+   If you have multiple custom styles files, add them to the `/_sass` directory and `@import` them from `_uswds-theme-custom-styles.scss`.
+
 1. Convert manual values to tokenized values using the guidance on the [USWDS migration page](https://designsystem.digital.gov/documentation/migration/#spacing-units).
 1. Don't duplicate the `h1` in the body content of `page` template pages. (This is automatically inserted at the top with the content of `page.title`.)
 1. Check that certain data keys exist
@@ -643,18 +645,15 @@ See [this example pull request](https://github.com/18F/before-you-ship/pull/458)
 
 1. Check that css is referencing `uswds-theme.css`
 
-
 ### Development
 
 This section explains how to develop this theme and/or test it locally.
-
 
 #### Requirements
 
 - [Ruby](https://www.ruby-lang.org/)
 - [Bundler](https://bundler.io/) 2.x
 - [Node.js](https://nodejs.org/)
-
 
 #### Setup
 
@@ -674,7 +673,6 @@ changes.
 
 Open your web browser to [localhost:4000](http://localhost:4000/).
 
-
 #### To update USWDS
 
 When new version of USWDS is released, you should pull in the latest assets.
@@ -682,7 +680,6 @@ When new version of USWDS is released, you should pull in the latest assets.
     $ rake update
 
 Review and commit the assets.
-
 
 #### Working with a Jekyll site
 
