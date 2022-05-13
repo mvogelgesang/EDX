@@ -23,16 +23,27 @@
   <div class="grid-row margin-bottom-2">
     <section aria-label="Big search component">
       <label class="usa-sr-only" for="search-field-en-big"> Search </label>
-      <input class="usa-input search" id="search-field-en-big" type="search" name="search"
+      <input
+        class="usa-input search"
+        id="search-field-en-big"
+        type="search"
+        name="search"
         placeholder="Search e.g. 'FAS', 'Application', 'Leasing'"
-        style="border-right: 1px solid #565c65; width: 250px" />
+        style="border-right: 1px solid #565c65; width: 250px"
+      />
     </section>
   </div>
-
+  <p><a href="/website-table.html">View as a table</a></p>
   <div class="grid-col-12 margin-bottom-2">
-    <div class="usa-accordion usa-accordion--bordered usa-accordion--multiselectable">
+    <div
+      class="usa-accordion usa-accordion--bordered usa-accordion--multiselectable"
+    >
       <h4 class="usa-accordion__heading">
-        <button class="usa-accordion__button" aria-expanded="false" aria-controls="a1">
+        <button
+          class="usa-accordion__button"
+          aria-expanded="false"
+          aria-controls="a1"
+        >
           Search Guide
         </button>
       </h4>
@@ -50,7 +61,11 @@
         </ul>
       </div>
       <h4 class="usa-accordion__heading">
-        <button class="usa-accordion__button" aria-expanded="false" aria-controls="a2">
+        <button
+          class="usa-accordion__button"
+          aria-expanded="false"
+          aria-controls="a2"
+        >
           Terminology
         </button>
       </h4>
@@ -58,60 +73,81 @@
         <ul>
           <li>Digital Brand Category</li>
           <ul>
-            <li><strong>GSA Business</strong> - Site provides information and services about GSA products, services or
-              policies, and/or engages stakeholders with the GSA brand. GSA operates the site. Site displays the GSA
-              Star Mark.</li>
-            <li><strong>Hybrid</strong> - Site is for collaboration, engagement, or information-sharing, NOT necessarily
-              focused on GSA-only business. GSA operates the site. Site displays the GSA Star Mark. </li>
-            <li><strong>External</strong> - GSA manages domain registration, but the website has no other affiliation
-              with GSA, and does NOT display the GSA Star Mark.</li>
+            <li>
+              <strong>GSA Business</strong> - Site provides information and
+              services about GSA products, services or policies, and/or engages
+              stakeholders with the GSA brand. GSA operates the site. Site
+              displays the GSA Star Mark.
+            </li>
+            <li>
+              <strong>Hybrid</strong> - Site is for collaboration, engagement,
+              or information-sharing, NOT necessarily focused on GSA-only
+              business. GSA operates the site. Site displays the GSA Star Mark.
+            </li>
+            <li>
+              <strong>External</strong> - GSA manages domain registration, but
+              the website has no other affiliation with GSA, and does NOT
+              display the GSA Star Mark.
+            </li>
           </ul>
           <li>Office / Sub-Office</li>
           <ul>
-            <li>We try to use the common terms or correspondence symbols for offices across GSA. For example: "Office of
-              Leasing", "TTS/PIF", "OGP MV", etc</li>
+            <li>
+              We try to use the common terms or correspondence symbols for
+              offices across GSA. For example: "Office of Leasing", "TTS/PIF",
+              "OGP MV", etc
+            </li>
           </ul>
           <li>Website Type</li>
           <ul>
             <li>
-              <strong>API</strong> - Application Programming Interface; typically includes “api” in the domain name
+              <strong>API</strong> - Application Programming Interface;
+              typically includes “api” in the domain name
             </li>
             <li>
-              <strong>Critical infrastructure</strong> - Required to support a GSA or shared service
+              <strong>Critical infrastructure</strong> - Required to support a
+              GSA or shared service
             </li>
             <li>
-              <strong>GitHub repo</strong> - Site decommissioned; URL redirects to a GitHub repo (status is redirect)
+              <strong>GitHub repo</strong> - Site decommissioned; URL redirects
+              to a GitHub repo (status is redirect)
             </li>
             <li>
-              <strong>Google form</strong> - Site redirects to a Google form (status is redirect)
+              <strong>Google form</strong> - Site redirects to a Google form
+              (status is redirect)
             </li>
             <li>
-              <strong>Informational</strong> - Informational (not transactional) site; all content is public-facing, no
-              login required
+              <strong>Informational</strong> - Informational (not transactional)
+              site; all content is public-facing, no login required
             </li>
             <li>
-              <strong>Login</strong> - Login page to a back-end app or system; all content (other than guidance on how
-              to log in) is only accessible after user login
+              <strong>Login</strong> - Login page to a back-end app or system;
+              all content (other than guidance on how to log in) is only
+              accessible after user login
             </li>
             <li>
-              <strong>Transactional</strong> - Web application/back-end system with at least one page of public-facing
-              informational content; collects data via user input; users must log in to access additional content,
-              features, and/or functionality
-            </li>
+              <strong>Transactional</strong> - Web application/back-end system
+              with at least one page of public-facing informational content;
+              collects data via user input; users must log in to access
+              additional content, features, and/or functionality
             </li>
           </ul>
         </ul>
       </div>
       <h4 class="usa-accordion__heading">
-        <button class="usa-accordion__button" aria-expanded="true" aria-controls="a3">
+        <button
+          class="usa-accordion__button"
+          aria-expanded="false"
+          aria-controls="a3"
+        >
           Legend
         </button>
       </h4>
       <div id="a3" class="usa-accordion__content usa-prose">
         <p>
-          The following charts show the relative strengths and weaknesses of each
-          website across 6 areas. Hover over a domain name to view additional data
-          and stats.
+          The following charts show the relative strengths and weaknesses of
+          each website across 6 areas. Hover over a domain name to view
+          additional data and stats.
         </p>
         <p>
           A gray semi-circle appears when data is unavailable for the website in
@@ -119,19 +155,23 @@
         </p>
         <div class="grid-row">
           <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
-            <span class="legend one {{include.cssClass}}"></span>Customer Centricity
+            <span class="legend one {{include.cssClass}}"></span>Customer
+            Centricity
           </div>
           <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
             <span class="legend two {{include.cssClass}}"></span>Required Links
           </div>
           <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
-            <span class="legend three {{include.cssClass}}"></span>Mobile Performance
+            <span class="legend three {{include.cssClass}}"></span>Mobile
+            Performance
           </div>
           <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
-            <span class="legend four {{include.cssClass}}"></span>Accessibility (AMP)
+            <span class="legend four {{include.cssClass}}"></span>Accessibility
+            (AMP)
           </div>
           <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
-            <span class="legend five {{include.cssClass}}"></span>Google Analytics
+            <span class="legend five {{include.cssClass}}"></span>Google
+            Analytics
           </div>
           <div class="grid-col-12 tablet:grid-col-4 margin-bottom-105">
             <span class="legend six {{include.cssClass}}"></span>USWDS
@@ -142,19 +182,81 @@
   </div>
   <div style="height: 40rem" class="overflow-scroll">
     <div class="grid-row">
-      <ul class="list" style="
+      <ul
+        class="list"
+        style="
           display: flex;
           list-style: none;
           padding-left: 0px;
           flex-wrap: wrap;
           justify-content: space-evenly;
-          gap: 2rem 2rem;
-        ">
+          gap: 3rem 2rem;
+        "
+      >
         {% for item in site.data.websites %}
-        <li data-id="{{forloop.index}}" style="display: inline-flex; flex: 0 0 10em">
+        <li
+          data-id="{{forloop.index}}"
+          style="display: inline-flex; flex: 0 0 10em"
+        >
           <div class="website-chart">
-            <h4 class="name platform uswds office subOffice category text-center tooltip" data-name="{{item.name}}"
-              data-office="{{item.office}}" data-subOffice="{{item.subOffice}}" data-category="{{item.category}}"
+            <!-- accordion -->
+            <div
+              class="usa-accordion usa-accordion--bordered"
+              style="margin-bottom: 1rem"
+            >
+              <!-- the classes listed within the h4 must correspond to identifiers for listjs-->
+              <h4
+                class="usa-accordion__heading name platform uswds office subOffice digitalBrandCategory typeOfDomain"
+                data-name="{{item.name}}"
+                data-office="{{item.office}}"
+                data-subOffice="{{item.subOffice}}"
+                data-digitalBrandCategory="{{item.digitalBrandCategory}}"
+                data-typeOfDomain="{{item.typeOfDomain}}"
+                data-uswds="{{ item.uswds }}"
+              >
+                <button
+                  class="usa-accordion__button"
+                  aria-expanded="false"
+                  aria-controls="a-{{forloop.index}}"
+                >
+                  {{ item.name }}
+                </button>
+              </h4>
+              <div
+                id="a-{{forloop.index}}"
+                class="usa-accordion__content usa-prose"
+              >
+                <a href="https://{{item.name}}">{{item.name}}</a>
+                <dl>
+                  <dt>URL:</dt>
+                  <dd>{{item.name}}</dd>
+                  <dt>Office:</dt>
+                  <dd>{{item.office}}</dd>
+                  <dt>Sub-Office:</dt>
+                  <dd>{{item.subOffice}}</dd>
+                  <dt>Digital Brand Category:</dt>
+                  <dd>{{item.digitalBrandCategory}}</dd>
+                  <dt>Website Type:</dt>
+                  <dd>{{item.typeOfDomain}}</dd>
+                  <dt>Customer Centricity:</dt>
+                  <dd>{{item.datapointA.val | times:100 | round: 2}}</dd>
+                  <dt>Required Links:</dt>
+                  <dd>{{item.datapointB.val | times:100 | round: 2}}</dd>
+                  <dt>Mobile Performance:</dt>
+                  <dd>{{item.datapointC.val | times:100 | round: 2}}</dd>
+                  <dt>Accessibility (AMP):</dt>
+                  <dd>{{item.datapointD.val | times:100 | round: 2}}</dd>
+                  <dt>Google Analytics:</dt>
+                  <dd>{{item.datapointE.val | times:100 | round: 2}}</dd>
+                  <dt>USWDS:</dt>
+                  <dd>{{item.datapointF.val | times:100 | round: 2}}</dd>
+                </dl>
+              </div>
+            </div>
+            <!-- header with hover -->
+            <!-- <h4 class="name platform uswds office subOffice digitalBrandCategory typeOfDomain text-center tooltip" data-name="{{item.name}}"
+              data-office="{{item.office}}" data-subOffice="{{item.subOffice}}" data-digitalBrandCategory="{{item.digitalBrandCategory}}"
+              data-typeOfDomain="{{item.typeOfDomain}}"
               data-uswds="{{ item.uswds }}">
               {{ item.name }}
               <span id="tt-{{forloop.index}}" class="tooltip-text">
@@ -177,21 +279,58 @@
                 <strong>USWDS: </strong> {{item.datapointF.val | times:100 |
                 round: 2}}<br />
               </span>
-            </h4>
+            </h4>-->
 
-            <svg class="" style="display: block; margin: 0 auto" id="graph" height="100" width="100"
-              viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              class=""
+              style="display: block; margin: 0 auto"
+              id="graph"
+              height="100"
+              width="100"
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <g class="background">
                 <circle cx="50" cy="50" r="50" pathLength="100" />
               </g>
 
               <g id="site-{{forloop.index}}" class="graph">
-                <circle cx="50" cy="50" class="one {{include.cssClass}}" transform="rotate(-90 50 50)" />
-                <circle cx="50" cy="50" class="two {{include.cssClass}}" transform="rotate(-30 50 50)" />
-                <circle cx="50" cy="50" class="three {{include.cssClass}}" transform="rotate(30 50 50)" />
-                <circle cx="50" cy="50" class="four {{include.cssClass}}" transform="rotate(90 50 50)" />
-                <circle cx="50" cy="50" class="five {{include.cssClass}}" transform="rotate(150 50 50)" />
-                <circle cx="50" cy="50" class="six {{include.cssClass}}" transform="rotate(210 50 50)" />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="one {{include.cssClass}}"
+                  transform="rotate(-90 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="two {{include.cssClass}}"
+                  transform="rotate(-30 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="three {{include.cssClass}}"
+                  transform="rotate(30 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="four {{include.cssClass}}"
+                  transform="rotate(90 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="five {{include.cssClass}}"
+                  transform="rotate(150 50 50)"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  class="six {{include.cssClass}}"
+                  transform="rotate(210 50 50)"
+                />
               </g>
             </svg>
           </div>
@@ -260,7 +399,8 @@
       { attr: "data-value", name: "six" },
       { attr: "data-office", name: "office" },
       { attr: "data-subOffice", name: "subOffice" },
-      { attr: "data-category", name: "category" },
+      { attr: "data-digitalBrandCategory", name: "digitalBrandCategory" },
+      { attr: "data-typeOfDomain", name: "typeOfDomain" },
       { attr: "data-platform", name: "platform" },
       { attr: "data-uswds", name: "uswds" },
     ],

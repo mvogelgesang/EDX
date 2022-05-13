@@ -58,6 +58,21 @@ h4.tooltip {
   opacity: 1;
 }
 
+dl {
+  font-size: 0.9rem;
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+dt {
+  font-weight: bold;
+  grid-column-start: 1;
+}
+
+dd {
+  grid-column-start: 2;
+}
+
 .one {
   --color: #{$chart-color1};
 }
@@ -129,8 +144,8 @@ h4.tooltip {
 }
 
 svg {
-  width: 20vmin;
-  height: 20vmin;
+  width: 12rem;
+  height: 12rem;
   transform: rotate(12deg);
 }
 
