@@ -70,7 +70,7 @@ base(AIRTABLE_TABLES.websites)
     ],
     sort: [{ field: AIRTABLE_FIELDS.websites.website.id, direction: "asc" }],
     // Selecting the first 3 records in Grid view:
-    view: "Active Sites",
+    view: "Sites w Evals",
   })
   .eachPage(
     function page(records, fetchNextPage) {
