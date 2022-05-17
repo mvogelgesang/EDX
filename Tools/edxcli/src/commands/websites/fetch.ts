@@ -1,4 +1,4 @@
-import { Flags, CliUx, Config } from '@oclif/core';
+import { Flags, CliUx } from '@oclif/core';
 import BaseCommand from '../../base';
 import FetchHelper from '../../helpers/websites/fetch';
 import CSV from '../../helpers/global/csv';

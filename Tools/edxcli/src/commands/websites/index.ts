@@ -7,6 +7,7 @@ export default class Websites extends BaseCommand<typeof Websites.flags> {
   static examples = [
     `$ edxcli websites fetch Touchpoints`,
     `$ edxcli websites fetch "Site Scanner"`,
+    `$ edxcli websites push "Airtable"`,
   ];
 
   static flags = {
