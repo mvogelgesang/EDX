@@ -23,6 +23,10 @@ $chart-color6: #e52207; // .bg-red
   display: none;
 }
 
+.website-chart {
+  width: 100%;
+}
+
 h4.tooltip {
   position: relative; /* making the .tooltip span a container for the tooltip text */
   padding: 1rem 0rem;
