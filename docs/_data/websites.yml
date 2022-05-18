@@ -168,7 +168,7 @@
     val: 1
     max: 1
   datapointB:
-    val: 0
+    val: 1
     max: 1
   datapointC:
     val: 1
@@ -180,7 +180,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.5
     max: 1
 - name: autoauctions.gsa.gov
   office: FAS
@@ -191,7 +191,7 @@
     val: 0.7
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.375
@@ -203,7 +203,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.5
     max: 1
 - name: blog.usa.gov
   office: FAS
@@ -214,7 +214,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.75
@@ -226,7 +226,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.625
     max: 1
 - name: brand.18f.gov
   office: FAS
@@ -237,7 +237,7 @@
     val: 0.9
     max: 1
   datapointB:
-    val: 0
+    val: 0.5
     max: 1
   datapointC:
     val: 1
@@ -249,7 +249,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: calc.gsa.gov
   office: FAS
@@ -260,7 +260,7 @@
     val: 0.7
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.625
@@ -272,7 +272,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.5
     max: 1
 - name: catalog.data.gov
   office: FAS
@@ -283,7 +283,7 @@
     val: 0.6
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.625
@@ -295,7 +295,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.5
     max: 1
 - name: cfo.gov
   office: OGP
@@ -306,7 +306,7 @@
     val: 0.6
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.875
@@ -318,7 +318,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: challenge.gov
   office: FAS
@@ -329,7 +329,7 @@
     val: 1
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.75
@@ -341,7 +341,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: cic.gsa.gov
   office: FAS
@@ -375,7 +375,7 @@
     val: 0.7
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.75
@@ -387,7 +387,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: citizenscience.gov
   office: FAS
@@ -398,7 +398,7 @@
     val: 1
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 1
@@ -410,7 +410,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: cloud.gov
   office: FAS
@@ -421,7 +421,7 @@
     val: 1
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 1
@@ -433,7 +433,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: cmls.gsa.gov
   office: FAS
@@ -444,7 +444,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0
+    val: 1
     max: 1
   datapointC:
     val: 1
@@ -456,7 +456,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.25
+    val: 1
     max: 1
 - name: code.gov
   office: FAS
@@ -467,7 +467,7 @@
     val: 0.7
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 1
@@ -479,7 +479,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: coe.gsa.gov
   office: FAS
@@ -490,7 +490,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0
+    val: 1
     max: 1
   datapointC:
     val: 1
@@ -502,7 +502,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.75
     max: 1
 - name: computersforlearning.gov
   office: FAS
@@ -513,7 +513,7 @@
     val: 0.7
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.75
@@ -525,7 +525,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.5
     max: 1
 - name: conectate.gobiernousa.gov
   office: FAS
@@ -536,7 +536,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 1
@@ -548,7 +548,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.625
     max: 1
 - name: connect.usa.gov
   office: FAS
@@ -559,7 +559,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 1
@@ -571,7 +571,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.625
     max: 1
 - name: contractdirectory.gov
   office: FAS
@@ -604,7 +604,7 @@
     val: 0.6
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.75
@@ -616,7 +616,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: digitalcorps.gsa.gov
   office: TTS
@@ -662,7 +662,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.625
+    val: 0.5
     max: 1
 - name: fedpay.gsa.gov
   office: CFO
@@ -673,7 +673,7 @@
     val: 0.5
     max: 1
   datapointB:
-    val: 0
+    val: 0.625
     max: 1
   datapointC:
     val: 0.75
@@ -685,7 +685,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.5
     max: 1
 - name: fedsim.gsa.gov
   office: FAS
@@ -696,7 +696,7 @@
     val: 1
     max: 1
   datapointB:
-    val: 0
+    val: 1
     max: 1
   datapointC:
     val: 1
@@ -708,7 +708,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: navigator.gsa.gov
   office: FAS
@@ -719,7 +719,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0
+    val: 0.875
     max: 1
   datapointC:
     val: 0.75
@@ -731,7 +731,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.125
+    val: 0.5
     max: 1
 - name: oes.gsa.gov
   office: OGP
@@ -754,7 +754,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.75
+    val: 0.875
     max: 1
 - name: playbooks.idmanagement.gov
   office: OGP
@@ -765,7 +765,7 @@
     val: 1
     max: 1
   datapointB:
-    val: 0
+    val: 1
     max: 1
   datapointC:
     val: 1
@@ -777,7 +777,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.25
+    val: 0.875
     max: 1
 - name: sftool.gov
   office: OGP
@@ -800,7 +800,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.5
+    val: 0.625
     max: 1
 - name: usa.gov
   office: FAS
@@ -823,5 +823,5 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.75
+    val: 0.875
     max: 1
