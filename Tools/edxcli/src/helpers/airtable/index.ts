@@ -10,13 +10,19 @@ Airtable.configure({
   apiKey: `${process.env.AIRTABLE_API_KEY}`,
 });
 
-export function retrieveDomain(domain: string): AT_Website {
-    base('WEBSITES').select({
-        filterByFormula: `{Site}=${domain}`,
-        view: "ALL Sites",
-    }, function(err, record) {
-        if (err) { console.error(err); return; }
-        console.log('Retrieved', record.id);
-        return record;
-    });
+export function retrieveDomain(domain: string): AT_FIELDS.ATWebsite {
+  base('WEBSITES').select(
+    {
+      filterByFormula: `{Site}=${domain}`,
+      view: 'ALL Sites',
+    },
+    function (err, record) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('Retrieved', record.id);
+      return record;
+    },
+  );
 }

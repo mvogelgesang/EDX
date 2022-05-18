@@ -9,7 +9,7 @@ edxcli
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
 ```sh-session
 $ npm install -g edx_cli
@@ -23,21 +23,25 @@ USAGE
 ...
 ```
 <!-- usagestop -->
-# Commands
-<!-- commands -->
-* [`edxcli hello PERSON`](#edxcli-hello-person)
-* [`edxcli hello world`](#edxcli-hello-world)
-* [`edxcli help [COMMAND]`](#edxcli-help-command)
-* [`edxcli plugins`](#edxcli-plugins)
-* [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
-* [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
-* [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
-* [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
-* [`edxcli plugins update`](#edxcli-plugins-update)
-* [`edxcli websites`](#edxcli-websites)
-* [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
+## Commands
 
-## `edxcli hello PERSON`
+<!-- commands -->
+- [edxcli](#edxcli)
+  - [Usage](#usage)
+  - [Commands](#commands)
+    - [`edxcli hello PERSON`](#edxcli-hello-person)
+  - [`edxcli hello world`](#edxcli-hello-world)
+  - [`edxcli help [COMMAND]`](#edxcli-help-command)
+  - [`edxcli plugins`](#edxcli-plugins)
+  - [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
+  - [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
+  - [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
+  - [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
+  - [`edxcli plugins update`](#edxcli-plugins-update)
+  - [`edxcli websites`](#edxcli-websites)
+  - [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
+
+### `edxcli hello PERSON`
 
 Say hello
 
@@ -245,7 +249,7 @@ DESCRIPTION
 
 ## `edxcli websites`
 
-Performs a number of operations against lists of websites published by Touchpoints https://github.com/GSA/touchpoints/wiki/API#available-api-endpoints and Site Scanner https://open.gsa.gov/api/site-scanning-api/
+Performs a number of operations against lists of websites published by Touchpoints <https://github.com/GSA/touchpoints/wiki/API#available-api-endpoints> and Site Scanner <https://open.gsa.gov/api/site-scanning-api/>
 
 ```
 USAGE

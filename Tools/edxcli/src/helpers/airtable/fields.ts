@@ -1,5 +1,3 @@
-import { string } from '@oclif/core/lib/flags';
-
 export const AIRTABLE_FIELDS = {
   'website-evals': {
     Site: { id: 'fldEJKjLyRz34tQzh', name: 'Site' },
@@ -39,27 +37,25 @@ export const AIRTABLE_FIELDS = {
 type ATWebsite = {
   id: string;
   createdTime: Date;
-  fields: AT_WebsiteFields;
+  fields: ATWebsiteFields;
 };
 
 type ATWebsiteFields = {
-  website: string;
-  active: boolean;
-  touchpointsUrl: string;
-  office: string;
-  subOffice: string;
-  websitePlatform: string[];
-  digitalBrandCategory: string;
-  typeOfDomain: string;
-  contact: string;
-  scoreCustomerCentricity: string | number;
-  scoreMobilePerf: string | number;
-  scoreAmp: string | number;
-  scoreGa: string | number;
-  scoreUswds: string | number;
-  scoreReqdLinks: string | number;
-  lookupCustomerCentricity: string[];
-  lookupUswds: string[];
-  lookupGa: string[];
-  lookupAmp: string[];
+  Site?: string;
+  'USWDS, Performance'?: string[];
+  Office?: string;
+  'Sub-Office'?: string;
+  Active?: boolean;
+  'Touchpoints URL'?: string;
+  'Prod Status'?: string;
+  'Type of Domain'?: string;
+  'Digital Brand Category'?: string;
+  'Statuscard Score - Customer Centricity'?: string | number;
+  'Statuscard Score - Mobile Performance Rollup (fromUSWDS, Performance)'?:
+    | string
+    | number;
+  'Statuscard Score - AMP'?: string | number;
+  'Statuscard Score - GA data'?: string | number;
+  'Statuscard Score - USWDS'?: string | number;
+  'Statuscard Score - Required Links'?: string | number;
 };
