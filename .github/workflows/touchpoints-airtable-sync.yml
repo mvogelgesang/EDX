@@ -14,7 +14,7 @@ jobs:
       run: |
         touch .env
         echo "AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }}" >> ./Tools/edxcli/.env
-        echo "\nTOUCHPOINTS_API_KEY=${{ secrets.TOUCHPOINTS_API_KEY }}" >> ./Tools/edxcli/.env
+        echo "TOUCHPOINTS_API_KEY=${{ secrets.TOUCHPOINTS_API_KEY }}" >> ./Tools/edxcli/.env
     - name: Read .nvmrc
       working-directory: ./Tools/scanner
       run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
