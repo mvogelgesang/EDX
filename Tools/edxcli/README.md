@@ -1,85 +1,44 @@
-edxcli
-=================
+# edxcli
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [edxcli](#edxcli)
 <!-- tocstop -->
+
 ## Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g edx_cli
 $ edxcli COMMAND
 running command...
 $ edxcli (--version)
-edx_cli/0.0.0 darwin-x64 node-v16.13.0
+edx_cli/0.0.0 darwin-x64 node-v16.15.1
 $ edxcli --help [COMMAND]
 USAGE
   $ edxcli COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 ## Commands
 
 <!-- commands -->
-- [edxcli](#edxcli)
-  - [Usage](#usage)
-  - [Commands](#commands)
-    - [`edxcli hello PERSON`](#edxcli-hello-person)
-  - [`edxcli hello world`](#edxcli-hello-world)
-  - [`edxcli help [COMMAND]`](#edxcli-help-command)
-  - [`edxcli plugins`](#edxcli-plugins)
-  - [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
-  - [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
-  - [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
-  - [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
-  - [`edxcli plugins update`](#edxcli-plugins-update)
-  - [`edxcli websites`](#edxcli-websites)
-  - [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
 
-### `edxcli hello PERSON`
-
-Say hello
-
-```
-USAGE
-  $ edxcli hello [PERSON] -f <value>
-
-ARGUMENTS
-  PERSON  Person to say hello to
-
-FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
-
-DESCRIPTION
-  Say hello
-
-EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
-```
-
-_See code: [dist/commands/hello/index.ts](https://github.com/gsa/edx/blob/v0.0.0/dist/commands/hello/index.ts)_
-
-## `edxcli hello world`
-
-Say hello world
-
-```
-USAGE
-  $ edxcli hello world
-
-DESCRIPTION
-  Say hello world
-
-EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
-```
+- [`edxcli help [COMMAND]`](#edxcli-help-command)
+- [`edxcli plugins`](#edxcli-plugins)
+- [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
+- [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
+- [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
+- [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
+- [`edxcli plugins update`](#edxcli-plugins-update)
+- [`edxcli websites`](#edxcli-websites)
+- [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
+- [`edxcli websites push`](#edxcli-websites-push)
 
 ## `edxcli help [COMMAND]`
 
@@ -174,7 +133,7 @@ ALIASES
   $ edxcli plugins add
 
 EXAMPLES
-  $ edxcli plugins:install myplugin 
+  $ edxcli plugins:install myplugin
 
   $ edxcli plugins:install https://github.com/someuser/someplugin
 
@@ -249,7 +208,7 @@ DESCRIPTION
 
 ## `edxcli websites`
 
-Performs a number of operations against lists of websites published by Touchpoints <https://github.com/GSA/touchpoints/wiki/API#available-api-endpoints> and Site Scanner <https://open.gsa.gov/api/site-scanning-api/>
+Performs a number of operations against lists of websites published by Touchpoints https://github.com/GSA/touchpoints/wiki/API#available-api-endpoints and Site Scanner https://open.gsa.gov/api/site-scanning-api/
 
 ```
 USAGE
@@ -268,6 +227,8 @@ EXAMPLES
   $ edxcli websites fetch Touchpoints
 
   $ edxcli websites fetch "Site Scanner"
+
+  $ edxcli websites push "Airtable"
 ```
 
 _See code: [dist/commands/websites/index.ts](https://github.com/gsa/edx/blob/v0.0.0/dist/commands/websites/index.ts)_
@@ -296,4 +257,35 @@ EXAMPLES
 
   $ edxcli websites fetch Touchpoints -o ~/mydirectory
 ```
+
+## `edxcli websites push`
+
+Grabs an extract of Touchpoints data and upserts it into Airtable
+
+```
+USAGE
+  $ edxcli websites push [--loglevel error|warn|info|debug] [-o <value>]
+
+FLAGS
+  -o, --output=<value>  [default: .] Output directory. Defualts to current directory
+  --loglevel=<option>   [default: info]
+                        <options: error|warn|info|debug>
+
+DESCRIPTION
+  Grabs an extract of Touchpoints data and upserts it into Airtable
+
+EXAMPLES
+  $ edxcli websites push
+
+  $ edxcli websites push -o ~/mydirectory
+```
+
 <!-- commandsstop -->
+
+<!-- Updating -->
+
+```sh
+yarn run build
+yarn run test
+yarn run prepack
+```
