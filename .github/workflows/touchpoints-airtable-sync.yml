@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-    - run: npm ci
+    - run: yarn install --frozen-lockfile
       working-directory: ./Tools/edxcli
     - run: npm run build
       working-directory: ./Tools/edxcli
