@@ -16,5 +16,12 @@ export default class Websites extends BaseCommand<typeof Websites.flags> {
 
   static args = [];
 
-  async run(): Promise<void> {}
+  async run(): Promise<void> {
+    // since Websites does not perform an action, display examples to guide the user
+    this.log('Example Website commands below\n', 'info');
+
+    for (const element of Websites.examples) {
+      this.log(element, 'info');
+    }
+  }
 }

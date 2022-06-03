@@ -5,15 +5,17 @@ require('dotenv').config();
 describe('websites:fetch foo', () => {
   test
     .stdout()
-    .command(['websites:fetch', 'foo'])
+    .command(['websites fetch', 'foo'])
     // catch is used to test expected error messages
     .catch(
       'Expected foo to be one of: Site Scanner, Touchpoints\nSee more help with --help',
     )
-    .it('Returns an error message', function () {});
+    .it('Returns an error message', function () {
+      /* do nothing */
+    });
 });
 
-describe('websites:fetch Touchpoints', () => {
+describe('websites fetch Touchpoints', () => {
   /* eslint-disable camelcase */ //
   const data = {
     data: [
@@ -70,8 +72,9 @@ describe('websites:fetch Touchpoints', () => {
       .stdout()
       .command(['websites:fetch', 'Touchpoints'])
       // done is used since the api requests are Promises, this ensures the test suite waits for the response
-      .it('Saves the list of domains to a directory', function (done) {
-        function callback(ctx: any) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .it('Saves the list of domains to a directory', (done) => {
+        (ctx: any) => {
           expect(ctx.stdout).to.match(
             new RegExp(
               'Touchpoints data written to /?.*Touchpoints_' +
@@ -79,7 +82,7 @@ describe('websites:fetch Touchpoints', () => {
                 '.csv',
             ),
           );
-        }
+        };
       });
   });
 
@@ -95,8 +98,9 @@ describe('websites:fetch Touchpoints', () => {
       )
       .stdout()
       .command(['websites:fetch', 'Touchpoints', '-o', '~/Documents'])
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .it('Saves the list of domains to a directory', function (done) {
-        function callback(ctx: any) {
+        (ctx: any) => {
           expect(ctx.stdout).to.match(
             new RegExp(
               'Touchpoints data written to /?.*Documents/Touchpoints_' +
@@ -104,7 +108,7 @@ describe('websites:fetch Touchpoints', () => {
                 '.csv',
             ),
           );
-        }
+        };
       });
   });
 });
@@ -210,8 +214,9 @@ describe('websites:fetch "Site Scanner"', () => {
       )
       .stdout()
       .command(['websites:fetch', 'Site Scanner'])
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .it('Saves the list of domains to a directory', (done) => {
-        function callback(ctx: any) {
+        (ctx: any) => {
           expect(ctx.stdout).to.match(
             new RegExp(
               'Site Scanner data written to /?.*Site Scanner_' +
@@ -219,7 +224,7 @@ describe('websites:fetch "Site Scanner"', () => {
                 '.csv',
             ),
           );
-        }
+        };
       });
   });
   describe('custom output flag"', () => {
@@ -234,8 +239,9 @@ describe('websites:fetch "Site Scanner"', () => {
       )
       .stdout()
       .command(['websites:fetch', 'Site Scanner', '-o', '~/Documents'])
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .it('Saves the list of domains to a directory', (done) => {
-        function callback(ctx: any) {
+        (ctx: any) => {
           expect(ctx.stdout).to.match(
             new RegExp(
               'Site Scanner data written to /?.*Documents/Site Scanner_' +
@@ -243,7 +249,7 @@ describe('websites:fetch "Site Scanner"', () => {
                 '.csv',
             ),
           );
-        }
+        };
       });
   });
 });

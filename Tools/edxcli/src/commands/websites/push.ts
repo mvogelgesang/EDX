@@ -1,10 +1,8 @@
 import { Flags, CliUx } from '@oclif/core';
 import BaseCommand from '../../base';
-import FetchHelper from '../../helpers/websites/fetch';
+import { FetchHelper, TouchpointsRecord } from '../../helpers/websites/fetch';
 import * as Airtable from '../../helpers/airtable/index';
-import { isCountedSite } from '../../helpers/global/utils';
-import CSV from '../../helpers/global/csv';
-
+import { isCountedSite, writeJSONFile } from '../../helpers/global/utils';
 export default class Push extends BaseCommand<typeof Push.flags> {
   static description =
     'Grabs an extract of Touchpoints data and upserts it into Airtable';
@@ -31,29 +29,30 @@ export default class Push extends BaseCommand<typeof Push.flags> {
     CliUx.ux.action.start(`Fetching Touchpoints data`);
     const fh = new FetchHelper(BaseCommand.formattedDate(), flags);
     // fh > input > file location, number of rows
-    const tpData = await fh.getTouchpointsWebsites().then((result) => {
-      return result.map((obj) => {
-        return {
-          'Touchpoints URL': `https://touchpoints.app.cloud.gov/admin/websites/${obj.id}`,
-          Site: obj.attributes.domain,
-          Office: obj.attributes.office,
-          'Sub-Office': obj.attributes.sub_office,
-          'Prod Status': obj.attributes.production_status,
-          'Type of Domain': obj.attributes.type_of_site,
-          'Digital Brand Category': obj.attributes.digital_brand_category,
-        };
+    const tpData = await fh
+      .getTouchpointsWebsites()
+      .then((result: TouchpointsRecord[]) => {
+        return result.map((obj: TouchpointsRecord) => {
+          return {
+            'Touchpoints URL': `https://touchpoints.app.cloud.gov/admin/websites/${obj.id}`,
+            Site: obj.attributes.domain,
+            Office: obj.attributes.office,
+            'Sub-Office': obj.attributes.sub_office,
+            'Prod Status': obj.attributes.production_status,
+            'Type of Domain': obj.attributes.type_of_site,
+            'Digital Brand Category': obj.attributes.digital_brand_category,
+          };
+        });
       });
-    });
     CliUx.ux.action.stop(`Fetched ${tpData.length} records from Touchpoints`);
     CliUx.ux.action.start('Comparing records between Airtable and Touchpoints');
     const newWebsiteRecords: Airtable.ATListResponseType[] = [];
-    const preUpdateWebsiteRecords = [];
+    const preUpdateWebsiteRecords: any[] = [];
     const postUpdateWebsiteRecords: any[] = [];
     const websitesToCreate: Airtable.ATWebsiteFields[] = [];
     const websitesToUpdate: Airtable.ATWebsite[] = [];
     const promisesArray: Promise<void>[] = [];
     const upsertPromisesArray: Promise<void>[] = [];
-    let count = 0;
     /* The pattern to follow is creating a function which wraps the loop
      That function returns a promise
      Within the loop though, all Promise-based functions get added to an array that holds the promises "let valuesArray: Promise<any>[] = []"
@@ -82,10 +81,6 @@ export default class Push extends BaseCommand<typeof Push.flags> {
               console.error(error);
             }),
         );
-        count++;
-        if (count > 20) {
-          break;
-        }
       }
     }
 
@@ -130,30 +125,27 @@ export default class Push extends BaseCommand<typeof Push.flags> {
       }
 
       Promise.all(upsertPromisesArray).then(() => {
-        console.log('post update', postUpdateWebsiteRecords[0][0]);
-        console.log('post create', newWebsiteRecords[0]);
-        const csv = new CSV(
+        writeJSONFile(
+          postUpdateWebsiteRecords,
+          'data',
+          'airtablePostUpdate',
           BaseCommand.formattedDate(),
-          '.',
-          'airTablePostUpdate',
-          [
-            { id: 'id', title: 'Airtable ID' },
-            { id: 'Site', title: 'Site' },
-            { id: 'Active', title: 'Active' },
-            { id: 'Touchpoints URL', title: 'Touchpoints URL' },
-            { id: 'Office', title: 'Office' },
-            { id: 'Sub-Office', title: 'Sub-Office' },
-            { id: 'Prod Status', title: 'Prod Status' },
-            {
-              id: 'Digital Brand Category',
-              title: 'Digital Brand Category',
-            },
-            { id: 'Type of Domain', title: 'Type of Domain' },
-          ],
         );
-        csv
-          .write(postUpdateWebsiteRecords)
-          .then((msg) => this.log(msg, 'info'));
+
+        writeJSONFile(
+          preUpdateWebsiteRecords,
+          'data',
+          'airtablePreUpdateWebsiteRecords',
+          BaseCommand.formattedDate(),
+        );
+
+        writeJSONFile(
+          postUpdateWebsiteRecords,
+          'data',
+          'airtableNewWebsiteRecords',
+          BaseCommand.formattedDate(),
+        );
+
         CliUx.ux.action.stop(
           `\nCreated ${newWebsiteRecords.length} records in Airtable\nUpdated ${postUpdateWebsiteRecords.length} records in Airtable.\nDone.`,
         );
