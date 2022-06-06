@@ -7,6 +7,7 @@ export default class Websites extends BaseCommand<typeof Websites.flags> {
   static examples = [
     `$ edxcli websites fetch Touchpoints`,
     `$ edxcli websites fetch "Site Scanner"`,
+    `$ edxcli websites push`,
   ];
 
   static flags = {
@@ -15,5 +16,13 @@ export default class Websites extends BaseCommand<typeof Websites.flags> {
 
   static args = [];
 
-  async run(): Promise<void> {}
+  async run(): Promise<void> {
+    // since Websites does not perform an action, display examples to guide the user
+    this.log(`${Websites.description}\n`, 'info');
+    this.log('Example Website commands below\n', 'info');
+
+    for (const element of Websites.examples) {
+      this.log(element, 'info');
+    }
+  }
 }
