@@ -1,6 +1,11 @@
 import { ATWebsiteFields } from '../airtable';
 import fs from 'node:fs';
 
+/**
+ * Uses GSA Digital Council guidelines to determine whether this is a site that counts towards performance goals
+ * @param {ATWebsiteFields} data record for evaluation
+ * @returns {boolean}
+ */
 export function isCountedSite(data: ATWebsiteFields): boolean {
   return (
     (data['Digital Brand Category'] === 'Hybrid' ||
@@ -13,6 +18,14 @@ export function isCountedSite(data: ATWebsiteFields): boolean {
   );
 }
 
+/**
+ * Given a JSON object, writes contents to a file
+ * @param {any[] | any} jsonData valid json object
+ * @param {string} path desired output path
+ * @param {string} filename description of the data to be written.
+ * @param {string} date if provided, prepends todays date to the file name e.g., {todays date}_filename.json
+ * @return {void}
+ */
 export function writeJSONFile(
   jsonData: any[] | any,
   path: string,
@@ -23,10 +36,10 @@ export function writeJSONFile(
   fs.mkdir(path, { recursive: true }, (dirErr: any) => {
     if (dirErr) console.error(dirErr);
   });
-  date = date ? `_${date}` : '';
+  date = date ? `${date}_` : '';
 
   fs.writeFile(
-    `${path}${filename}${date}.json`,
+    `${path}${date}${filename}.json`,
     JSON.stringify(jsonData),
     (err: any) => {
       if (err) {

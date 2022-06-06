@@ -1,6 +1,9 @@
 require('dotenv').config();
 const axios = require('axios').default;
 
+/**
+ * Provides access to Touchpoints and Site Scanner functions
+ */
 export class FetchHelper {
   formattedDate: string;
   outputDirectory: string;
@@ -30,7 +33,9 @@ export class FetchHelper {
     });
   }
 
-  /* getTouchpointsWebsites is an async function which returns a full list of websites as listed in touchpoints */
+  /**
+   * @return {Promise<TouchpointsRecord[]>} Promise containing an array of TouchpointsRecord objects
+   * */
   async getTouchpointsWebsites(): Promise<never | TouchpointsRecord[]> {
     const data = this.touchpoints
       .get(`/websites.json?`)
@@ -44,7 +49,12 @@ export class FetchHelper {
     return data;
   }
 
-  async getSiteScannerWebsites(pageNo = 1): Promise<any> {
+  /**
+   * Iterates through and returns siteScanner results. Can start at a later page number provided a pageNo param
+   * @param {number} pageNo - Starting page number of site scanner results. Defaults to 1
+   * @return {Promise<TouchpointsRecord[]>} - Promise containing an array of TouchpointsRecord objects
+   * */
+  async getSiteScannerWebsites(pageNo = 1): Promise<SiteScannerRecord[]> {
     const promisesArray: Promise<SiteScannerRecord>[] = [];
     let next = '';
 
@@ -132,6 +142,12 @@ export type SiteScannerRecord = {
   target_url_bureau_code: string;
 };
 /* eslint-enable camelcase */ //
+/**
+ * @typedef {object} TouchpointsRecord
+ * @param {string} id - a unique identifier for the touchpoints website record
+ * @param {string} type - record type, will always be website
+ * @param {TouchpointsAttributes} attributes - other information about the record.
+ */
 export type TouchpointsRecord = {
   id: string;
   type: string;

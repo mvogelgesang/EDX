@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const AIRTABLE_BASE = 'appaxAzqTVnbOf7cm';
-
+const TABLE = 'WEBSITES copy';
 const base = require('airtable').base(AIRTABLE_BASE);
 const Airtable = require('airtable');
 Airtable.configure({
@@ -9,10 +9,15 @@ Airtable.configure({
   apiKey: `${process.env.AIRTABLE_API_KEY}`,
 });
 
+/**
+ * Given a domain name, searches Airtable for a record and returns it. Empty result indicates no record.
+ * @param {string} domain string containing the full domain name (gsa.gov, fleet.gsa.gov) without protocol or URL path
+ * @returns {Promise<ATListResponseType>} promise of an ATListResponseType object
+ */
 export function retrieveWebsite(domain: string): Promise<ATListResponseType> {
   // must return a promise since the "select" function is promise based. https://ckhang.com/blog/2021/javascript-promises-async-await/
   return new Promise<ATListResponseType>((resolve, reject) => {
-    base('WEBSITES copy')
+    base(TABLE)
       .select({
         filterByFormula: `{Site}="${domain}"`,
         fields: [
@@ -27,6 +32,7 @@ export function retrieveWebsite(domain: string): Promise<ATListResponseType> {
         ],
         view: 'ALL Sites',
       })
+      // call to firstPage is valid since we are only expecting one record
       .firstPage(function (err: any, data: any) {
         if (err) {
           console.error(err);
@@ -39,28 +45,37 @@ export function retrieveWebsite(domain: string): Promise<ATListResponseType> {
   });
 }
 
-export function updateWebsites(data: ATWebsite[]): Promise<any> {
+/**
+ * Performs an HTTP PATCH (only updates fields included in request) update against a given Airtable record.
+ * @param {ATWebsite[]} data array of ATWebsite objects
+ * @returns {Promise<ATWebsite[]>} Promise containing ATWebsite object
+ */
+export function updateWebsites(data: ATWebsite[]): Promise<ATWebsite[]> {
   return new Promise((resolve, reject) => {
-    base('WEBSITES copy').update(
-      data,
-      function (err: any, records: ATListResponseType) {
-        if (err) {
-          console.log(err);
-          console.log('Error occured while updating website', data);
-          reject();
-        }
+    base(TABLE).update(data, function (err: any, records: ATWebsite[]) {
+      if (err) {
+        console.log(err);
+        console.log('Error occured while updating website', data);
+        reject();
+      }
 
-        resolve(records);
-      },
-    );
+      resolve(records);
+    });
   });
 }
 
-export function createWebsites(newWebsite: ATWebsiteFields): Promise<any> {
+/**
+ * Creates a new Website record in Airtable.
+ * @param {ATWebsiteFields} newWebsite an ATWebsiteFields object containing at least the Site field.
+ * @returns {Promise<ATWebsite[]>} containing information about the new record
+ */
+export function createWebsites(
+  newWebsite: ATWebsiteFields,
+): Promise<ATWebsite[]> {
   return new Promise((resolve, reject) => {
-    base('WEBSITES copy').create(
+    base(TABLE).create(
       [{ fields: newWebsite }],
-      function (err: any, records: ATListResponseType) {
+      function (err: any, records: ATWebsite[]) {
         if (err) {
           console.error(err);
           console.error('Error occured while creating website', records);
@@ -84,7 +99,7 @@ export type ATWebsite = {
 };
 
 export type ATWebsiteFields = {
-  Site?: string;
+  Site: string;
   'USWDS, Performance'?: string[];
   Office?: string;
   'Sub-Office'?: string;

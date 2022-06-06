@@ -3,9 +3,13 @@ import BaseCommand from '../../base';
 import { FetchHelper, TouchpointsRecord } from '../../helpers/websites/fetch';
 import * as Airtable from '../../helpers/airtable/index';
 import { isCountedSite, writeJSONFile } from '../../helpers/global/utils';
+
+/**
+ * Grabs an extract of Touchpoitns data and updates/ inserts it into the Airtable Websites table.
+ */
 export default class Push extends BaseCommand<typeof Push.flags> {
   static description =
-    'Grabs an extract of Touchpoints data and upserts it into Airtable';
+    'Grabs an extract of Touchpoints data and updates or inserts it into Airtable. If the data in Touchpoints matches Airtable, the script will record that an "update" was made but Airtable will not show an updated modified date.';
 
   static examples = [
     `$ edxcli websites push`,
@@ -16,8 +20,8 @@ export default class Push extends BaseCommand<typeof Push.flags> {
     ...BaseCommand.flags,
     output: Flags.string({
       char: 'o',
-      description: 'Output directory. Defualts to current directory',
-      default: '.',
+      description: 'Output directory. Defualts to /edxcli/data directory',
+      default: 'data',
       required: false,
     }),
   };
@@ -46,13 +50,20 @@ export default class Push extends BaseCommand<typeof Push.flags> {
       });
     CliUx.ux.action.stop(`Fetched ${tpData.length} records from Touchpoints`);
     CliUx.ux.action.start('Comparing records between Airtable and Touchpoints');
-    const newWebsiteRecords: Airtable.ATListResponseType[] = [];
+
+    // We want to capture the before/ after state of records and save them as an artifact
+    const newWebsiteRecords: any[] = [];
     const preUpdateWebsiteRecords: any[] = [];
     const postUpdateWebsiteRecords: any[] = [];
+
+    // lists of websites to create or update
     const websitesToCreate: Airtable.ATWebsiteFields[] = [];
     const websitesToUpdate: Airtable.ATWebsite[] = [];
+
+    // establishing promises arrays which must be resolved prior to the next step
     const promisesArray: Promise<void>[] = [];
     const upsertPromisesArray: Promise<void>[] = [];
+
     /* The pattern to follow is creating a function which wraps the loop
      That function returns a promise
      Within the loop though, all Promise-based functions get added to an array that holds the promises "let valuesArray: Promise<any>[] = []"
@@ -72,8 +83,8 @@ export default class Push extends BaseCommand<typeof Push.flags> {
                 };
                 websitesToUpdate.push(updateRecord);
               } else if (isCountedSite(tpData[item])) {
-                // if no record found, we need to insert
-                // add to an array and we can do a mass insert later
+                /* Touchpoints contains a lot of information, we don't want to publish all of it to airtable as many records are irrelevant (staging, dev, infrastructure). isCountedSite ensures we don't include bad information. This will add to an array and we can do a mass insert later
+                 */
                 websitesToCreate.push(tpData[item]);
               }
             })
@@ -124,24 +135,24 @@ export default class Push extends BaseCommand<typeof Push.flags> {
         }
       }
 
+      // write the before/ after content to files
       Promise.all(upsertPromisesArray).then(() => {
         writeJSONFile(
           postUpdateWebsiteRecords,
-          'data',
+          flags.output,
           'airtablePostUpdate',
           BaseCommand.formattedDate(),
         );
 
         writeJSONFile(
           preUpdateWebsiteRecords,
-          'data',
+          flags.output,
           'airtablePreUpdateWebsiteRecords',
           BaseCommand.formattedDate(),
         );
-
         writeJSONFile(
           postUpdateWebsiteRecords,
-          'data',
+          flags.output,
           'airtableNewWebsiteRecords',
           BaseCommand.formattedDate(),
         );
@@ -151,6 +162,5 @@ export default class Push extends BaseCommand<typeof Push.flags> {
         );
       });
     });
-    // this pushes both updateWebsite and createWebsite calls into the array since push accepts multiple arguments
   }
 }

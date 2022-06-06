@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test';
 import BaseCommand from '../../../../src/base';
 require('dotenv').config();
 
-describe('websites:fetch foo', () => {
+describe('websites fetch foo', () => {
   test
     .stdout()
     .command(['websites fetch', 'foo'])
@@ -70,7 +70,7 @@ describe('websites fetch Touchpoints', () => {
           .reply(200, data),
       )
       .stdout()
-      .command(['websites:fetch', 'Touchpoints'])
+      .command(['websites fetch', 'Touchpoints'])
       // done is used since the api requests are Promises, this ensures the test suite waits for the response
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .it('Saves the list of domains to a directory', (done) => {
@@ -97,7 +97,7 @@ describe('websites fetch Touchpoints', () => {
           .reply(200, data),
       )
       .stdout()
-      .command(['websites:fetch', 'Touchpoints', '-o', '~/Documents'])
+      .command(['websites fetch', 'Touchpoints', '-o', '~/Documents'])
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .it('Saves the list of domains to a directory', function (done) {
         (ctx: any) => {
@@ -113,7 +113,7 @@ describe('websites fetch Touchpoints', () => {
   });
 });
 
-describe('websites:fetch "Site Scanner"', () => {
+describe('websites fetch "Site Scanner"', () => {
   /* eslint-disable camelcase */ //
   const data = {
     items: [
@@ -213,7 +213,7 @@ describe('websites:fetch "Site Scanner"', () => {
           .reply(200, data),
       )
       .stdout()
-      .command(['websites:fetch', 'Site Scanner'])
+      .command(['websites fetch', 'Site Scanner'])
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .it('Saves the list of domains to a directory', (done) => {
         (ctx: any) => {
@@ -238,7 +238,7 @@ describe('websites:fetch "Site Scanner"', () => {
           .reply(200, data),
       )
       .stdout()
-      .command(['websites:fetch', 'Site Scanner', '-o', '~/Documents'])
+      .command(['websites fetch', 'Site Scanner', '-o', '~/Documents'])
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .it('Saves the list of domains to a directory', (done) => {
         (ctx: any) => {
