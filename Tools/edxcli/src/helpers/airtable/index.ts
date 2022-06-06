@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const AIRTABLE_BASE = 'appaxAzqTVnbOf7cm';
-const TABLE = 'WEBSITES copy';
+const TABLE = 'WEBSITES';
 const base = require('airtable').base(AIRTABLE_BASE);
 const Airtable = require('airtable');
 Airtable.configure({

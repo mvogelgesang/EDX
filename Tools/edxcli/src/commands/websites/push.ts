@@ -151,7 +151,7 @@ export default class Push extends BaseCommand<typeof Push.flags> {
           BaseCommand.formattedDate(),
         );
         writeJSONFile(
-          postUpdateWebsiteRecords,
+          newWebsiteRecords,
           flags.output,
           'airtableNewWebsiteRecords',
           BaseCommand.formattedDate(),
