@@ -137,7 +137,7 @@
       <h4 class="usa-accordion__heading">
         <button
           class="usa-accordion__button"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="a3"
         >
           Legend
@@ -146,8 +146,8 @@
       <div id="a3" class="usa-accordion__content usa-prose">
         <p>
           The following charts show the relative strengths and weaknesses of
-          each website across 6 areas. Hover over a domain name to view
-          additional data and stats.
+          each website across 6 areas. Click on a domain name to view additional
+          data and stats.
         </p>
         <p>
           A gray semi-circle appears when data is unavailable for the website in
@@ -198,7 +198,8 @@
         {% for item in site.data.websites %}
         <li
           data-id="{{forloop.index}}"
-          style="display: inline-flex; flex: 0 0 10em"
+          class="website-list-element"
+          id="{{item.name}}"
         >
           <div class="website-chart">
             <!-- accordion -->
