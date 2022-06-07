@@ -166,7 +166,7 @@ const itPerfMetricReport = async function (browser, url) {
     },
     identifierCustomPrivacy: {
       regex: /<a.*?>(Privacy Policy|Privacy).*?<\/a>/i,
-      type: "link",
+      type: "other",
       titleRegex: "customPrivacy",
     },
     identifierAccessibility: {
