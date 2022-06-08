@@ -196,7 +196,7 @@ const itPerfMetricReport = async function (browser, url) {
     },
     contact: {
       regex: new RegExp(
-        "Contact Us|(?<!-)Contact|Get in touch|Email Us|Help Desk|d+(s|-)d+(s|-)d+|(d+)sd+-d+",
+        "Contact Us|Contact|Get in touch|Email Us|Email|Get support|Help Desk|d+(s|-)d+(s|-)d+|(d+)sd+-d+",
         "i"
       ),
       type: "other",
@@ -406,7 +406,7 @@ const buildOutput = async function (url, website) {
 };
 
 const domains = [
-  "gsa.gov",
+  "designsystem.digital.gov",
   //"labs.gsa.gov", "acquisition.gov", "buy.gsa.gov"
 ];
 
