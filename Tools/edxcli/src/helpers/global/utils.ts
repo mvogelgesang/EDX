@@ -1,10 +1,13 @@
 import { ATWebsiteFields } from '../airtable';
 import fs from 'node:fs';
+import { URL } from 'node:url';
+import crypto from 'node:crypto';
+const hash = crypto.createHash('md5');
 
 /**
  * Uses GSA Digital Council guidelines to determine whether this is a site that counts towards performance goals
  * @param {ATWebsiteFields} data record for evaluation
- * @returns {boolean}
+ * @returns {boolean} whether the site is included in performance metrics
  */
 export function isCountedSite(data: ATWebsiteFields): boolean {
   return (
@@ -48,3 +51,26 @@ export function writeJSONFile(
     },
   );
 }
+
+/**
+ * Constructs a url consisting of scheme, subdomain, domain, tld, path, and query string
+ * @param {string} domain - a domain name with or without protocol (http,https)
+ * @returns {URL} node URL
+ */
+export const createHttpsUrl = async function (domain: string): Promise<URL> {
+  const regex = /(http:\/\/|https:\/\/)/;
+  // strip out http/https if it exists
+  domain = domain.replace(regex, '');
+
+  return new URL(`https://${domain}`);
+};
+
+/**
+ * Given text input, returns a MD5 Hexidecimal hash
+ * @param {string} text any string to hash
+ * @returns {string} as an MD5 Hexidecimal hash
+ */
+export const printHash = async function (text: string): Promise<string> {
+  hash.update(text);
+  return hash.copy().digest('hex');
+};
