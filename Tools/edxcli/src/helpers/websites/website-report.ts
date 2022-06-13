@@ -1,12 +1,15 @@
 // @ts-check
 require('dotenv').config();
 import { ScanHelper } from './scan';
-import { Screenshot } from './screenshot';
+import { ScreenshotType } from './screenshot';
 
 /**
  * Represents all data elements in a websiteReport
  */
-export const websiteReport = (domain: URL, sh: ScanHelper): WebsiteReport => {
+export const websiteReport = (
+  domain: URL,
+  sh: ScanHelper,
+): WebsiteReportType => {
   return {
     scanDate: sh.formattedDate,
     startTime: new Date().toISOString(),
@@ -20,11 +23,11 @@ export const websiteReport = (domain: URL, sh: ScanHelper): WebsiteReport => {
       description:
         'Holds screenshots of website homepage on both desktop and mobile viewport sizes',
       data: [],
-    },
+    }
   };
 };
 
-export type WebsiteReport = {
+export type WebsiteReportType = {
   scanDate: string;
   startTime: string;
   endTime: string;
@@ -38,5 +41,5 @@ export type WebsiteReport = {
 
 export type ScreenshotReport = {
   description: string;
-  data: Screenshot[];
+  data: ScreenshotType[];
 };

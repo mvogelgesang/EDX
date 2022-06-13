@@ -72,6 +72,11 @@
     }
   },
   "repository": "gsa/edx",
+  "mocha": {
+    "spec": [
+      "test/**/*.test.ts"
+    ]
+  },
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
     "lint": "eslint . --ext .ts --config .eslintrc",

@@ -3,7 +3,6 @@ import { Flags } from '@oclif/core';
 export const output = Flags.build({
   char: 'o',
   description: 'Output directory. Defualts to current directory',
-  default: 'data/',
   required: false,
 });
 
@@ -23,25 +22,27 @@ export const domainsSource = Flags.build({
 export const facets = Flags.build({
   char: 'f',
   description:
-    'Comma-separated list of facets to use for the scan. e.g. (-m "screenshot,lighthouse,IT Metric")',
+    'Comma-separated list of facets to use for the scan. e.g. (-m "screenshot,lighthouse,it metric")',
   options: [
-    'Analytics',
-    'IT Performance Metric',
-    'Ligthouse Desktop',
-    'Lighthouse Mobile',
-    'Screenshot',
-    'Site Scanner',
-    'USWDS Components',
+    'analytics',
+    'it performance metric',
+    'ligthouse desktop',
+    'lighthouse mobile',
+    'screenshot',
+    's1ite scanner',
+    'uswds components',
   ],
   required: false,
+  default: '',
 });
 
 export const preset = Flags.build({
   char: 'p',
   description:
     'Run a pre-configured suite of scan facets whose results will be output into a single file.',
-  options: ['All', 'Performance Metric'],
+  options: ['', 'all', 'edx scan'],
   required: false,
+  default: '',
 });
 
 export const headless = Flags.boolean({

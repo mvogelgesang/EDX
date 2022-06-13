@@ -38,18 +38,23 @@ export default class Scan extends BaseCommand<typeof Scan.flags> {
     }
 
     CliUx.ux.action.start(`Scanning ${domainArray.length} websites`);
-    // const sh = new ScanHelper(BaseCommand.formattedDate(), flags);
+
+    const sh = await scanHelper(BaseCommand.formattedDate(), flags);
+    this.log('Performing scans with the following facets:', 'info');
+    for (const item of sh.facets) {
+      this.log(` > ${item}`, 'info');
+    }
+
     // iterate over list of domains
     for (const item of domainArray) {
-      // construct a scanner
-      // eslint-disable-next-line no-await-in-loop
-      const sh = await scanHelper(BaseCommand.formattedDate(), flags);
-      // produce outputs
       // eslint-disable-next-line no-await-in-loop
       await scan(sh, await createHttpsUrl(item));
     }
 
     // write results
-    CliUx.ux.action.stop(`Hey, we did the thing`);
+    CliUx.ux.action.stop(
+      `Scan complete, results written to ${sh.outputDirectory}`,
+    );
+    this.exit(1);
   }
 }

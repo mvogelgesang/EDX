@@ -23,18 +23,18 @@ export function isCountedSite(data: ATWebsiteFields): boolean {
 
 /**
  * Given a JSON object, writes contents to a file
- * @param {any[] | any} jsonData valid json object
+ * @param {any[] | any} jsObject valid js object
  * @param {string} path desired output path
  * @param {string} filename description of the data to be written.
  * @param {string} date if provided, prepends todays date to the file name e.g., {todays date}_filename.json
  * @return {void}
  */
-export function writeJSONFile(
-  jsonData: any[] | any,
+export const writeJSONFile = async (
+  jsObject: any[] | any,
   path: string,
   filename: string,
   date?: string,
-): void {
+): Promise<void> => {
   path = path.endsWith('/') ? path : `${path}/`;
   fs.mkdir(path, { recursive: true }, (dirErr: any) => {
     if (dirErr) console.error(dirErr);
@@ -43,14 +43,14 @@ export function writeJSONFile(
 
   fs.writeFile(
     `${path}${date}${filename}.json`,
-    JSON.stringify(jsonData),
+    JSON.stringify(jsObject),
     (err: any) => {
       if (err) {
         console.error(err);
       }
     },
   );
-}
+};
 
 /**
  * Constructs a url consisting of scheme, subdomain, domain, tld, path, and query string

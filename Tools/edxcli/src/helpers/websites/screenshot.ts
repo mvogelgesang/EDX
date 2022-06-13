@@ -4,13 +4,12 @@ import { printHash } from '../global/utils';
 export const screenshot = async (
   sh: ScanHelper,
   domain: URL,
-): Promise<Screenshot[]> => {
-  const screenshotArray: Screenshot[] = [];
+): Promise<ScreenshotType[]> => {
+  const screenshotArray: ScreenshotType[] = [];
   const page = await sh.browser.newPage();
   page.on('dialog', async (dialog) => {
     await dialog.accept();
   });
-  console.log('cycling through devices');
   for (const device in sh.devices) {
     if (Object.prototype.hasOwnProperty.call(sh.devices, device)) {
       // eslint-disable-next-line no-await-in-loop
@@ -19,7 +18,7 @@ export const screenshot = async (
       await page.goto(domain.toString());
       // eslint-disable-next-line no-await-in-loop
       const pageHash = await printHash(domain.toString());
-      const imgPath = `${sh.outputDirectory}${sh.formattedDate}/${domain.hostname}_${device}_${pageHash}.png`;
+      const imgPath = `${sh.outputDirectory}/${domain.hostname}_${device}_${pageHash}.png`;
       // eslint-disable-next-line no-await-in-loop
       await page.screenshot({
         path: imgPath,
@@ -38,7 +37,7 @@ export const screenshot = async (
   return screenshotArray;
 };
 
-export type Screenshot = {
+export type ScreenshotType = {
   domain: string;
   url: string;
   imgPath: string;

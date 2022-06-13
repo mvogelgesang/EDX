@@ -2,19 +2,41 @@ import puppeteer from 'puppeteer';
 import * as fs from 'node:fs';
 import { browser } from '../../browser';
 import { printHash, writeJSONFile } from '../global/utils';
+import { WebsiteReportType, websiteReport } from './website-report';
 import { screenshot } from './screenshot';
-import { WebsiteReport, websiteReport } from './website-report';
+
+export const scan = async (sh: ScanHelper, domain: URL): Promise<void> => {
+  // websiteReport forms the shell that all facets fit into
+  const report = websiteReport(domain, sh);
+  const path = `${sh.outputDirectory}/`;
+
+  // create the directory
+  fs.mkdir(path, { recursive: true }, function (dirErr: any) {
+    if (dirErr) {
+      console.error(dirErr);
+    }
+  });
+  if (sh.facets.includes(<facetType>'screenshot')) {
+    report.screenCapture.data = await screenshot(sh, domain);
+  }
+
+  // scan complete
+  report.endTime = new Date().toISOString();
+  // write the report
+  await buildOutput(sh, report);
+};
 
 export const scanHelper = async (
   formattedDate: string,
   flags: any,
 ): Promise<ScanHelper> => {
+  const cleanedFacets = flags.facets === '' ? [] : flags.facets.split(',');
   return {
     formattedDate: formattedDate,
-    outputDirectory: flags.output || 'data/',
+    outputDirectory: flags.output || `data/${formattedDate}`,
     headless: flags.headless,
     // need function to expand preset into list of facets
-    facets: [...flags.facets.split(','), ...presets(<presetType>flags.preset)],
+    facets: [...cleanedFacets, ...presets(<presetType>flags.preset)],
     preset: flags.preset,
     devices: {
       mobile: puppeteer.devices['iPhone 11 Pro'],
@@ -36,29 +58,17 @@ export const scanHelper = async (
   };
 };
 
-export const scan = async (sh: ScanHelper, domain: URL): Promise<void> => {
-  const report = websiteReport(domain, sh);
-  const path = `${sh.outputDirectory}/${sh.formattedDate}/`;
-
-  fs.mkdir(path, { recursive: true }, function (dirErr: any) {
-    if (dirErr) {
-      console.error(dirErr);
-    }
-  });
-  report.screenCapture.data = await screenshot(sh, domain);
-  await buildOutput(sh, report);
-};
-
 const presets = (preset: presetType): facetType[] => {
   // this can be tightented up to refer to lists of facetTypes
-  const presetMap: Record<string, facetType[]> = {
+  const presetMap: Record<presetType, facetType[]> = {
+    '': [],
     all: [
       'screenshot',
       'lighthouse desktop',
       'lighthouse mobile',
       'it performance metric',
       'site scanner',
-      'uswds',
+      'uswds components',
     ],
     'edx scan': [
       'screenshot',
@@ -66,19 +76,22 @@ const presets = (preset: presetType): facetType[] => {
       'lighthouse mobile',
       'it performance metric',
       'site scanner',
-      'uswds',
+      'uswds components',
     ],
   };
 
   return presetMap[preset];
 };
 
-const buildOutput = async (sh: ScanHelper, websiteReport: WebsiteReport) => {
+const buildOutput = async (
+  sh: ScanHelper,
+  websiteReport: WebsiteReportType,
+) => {
   const pageHash = await printHash(websiteReport.url);
-  writeJSONFile(
-    JSON.stringify(websiteReport),
+  await writeJSONFile(
+    websiteReport,
     sh.outputDirectory,
-    `${websiteReport.domain}_${sh.formattedDate}_${pageHash}.json`,
+    `${websiteReport.domain}_${sh.formattedDate}_${pageHash}`,
   );
 };
 
@@ -87,12 +100,13 @@ const buildOutput = async (sh: ScanHelper, websiteReport: WebsiteReport) => {
  * https://stackoverflow.com/questions/43677527/typescript-type-ignore-case#answer-64932909
  * @param {facetType} facet facetType in mixed case
  * @returns {facetType} in lowercase
- */
+
 function acceptAnyCaseFacetType<T extends string>(
   facet: Lowercase<T> extends facetType ? T : facetType,
 ): facetType {
   return facet.toLowerCase() as facetType;
 }
+ */
 
 export type ScanHelper = {
   formattedDate: string;
@@ -105,7 +119,7 @@ export type ScanHelper = {
   browser: puppeteer.Browser;
 };
 
-export type presetType = 'all' | 'edx scan';
+export type presetType = '' | 'all' | 'edx scan';
 
 export type facetType =
   | 'screenshot'
@@ -113,4 +127,4 @@ export type facetType =
   | 'lighthouse mobile'
   | 'it performance metric'
   | 'site scanner'
-  | 'uswds';
+  | 'uswds components';

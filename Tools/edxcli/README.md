@@ -289,18 +289,18 @@ Scans websites using various modules to capture information about the sites
 
 ```
 USAGE
-  $ edxcli websites scan -d <value> [--loglevel error|warn|info|debug] [-f Analytics|IT Performance
-    Metric|Ligthouse Desktop|Lighthouse Mobile|Screenshot|Site Scanner|USWDS Components] [--headless] [-o <value>] [-p
-    All|Performance Metric]
+  $ edxcli websites scan -d <value> [--loglevel error|warn|info|debug] [-f analytics|it performance
+    metric|ligthouse desktop|lighthouse mobile|screenshot|s1ite scanner|uswds components] [--headless] [-o <value>] [-p
+    |all|edx scan]
 
 FLAGS
   -d, --domains=<value>  (required) Comma-separated list of domains to scan.
-  -f, --facets=<option>  Comma-separated list of facets to use for the scan. e.g. (-m "screenshot,lighthouse,IT Metric")
-                         <options: Analytics|IT Performance Metric|Ligthouse Desktop|Lighthouse Mobile|Screenshot|Site
-                         Scanner|USWDS Components>
-  -o, --output=<value>   [default: data/] Output directory. Defualts to current directory
+  -f, --facets=<option>  Comma-separated list of facets to use for the scan. e.g. (-m "screenshot,lighthouse,it metric")
+                         <options: analytics|it performance metric|ligthouse desktop|lighthouse mobile|screenshot|s1ite
+                         scanner|uswds components>
+  -o, --output=<value>   Output directory. Defualts to current directory
   -p, --preset=<option>  Run a pre-configured suite of scan facets whose results will be output into a single file.
-                         <options: All|Performance Metric>
+                         <options: |all|edx scan>
   --headless             Boolean flag, whether or not to run scans in headless mode. Defaults to true
   --loglevel=<option>    [default: info]
                          <options: error|warn|info|debug>
@@ -324,20 +324,20 @@ Scans websites using various modules to capture information about the sites
 
 ```
 USAGE
-  $ edxcli websites scan bulk [--loglevel error|warn|info|debug] [-d Airtable|Touchpoints] [-f Analytics|IT Performance
-    Metric|Ligthouse Desktop|Lighthouse Mobile|Screenshot|Site Scanner|USWDS Components] [--headless] [-o <value>] [-p
-    All|Performance Metric]
+  $ edxcli websites scan bulk [--loglevel error|warn|info|debug] [-d Airtable|Touchpoints] [-f analytics|it performance
+    metric|ligthouse desktop|lighthouse mobile|screenshot|s1ite scanner|uswds components] [--headless] [-o <value>] [-p
+    |all|edx scan]
 
 FLAGS
   -d, --domains=<option>  Name of the system to pull the list of domains
                           <options: Airtable|Touchpoints>
-  -f, --facets=<option>   Comma-separated list of facets to use for the scan. e.g. (-m "screenshot,lighthouse,IT
-                          Metric")
-                          <options: Analytics|IT Performance Metric|Ligthouse Desktop|Lighthouse Mobile|Screenshot|Site
-                          Scanner|USWDS Components>
-  -o, --output=<value>    [default: data/] Output directory. Defualts to current directory
+  -f, --facets=<option>   Comma-separated list of facets to use for the scan. e.g. (-m "screenshot,lighthouse,it
+                          metric")
+                          <options: analytics|it performance metric|ligthouse desktop|lighthouse mobile|screenshot|s1ite
+                          scanner|uswds components>
+  -o, --output=<value>    Output directory. Defualts to current directory
   -p, --preset=<option>   Run a pre-configured suite of scan facets whose results will be output into a single file.
-                          <options: All|Performance Metric>
+                          <options: |all|edx scan>
   --headless              Boolean flag, whether or not to run scans in headless mode. Defaults to true
   --loglevel=<option>     [default: info]
                           <options: error|warn|info|debug>
