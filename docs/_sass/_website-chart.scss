@@ -3,12 +3,13 @@ $items: 6;
 
 $page-background: #fff;
 $line-background: #eee;
-$chart-color1: #0076d6; // .bg-blue
-$chart-color2: #e66f0e; // .bg-orange
-$chart-color3: #538200; // .bg-green
-$chart-color4: #676cc8; // .bg-indigo
-$chart-color5: #ffbe2e; // .bg-gold
-$chart-color6: #e52207; // .bg-red
+// uses Bang Wong color palette (https://www.nature.com/articles/nmeth.1618) as described at, https://davidmathlogic.com/colorblind/#%23000000-%23E69F00-%2356B4E9-%23009E73-%23F0E442-%230072B2-%23D55E00-%23CC79A7
+$chart-color1: #e69f00;
+$chart-color2: #56b4e9;
+$chart-color3: #d55e00;
+$chart-color4: #0072b2;
+$chart-color5: #009e73;
+$chart-color6: #cc79a7;
 
 .legend {
   height: 25px;
@@ -26,7 +27,14 @@ $chart-color6: #e52207; // .bg-red
 .website-chart {
   width: 100%;
 }
-
+.website-list-element {
+  display: inline-flex;
+  flex: 0 0 10em;
+}
+.website-list-element:target {
+  border: 3px solid #00bde3;
+  padding-bottom: 0.25rem;
+}
 h4.tooltip {
   position: relative; /* making the .tooltip span a container for the tooltip text */
   padding: 1rem 0rem;
