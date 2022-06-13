@@ -8,6 +8,8 @@ export default class Websites extends BaseCommand<typeof Websites.flags> {
     `$ edxcli websites fetch Touchpoints`,
     `$ edxcli websites fetch "Site Scanner"`,
     `$ edxcli websites push`,
+    `$ edxcli websites scan`,
+    `$ edxcli websites scan bulk`,
   ];
 
   static flags = {
