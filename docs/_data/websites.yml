@@ -598,7 +598,7 @@
     max: 1
 - name: corporateapps.gsa.gov
   office: GSA IT
-  subOffice: ICC
+  subOffice: ICEW
   digitalBrandCategory: GSA Business
   typeOfDomain: Informational
   datapointA:
