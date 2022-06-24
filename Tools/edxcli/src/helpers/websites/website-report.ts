@@ -3,6 +3,7 @@ require('dotenv').config();
 import { ScanHelper } from './scan';
 import { ScreenshotType } from './screenshot';
 import { ICuiBanner } from './cui-banner';
+import { IMetadataTags } from './metadata-tags';
 
 /**
  * Represents all data elements in a websiteReport
@@ -32,6 +33,12 @@ export const websiteReport = (
       description: `Looks for the CUI warning banner on site and returns a fuzzy match ranking between 0 and 1 where a higher score indicates a closer match. Two variants of the CUI warning banner exist and scores are provided for both the internal and external variants. Specific language can be found in source and CIO 2100.1M, https://www.gsa.gov/cdnstatic/CIO_21001M_GSA_Information_Technology_(IT)_Security_Policy_03-26-2021_CC044215.pdf`,
       data: [],
     },
+    metadataTags: {
+      description: ``,
+      data: {
+        keywords: [],
+      },
+    },
   };
 };
 
@@ -46,6 +53,7 @@ export type WebsiteReportType = {
   scanStatus: string;
   screenCapture: ScreenshotReport;
   cuiBanner: CuiBannerReport;
+  metadataTags: MetadataTagsReport;
 };
 
 export type ScreenshotReport = {
@@ -56,4 +64,9 @@ export type ScreenshotReport = {
 export type CuiBannerReport = {
   description: string;
   data: ICuiBanner[];
+};
+
+export type MetadataTagsReport = {
+  description: string;
+  data: IMetadataTags;
 };
