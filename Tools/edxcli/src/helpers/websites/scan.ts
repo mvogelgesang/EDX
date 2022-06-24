@@ -5,6 +5,7 @@ import { printHash, writeJSONFile } from '../global/utils';
 import { WebsiteReportType, websiteReport } from './website-report';
 import { screenshot } from './screenshot';
 import { cuiBanner } from './cui-banner';
+import { metadataTags } from './metadata-tags';
 
 export const scan = async (sh: ScanHelper, domain: URL): Promise<void> => {
   // websiteReport forms the shell that all facets fit into
@@ -18,6 +19,10 @@ export const scan = async (sh: ScanHelper, domain: URL): Promise<void> => {
   });
   if (sh.facets.includes(<facetType>'cui banner')) {
     report.cuiBanner.data = await cuiBanner(sh, domain);
+  }
+
+  if (sh.facets.includes(<facetType>'metadata tags')) {
+    report.metadataTags.data = await metadataTags(sh, domain);
   }
 
   if (sh.facets.includes(<facetType>'screenshot')) {
@@ -73,18 +78,20 @@ const presets = (preset: presetType): facetType[] => {
     '': [],
     all: [
       'cui banner',
-      'screenshot',
+      'it performance metric',
       'lighthouse desktop',
       'lighthouse mobile',
-      'it performance metric',
+      'metadata tags',
+      'screenshot',
       'site scanner',
       'uswds components',
     ],
     'edx scan': [
-      'screenshot',
+      'it performance metric',
       'lighthouse desktop',
       'lighthouse mobile',
-      'it performance metric',
+      'metadata tags',
+      'screenshot',
       'site scanner',
       'uswds components',
     ],
@@ -133,9 +140,10 @@ export type presetType = '' | 'all' | 'edx scan';
 
 export type facetType =
   | 'cui banner'
-  | 'screenshot'
+  | 'it performance metric'
   | 'lighthouse desktop'
   | 'lighthouse mobile'
-  | 'it performance metric'
+  | 'metadata tags'
+  | 'screenshot'
   | 'site scanner'
   | 'uswds components';
