@@ -73,18 +73,18 @@ const presets = (preset: presetType): facetType[] => {
     '': [],
     all: [
       'cui banner',
-      'screenshot',
+      'it performance metric',
       'lighthouse desktop',
       'lighthouse mobile',
-      'it performance metric',
+      'screenshot',
       'site scanner',
       'uswds components',
     ],
     'edx scan': [
-      'screenshot',
+      'it performance metric',
       'lighthouse desktop',
       'lighthouse mobile',
-      'it performance metric',
+      'screenshot',
       'site scanner',
       'uswds components',
     ],
@@ -133,9 +133,9 @@ export type presetType = '' | 'all' | 'edx scan';
 
 export type facetType =
   | 'cui banner'
-  | 'screenshot'
+  | 'it performance metric'
   | 'lighthouse desktop'
   | 'lighthouse mobile'
-  | 'it performance metric'
+  | 'screenshot'
   | 'site scanner'
   | 'uswds components';
