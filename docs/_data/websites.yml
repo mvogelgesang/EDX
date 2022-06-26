@@ -620,8 +620,8 @@
     val: 0.875
     max: 1
 - name: digitalcorps.gsa.gov
-  office: TTS
-  subOffice: U.S. Digital Corps
+  office: FAS
+  subOffice: TTS
   digitalBrandCategory: GSA Business
   typeOfDomain: Informational
   datapointA:
