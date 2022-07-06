@@ -7,6 +7,7 @@ import { screenshot } from './screenshot';
 import { cuiBanner } from './cui-banner';
 import { metadataTags } from './metadata-tags';
 import { WebsiteMetadata } from './websites-metadata';
+import { itPerfMetricReport } from './it-performance-metric';
 
 export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   const websiteMetadata = new WebsiteMetadata(domain);
@@ -31,6 +32,10 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   if (pageFound) {
     if (sh.facets.includes(<facetType>'cui banner')) {
       report.cuiBanner.data = await cuiBanner(sh, websiteMetadata.completeUrl);
+    }
+
+    if (sh.facets.includes(<facetType>'it performance metric')) {
+      report.performanceMetric = await itPerfMetricReport(sh, websiteMetadata);
     }
 
     if (sh.facets.includes(<facetType>'metadata tags')) {
