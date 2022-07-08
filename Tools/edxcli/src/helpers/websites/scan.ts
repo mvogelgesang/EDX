@@ -10,6 +10,7 @@ import { WebsiteMetadata } from './websites-metadata';
 import { itPerfMetricReport } from './it-performance-metric';
 import { uswdsComponentsReport } from './uswds-components';
 import { siteScannerReport } from './site-scanner';
+import { lighthouseReport } from './lighthouse';
 
 export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   const websiteMetadata = new WebsiteMetadata(domain);
@@ -38,6 +39,24 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
 
     if (sh.facets.includes(<facetType>'it performance metric')) {
       report.performanceMetric = await itPerfMetricReport(sh, websiteMetadata);
+    }
+
+    // 'lighthouse desktop',
+    if (sh.facets.includes(<facetType>'lighthouse desktop')) {
+      report.lighthouse.desktopData = await lighthouseReport(
+        sh,
+        websiteMetadata,
+        'desktop',
+      );
+    }
+
+    // 'lighthouse mobile',
+    if (sh.facets.includes(<facetType>'lighthouse mobile')) {
+      report.lighthouse.mobileData = await lighthouseReport(
+        sh,
+        websiteMetadata,
+        'mobile',
+      );
     }
 
     if (sh.facets.includes(<facetType>'metadata tags')) {
