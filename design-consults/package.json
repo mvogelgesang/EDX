@@ -6,10 +6,13 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "astro": "^1.0.0-beta.65"
+    "astro": "^1.0.0-beta.65",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.1.1"
   },
   "dependencies": {
     "@uswds/uswds": "^3.0.2"
