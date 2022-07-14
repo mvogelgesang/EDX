@@ -4,7 +4,7 @@ import "@uswds/uswds/css/uswds.css";
 // Hack to get around Astro SSR error, would be better to disable SSR
 // This grabs JS path which is loaded through a script tag
 import uswdsJsPath from "../../node_modules/@uswds/uswds/dist/js/uswds.min.js?url";
-
+import uswdsJsInitPath from "../../node_modules/@uswds/uswds/dist/js/uswds-init.min.js?url";
 import usFlagImagePath from "@uswds/uswds/img/us_flag_small.png";
 import iconDotGovImagePath from "@uswds/uswds/img/icon-dot-gov.svg";
 import iconHttpsImagePath from "@uswds/uswds/img/icon-https.svg";
@@ -22,6 +22,7 @@ const { title } = Astro.props as Props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script src={uswdsJsInitPath}></script>
     <title>{title}</title>
   </head>
   <body>
@@ -120,9 +121,7 @@ const { title } = Astro.props as Props;
 
     <slot></slot>
 
-    <script src={uswdsJsPath}>
-
-    </script>
+    <script src={uswdsJsPath}></script>
   </body>
 </html>
 <style>
