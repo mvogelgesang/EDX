@@ -1,0 +1,54 @@
+---
+const { consultName } = Astro.props;
+---
+
+<h1>{consultName}</h1>
+
+<noscript>Please enable JavaScript to use this app.</noscript>
+
+<ul id="buttonContainer" class="usa-button-group usa-button-group--segmented">
+</ul>
+
+<!-- TODO: iframe height -->
+<iframe id="iframe" src="about:blank" class="grid-col-12"></iframe>
+
+<script>
+  const VIEWS = ["Current", "Proposed", "Diff", "Production"];
+
+  const state = { currentView: "Current" };
+
+  function initialRender() {
+    VIEWS.forEach((view) => {
+      const button = document.createElement("button");
+      button.dataset.view = view;
+      button.className = "view-button usa-button usa-button--outline";
+      button.innerText = view;
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        state.currentView = view;
+        render();
+      });
+
+      const li = document.createElement("li");
+      li.className = "usa-button-group__item";
+      li.appendChild(button);
+
+      document.getElementById("buttonContainer").appendChild(li);
+    });
+
+    render();
+  }
+
+  function render() {
+    document.querySelectorAll(".view-button").forEach((button) => {
+      button.classList.toggle(
+        "usa-button--outline",
+        !(button.dataset.view === state.currentView)
+      );
+    });
+
+    document.getElementById("iframe").src = state.currentView;
+  }
+
+  initialRender();
+</script>
