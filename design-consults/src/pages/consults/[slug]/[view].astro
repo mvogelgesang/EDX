@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Consult from "../../../components/Consult.astro";
+
+// See <https://docs.astro.build/en/reference/api-reference/#getstaticpaths>.
+export function getStaticPaths() {
+  const SLUGS = ["apps_ofco_gsa", "contractdirectory"];
+  // TODO: Can we DRY this out with what's in <Consult>?
+  const VIEWS = ["current", "proposed", "diff", "production"];
+  return SLUGS.flatMap((slug) =>
+    VIEWS.map((view) => ({ params: { slug, view } }))
+  );
+}
+
+const { slug, view } = Astro.params;
+---
+
+<BaseLayout title={`${slug}`}>
+  <Consult slug={slug} currentView={view} />
+</BaseLayout>

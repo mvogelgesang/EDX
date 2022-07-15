@@ -1,54 +1,27 @@
 ---
-const { consultName } = Astro.props;
+const { slug, currentView } = Astro.props;
+
+const VIEWS = ["current", "proposed", "diff", "production"];
 ---
 
-<h1>{consultName}</h1>
-
-<noscript>Please enable JavaScript to use this app.</noscript>
+<h1>{slug}</h1>
 
 <ul id="buttonContainer" class="usa-button-group usa-button-group--segmented">
+  {VIEWS.map((view) => (
+    <li class="usa-button-group__item">
+      <a
+        href={view}
+        class={`usa-button ${
+          currentView === view ? "" : "usa-button--outline"
+        }`}
+      >
+        {view.charAt(0).toUpperCase() + view.slice(1)}
+      </a>
+    </li>
+  ))}
 </ul>
 
 <!-- TODO: iframe height -->
-<iframe id="iframe" src="about:blank" class="grid-col-12"></iframe>
-
-<script>
-  const VIEWS = ["Current", "Proposed", "Diff", "Production"];
-
-  const state = { currentView: "Current" };
-
-  function initialRender() {
-    VIEWS.forEach((view) => {
-      const button = document.createElement("button");
-      button.dataset.view = view;
-      button.className = "view-button usa-button usa-button--outline";
-      button.innerText = view;
-      button.addEventListener("click", (event) => {
-        event.preventDefault();
-        state.currentView = view;
-        render();
-      });
-
-      const li = document.createElement("li");
-      li.className = "usa-button-group__item";
-      li.appendChild(button);
-
-      document.getElementById("buttonContainer").appendChild(li);
-    });
-
-    render();
-  }
-
-  function render() {
-    document.querySelectorAll(".view-button").forEach((button) => {
-      button.classList.toggle(
-        "usa-button--outline",
-        !(button.dataset.view === state.currentView)
-      );
-    });
-
-    document.getElementById("iframe").src = state.currentView;
-  }
-
-  initialRender();
-</script>
+<iframe
+  src={`/consult_assets/${slug}/${currentView}/${slug}.html`}
+  class="grid-col-12"></iframe>
