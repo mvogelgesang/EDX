@@ -42,7 +42,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.875
+    val: 1
     max: 1
 - name: 18f.gsa.gov
   office: FAS
@@ -99,7 +99,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0.75
+    val: 1
     max: 1
   datapointC:
     val: 1
@@ -111,7 +111,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.875
+    val: 1
     max: 1
 - name: accessibility.digital.gov
   office: FAS
@@ -122,7 +122,7 @@
     val: 0.8
     max: 1
   datapointB:
-    val: 0.5
+    val: 0.625
     max: 1
   datapointC:
     val: 1
@@ -217,7 +217,7 @@
     val: 0.625
     max: 1
   datapointC:
-    val: 1
+    val: 0.875
     max: 1
   datapointD:
     val: 0.1
@@ -237,7 +237,7 @@
     val: 0.9
     max: 1
   datapointB:
-    val: 0.75
+    val: 1
     max: 1
   datapointC:
     val: 1
@@ -249,7 +249,7 @@
     val: 1
     max: 1
   datapointF:
-    val: 0.875
+    val: 1
     max: 1
 - name: calc.gsa.gov
   office: FAS
@@ -309,7 +309,7 @@
     val: 0.625
     max: 1
   datapointC:
-    val: 1
+    val: 0.75
     max: 1
   datapointD:
     val: 0.9
@@ -398,10 +398,10 @@
     val: 1
     max: 1
   datapointB:
-    val: 0.625
+    val: 0.75
     max: 1
   datapointC:
-    val: 0.875
+    val: 1
     max: 1
   datapointD:
     val: 0.8
@@ -605,7 +605,7 @@
     val: 0.6
     max: 1
   datapointB:
-    val: 0.625
+    val: 1
     max: 1
   datapointC:
     val: 0.75
@@ -743,7 +743,7 @@
     val: 0.9
     max: 1
   datapointB:
-    val: 0.625
+    val: 0.875
     max: 1
   datapointC:
     val: 1
