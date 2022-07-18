@@ -1,27 +1,44 @@
 ---
 const { slug, currentView } = Astro.props;
 
-const VIEWS = ["current", "proposed", "diff", "production"];
+const VIEWS = [
+  {
+    name: "current",
+    iframeSrc: `/consult_assets/${slug}/current/${slug}.html`,
+  },
+  {
+    name: "proposed",
+    iframeSrc: `/consult_assets/${slug}/proposed/${slug}.html`,
+  },
+  {
+    name: "diff",
+    iframeSrc: `/consult_assets/${slug}/diff.html`,
+  },
+  {
+    name: "production",
+    iframeSrc: "/TODO",
+  },
+];
+
+const { iframeSrc } = VIEWS.find(({ name }) => name === currentView);
 ---
 
 <h1>{slug}</h1>
 
 <ul id="buttonContainer" class="usa-button-group usa-button-group--segmented">
-  {VIEWS.map((view) => (
+  {VIEWS.map(({ name }) => (
     <li class="usa-button-group__item">
       <a
-        href={view}
+        href={name}
         class={`usa-button ${
-          currentView === view ? "" : "usa-button--outline"
+          currentView === name ? "" : "usa-button--outline"
         }`}
       >
-        {view.charAt(0).toUpperCase() + view.slice(1)}
+        {name.charAt(0).toUpperCase() + name.slice(1)}
       </a>
     </li>
   ))}
 </ul>
 
 <!-- TODO: iframe height -->
-<iframe
-  src={`/consult_assets/${slug}/${currentView}/${slug}.html`}
-  class="grid-col-12"></iframe>
+<iframe src={iframeSrc} class="grid-col-12"></iframe>
