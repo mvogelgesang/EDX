@@ -21,3 +21,7 @@ Build
 Preview build
 
     npm run preview
+
+Check types
+
+    npm run check-types
