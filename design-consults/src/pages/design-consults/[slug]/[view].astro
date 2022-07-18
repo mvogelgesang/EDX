@@ -14,5 +14,5 @@ const { slug, view } = Astro.params;
 ---
 
 <BaseLayout title={`${slug}`}>
-  <Consult slug={slug} currentView={view} />
+  <Consult slug={String(slug)} currentView={String(view)} />
 </BaseLayout>

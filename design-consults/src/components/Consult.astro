@@ -1,7 +1,12 @@
 ---
 import { VIEWS } from "../constants";
 
-const { slug, currentView } = Astro.props;
+export interface Props {
+  slug: string;
+  currentView: string;
+}
+
+const { slug, currentView } = Astro.props as Props;
 
 const iframeSrc = `/consult_assets/${slug}/${currentView}.html`;
 ---
