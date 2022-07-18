@@ -1,40 +1,23 @@
 ---
+import { VIEWS } from "../constants";
+
 const { slug, currentView } = Astro.props;
 
-const VIEWS = [
-  {
-    name: "current",
-    iframeSrc: `/consult_assets/${slug}/current/${slug}.html`,
-  },
-  {
-    name: "proposed",
-    iframeSrc: `/consult_assets/${slug}/proposed/${slug}.html`,
-  },
-  {
-    name: "diff",
-    iframeSrc: `/consult_assets/${slug}/diff.html`,
-  },
-  {
-    name: "production",
-    iframeSrc: `/consult_assets/${slug}/production.html`,
-  },
-];
-
-const { iframeSrc } = VIEWS.find(({ name }) => name === currentView);
+const iframeSrc = `/consult_assets/${slug}/${currentView}.html`;
 ---
 
 <h1>{slug}</h1>
 
 <ul id="buttonContainer" class="usa-button-group usa-button-group--segmented">
-  {VIEWS.map(({ name }) => (
+  {VIEWS.map((view) => (
     <li class="usa-button-group__item">
       <a
-        href={name}
+        href={view}
         class={`usa-button ${
-          currentView === name ? "" : "usa-button--outline"
+          currentView === view ? "" : "usa-button--outline"
         }`}
       >
-        {name.charAt(0).toUpperCase() + name.slice(1)}
+        {view.charAt(0).toUpperCase() + view.slice(1)}
       </a>
     </li>
   ))}
