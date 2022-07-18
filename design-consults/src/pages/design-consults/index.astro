@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SLUGS } from "../../constants.js";
+---
+
+<BaseLayout title="Design Consults">
+  <h1>Design Consultations</h1>
+
+  <ul>
+    {SLUGS.map((slug) => (
+      <li>
+        <a href={`${slug}/current`}>{slug}</a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
