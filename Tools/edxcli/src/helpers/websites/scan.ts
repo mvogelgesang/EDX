@@ -5,23 +5,90 @@ import { printHash, writeJSONFile } from '../global/utils';
 import { WebsiteReportType, websiteReport } from './website-report';
 import { screenshot } from './screenshot';
 import { cuiBanner } from './cui-banner';
+import { metadataTags } from './metadata-tags';
+import { WebsiteMetadata } from './websites-metadata';
+import { itPerfMetricReport } from './it-performance-metric';
+import { uswdsComponentsReport } from './uswds-components';
+import { siteScannerReport } from './site-scanner';
+import { lighthouseReport } from './lighthouse';
 
-export const scan = async (sh: ScanHelper, domain: URL): Promise<void> => {
+export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
+  const websiteMetadata = new WebsiteMetadata(domain);
+
   // websiteReport forms the shell that all facets fit into
-  const report = websiteReport(domain, sh);
+  const report = websiteReport(websiteMetadata.completeUrl, sh);
   const path = `${sh.outputDirectory}/`;
+
   // create the directory
   fs.mkdir(path, { recursive: true }, function (dirErr: any) {
     if (dirErr) {
       console.error(dirErr);
     }
   });
-  if (sh.facets.includes(<facetType>'cui banner')) {
-    report.cuiBanner.data = await cuiBanner(sh, domain);
-  }
 
-  if (sh.facets.includes(<facetType>'screenshot')) {
-    report.screenCapture.data = await screenshot(sh, domain);
+  const { pageFound, message } = await initialCheck(
+    sh,
+    websiteMetadata.completeUrl,
+  );
+  report.scanStatus = message;
+
+  if (pageFound) {
+    if (sh.facets.includes(<facetType>'cui banner')) {
+      report.cuiBanner.data = await cuiBanner(sh, websiteMetadata.completeUrl);
+    }
+
+    if (sh.facets.includes(<facetType>'it performance metric')) {
+      report.performanceMetric = await itPerfMetricReport(sh, websiteMetadata);
+    }
+
+    // 'lighthouse desktop',
+    if (sh.facets.includes(<facetType>'lighthouse desktop')) {
+      report.lighthouse.desktopData = await lighthouseReport(
+        sh,
+        websiteMetadata,
+        'desktop',
+      );
+    }
+
+    // 'lighthouse mobile',
+    if (sh.facets.includes(<facetType>'lighthouse mobile')) {
+      report.lighthouse.mobileData = await lighthouseReport(
+        sh,
+        websiteMetadata,
+        'mobile',
+      );
+    }
+
+    if (sh.facets.includes(<facetType>'metadata tags')) {
+      report.metadataTags.data = await metadataTags(
+        sh,
+        websiteMetadata.completeUrl,
+      );
+    }
+
+    if (sh.facets.includes(<facetType>'screenshot')) {
+      report.screenCapture.data = await screenshot(
+        sh,
+        websiteMetadata.completeUrl,
+      );
+    }
+
+    if (sh.facets.includes(<facetType>'site scanner')) {
+      const scanReport = await siteScannerReport(websiteMetadata);
+      if (scanReport) report.siteScanner.data = scanReport;
+    }
+
+    if (sh.facets.includes(<facetType>'uswds components')) {
+      report.uswdsComponents = await uswdsComponentsReport(
+        sh,
+        websiteMetadata.completeUrl,
+      );
+    }
+
+    // If Site Scanner returns true for DAP but IT Perf metric does not, overwrite the value
+    if (report.siteScanner.data.dap_detected_final_url) {
+      report.performanceMetric.dap = true;
+    }
   }
 
   // scan complete
@@ -73,18 +140,20 @@ const presets = (preset: presetType): facetType[] => {
     '': [],
     all: [
       'cui banner',
-      'screenshot',
+      'it performance metric',
       'lighthouse desktop',
       'lighthouse mobile',
-      'it performance metric',
+      'metadata tags',
+      'screenshot',
       'site scanner',
       'uswds components',
     ],
     'edx scan': [
-      'screenshot',
+      'it performance metric',
       'lighthouse desktop',
       'lighthouse mobile',
-      'it performance metric',
+      'metadata tags',
+      'screenshot',
       'site scanner',
       'uswds components',
     ],
@@ -93,11 +162,24 @@ const presets = (preset: presetType): facetType[] => {
   return presetMap[preset];
 };
 
+const initialCheck = async function (sh: ScanHelper, url: URL) {
+  const scanStatus = { pageFound: true, message: 'Page loaded successfully' };
+  const page = await sh.browser.newPage();
+  await page
+    .goto(url.toString(), { waitUntil: 'networkidle2' })
+    .catch((error) => {
+      console.error('Initial check error:', error);
+      scanStatus.pageFound = false;
+      scanStatus.message = `Initial check error: ${error}`;
+    });
+  return scanStatus;
+};
+
 const buildOutput = async (
   sh: ScanHelper,
   websiteReport: WebsiteReportType,
 ) => {
-  const pageHash = await printHash(websiteReport.url);
+  const pageHash = await printHash(websiteReport.domain);
   await writeJSONFile(
     websiteReport,
     sh.outputDirectory,
@@ -133,9 +215,10 @@ export type presetType = '' | 'all' | 'edx scan';
 
 export type facetType =
   | 'cui banner'
-  | 'screenshot'
+  | 'it performance metric'
   | 'lighthouse desktop'
   | 'lighthouse mobile'
-  | 'it performance metric'
+  | 'metadata tags'
+  | 'screenshot'
   | 'site scanner'
   | 'uswds components';
