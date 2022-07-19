@@ -38,6 +38,13 @@ export const preset = Flags.build({
   default: '',
 });
 
+export const resume = Flags.boolean({
+  description:
+    'Resumes a previously launched operation. If a local cache file is not found, begins the process from scratch.',
+  default: false,
+  allowNo: false,
+});
+
 export const headless = Flags.boolean({
   description:
     'Boolean flag, whether or not to run scans in headless mode. Defaults to true',

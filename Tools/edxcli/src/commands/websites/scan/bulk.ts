@@ -6,6 +6,7 @@ import {
   headless,
   output,
   preset,
+  resume,
 } from '../../../flags/scan';
 import { isCountedSite } from '../../../helpers/global/utils';
 import { FetchHelper } from '../../../helpers/websites/fetch';
@@ -15,7 +16,10 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
   static description =
     'Scans websites using various modules to capture information about the sites';
 
-  static examples = [`$ edxcli websites scan bulk -d Touchpoints`];
+  static examples = [
+    `$ edxcli websites scan bulk -d Touchpoints`,
+    `$ edxcli websites scan bulk -d Touchpoints --resume`,
+  ];
 
   static flags = {
     ...BaseCommand.flags,
@@ -24,6 +28,7 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
     headless: headless,
     output: output(),
     preset: preset(),
+    resume: resume,
   };
 
   async run(): Promise<void> {
@@ -61,12 +66,19 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
       this.log(` > ${item}`, 'debug');
     }
 
+    this.config.runHook('state_manager:create', {
+      command: 'website scan bulk',
+      data: domainArray,
+    });
     this.log('\nScanning websites: ', 'debug');
     // iterate over list of domains
     for (const item of domainArray) {
       this.log(` > ${item}`, 'debug');
       // eslint-disable-next-line no-await-in-loop
       await scan(sh, item);
+      this.config.runHook('state_manager:update', {
+        command: 'website scan bulk',
+      });
     }
 
     sh.browser.close();

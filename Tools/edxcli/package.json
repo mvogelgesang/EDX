@@ -62,6 +62,12 @@
     "bin": "edxcli",
     "dirname": "edxcli",
     "commands": "./dist/commands",
+    "hooks": {
+      "state_manager:create": "./dist/hooks/state_manager/create",
+      "state_manager:delete": "./dist/hooks/state_manager/delete",
+      "state_manager:retrieve": "./dist/hooks/state_manager/retrieve",
+      "state_manager:update": "./dist/hooks/state_manager/update"
+    },
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-plugins"
