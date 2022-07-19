@@ -35,7 +35,28 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
     const { flags } = await this.parse(Bulk);
     let domainArray: string[] = [];
     const fh = new FetchHelper(BaseCommand.formattedDate(), flags);
-    if (flags.domains === 'Touchpoints') {
+
+    if (flags.resume) {
+      domainArray = await (
+        await this.config.runHook('state_manager:retrieve', {
+          command: Bulk.name,
+        })
+      ).successes[0].result;
+    }
+
+    if (domainArray.length > 0) {
+      this.log(
+        `Resuming previous operation with ${domainArray.length} records.`,
+        'info',
+      );
+    } else {
+      this.log(
+        `Records from the previous operation were not found, fetching fresh data.`,
+        'info',
+      );
+    }
+
+    if (flags.domains === 'Touchpoints' && domainArray.length === 0) {
       const tpData = await fh.getTouchpointsWebsites();
 
       // eslint-disable-next-line unicorn/no-array-reduce
@@ -66,8 +87,8 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
       this.log(` > ${item}`, 'debug');
     }
 
-    this.config.runHook('state_manager:create', {
-      command: 'website scan bulk',
+    await this.config.runHook('state_manager:create', {
+      command: Bulk.name,
       data: domainArray,
     });
     this.log('\nScanning websites: ', 'debug');
@@ -77,7 +98,7 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
       // eslint-disable-next-line no-await-in-loop
       await scan(sh, item);
       this.config.runHook('state_manager:update', {
-        command: 'website scan bulk',
+        command: Bulk.name,
       });
     }
 
