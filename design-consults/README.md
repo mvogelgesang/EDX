@@ -33,7 +33,7 @@ Check types
 1. Create new directories.
 
 - Create `public/consult_assets/<consult_domain>` e.g. `public/consult_assets/govtservice_gsa` for govtservice.gsa.gov.
-- Create `src/consult_assets/<consult_domain>` using the same name
+- Create `src/pages/consult_assets/<consult_domain>` using the same name
 - Add the name to `SLUGS` in `constants.ts` (this dynamically generates consult pages from those directories).
 
 2. Download the consult site assets and move into the microsite.
@@ -51,7 +51,10 @@ Check types
 
 4. Create diff.
 
-- TODO: instructions for generating diff saved in `src/pages/consult_assets/<consult_name>/diff.md`
+    echo "```diff" >> src/pages/consult_assets/<consult_domain>/diff.md
+    git diff --no-index --output=src/pages/consult_assets/<consult_domain>/diff.md current.html proposed.html 
+    echo "```" >> src/pages/consult_assets/<consult_domain>/diff.md
+
 - Add temporary "work in progress" message to `src/pages/consult_assets/<consult_name>/production.md`, this will later show finished work.
 
 5. Update production tab.
