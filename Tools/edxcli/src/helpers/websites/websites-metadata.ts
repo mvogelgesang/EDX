@@ -363,9 +363,9 @@ const data: Record<string, IWebsiteAttributes> = {
     cookies: { name: '', value: '', domain: '', path: '' },
     customPrivacyPolicy: false,
     searchNotReq: true,
-    wwwPrefix: '',
+    wwwPrefix: 'www.',
     queryString: '',
-    urlPath: '',
+    urlPath: '/PPRT/s/',
     notes: '',
   },
   'realpropertyprofile.gov': {
