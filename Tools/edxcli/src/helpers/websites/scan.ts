@@ -109,7 +109,7 @@ export const scanHelper = async (
       : flags.facets.split(',').map((val: string) => val.trim());
   return {
     formattedDate: formattedDate,
-    outputDirectory: flags.output || `data/${formattedDate}`,
+    outputDirectory: flags.output || `data/scans/${formattedDate}`,
     headless: flags.headless,
     // need function to expand preset into list of facets
     facets: [...cleanedFacets, ...presets(<presetType>flags.preset)],
