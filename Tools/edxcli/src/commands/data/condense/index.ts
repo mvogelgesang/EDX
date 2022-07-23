@@ -17,11 +17,11 @@ export default class Condense extends BaseCommand<typeof Condense.flags> {
     ...BaseCommand.flags,
     folders: Flags.string({
       char: 'f',
-      description: 'Output directory. Defualts to current directory',
-      default: 'data/',
+      description:
+        'List of comma-separated folders within the /data/condensedData directory.',
       required: false,
     }),
-    output: output({ default: '.' }),
+    output: output({ default: '/data/condensedData' }),
     preset: Flags.string({
       char: 'p',
       description: 'A collection of fields to extract into CSV',

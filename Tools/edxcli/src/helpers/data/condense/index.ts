@@ -84,26 +84,27 @@ export class CondenseHelper {
   }
 
   async run(): Promise<void> {
-    // const folderArray = this.folderList ? this.folderList.split(',') : [];
-    /* if (folderArray.length > 0) {
-    for (var folder in folderArray) {
-      const dirName = `data/${folderArray[folder]}`;
-      await findFiles(dirName);
+    const folderArray = this.folderList ? this.folderList.split(',') : [];
+    if (folderArray.length > 0) {
+      for (const folder in folderArray) {
+        if (Object.prototype.hasOwnProperty.call(folderArray, folder)) {
+          const dirName = `data/scans/${folderArray[folder]}`;
+          // eslint-disable-next-line no-await-in-loop
+          await this.findFiles(dirName);
+        }
+      }
+    } else {
+      console.log(
+        `consolidating entire data/scans/ directory. You can specify a subset of folders by passing the --folders parameter. This expects the folder to be present in the data/scans directory.`,
+      );
+      await this.findFiles('data/scans');
     }
-  } else { */
-    console.log(`consolidating entire data/ directory. You can specify a subset of folders by passing the --folders parameter. This expects the folder to be present in the data/ directory. 
-    npm run condense -- --folders="folder1,folder2"
-    `);
 
-    const dirName = `data/20220722`;
-    await this.findFiles(dirName);
     const extractData = await Promise.all(this.fileParsePromiseArray).then(
       (values) => {
         return this.extractDataPoints(values);
       },
     );
-    console.log(extractData);
     this.csvWriter.write(extractData);
-    // }
   }
 }
