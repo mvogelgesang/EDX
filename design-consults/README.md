@@ -28,6 +28,10 @@ Check types
 
     npm run check-types
 
+## Deploy
+
+Changes to the `main` branch in the `design-consults` directory will kick off a deploy with GitHub Actions.
+
 ## Adding new consults
 
 1. Create new directories.
