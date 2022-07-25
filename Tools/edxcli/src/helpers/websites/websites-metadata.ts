@@ -350,6 +350,15 @@ const data: Record<string, IWebsiteAttributes> = {
     urlPath: '',
     notes: '',
   },
+  'phdc-pub.gsa.gov': {
+    cookies: { name: '', value: '', domain: '', path: '' },
+    customPrivacyPolicy: false,
+    searchNotReq: false,
+    wwwPrefix: '',
+    queryString: '',
+    urlPath: '/vcssregistration/Default.aspx',
+    notes: '',
+  },
   'portal.eos.gsa.gov': {
     cookies: { name: '', value: '', domain: '', path: '' },
     customPrivacyPolicy: false,
