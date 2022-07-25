@@ -18,7 +18,7 @@ export default class Condense extends BaseCommand<typeof Condense.flags> {
     folders: Flags.string({
       char: 'f',
       description:
-        'List of comma-separated folders within the /data/condensedData directory.',
+        'List of comma-separated folders within the /data/scans directory.',
       required: false,
     }),
     output: output({ default: '/data/condensedData' }),
@@ -39,7 +39,7 @@ export default class Condense extends BaseCommand<typeof Condense.flags> {
     CliUx.ux.action.start(
       `Consolidating data from the following folders ${flags.folders} into ${flags.output}.`,
     );
-    ch.run();
+    await ch.run();
     CliUx.ux.action.stop(' complete');
   }
 }
