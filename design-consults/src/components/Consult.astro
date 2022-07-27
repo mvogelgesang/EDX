@@ -1,0 +1,34 @@
+---
+import { VIEWS } from "../constants";
+
+export interface Props {
+  slug: string;
+  currentView: string;
+}
+
+const { slug, currentView } = Astro.props as Props;
+
+const iframeSrc = `/consult_assets/${slug}/${currentView}.html`;
+---
+
+<h1>{slug}</h1>
+
+<ul id="buttonContainer" class="usa-button-group usa-button-group--segmented">
+  {VIEWS.map((view) => (
+    <li class="usa-button-group__item">
+      <a
+        href={view}
+        class={`usa-button ${
+          currentView === view ? "" : "usa-button--outline"
+        }`}
+      >
+        {view.charAt(0).toUpperCase() + view.slice(1)}
+      </a>
+    </li>
+  ))}
+</ul>
+
+<iframe
+  src={iframeSrc}
+  class="grid-col-12 flex-1 width-viewport"
+  frameborder="0"></iframe>

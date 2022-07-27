@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Consult from "../../../components/Consult.astro";
+import { SLUGS, VIEWS } from "../../../constants";
+
+// See <https://docs.astro.build/en/reference/api-reference/#getstaticpaths>.
+export function getStaticPaths() {
+  return SLUGS.flatMap((slug) =>
+    VIEWS.map((view) => ({ params: { slug, view } }))
+  );
+}
+
+const { slug, view } = Astro.params;
+---
+
+<BaseLayout title={`${slug}`}>
+  <Consult slug={String(slug)} currentView={String(view)} />
+</BaseLayout>
