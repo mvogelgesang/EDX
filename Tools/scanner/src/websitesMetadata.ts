@@ -317,6 +317,15 @@ export const websiteMetaData: Record<string, WebsiteMetadata> = {
     urlPath: "",
     notes: "",
   },
+  'phdc-pub.gsa.gov': {
+    cookies: { name: '', value: '', domain: '', path: '' },
+    customPrivacyPolicy: false,
+    searchNotReq: false,
+    wwwPrefix: '',
+    queryString: '',
+    urlPath: '/vcssregistration/Default.aspx',
+    notes: '',
+  },
   "portal.eos.gsa.gov": {
     cookies: { name: "", value: "", domain: "", path: "" },
     customPrivacyPolicy: false,
@@ -330,9 +339,9 @@ export const websiteMetaData: Record<string, WebsiteMetadata> = {
     cookies: { name: "", value: "", domain: "", path: "" },
     customPrivacyPolicy: false,
     searchNotReq: true,
-    wwwPrefix: "",
+    wwwPrefix: "www.",
     queryString: "",
-    urlPath: "",
+    urlPath: "/PPRT/s/",
     notes: "",
   },
   "realpropertyprofile.gov": {

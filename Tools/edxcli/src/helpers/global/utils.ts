@@ -38,7 +38,7 @@ export const writeJSONFile = async (
   path = path.endsWith('/') ? path : `${path}/`;
   fs.mkdirSync(path, { recursive: true });
   date = date ? `${date}_` : '';
-  fs.writeFileSync(`${path}${date}${filename}.json`, JSON.stringify(jsObject));
+  fs.writeFileSync(`${path}/${date}${filename}.json`, JSON.stringify(jsObject));
 };
 
 /**

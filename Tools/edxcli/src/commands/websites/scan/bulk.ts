@@ -6,6 +6,7 @@ import {
   headless,
   output,
   preset,
+  resume,
 } from '../../../flags/scan';
 import { isCountedSite } from '../../../helpers/global/utils';
 import { FetchHelper } from '../../../helpers/websites/fetch';
@@ -15,7 +16,10 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
   static description =
     'Scans websites using various modules to capture information about the sites';
 
-  static examples = [`$ edxcli websites scan bulk -d Touchpoints`];
+  static examples = [
+    `$ edxcli websites scan bulk -d Touchpoints`,
+    `$ edxcli websites scan bulk -d Touchpoints --resume`,
+  ];
 
   static flags = {
     ...BaseCommand.flags,
@@ -24,13 +28,35 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
     headless: headless,
     output: output(),
     preset: preset(),
+    resume: resume,
   };
 
   async run(): Promise<void> {
     const { flags } = await this.parse(Bulk);
     let domainArray: string[] = [];
     const fh = new FetchHelper(BaseCommand.formattedDate(), flags);
-    if (flags.domains === 'Touchpoints') {
+
+    if (flags.resume) {
+      domainArray = await (
+        await this.config.runHook('state_manager:retrieve', {
+          command: Bulk.name,
+        })
+      ).successes[0].result;
+    }
+
+    if (domainArray.length > 0) {
+      this.log(
+        `Resuming previous operation with ${domainArray.length} records.`,
+        'info',
+      );
+    } else {
+      this.log(
+        `Records from the previous operation were not found, fetching fresh data.`,
+        'info',
+      );
+    }
+
+    if (flags.domains === 'Touchpoints' && domainArray.length === 0) {
       const tpData = await fh.getTouchpointsWebsites();
 
       // eslint-disable-next-line unicorn/no-array-reduce
@@ -61,12 +87,19 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
       this.log(` > ${item}`, 'debug');
     }
 
+    await this.config.runHook('state_manager:create', {
+      command: Bulk.name,
+      data: domainArray,
+    });
     this.log('\nScanning websites: ', 'debug');
     // iterate over list of domains
     for (const item of domainArray) {
       this.log(` > ${item}`, 'debug');
       // eslint-disable-next-line no-await-in-loop
       await scan(sh, item);
+      this.config.runHook('state_manager:update', {
+        command: Bulk.name,
+      });
     }
 
     sh.browser.close();
