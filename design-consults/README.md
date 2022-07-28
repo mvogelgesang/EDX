@@ -56,7 +56,7 @@ Changes to the `main` branch in the `design-consults` directory will kick off a 
 4. Create diff.
 
 - TODO: instructions for generating diff saved in `src/pages/consult_assets/<consult_name>/diff.md`
-- Add temporary "work in progress" message to `src/pages/consult_assets/<consult_name>/production.md`, this will later show finished work.
+- Add temporary "Yet to launch" message to `public/<consult_name>/production.html`, this will later show finished work.
 
 5. Update production tab.
 
