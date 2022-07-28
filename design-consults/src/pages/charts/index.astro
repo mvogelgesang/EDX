@@ -183,7 +183,7 @@ const cssClass = "";
               flex-wrap: wrap;
               justify-content: space-evenly;
               gap: 3rem 2rem;
-            ">
+            " id="website-list">
                     {chartData.map((data, index) => <WebsiteChart cssClass="" datapointA={data.datapointA}
                         datapointB={data.datapointB} datapointC={data.datapointC} datapointD={data.datapointD}
                         datapointE={data.datapointE}
@@ -196,6 +196,33 @@ const cssClass = "";
     </div>
 
     <script>
+        const dataAttributesList = document.querySelectorAll("#website-list h4");
+        const sectionNumber = [
+            { num: 'one', val: 'data-datapointaval', max: 'data-datapointamax' },
+            { num: 'two', val: 'data-datapointbval', max: 'data-datapointbmax' },
+            { num: 'three', val: 'data-datapointcval', max: 'data-datapointcmax' },
+            { num: 'four', val: 'data-datapointdval', max: 'data-datapointdmax' },
+            { num: 'five', val: 'data-datapointeval', max: 'data-datapointemax' },
+            { num: 'six', val: 'data-datapointfval', max: 'data-datapointfmax' }
+        ];
+        for (const item in dataAttributesList) {
+            // update css vars
+            if (Object.prototype.hasOwnProperty.call(dataAttributesList, item)) {
+                for (const val in sectionNumber) {
+                    const selector = document.querySelector(`#site-${item} .${sectionNumber[val].num}`)
+                    console.log(selector)
+                    selector.style.setProperty(
+                        `--value`, dataAttributesList[item].getAttribute(sectionNumber[val].val))
+                    selector.style.setProperty(
+                        `--max`, dataAttributesList[item].getAttribute(sectionNumber[val].max))
+                    if (sectionNumber[val].val === "0") {
+                        selector.setAttribute("class", "zeroValue");
+
+                    }
+                }
+            }
+        }
+
         // this sets up search using listjs
         var options = {
             valueNames: [

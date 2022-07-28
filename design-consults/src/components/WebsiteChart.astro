@@ -9,7 +9,13 @@ const { cssClass, datapointA, datapointB, datapointC, datapointD, datapointE, da
             <!-- the classes listed within the h4 must correspond to identifiers for listjs-->
             <h4 class="usa-accordion__heading name platform uswds office subOffice digitalBrandCategory typeOfDomain"
                 data-name={name} data-office={office} data-subOffice={subOffice}
-                data-digitalBrandCategory="{digitalBrandCategory}" data-typeOfDomain="{typeOfDomain}">
+                data-digitalBrandCategory="{digitalBrandCategory}" data-typeOfDomain="{typeOfDomain}"
+                data-datapointAVal={datapointA.val} data-datapointAMax={datapointA.max}
+                data-datapointBVal={datapointB.val} data-datapointBMax={datapointB.max}
+                data-datapointCVal={datapointC.val} data-datapointCMax={datapointC.max}
+                data-datapointDVal={datapointD.val} data-datapointDMax={datapointD.max}
+                data-datapointEVal={datapointE.val} data-datapointEMax={datapointE.max}
+                data-datapointFVal={datapointF.val} data-datapointFMax={datapointF.max}>
                 <button class="usa-accordion__button" aria-expanded="false" aria-controls={`a-${index}`}>
                     {name}
                 </button>
@@ -59,66 +65,4 @@ const { cssClass, datapointA, datapointB, datapointC, datapointD, datapointE, da
             </g>
         </svg>
     </div>
-
-    <script is:inline define:vars={{index, datapointA, datapointB, datapointC, datapointD, datapointE, datapointF }}>
-        // function lives here since aggregated JS files are placed at the end of the page and this needs to be available at page runtime.
-        function writeCssVar(selector, cssVarPairs) {
-            let element = selector;
-            for (let cssVar in cssVarPairs) {
-                element.style.setProperty(
-                    `--${cssVarPairs[cssVar].name}`,
-                    cssVarPairs[cssVar].value
-                );
-                // --value == 0 results in application of the .zeroValue class which draws a grey arc in place of empty space.
-                if (
-                    cssVarPairs[cssVar].name == "value" &&
-                    cssVarPairs[cssVar].value == 0
-                ) {
-                    element.setAttribute("class", "zeroValue");
-                }
-            }
-        }
-        writeCssVar(
-            document.querySelector(`#site-${index} .one`),
-            [
-                { name: "value", value: datapointA.val },
-                { name: "max", value: datapointA.max },
-            ]
-        );
-        writeCssVar(
-            document.querySelector(`#site-${index} .two`),
-            [
-                { name: "value", value: datapointB.val },
-                { name: "max", value: datapointB.max },
-            ]
-        );
-        writeCssVar(
-            document.querySelector(`#site-${index} .three`),
-            [
-                { name: "value", value: datapointC.val },
-                { name: "max", value: datapointC.max },
-            ]
-        );
-        writeCssVar(
-            document.querySelector(`#site-${index} .four`),
-            [
-                { name: "value", value: datapointD.val },
-                { name: "max", value: datapointD.max },
-            ]
-        );
-        writeCssVar(
-            document.querySelector(`#site-${index} .five`),
-            [
-                { name: "value", value: datapointE.val },
-                { name: "max", value: datapointE.max },
-            ]
-        );
-        writeCssVar(
-            document.querySelector(`#site-${index} .six`),
-            [
-                { name: "value", value: datapointF.val },
-                { name: "max", value: datapointF.max },
-            ]
-        );
-    </script>
 </li>
