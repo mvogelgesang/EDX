@@ -1,5 +1,5 @@
 ---
-import { VIEWS } from "../constants";
+import { VIEWS, BASE_URL } from "../constants";
 
 export interface Props {
   slug: string;
@@ -8,7 +8,14 @@ export interface Props {
 
 const { slug, currentView } = Astro.props as Props;
 
-const iframeSrc = `/consult_assets/${slug}/${currentView}.html`;
+// TODO: Maybe pass this in as a prop? Some options:
+// - the full iframe URL each time (has some duplication)
+// - an optional extension (probably for `diff` only)
+// - an optional boolean indicating whether `.html` is appended
+let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}`;
+if (currentView !== "diff") {
+  iframeSrc += ".html";
+}
 ---
 
 <h1>{slug}</h1>
