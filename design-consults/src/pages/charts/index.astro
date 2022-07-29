@@ -197,7 +197,7 @@ const cssClass = "";
 
     <script>
         const dataAttributesList = document.querySelectorAll("#website-list h4");
-        const sectionNumber = [
+        const dataPoints = [
             { num: 'one', val: 'data-datapointaval', max: 'data-datapointamax' },
             { num: 'two', val: 'data-datapointbval', max: 'data-datapointbmax' },
             { num: 'three', val: 'data-datapointcval', max: 'data-datapointcmax' },
@@ -208,14 +208,14 @@ const cssClass = "";
         for (const item in dataAttributesList) {
             // update css vars
             if (Object.prototype.hasOwnProperty.call(dataAttributesList, item)) {
-                for (const val in sectionNumber) {
-                    const selector = document.querySelector(`#site-${item} .${sectionNumber[val].num}`)
+                for (const point in dataPoints) {
+                    const selector = document.querySelector(`#site-${item} .${dataPoints[point].num}`)
                     console.log(selector)
                     selector.style.setProperty(
-                        `--value`, dataAttributesList[item].getAttribute(sectionNumber[val].val))
+                        `--value`, dataAttributesList[item].getAttribute(dataPoints[point].val))
                     selector.style.setProperty(
-                        `--max`, dataAttributesList[item].getAttribute(sectionNumber[val].max))
-                    if (sectionNumber[val].val === "0") {
+                        `--max`, dataAttributesList[item].getAttribute(dataPoints[point].max))
+                    if (dataPoints[point].val === "0") {
                         selector.setAttribute("class", "zeroValue");
 
                     }
