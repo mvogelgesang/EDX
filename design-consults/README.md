@@ -43,24 +43,24 @@ Changes to the `main` branch in the `design-consults` directory will kick off a 
 2. Download the consult site assets and move into the microsite.
 
 - Navigate to homepage of site, right click and save the page with the "Webpage, Complete" format.
-- Move downloaded html to `public/consult_assets/<consult_domain>/current.html`.
+- Move downloaded html to `public/consult_assets/<consult_domain>/current/index.html`.
 - Move site resources (`Website Name_files`) to `public/consult_assets/<consult_domain>/<consult_domain>_files`.
-- Update links to assets in `current.html` to use `<consult_domain>_files`.
+- Update links to assets in `current/index.html` to use `<consult_domain>_files`.
 - The consult page and current tab should be visible running locally, but will not have working styles or scripts.
 
 3. Make proposed changes.
 
-- Copy `current.html` to `proposed.html`.
+- Copy `current/index.html` to `proposed/index.html`.
 - Make proposed changes, using USWDS assets from `public/vendor/uswds` and images from `public/assets/img`.
 
 4. Create diff.
 
 - TODO: instructions for generating diff saved in `src/pages/consult_assets/<consult_name>/diff.md`
-- Add temporary "Yet to launch" message to `public/<consult_name>/production.html`, this will later show finished work.
+- Add temporary "Yet to launch" message to `src/pages/consult_assets/<consult_name>/production.md`, this will later show finished work.
 
 5. Update production tab.
 
-- After site has been updated, follow the same process for adding `current.html` with the updated site, moving new html to `public/consult_assets/<consult_name>/production.html`.
+- After site has been updated, follow the same process for adding `current.html` with the updated site, moving new html to `public/consult_assets/<consult_name>/production/index.html`.
 - Remove temporary `src/pages/consult_assets/<consult_name>/production.md`
 
 ## Project structure

@@ -1,5 +1,3 @@
 ---
-setup: import "../../../../public/vendor/uswds/css/uswds.min.css";
+layout: ../../../layouts/ProductionPlaceholder.astro
 ---
-
-# Yet to launch!

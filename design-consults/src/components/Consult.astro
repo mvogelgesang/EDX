@@ -12,10 +12,7 @@ const { slug, currentView } = Astro.props as Props;
 // - the full iframe URL each time (has some duplication)
 // - an optional extension (probably for `diff` only)
 // - an optional boolean indicating whether `.html` is appended
-let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}`;
-if (currentView !== "diff") {
-  iframeSrc += ".html";
-}
+let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}/index.html`;
 ---
 
 <h1>{slug}</h1>
