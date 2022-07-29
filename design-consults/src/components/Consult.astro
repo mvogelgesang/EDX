@@ -8,10 +8,6 @@ export interface Props {
 
 const { slug, currentView } = Astro.props as Props;
 
-// TODO: Maybe pass this in as a prop? Some options:
-// - the full iframe URL each time (has some duplication)
-// - an optional extension (probably for `diff` only)
-// - an optional boolean indicating whether `.html` is appended
 let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}/index.html`;
 ---
 
