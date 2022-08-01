@@ -1,5 +1,5 @@
 ---
-import { VIEWS } from "../constants";
+import { VIEWS, BASE_URL } from "../constants";
 
 export interface Props {
   slug: string;
@@ -8,7 +8,7 @@ export interface Props {
 
 const { slug, currentView } = Astro.props as Props;
 
-const iframeSrc = `/consult_assets/${slug}/${currentView}.html`;
+let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}/index.html`;
 ---
 
 <h1>{slug}</h1>
