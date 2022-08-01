@@ -210,7 +210,6 @@ const cssClass = "";
             if (Object.prototype.hasOwnProperty.call(dataAttributesList, item)) {
                 for (const point in dataPoints) {
                     const selector = document.querySelector(`#site-${item} .${dataPoints[point].num}`)
-                    console.log(selector)
                     selector.style.setProperty(
                         `--value`, dataAttributesList[item].getAttribute(dataPoints[point].val))
                     selector.style.setProperty(

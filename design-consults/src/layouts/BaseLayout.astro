@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import { USWDS_PATH } from "../constants";
 
 export interface Props {
   title: string;
@@ -14,9 +15,9 @@ const { title } = Astro.props as Props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/vendor/uswds/css/uswds.min.css" />
+    <link rel="stylesheet" href={`${USWDS_PATH}css/uswds.min.css`} />
     <!-- TODO: Fix script tag formatting -->
-    <script is:inline src="/vendor/uswds/js/uswds-init.min.js">
+    <script is:inline src={`${USWDS_PATH}js/uswds-init.min.js`}>
 
     </script>
     <title>{title}</title>
@@ -33,7 +34,7 @@ const { title } = Astro.props as Props;
     </main>
 
     <!-- TODO: Fix script tag formatting -->
-    <script is:inline src="/vendor/uswds/js/uswds.min.js">
+    <script is:inline src={`${USWDS_PATH}js/uswds.min.js`}>
 
     </script>
   </body>
