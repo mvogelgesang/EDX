@@ -1,0 +1,68 @@
+---
+const { cssClass, datapointA, datapointB, datapointC, datapointD, datapointE, datapointF, digitalBrandCategory, index, name, office, subOffice, typeOfDomain } = Astro.props
+---
+
+<li data-id={index} class="website-list-element" id={name}>
+    <div class="website-chart">
+        <!-- accordion -->
+        <div class="usa-accordion usa-accordion--bordered" style="margin-bottom: 1rem">
+            <!-- the classes listed within the h4 must correspond to identifiers for listjs-->
+            <h4 class="usa-accordion__heading name platform uswds office subOffice digitalBrandCategory typeOfDomain"
+                data-name={name} data-office={office} data-subOffice={subOffice}
+                data-digitalBrandCategory="{digitalBrandCategory}" data-typeOfDomain="{typeOfDomain}"
+                data-datapointAVal={datapointA.val} data-datapointAMax={datapointA.max}
+                data-datapointBVal={datapointB.val} data-datapointBMax={datapointB.max}
+                data-datapointCVal={datapointC.val} data-datapointCMax={datapointC.max}
+                data-datapointDVal={datapointD.val} data-datapointDMax={datapointD.max}
+                data-datapointEVal={datapointE.val} data-datapointEMax={datapointE.max}
+                data-datapointFVal={datapointF.val} data-datapointFMax={datapointF.max}>
+                <button class="usa-accordion__button" aria-expanded="false" aria-controls={`a-${index}`}>
+                    {name}
+                </button>
+            </h4>
+            <div id={`a-${index}`} class="usa-accordion__content usa-prose">
+                <a href={`https://${name}`}>{name}</a>
+                <dl>
+                    <dt>URL:</dt>
+                    <dd>{name}</dd>
+                    <dt>Office:</dt>
+                    <dd>{office}</dd>
+                    <dt>Sub-Office:</dt>
+                    <dd>{subOffice}</dd>
+                    <dt>Digital Brand Category:</dt>
+                    <dd>{digitalBrandCategory}</dd>
+                    <dt>Website Type:</dt>
+                    <dd>{typeOfDomain}</dd>
+                    <dt>Customer Centricity:</dt>
+                    <dd>{datapointA.val}</dd>
+                    <dt>Required Links:</dt>
+                    <dd>{datapointB.val}</dd>
+                    <dt>Mobile Performance:</dt>
+                    <dd>{datapointC.val}</dd>
+                    <dt>Accessibility (AMP):</dt>
+                    <dd>{datapointD.val}</dd>
+                    <dt>Google Analytics:</dt>
+                    <dd>{datapointE.val}</dd>
+                    <dt>USWDS:</dt>
+                    <dd>{datapointF.val}</dd>
+                </dl>
+            </div>
+        </div>
+
+        <svg class="" style="display: block; margin: 0 auto" id="graph" height="100" width="100" viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg">
+            <g class="background">
+                <circle cx="50" cy="50" r="50" pathLength="100" />
+            </g>
+
+            <g id={`site-${index}`} class="graph">
+                <circle cx="50" cy="50" class={`one ${cssClass}`} transform="rotate(-90 50 50)" />
+                <circle cx="50" cy="50" class={`two ${cssClass}`} transform="rotate(-30 50 50)" />
+                <circle cx="50" cy="50" class={`three ${cssClass}`} transform="rotate(30 50 50)" />
+                <circle cx="50" cy="50" class={`four ${cssClass}`} transform="rotate(90 50 50)" />
+                <circle cx="50" cy="50" class={`five ${cssClass}`} transform="rotate(150 50 50)" />
+                <circle cx="50" cy="50" class={`six ${cssClass}`} transform="rotate(210 50 50)" />
+            </g>
+        </svg>
+    </div>
+</li>
