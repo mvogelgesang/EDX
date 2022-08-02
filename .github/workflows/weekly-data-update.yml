@@ -28,7 +28,7 @@ jobs:
       working-directory: ./design-consults
     - run: npm run eval:build
       working-directory: ./design-consults
-    - run: npm run get:evals
+    - run: npm run eval:get
       working-directory: ./design-consults
 
     - uses: stefanzweifel/git-auto-commit-action@v4
