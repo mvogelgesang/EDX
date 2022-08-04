@@ -42,13 +42,28 @@ Changes to the `main` branch in the `design-consults` directory will kick off a 
 
 2. Download the consult site assets and move into the microsite.
 
-- Navigate to homepage of site, right click and save the page with the "Webpage, Complete" format.
+- Navigate to homepage of site, right click and save the page with the "Webpage, Complete" format. Alternatively, if `wget` is available, download all content via `wget -p https://<consult_domain>.gov`
 - Move downloaded html to `public/consult_assets/<consult_domain>/current/index.html`.
 - Move site resources (`Website Name_files`) to `public/consult_assets/<consult_domain>/<consult_domain>_files`.
 - Update links to assets in `current/index.html` to use `<consult_domain>_files`.
 - The consult page and current tab should be visible running locally, but will not have working styles or scripts.
 
-3. Make proposed changes.
+*Potential Stumbling Block*
+- Some sites use JS to load/ change assets onHover, onClick, etc. As a result, you may find that upon running `npm run dev` that a slew of 404 errors are presented in the console:
+
+```
+04:05:02 PM [serve]    404 /consult_assets/reginfo/current/reginfo_files/vert_spacer.gif
+04:05:02 PM [serve]    404 /consult_assets/reginfo/current/reginfo_files/spacer.gif
+files in the public directory are served at the root path.
+Instead of /public/img/main/bx_rm.png, use /img/main/bx_rm.png.
+04:05:02 PM [serve]    404               /public/img/main/bx_rm.png
+files in the public directory are served at the root path.
+Instead of /public/img/main/bx_bg.png, use /img/main/bx_bg.png.
+```
+
+- If that is the case, running `wget` is your best bet. Mac users can install wget via homebrew.
+
+1. Make proposed changes.
 
 - Copy `current/index.html` to `proposed/index.html`.
 - Make proposed changes, using USWDS assets from `public/vendor/uswds` and images from `public/assets/img`.
