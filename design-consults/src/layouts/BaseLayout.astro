@@ -4,9 +4,11 @@ import { USWDS_PATH } from "../constants";
 
 export interface Props {
   title: string;
+  wide?: boolean;
 }
 
-const { title } = Astro.props as Props;
+const { title, wide } = Astro.props as Props;
+
 ---
 
 <!DOCTYPE html>
@@ -27,8 +29,8 @@ const { title } = Astro.props as Props;
     <Header />
 
     <!-- bottom padding removed for iframe to extend to bottom of viewport -->
-    <main id="main-content" class="usa-section height-full padding-bottom-0">
-      <div class="grid-container height-full display-flex flex-column">
+    <main id="main-content" class="height-full padding-bottom-0 usa-section">
+      <div class={`height-full display-flex flex-column ${wide ? '' : 'grid-container'}`}>
         <slot></slot>
       </div>
     </main>

@@ -13,6 +13,6 @@ export function getStaticPaths() {
 const { slug, view } = Astro.params;
 ---
 
-<BaseLayout title={`${slug}`}>
+<BaseLayout title={`${slug}`} wide>
   <Consult slug={String(slug)} currentView={String(view)} />
 </BaseLayout>
