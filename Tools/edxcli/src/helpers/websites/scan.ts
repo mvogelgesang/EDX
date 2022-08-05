@@ -11,6 +11,7 @@ import { itPerfMetricReport } from './it-performance-metric';
 import { uswdsComponentsReport } from './uswds-components';
 import { siteScannerReport } from './site-scanner';
 import { lighthouseReport } from './lighthouse';
+import { dnsReport } from './dns';
 
 export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   const websiteMetadata = new WebsiteMetadata(domain);
@@ -31,7 +32,7 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
     websiteMetadata.completeUrl,
   );
   report.scanStatus = message;
-
+  console.log('facets', sh.facets);
   if (pageFound) {
     if (sh.facets.includes(<facetType>'cui banner')) {
       report.cuiBanner.data = await cuiBanner(sh, websiteMetadata.completeUrl);
@@ -85,6 +86,11 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
       );
     }
 
+    if (sh.facets.includes(<facetType>'dns')) {
+      console.log('dns reached');
+      report.dns.data = await dnsReport(sh, websiteMetadata.domain);
+    }
+
     // If Site Scanner returns true for DAP but IT Perf metric does not, overwrite the value
     if (report.siteScanner.data.dap_detected_final_url) {
       report.performanceMetric.dap = true;
@@ -103,10 +109,9 @@ export const scanHelper = async (
   formattedDate: string,
   flags: any,
 ): Promise<ScanHelper> => {
+  console.log(flags.facets);
   const cleanedFacets =
-    flags.facets === ''
-      ? []
-      : flags.facets.split(',').map((val: string) => val.trim());
+    flags.facets === '' ? [] : flags.facets.map((val: string) => val.trim());
   return {
     formattedDate: formattedDate,
     outputDirectory: flags.output || `data/${formattedDate}`,
@@ -149,6 +154,8 @@ const presets = (preset: presetType): facetType[] => {
       'uswds components',
     ],
     'edx scan': [
+      'cui banner',
+      'dns',
       'it performance metric',
       'lighthouse desktop',
       'lighthouse mobile',
@@ -215,6 +222,7 @@ export type presetType = '' | 'all' | 'edx scan';
 
 export type facetType =
   | 'cui banner'
+  | 'dns'
   | 'it performance metric'
   | 'lighthouse desktop'
   | 'lighthouse mobile'
