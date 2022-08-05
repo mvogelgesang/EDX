@@ -9,6 +9,7 @@ export interface Props {
 const { slug, currentView } = Astro.props as Props;
 
 let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}/index.html`;
+let viewBaseUrl = `${BASE_URL}design-consults/${slug}`;
 ---
 
 <h1>{slug}</h1>
@@ -17,7 +18,7 @@ let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}/index.html`;
   {VIEWS.map((view) => (
     <li class="usa-button-group__item">
       <a
-        href={view}
+        href={`${viewBaseUrl}/${view}`}
         class={`usa-button ${
           currentView === view ? "" : "usa-button--outline"
         }`}
