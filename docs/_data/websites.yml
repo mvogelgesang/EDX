@@ -251,6 +251,29 @@
   datapointF:
     val: 1
     max: 1
+- name: buy.gsa.gov
+  office: FAS
+  subOffice: OESM
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.8
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
 - name: calc.gsa.gov
   office: FAS
   subOffice: OESM
@@ -619,6 +642,213 @@
   datapointF:
     val: 0.875
     max: 1
+- name: cpars.gov
+  office: FAS
+  subOffice: OSM/IAE
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.75
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: cpsearch.fas.gsa.gov
+  office: FAS
+  subOffice: TTL
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.5
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: d2d.gsa.gov
+  office: GSA IT
+  subOffice: IDEA
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.5
+    max: 1
+  datapointD:
+    val: 0.6
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
+- name: data.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.8
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: datacenters.cio.gov
+  office: OGP
+  subOffice: MY
+  digitalBrandCategory: External
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
+- name: designsystem.digital.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: developers.login.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.5
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
+- name: devicepki.idmanagement.gov
+  office: OGP
+  subOffice: ME
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.8
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: digital.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 0.875
+    max: 1
+  datapointD:
+    val: 0.6
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
 - name: digitalcorps.gsa.gov
   office: FAS
   subOffice: TTS
@@ -635,6 +865,52 @@
     max: 1
   datapointD:
     val: 0.9
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: digitaldashboard.gov
+  office: OGP
+  subOffice: ME
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: disposal.gsa.gov
+  office: PBS
+  subOffice: Real Property Utilization & Disposal
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.1
     max: 1
   datapointE:
     val: 0.5
