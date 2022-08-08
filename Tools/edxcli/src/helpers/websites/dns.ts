@@ -9,47 +9,82 @@ import {
 import dns from 'node:dns/promises';
 import { ScanHelper } from './scan';
 
-export const dnsReport = async (
-  sh: ScanHelper,
-  hostname: string,
-): Promise<DnsDataType> => {
-  const aRecord = await dns.resolve4(hostname);
-  const aaaaRecord = await dns.resolve6(hostname);
-  const caaRecord = await dns.resolveCaa(hostname);
-  const cnameRecord = await dns.resolveCname(hostname);
-  const mxRecord = await dns.resolveMx(hostname);
-  const naptrRecord = await dns.resolveNaptr(hostname);
-  const nsRecord = await dns.resolveNs(hostname);
-  const ptrRecord = await dns.resolvePtr(hostname);
-  const soaRecord = await dns.resolveSoa(hostname);
-  const srvRecord = await dns.resolveSrv(hostname);
-  const txtRecord = await dns.resolveTxt(hostname);
+export const dnsReport = (sh: ScanHelper, hostname: string): Promise<any> => {
+  const rrTypeValues = [
+    'A',
+    'AAAA',
+    'ANY',
+    'CAA',
+    'CNAME',
+    'MX',
+    'NAPTR',
+    'NS',
+    'PTR',
+    'SOA',
+    'SRV',
+    'TXT',
+  ];
 
-  return {
-    a: aRecord,
-    aaaa: aaaaRecord,
-    caa: caaRecord,
-    cname: cnameRecord,
-    mx: mxRecord,
-    naptr: naptrRecord,
-    ns: nsRecord,
-    ptr: ptrRecord,
-    soa: soaRecord,
-    srv: srvRecord,
-    txt: txtRecord,
-  };
+  const dnsPromisesArray = rrTypeValues.map((rrTypeVal) => {
+    return getDnsValues(hostname, rrTypeVal as RrType).then((value) => {
+      console.log('inner callback', value);
+      return value;
+    });
+  });
+
+  return Promise.all(dnsPromisesArray).then((array) => {
+    return Promise.all(
+      array.map((data) => {
+        console.log('promise all data', data.data);
+        return data;
+      }),
+    );
+  });
+};
+
+const getDnsValues = async (
+  hostname: string,
+  rrtype: RrType,
+): Promise<DnsDataType> => {
+  let val: any;
+  const obj: DnsDataType = {} as DnsDataType;
+
+  try {
+    val = await dns.resolve(hostname, rrtype.toString());
+  } catch (error) {
+    console.log(error);
+    val = [];
+  }
+
+  obj.name = rrtype;
+  obj.data = val;
+
+  return obj;
 };
 
 export type DnsDataType = {
-  a: string[] | RecordWithTtl;
-  aaaa: string[] | RecordWithTtl;
-  caa: CaaRecord[];
-  cname: string[];
-  mx: MxRecord[];
-  naptr: NaptrRecord[];
-  ns: string[];
-  ptr: string[];
-  soa: SoaRecord;
-  srv: SrvRecord[];
-  txt: string[][];
+  name: RrType;
+  data:
+    | string[]
+    | string[][]
+    | RecordWithTtl
+    | CaaRecord[]
+    | MxRecord[]
+    | NaptrRecord[]
+    | SoaRecord
+    | SrvRecord[];
 };
+
+export type RrType =
+  | 'A'
+  | 'AAAA'
+  | 'ANY'
+  | 'CAA'
+  | 'CNAME'
+  | 'MX'
+  | 'NAPTR'
+  | 'NS'
+  | 'PTR'
+  | 'SOA'
+  | 'SRV'
+  | 'TXT';

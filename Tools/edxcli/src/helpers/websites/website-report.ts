@@ -50,9 +50,7 @@ export const websiteReport = (
     },
     dns: {
       description: '',
-      data: {
-        
-      },
+      data: [] as any,
     },
     uswdsComponents: {
       description:
