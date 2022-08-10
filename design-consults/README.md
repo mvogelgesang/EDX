@@ -37,7 +37,7 @@ Changes to the `main` branch in the `design-consults` directory will kick off a 
 1. Create new directories.
 
 - Create `public/consult_assets/<consult_domain>` e.g. `public/consult_assets/govtservice_gsa` for govtservice.gsa.gov.
-- Create `src/consult_assets/<consult_domain>` using the same name
+- Create `src/pages/consult_assets/<consult_domain>` using the same name
 - Add the name to `SLUGS` in `constants.ts` (this dynamically generates consult pages from those directories).
 
 2. Download the consult site assets and move into the microsite.

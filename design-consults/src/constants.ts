@@ -1,4 +1,4 @@
-export const SLUGS = ["apps_ocfo_gsa", "contractdirectory"];
+export const SLUGS = ["apps_ocfo_gsa", "contractdirectory", "drivethru_gsa"];
 
 export const VIEWS = ["current", "proposed", "diff", "production"];
 
