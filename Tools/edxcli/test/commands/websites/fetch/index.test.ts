@@ -6,7 +6,6 @@ import { sep } from 'node:path';
 require('dotenv').config();
 
 const testingDir = mkdtempSync(`${tmpdir()}${sep}`);
-console.log('testing dir', testingDir);
 
 describe('websites fetch', () => {
   describe('websites fetch foo', () => {
