@@ -165,6 +165,7 @@ const presets = (preset: presetType): facetType[] => {
 const initialCheck = async function (sh: ScanHelper, url: URL) {
   const scanStatus = { pageFound: true, message: 'Page loaded successfully' };
   const page = await sh.browser.newPage();
+  await page.authenticate({ username: 'fai', password: 'F4IUserPass*' });
   await page
     .goto(url.toString(), { waitUntil: 'networkidle2' })
     .catch((error) => {

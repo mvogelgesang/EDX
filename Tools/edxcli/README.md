@@ -28,6 +28,7 @@ USAGE
 # Commands
 
 <!-- commands -->
+* [`edxcli data condense`](#edxcli-data-condense)
 * [`edxcli help [COMMAND]`](#edxcli-help-command)
 * [`edxcli plugins`](#edxcli-plugins)
 * [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
@@ -43,6 +44,34 @@ USAGE
 * [`edxcli websites push`](#edxcli-websites-push)
 * [`edxcli websites scan`](#edxcli-websites-scan)
 * [`edxcli websites scan bulk`](#edxcli-websites-scan-bulk)
+
+## `edxcli data condense`
+
+Consolidates json output from website scans into CSV files
+
+```
+USAGE
+  $ edxcli data condense [--loglevel error|warn|info|debug] [-f <value>] [-o <value>] [-p <value>]
+
+FLAGS
+  -f, --folders=<value>  List of comma-separated folders within the /data/scans directory.
+  -o, --output=<value>   [default: /data/condensedData] Output directory. Defualts to current directory
+  -p, --preset=<value>   [default: default] A collection of fields to extract into CSV
+  --loglevel=<option>    [default: info]
+                         <options: error|warn|info|debug>
+
+DESCRIPTION
+  Consolidates json output from website scans into CSV files
+
+EXAMPLES
+  $ edxcli data condense
+
+  $ edxcli data condense -f "20220719,20220720"
+
+  $ edxcli data condense -o customDirectory
+
+  $ edxcli data condense -p "lighthouse accessibility"
+```
 
 ## `edxcli help [COMMAND]`
 
@@ -337,7 +366,7 @@ ARGUMENTS
   SOURCE  (Site Scanner|Touchpoints) Website list source
 
 FLAGS
-  -o, --output=<value>  [default: .] Output directory. Defualts to current directory
+  -o, --output=<value>  [default: data/fetch] Output directory. Defualts to current directory
   --loglevel=<option>   [default: info]
                         <options: error|warn|info|debug>
 
@@ -359,7 +388,7 @@ USAGE
   $ edxcli websites push [--loglevel error|warn|info|debug] [-o <value>]
 
 FLAGS
-  -o, --output=<value>  [default: data] Output directory. Defualts to /edxcli/data directory
+  -o, --output=<value>  [default: data/push] Output directory. Defualts to /edxcli/data/push directory
   --loglevel=<option>   [default: info]
                         <options: error|warn|info|debug>
 
