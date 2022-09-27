@@ -17,7 +17,7 @@ $ npm install -g edx_cli
 $ edxcli COMMAND
 running command...
 $ edxcli (--version)
-edx_cli/0.0.14 darwin-x64 node-v16.15.1
+edx_cli/0.0.15 darwin-x64 node-v16.15.1
 $ edxcli --help [COMMAND]
 USAGE
   $ edxcli COMMAND
@@ -28,6 +28,7 @@ USAGE
 # Commands
 
 <!-- commands -->
+* [`edxcli data condense`](#edxcli-data-condense)
 * [`edxcli help [COMMAND]`](#edxcli-help-command)
 * [`edxcli plugins`](#edxcli-plugins)
 * [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
@@ -43,6 +44,34 @@ USAGE
 * [`edxcli websites push`](#edxcli-websites-push)
 * [`edxcli websites scan`](#edxcli-websites-scan)
 * [`edxcli websites scan bulk`](#edxcli-websites-scan-bulk)
+
+## `edxcli data condense`
+
+Consolidates json output from website scans into CSV files
+
+```
+USAGE
+  $ edxcli data condense [--loglevel error|warn|info|debug] [-f <value>] [-o <value>] [-p <value>]
+
+FLAGS
+  -f, --folders=<value>  List of comma-separated folders within the /data/scans directory.
+  -o, --output=<value>   [default: /data/condensedData] Output directory. Defualts to current directory
+  -p, --preset=<value>   [default: default] A collection of fields to extract into CSV
+  --loglevel=<option>    [default: info]
+                         <options: error|warn|info|debug>
+
+DESCRIPTION
+  Consolidates json output from website scans into CSV files
+
+EXAMPLES
+  $ edxcli data condense
+
+  $ edxcli data condense -f "20220719,20220720"
+
+  $ edxcli data condense -o customDirectory
+
+  $ edxcli data condense -p "lighthouse accessibility"
+```
 
 ## `edxcli help [COMMAND]`
 
@@ -323,7 +352,7 @@ EXAMPLES
   $ edxcli websites scan bulk
 ```
 
-_See code: [dist/commands/websites/index.ts](https://github.com/gsa/edx/blob/v0.0.14/dist/commands/websites/index.ts)_
+_See code: [dist/commands/websites/index.ts](https://github.com/gsa/edx/blob/v0.0.15/dist/commands/websites/index.ts)_
 
 ## `edxcli websites fetch SOURCE`
 
@@ -337,7 +366,7 @@ ARGUMENTS
   SOURCE  (Site Scanner|Touchpoints) Website list source
 
 FLAGS
-  -o, --output=<value>  [default: .] Output directory. Defualts to current directory
+  -o, --output=<value>  [default: data/fetch] Output directory. Defualts to current directory
   --loglevel=<option>   [default: info]
                         <options: error|warn|info|debug>
 
@@ -359,7 +388,7 @@ USAGE
   $ edxcli websites push [--loglevel error|warn|info|debug] [-o <value>]
 
 FLAGS
-  -o, --output=<value>  [default: data] Output directory. Defualts to /edxcli/data directory
+  -o, --output=<value>  [default: data/push] Output directory. Defualts to /edxcli/data/push directory
   --loglevel=<option>   [default: info]
                         <options: error|warn|info|debug>
 
@@ -460,6 +489,10 @@ yarn run prepack
 # Release Notes
 
 All scan contain a `scanVersion` attribute which ties back to the version number listed in package.json. Each time an update has been made to the logic of the scans, the version number gets bumped. Doing so allows all teams to see the criteria at the time of the scan. We expect to update the version regularly so as to provide the most complete and accurate picture of websites at GSA.
+
+## 0.0.15
+
+Added `searchNotReq: true` for vltp.gsa.gov
 
 ## 0.0.14
 
