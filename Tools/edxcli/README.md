@@ -490,6 +490,10 @@ yarn run prepack
 
 All scan contain a `scanVersion` attribute which ties back to the version number listed in package.json. Each time an update has been made to the logic of the scans, the version number gets bumped. Doing so allows all teams to see the criteria at the time of the scan. We expect to update the version regularly so as to provide the most complete and accurate picture of websites at GSA.
 
+## 0.0.16
+
+[Issue 562](https://github.com/GSA/EDX/issues/562) - updated DAP regex value to cover teams using an updated version of Universal Federated Analytics (GA4) or th legacy version.
+
 ## 0.0.15
 
 Added `searchNotReq: true` for vltp.gsa.gov
