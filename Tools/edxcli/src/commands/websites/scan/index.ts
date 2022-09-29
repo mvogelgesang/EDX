@@ -1,6 +1,7 @@
 import { CliUx } from '@oclif/core';
 import BaseCommand from '../../../base';
 import {
+  auth,
   domainsList,
   facets,
   headless,
@@ -20,6 +21,7 @@ export default class Scan extends BaseCommand<typeof Scan.flags> {
     `$ edxcli websites scan -d sftool.gov -p Performance Metric`,
     `$ edxcli websites scan -d "18f.gsa.gov,buy.gsa.gov,gsa.gov" -p "edx scan" --no-headless`,
     `$ edxcli websites scan -d "18f.gsa.gov" -f "screenshot" --loglevel debug`,
+    `$ edxcli websites scan -d "18f.gsa.gov" -f "screenshot" --auth`,
   ];
 
   static flags = {
@@ -29,6 +31,7 @@ export default class Scan extends BaseCommand<typeof Scan.flags> {
     headless: headless,
     output: output(),
     preset: preset(),
+    auth: auth,
   };
 
   async run(): Promise<void> {

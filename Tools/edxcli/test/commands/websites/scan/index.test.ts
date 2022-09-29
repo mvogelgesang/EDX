@@ -1,5 +1,8 @@
+import * as prompt from '@oclif/core/lib/cli-ux/prompt';
 import { expect, test } from '@oclif/test';
-require('dotenv').config();
+
+import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config();
 
 describe('Default scan against gsa.gov', () => {
   describe('scan helper scan is called one time', () => {
@@ -62,6 +65,25 @@ describe('Facets Flag', () => {
             > screenshot
             > site scanner`,
           );
+        };
+      });
+  });
+});
+
+describe('Authentication Flag', () => {
+  describe('Pass --auth flag', () => {
+    test
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      .stub(prompt, 'prompt', (): string => 'myUserName')
+      .stub(prompt, 'prompt', (): string => 'myPassword')
+      .stdout()
+      .command(['websites scan', '-d', 'gsa.gov', '--auth'])
+      // done is used since the api requests are Promises, this  ensures the test suite waits for the response
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .it('accepts parameters without error', (done) => {
+        (ctx: any) => {
+          expect(ctx).to.be.empty;
         };
       });
   });
