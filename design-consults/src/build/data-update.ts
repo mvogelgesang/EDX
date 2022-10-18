@@ -4,7 +4,7 @@ import {writeFile,mkdir} from 'node:fs';
 import Airtable from 'airtable';
 function formattedDate(): string {
   const date = new Date();
-  return `${date.getFullYear()}${date.getMonth() < 10 ? '0' : ''}${date.getMonth() + 1}${date.getDate() < 10 ? '0' : ''}${date.getDate()}`;
+  return `${date.getFullYear()}${date.getMonth() < 9 ? '0' : ''}${date.getMonth() + 1}${date.getDate() < 10 ? '0' : ''}${date.getDate()}`;
 }
 const AIRTABLE_TABLES = {
   websites: "tblFUfp0KQibuCTeb",
