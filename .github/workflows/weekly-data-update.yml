@@ -18,20 +18,18 @@ jobs:
       run: |
         touch .env
         echo AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }} >> ./Tools/scanner/.env
-    - name: Read .nvmrc
-      working-directory: ./Tools/scanner
-      run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-      id: nvm
-    - name: Use Node.js ${{ matrix.node-version }}
+    
+    - name: Use Node.js 18
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+        node-version: 18
+
     - run: npm ci
-      working-directory: ./Tools/scanner
-    - run: npm run build
-      working-directory: ./Tools/scanner
-    - run: npm run get:evals
-      working-directory: ./Tools/scanner
+      working-directory: ./design-consults
+    - run: npm run eval:build
+      working-directory: ./design-consults
+    - run: npm run eval:get
+      working-directory: ./design-consults
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -77,7 +75,7 @@ jobs:
         push_options: '--force'
         
         # Optional. Disable dirty check and always try to create a commit and push
-        skip_dirty_check: true    
+        skip_dirty_check: false    
         
         # Optional. Skip internal call to `git fetch`
         skip_fetch: true    
