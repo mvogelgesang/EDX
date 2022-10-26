@@ -3,6 +3,7 @@ export const SLUGS = [
   "ask_gsa",
   "contractdirectory",
   "drivethru_gsa",
+  "gsaxcess",
   "usmcservmart_gsa",
 ];
 
