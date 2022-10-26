@@ -9,7 +9,7 @@ import { SLUGS } from "../../constants.js";
   <ul class="usa-list">
     {SLUGS.map((slug) => (
       <li>
-        <a href={`${slug}/current`}>{slug}</a>
+        <a href={`${slug}/current`}>{`${slug.replaceAll("_", ".")}.gov`}</a>
       </li>
     ))}
   </ul>
