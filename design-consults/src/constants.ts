@@ -3,6 +3,7 @@ export const SLUGS = [
   "ask_gsa",
   "contractdirectory",
   "drivethru_gsa",
+  "usmcservmart_gsa",
 ];
 
 export const VIEWS = ["current", "proposed", "diff", "production"];
