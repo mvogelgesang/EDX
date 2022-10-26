@@ -12,26 +12,29 @@ let iframeSrc = `${BASE_URL}consult_assets/${slug}/${currentView}/index.html`;
 let viewBaseUrl = `${BASE_URL}design-consults/${slug}`;
 ---
 
-<h1 class="grid-container width-full">{slug}</h1>
+<h1 class="grid-container width-full">{`${slug.replace("_", ".")}.gov`}</h1>
 
-<div class="grid-container width-full">
-<ul id="buttonContainer" class="usa-button-group usa-button-group--segmented">
-  {VIEWS.map((view) => (
-    <li class="usa-button-group__item">
-      <a
-        href={`${viewBaseUrl}/${view}`}
-        class={`usa-button ${
-          currentView === view ? "" : "usa-button--outline"
-        }`}
-      >
-        {view.charAt(0).toUpperCase() + view.slice(1)}
-      </a>
-    </li>
-  ))}
-</ul>
+<div class=" width-full height-full">
+  <div class="grid-row grid-gap height-full padding-left-2 padding-right-2">
+    <div class="tablet:grid-col-2 border-right border-primary-light">
+      <ul class="usa-sidenav">
+        {VIEWS.map((view) => (
+          <li class="usa-sidenav__item">
+            <a
+              href={`${viewBaseUrl}/${view}`}
+              class={`${currentView === view ? "usa-current" : ""}`}
+            >
+              {view.charAt(0).toUpperCase() + view.slice(1)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="tablet:grid-col-10 height-full">
+      <iframe
+        src={iframeSrc}
+        class="grid-col-12 flex-1 width-viewport height-full"
+        frameborder="0"></iframe>
+    </div>
+  </div>
 </div>
-
-<iframe
-  src={iframeSrc}
-  class="grid-col-12 flex-1 width-viewport"
-  frameborder="0"></iframe>
