@@ -8,9 +8,9 @@ EDX is comprised of team members from all across GSA.
 * Gail Sparkle
 * Monica Suber-Duffy
 * Mark Vogelgesang
-* Ed Walters
-* [Ryan Wold](https://github.com/ryanwoldatwork)
 
 ### Former team members / Alum
 
 * Aaron Steinstra
+* Ed Walters
+* [Ryan Wold](https://github.com/ryanwoldatwork)
