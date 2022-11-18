@@ -1,16 +1,16 @@
 import { Flags, CliUx } from '@oclif/core';
 import BaseCommand from '../../../base';
 import { output } from '../../../flags/flags';
-import { CondenseHelper } from '../../../helpers/data/condense';
-export default class Condense extends BaseCommand<typeof Condense.flags> {
+import { ReportHelper } from '../../../helpers/data/report';
+export default class Report extends BaseCommand<typeof Report.flags> {
   static description =
     'Consolidates json output from website scans into CSV files';
 
   static examples = [
-    `$ edxcli data condense`,
-    `$ edxcli data condense -f "20220719,20220720"`,
-    `$ edxcli data condense -o customDirectory`,
-    `$ edxcli data condense -p "lighthouse accessibility"`,
+    `$ edxcli data report`,
+    `$ edxcli data report -f "20220719,20220720"`,
+    `$ edxcli data report -o customDirectory`,
+    `$ edxcli data report -p "lighthouse accessibility"`,
   ];
 
   static flags = {
@@ -21,7 +21,7 @@ export default class Condense extends BaseCommand<typeof Condense.flags> {
         'List of comma-separated folders within the /data/scans directory.',
       required: false,
     }),
-    output: output({ default: '/data/condensedData' }),
+    output: output({ default: '/data/reports' }),
     preset: Flags.string({
       char: 'p',
       description: 'A collection of fields to extract into CSV',
@@ -33,11 +33,11 @@ export default class Condense extends BaseCommand<typeof Condense.flags> {
   static args = [];
 
   async run(): Promise<void> {
-    const { flags } = await this.parse(Condense);
+    const { flags } = await this.parse(Report);
 
-    const ch = new CondenseHelper(BaseCommand.formattedDate(), flags);
+    const ch = new ReportHelper(BaseCommand.formattedDate(), flags);
     CliUx.ux.action.start(
-      `Consolidating data from the following folders ${flags.folders} into ${flags.output}.`,
+      `Building reports with data from the following folders ${flags.folders} into ${flags.output}.`,
     );
     await ch.run();
     CliUx.ux.action.stop(' complete');

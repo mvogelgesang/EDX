@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import CSV from '../../global/csv';
 import { presets, CsvHeaderType } from './presets';
 
-export class CondenseHelper {
+export class ReportHelper {
   formattedDate: string;
   outputDirectory: string;
   folderList: string;
@@ -24,7 +24,7 @@ export class CondenseHelper {
     this.csvWriter = new CSV(
       formattedDate,
       this.outputDirectory,
-      'condense',
+      'report',
       this.csvHeaders,
     );
     this.fileParsePromiseArray = [];
@@ -95,7 +95,7 @@ export class CondenseHelper {
       }
     } else {
       console.log(
-        `consolidating entire data/scans/ directory. You can specify a subset of folders by passing the --folders parameter. This expects the folder to be present in the data/scans directory.`,
+        `producing a report with the entire data/scans/ directory. You can specify a subset of folders by passing the --folders parameter. This expects the folder to be present in the data/scans directory.`,
       );
       await this.findFiles('data/scans');
     }
