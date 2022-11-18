@@ -17,7 +17,7 @@ $ npm install -g edx_cli
 $ edxcli COMMAND
 running command...
 $ edxcli (--version)
-edx_cli/0.0.20 darwin-x64 node-v17.9.1
+edx_cli/0.0.20 darwin-x64 node-v16.14.2
 $ edxcli --help [COMMAND]
 USAGE
   $ edxcli COMMAND
@@ -28,7 +28,8 @@ USAGE
 # Commands
 
 <!-- commands -->
-* [`edxcli data condense`](#edxcli-data-condense)
+* [`edxcli data organize`](#edxcli-data-organize)
+* [`edxcli data report`](#edxcli-data-report)
 * [`edxcli help [COMMAND]`](#edxcli-help-command)
 * [`edxcli plugins`](#edxcli-plugins)
 * [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
@@ -45,17 +46,42 @@ USAGE
 * [`edxcli websites scan`](#edxcli-websites-scan)
 * [`edxcli websites scan bulk`](#edxcli-websites-scan-bulk)
 
-## `edxcli data condense`
+## `edxcli data organize`
+
+Copies scan data and organizes files by domain name
+
+```
+USAGE
+  $ edxcli data organize [--loglevel error|warn|info|debug] [-f <value>] [-o <value>]
+
+FLAGS
+  -f, --folders=<value>  List of comma-separated folders within the /data/scans directory.
+  -o, --output=<value>   [default: data/organize] Output directory. Defualts to current directory
+  --loglevel=<option>    [default: info]
+                         <options: error|warn|info|debug>
+
+DESCRIPTION
+  Copies scan data and organizes files by domain name
+
+EXAMPLES
+  $ edxcli data organize
+
+  $ edxcli data organize -f "20220719,20220720"
+
+  $ edxcli data organize -o customDirectory
+```
+
+## `edxcli data report`
 
 Consolidates json output from website scans into CSV files
 
 ```
 USAGE
-  $ edxcli data condense [--loglevel error|warn|info|debug] [-f <value>] [-o <value>] [-p <value>]
+  $ edxcli data report [--loglevel error|warn|info|debug] [-f <value>] [-o <value>] [-p <value>]
 
 FLAGS
   -f, --folders=<value>  List of comma-separated folders within the /data/scans directory.
-  -o, --output=<value>   [default: /data/condensedData] Output directory. Defualts to current directory
+  -o, --output=<value>   [default: /data/reports] Output directory. Defualts to current directory
   -p, --preset=<value>   [default: default] A collection of fields to extract into CSV
   --loglevel=<option>    [default: info]
                          <options: error|warn|info|debug>
@@ -64,13 +90,13 @@ DESCRIPTION
   Consolidates json output from website scans into CSV files
 
 EXAMPLES
-  $ edxcli data condense
+  $ edxcli data report
 
-  $ edxcli data condense -f "20220719,20220720"
+  $ edxcli data report -f "20220719,20220720"
 
-  $ edxcli data condense -o customDirectory
+  $ edxcli data report -o customDirectory
 
-  $ edxcli data condense -p "lighthouse accessibility"
+  $ edxcli data report -p "lighthouse accessibility"
 ```
 
 ## `edxcli help [COMMAND]`
