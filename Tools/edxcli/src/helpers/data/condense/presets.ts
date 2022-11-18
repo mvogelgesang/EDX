@@ -247,4 +247,13 @@ export const presets: PresetType = {
       title: 'LH Cat Meta Viewport',
     },
   ],
+  gearscans: [
+    { id: 'domain', title: 'Domain' },
+    { id: 'scanDate', title: 'Scan Date' },
+    { id: 'scanVersion', title: 'Scan Version' },
+    { id: 'screenCapture.data[0].imgPath', title: 'image' },
+    { id: 'screenCapture.data[0].device', title: 'device' },
+    { id: 'screenCapture.data[1].imgPath', title: 'image' },
+    { id: 'screenCapture.data[1].device', title: 'device' },
+  ],
 };
