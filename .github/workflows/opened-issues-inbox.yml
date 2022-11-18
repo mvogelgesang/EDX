@@ -12,4 +12,5 @@ jobs:
         with:
           project: EDX Backlog
           column: Inbox
+          # the EDXPROJECT_TOKEN must have a value that corresponds to a PAT held by a repo admin. When the PAT expires, the updated value needs to be set within the repo settings
           repo-token: ${{ secrets.EDXPROJECT_TOKEN }}
