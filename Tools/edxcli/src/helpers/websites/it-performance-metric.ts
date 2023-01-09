@@ -66,8 +66,9 @@ export const itPerfMetricReport = async (
     });
 
   if (response) {
+    const headers = response?.headers() ? response.headers() : {};
     data.hsts = Object.prototype.hasOwnProperty.call(
-      response.headers(),
+      headers,
       'strict-transport-security',
     );
   }
