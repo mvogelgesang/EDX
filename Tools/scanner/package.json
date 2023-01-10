@@ -17,6 +17,9 @@
   },
   "keywords": [],
   "author": "",
+  "engines": {
+    "node": ">=16.14.2"
+  },
   "license": "ISC",
   "dependencies": {
     "@types/node-fetch": "^2.6.1",
