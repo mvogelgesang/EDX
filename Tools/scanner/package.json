@@ -15,6 +15,9 @@
     "test:onlyChanged": "npm run test -- --onlyChanged",
     "test:detectOpenHandles": "npm run test -- --detectOpenHandles"
   },
+  "engines": {
+    "node": "16.14.2"
+  },
   "keywords": [],
   "author": "",
   "engines": {
@@ -39,7 +42,7 @@
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.181",
-    "@types/node": "^17.0.29",
+    "@types/node": "^16.14.2",
     "jest": "^27.5.1",
     "mockdate": "^3.0.5",
     "prettier": "^2.5.1",
