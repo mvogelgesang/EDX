@@ -1,4 +1,4 @@
-export type PresetType = {
+export type CollectionType = {
   [presetName: string]: CsvHeaderType[];
 };
 
@@ -6,7 +6,7 @@ export type CsvHeaderType = {
   id: string;
   title: string;
 };
-export const presets: PresetType = {
+export const collections: CollectionType = {
   default: [
     { id: 'domain', title: 'Domain' },
     { id: 'url', title: 'URL' },
@@ -86,6 +86,15 @@ export const presets: PresetType = {
       id: "lighthouse.desktopData.lhr.audits['html-has-lang'].score",
       title: 'HTML Language Set',
     },
+  ],
+  gearScans: [
+    { id: 'domain', title: 'Domain' },
+    { id: 'scanDate', title: 'Scan Date' },
+    { id: 'scanVersion', title: 'Scan Version' },
+    { id: 'screenCapture.data[0].imgPath', title: 'image' },
+    { id: 'screenCapture.data[0].device', title: 'device' },
+    { id: 'screenCapture.data[1].imgPath', title: 'image' },
+    { id: 'screenCapture.data[1].device', title: 'device' },
   ],
   lighthouseAccessibility: [
     { id: 'domain', title: 'Domain' },
@@ -247,13 +256,55 @@ export const presets: PresetType = {
       title: 'LH Cat Meta Viewport',
     },
   ],
-  gearscans: [
+  uswds: [
     { id: 'domain', title: 'Domain' },
+    { id: 'url', title: 'URL' },
     { id: 'scanDate', title: 'Scan Date' },
     { id: 'scanVersion', title: 'Scan Version' },
-    { id: 'screenCapture.data[0].imgPath', title: 'image' },
-    { id: 'screenCapture.data[0].device', title: 'device' },
-    { id: 'screenCapture.data[1].imgPath', title: 'image' },
-    { id: 'screenCapture.data[1].device', title: 'device' },
+    { id: 'scanStatus', title: 'Scan Status' },
+    { id: 'uswdsComponents.accordion', title: 'accordion' },
+    { id: 'uswdsComponents.alert', title: 'alert' },
+    { id: 'uswdsComponents.banner', title: 'banner' },
+    { id: 'uswdsComponents.breadcrumb', title: 'breadcrumb' },
+    { id: 'uswdsComponents.button', title: 'button' },
+    { id: 'uswdsComponents.buttonGroup', title: 'buttonGroup' },
+    { id: 'uswdsComponents.card', title: 'card' },
+    { id: 'uswdsComponents.characterCount', title: 'characterCount' },
+    { id: 'uswdsComponents.checkbox', title: 'checkbox' },
+    { id: 'uswdsComponents.collection', title: 'collection' },
+    { id: 'uswdsComponents.comboBox', title: 'comboBox' },
+    { id: 'uswdsComponents.dateInput', title: 'dateInput' },
+    { id: 'uswdsComponents.datePicker', title: 'datePicker' },
+    { id: 'uswdsComponents.dateRangePicker', title: 'dateRangePicker' },
+    { id: 'uswdsComponents.dropdown', title: 'dropdown' },
+    { id: 'uswdsComponents.fileInput', title: 'fileInput' },
+    { id: 'uswdsComponents.footer', title: 'footer' },
+    { id: 'uswdsComponents.form', title: 'form' },
+    { id: 'uswdsComponents.grid', title: 'grid' },
+    { id: 'uswdsComponents.header', title: 'header' },
+    { id: 'uswdsComponents.icon', title: 'icon' },
+    { id: 'uswdsComponents.iconList', title: 'iconList' },
+    { id: 'uswdsComponents.identifier', title: 'identifier' },
+    { id: 'uswdsComponents.inputPrefix', title: 'inputPrefix' },
+    { id: 'uswdsComponents.inputSuffix', title: 'inputSuffix' },
+    { id: 'uswdsComponents.link', title: 'link' },
+    { id: 'uswdsComponents.list', title: 'list' },
+    { id: 'uswdsComponents.modal', title: 'modal' },
+    { id: 'uswdsComponents.pagination', title: 'pagination' },
+    { id: 'uswdsComponents.processList', title: 'processList' },
+    { id: 'uswdsComponents.prose', title: 'prose' },
+    { id: 'uswdsComponents.radioButton', title: 'radioButton' },
+    { id: 'uswdsComponents.rangeSlider', title: 'rangeSlider' },
+    { id: 'uswdsComponents.search', title: 'search' },
+    { id: 'uswdsComponents.sideNavigation', title: 'sideNavigation' },
+    { id: 'uswdsComponents.siteAlert', title: 'siteAlert' },
+    { id: 'uswdsComponents.stepIndicator', title: 'stepIndicator' },
+    { id: 'uswdsComponents.summaryBox', title: 'summaryBox' },
+    { id: 'uswdsComponents.table', title: 'table' },
+    { id: 'uswdsComponents.tag', title: 'tag' },
+    { id: 'uswdsComponents.textInput', title: 'textInput' },
+    { id: 'uswdsComponents.timePicker', title: 'timePicker' },
+    { id: 'uswdsComponents.tooltip', title: 'tooltip' },
+    { id: 'uswdsComponents.validation', title: 'validation' },
   ],
 };
