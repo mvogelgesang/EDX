@@ -2,12 +2,12 @@ import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-
 dotenv.config();
 const AIRTABLE_BASE = 'appaxAzqTVnbOf7cm';
 const TABLE = 'WEBSITES';
-const base = require('airtable').base(AIRTABLE_BASE);
-const Airtable = require('airtable');
-Airtable.configure({
+
+import Airtable from 'airtable';
+const base = new Airtable({
   endpointUrl: 'https://api.airtable.com',
   apiKey: `${process.env.AIRTABLE_API_KEY}`,
-});
+}).base(AIRTABLE_BASE);
 
 /**
  * Given a domain name, searches Airtable for a record and returns it. Empty result indicates no record.
@@ -46,47 +46,96 @@ export function retrieveWebsite(domain: string): Promise<ATListResponseType> {
 }
 
 /**
+ * Returns an array of all websites in the "ALL Sites" view
+ * @returns {Promise<ATListResponseType>} promise of an ATListResponseType object
+ */
+export async function retrieveWebsites(): Promise<any[]> {
+  // must return a promise since the "select" function is promise based. https://ckhang.com/blog/2021/javascript-promises-async-await/
+
+  return new Promise<any>((resolve, reject) => {
+    let dataObject: any = {};
+    base(TABLE)
+      .select({
+        fields: [
+          'Touchpoints URL',
+          'Site',
+          'Office',
+          'Sub-Office',
+          'Prod Status',
+          'Type of Domain',
+          'Digital Brand Category',
+          'Website Platform',
+        ],
+        view: 'ALL Sites',
+      })
+      // call to firstPage is valid since we are only expecting one record
+      .eachPage(
+        function (records, fetchNextPage) {
+          dataObject = Object.assign(
+            dataObject,
+            ...records.map((record) => {
+              const obj: any = {};
+              const domain: any = record.fields.Site;
+              obj[domain] = record.fields;
+              return obj;
+            }),
+          );
+          fetchNextPage();
+        },
+        function (err) {
+          if (err) {
+            console.error(err);
+            reject();
+          }
+
+          resolve(dataObject);
+        },
+      );
+  });
+}
+
+/**
  * Performs an HTTP PATCH (only updates fields included in request) update against a given Airtable record.
  * @param {ATWebsite[]} data array of ATWebsite objects
  * @returns {Promise<ATWebsite[]>} Promise containing ATWebsite object
  */
-export function updateWebsites(data: ATWebsite[]): Promise<ATWebsite[]> {
-  return new Promise((resolve, reject) => {
-    base(TABLE).update(data, function (err: any, records: ATWebsite[]) {
-      if (err) {
-        console.log(err);
-        console.log('Error occured while updating website', data);
-        reject();
-      }
-
-      resolve(records);
-    });
-  });
-}
+// export function updateWebsites(data: ATWebsite[]): Promise<ATWebsite[]> {
+//   return new Promise((resolve, reject) => {
+//     base(TABLE).update(data, function (err: any, records: ATWebsite[]) {
+//       if (err) {
+//         console.log(err);
+//         console.log('Error occured while updating website', data);
+//         reject();
+//       }
+//
+//       resolve(records);
+//     });
+//   });
+// }
 
 /**
  * Creates a new Website record in Airtable.
  * @param {ATWebsiteFields} newWebsite an ATWebsiteFields object containing at least the Site field.
  * @returns {Promise<ATWebsite[]>} containing information about the new record
  */
-export function createWebsites(
-  newWebsite: ATWebsiteFields,
-): Promise<ATWebsite[]> {
-  return new Promise((resolve, reject) => {
-    base(TABLE).create(
-      [{ fields: newWebsite }],
-      function (err: any, records: ATWebsite[]) {
-        if (err) {
-          console.error(err);
-          console.error('Error occured while creating website', records);
-          reject();
-        }
-
-        resolve(records);
-      },
-    );
-  });
-}
+// export function createWebsites(
+//   newWebsite: ATWebsiteFields,
+// ): Promise<ATWebsite[]> {
+//   return new Promise((resolve, reject) => {
+//     base(TABLE).create(
+//       [{ fields: newWebsite }],
+//       function (err: any, records: ATWebsite[]) {
+//         if (err) {
+//           console.error(err);
+//           console.error('Error occured while creating website', records);
+//           reject();
+//         }
+//
+//         resolve(records);
+//       },
+//     );
+//   });
+// }
 
 export type ATListResponseType = {
   records: ATWebsite[];
