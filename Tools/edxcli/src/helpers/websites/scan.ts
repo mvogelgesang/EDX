@@ -1,17 +1,19 @@
-import puppeteer from 'puppeteer';
-import * as fs from 'node:fs';
-import { browser } from '../../browser';
-import { printHash, writeJSONFile } from '../global/utils';
-import { WebsiteReportType, websiteReport } from './website-report';
-import { screenshot } from './screenshot';
-import { cuiBanner } from './cui-banner';
-import { metadataTags } from './metadata-tags';
-import { WebsiteMetadata } from './websites-metadata';
-import { itPerfMetricReport } from './it-performance-metric';
-import { uswdsComponentsReport } from './uswds-components';
-import { siteScannerReport } from './site-scanner';
-import { lighthouseReport } from './lighthouse';
 import { CliUx } from '@oclif/core';
+import * as fs from 'node:fs';
+import puppeteer from 'puppeteer';
+
+import { browser } from '../../browser';
+import { cuiBanner } from './cui-banner';
+import { printHash, writeJSONFile } from '../global/utils';
+import { itPerfMetricReport } from './it-performance-metric';
+import { lighthouseReport } from './lighthouse';
+import { metadataTags } from './metadata-tags';
+import { screenshot } from './screenshot';
+import { siteScannerReport } from './site-scanner';
+import { uswdsComponentsReport } from './uswds-components';
+import { WebsiteMetadata } from './websites-metadata';
+import { WebsiteReportType, websiteReport } from './website-report';
+
 
 export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   const websiteMetadata = new WebsiteMetadata(domain);
@@ -32,6 +34,8 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
     websiteMetadata.completeUrl,
   );
   report.scanStatus = message;
+  // certain facets can only be run against websites rather than static files
+  const isWebsite = websiteMetadata.completeUrl.protocol === 'https://';
 
   if (pageFound) {
     if (sh.facets.includes(<facetType>'cui banner')) {
@@ -43,7 +47,7 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
     }
 
     // 'lighthouse desktop',
-    if (sh.facets.includes(<facetType>'lighthouse desktop')) {
+    if (isWebsite && sh.facets.includes(<facetType>'lighthouse desktop')) {
       report.lighthouse.desktopData = await lighthouseReport(
         sh,
         websiteMetadata,
@@ -52,7 +56,7 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
     }
 
     // 'lighthouse mobile',
-    if (sh.facets.includes(<facetType>'lighthouse mobile')) {
+    if (isWebsite && sh.facets.includes(<facetType>'lighthouse mobile')) {
       report.lighthouse.mobileData = await lighthouseReport(
         sh,
         websiteMetadata,
@@ -74,8 +78,8 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
       );
     }
 
-    if (sh.facets.includes(<facetType>'site scanner')) {
-      const scanReport = await siteScannerReport(websiteMetadata);
+    if (isWebsite && sh.facets.includes(<facetType>'site scanner')) {
+      const scanReport = await siteScannerReport(websiteMetadata.completeUrl);
       if (scanReport) report.siteScanner.data = scanReport;
     }
 
