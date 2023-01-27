@@ -49,6 +49,12 @@ export default class Push extends BaseCommand<typeof Push.flags> {
         });
       });
     CliUx.ux.action.stop(`Fetched ${tpData.length} records from Touchpoints`);
+    CliUx.ux.action.start('Fetching records from Airtable');
+
+    const atData: { [key: string]: Record<string, string> } =
+      await Airtable.retrieveWebsites();
+    console.log(atData);
+    CliUx.ux.action.stop(`Fetched ${atData.length} records from Airtable`);
     CliUx.ux.action.start('Comparing records between Airtable and Touchpoints');
 
     // We want to capture the before/ after state of records and save them as an artifact
@@ -65,55 +71,54 @@ export default class Push extends BaseCommand<typeof Push.flags> {
     const upsertPromisesArray: Promise<void>[] = [];
 
     /* The pattern to follow is creating a function which wraps the loop
-     That function returns a promise
-     Within the loop though, all Promise-based functions get added to an array that holds the promises "let valuesArray: Promise<any>[] = []"
-     At the very end, you Promise.all(valuesArray).then(whatever) to resolve
-     */
+      That function returns a promise
+      Within the loop though, all Promise-based functions get added to an array that holds the promises "let // luesArray: Promise<any>[] = []"
+      At the very end, you Promise.all(valuesArray).then(whatever) to resolve
+      */
+    /* iterate through touchpoints data and determine what needs to be updated */
     for (const item in tpData) {
       if (Object.prototype.hasOwnProperty.call(tpData, item)) {
-        promisesArray.push(
-          Airtable.retrieveWebsite(tpData[item].Site)
-            .then((websiteRecord) => {
-              // if a record was found, update it
-              if (websiteRecord.records.length > 0) {
-                preUpdateWebsiteRecords.push(websiteRecord);
-                const updateRecord = {
-                  id: websiteRecord.records[0].id,
-                  fields: tpData[item],
-                };
-                websitesToUpdate.push(updateRecord);
-              } else if (isCountedSite(tpData[item])) {
-                /* Touchpoints contains a lot of information, we don't want to publish all of it to airtable as many records are irrelevant (staging, dev, infrastructure). isCountedSite ensures we don't include bad information. This will add to an array and we can do a mass insert later
-                 */
-                websitesToCreate.push(tpData[item]);
-              }
-            })
-            .catch((error: any) => {
-              console.error(error);
-            }),
-        );
+        const tpDomain: string = tpData[item].Site;
+        /* if the touchpoints site (domain) exists in atData, start comparing values */
+        if (Object.prototype.hasOwnProperty.call(atData, tpDomain)) {
+          preUpdateWebsiteRecords.push(atData[tpDomain]);
+          websitesToUpdate.push({
+            id: atData[tpDomain].id,
+            fields: tpData[item],
+          });
+        }
+
+        if (isCountedSite(tpData[item])) {
+          /* Touchpoints contains a lot of information, we don't want to publish all of it to airtable as // records are irrelevant (staging, dev, infrastructure). isCountedSite ensures we don't include bad // mation. This will add to an array and we can do a mass insert later
+           */
+          websitesToCreate.push(tpData[item]);
+        }
       }
     }
 
+    /* Update websites - airtable api allows for 10 records per call */
     Promise.all(promisesArray).then(() => {
-      for (const element of websitesToUpdate) {
+      //
+      while (websitesToUpdate.length > 0) {
         upsertPromisesArray.push(
-          Airtable.updateWebsites([element])
-            .then((updatedWebsiteRecord) => {
-              postUpdateWebsiteRecords.push({
-                id: updatedWebsiteRecord[0].id,
-                Site: updatedWebsiteRecord[0].fields.Site,
-                Active: updatedWebsiteRecord[0].fields.Active,
-                'Touchpoints URL':
-                  updatedWebsiteRecord[0].fields['Touchpoints URL'],
-                Office: updatedWebsiteRecord[0].fields.Office,
-                'Sub-Office': updatedWebsiteRecord[0].fields['Sub-Office'],
-                'Prod Status': updatedWebsiteRecord[0].fields['Prod Status'],
-                'Digital Brand Category':
-                  updatedWebsiteRecord[0].fields['Digital Brand Category'],
-                'Type of Domain':
-                  updatedWebsiteRecord[0].fields['Type of Domain'],
-              });
+          Airtable.updateWebsites(websitesToUpdate.splice(0, 10))
+            .then((updatedWebsiteRecords) => {
+              postUpdateWebsiteRecords.push(
+                ...updatedWebsiteRecords.map((record: any) => {
+                  return {
+                    id: record.id,
+                    Site: record.fields.Site,
+                    Active: record.fields.Active,
+                    'Touchpoints URL': record.fields['Touchpoints URL'],
+                    Office: record.fields.Office,
+                    'Sub-Office': record.fields['Sub-Office'],
+                    'Prod Status': record.fields['Prod Status'],
+                    'Digital Brand Category':
+                      record.fields['Digital Brand Category'],
+                    'Type of Domain': record.fields['Type of Domain'],
+                  };
+                }),
+              );
             })
             .catch((error: any) => {
               console.error(error);

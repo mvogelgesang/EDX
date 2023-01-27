@@ -49,11 +49,11 @@ export function retrieveWebsite(domain: string): Promise<ATListResponseType> {
  * Returns an array of all websites in the "ALL Sites" view
  * @returns {Promise<ATListResponseType>} promise of an ATListResponseType object
  */
-export async function retrieveWebsites(): Promise<any[]> {
+export async function retrieveWebsites(): Promise<any> {
   // must return a promise since the "select" function is promise based. https://ckhang.com/blog/2021/javascript-promises-async-await/
 
   return new Promise<any>((resolve, reject) => {
-    let dataObject: any = {};
+    let dataObject: { [key: string]: Record<string, string> } = {};
     base(TABLE)
       .select({
         fields: [
@@ -76,7 +76,10 @@ export async function retrieveWebsites(): Promise<any[]> {
             ...records.map((record) => {
               const obj: any = {};
               const domain: any = record.fields.Site;
-              obj[domain] = record.fields;
+              obj[domain] = Object.assign(
+                { id: record.id },
+                { fields: record.fields },
+              );
               return obj;
             }),
           );
@@ -99,19 +102,18 @@ export async function retrieveWebsites(): Promise<any[]> {
  * @param {ATWebsite[]} data array of ATWebsite objects
  * @returns {Promise<ATWebsite[]>} Promise containing ATWebsite object
  */
-// export function updateWebsites(data: ATWebsite[]): Promise<ATWebsite[]> {
-//   return new Promise((resolve, reject) => {
-//     base(TABLE).update(data, function (err: any, records: ATWebsite[]) {
-//       if (err) {
-//         console.log(err);
-//         console.log('Error occured while updating website', data);
-//         reject();
-//       }
-//
-//       resolve(records);
-//     });
-//   });
-// }
+export function updateWebsites(data: ATWebsite[]): Promise<any> {
+  return new Promise((resolve, reject) => {
+    base(TABLE).update(data, function (error, records) {
+      if (error) {
+        console.error(error);
+        reject();
+      }
+
+      resolve(records);
+    });
+  });
+}
 
 /**
  * Creates a new Website record in Airtable.
