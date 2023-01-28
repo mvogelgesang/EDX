@@ -29,7 +29,7 @@ USAGE
 
 <!-- commands -->
 * [`edxcli data condense`](#edxcli-data-condense)
-* [`edxcli help [COMMAND]`](#edxcli-help-command)
+* [`edxcli help [COMMANDS]`](#edxcli-help-commands)
 * [`edxcli plugins`](#edxcli-plugins)
 * [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
 * [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
@@ -51,7 +51,7 @@ Consolidates json output from website scans into CSV files
 
 ```
 USAGE
-  $ edxcli data condense [--loglevel error|warn|info|debug] [-f <value>] [-o <value>] [-c
+  $ edxcli data condense [--loglevel error|info|debug] [-f <value>] [-o <value>] [-c
     default|gearScans|lighthouseAccessibility|uswds]
 
 FLAGS
@@ -60,7 +60,7 @@ FLAGS
   -f, --folders=<value>      List of comma-separated folders within the /data/scans directory.
   -o, --output=<value>       [default: /data/condensedData] Output directory. Defualts to current directory
   --loglevel=<option>        [default: info]
-                             <options: error|warn|info|debug>
+                             <options: error|info|debug>
 
 DESCRIPTION
   Consolidates json output from website scans into CSV files
@@ -75,16 +75,16 @@ EXAMPLES
   $ edxcli data condense -c "lighthouseAccessibility"
 ```
 
-## `edxcli help [COMMAND]`
+## `edxcli help [COMMANDS]`
 
 Display help for edxcli.
 
 ```
 USAGE
-  $ edxcli help [COMMAND] [-n]
+  $ edxcli help [COMMANDS] [-n]
 
 ARGUMENTS
-  COMMAND  Command to show help for.
+  COMMANDS  Command to show help for.
 
 FLAGS
   -n, --nested-commands  Include all nested commands in the output.
@@ -93,7 +93,7 @@ DESCRIPTION
   Display help for edxcli.
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.22/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.2.1/src/commands/help.ts)_
 
 ## `edxcli plugins`
 
@@ -113,7 +113,7 @@ EXAMPLES
   $ edxcli plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.1.12/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.2.4/src/commands/plugins/index.ts)_
 
 ## `edxcli plugins:install PLUGIN...`
 
@@ -331,11 +331,11 @@ Performs a number of operations against lists of websites published by Touchpoin
 
 ```
 USAGE
-  $ edxcli websites [--loglevel error|warn|info|debug]
+  $ edxcli websites [--loglevel error|info|debug]
 
 FLAGS
   --loglevel=<option>  [default: info]
-                       <options: error|warn|info|debug>
+                       <options: error|info|debug>
 
 DESCRIPTION
   Performs a number of operations against lists of websites published by Touchpoints
@@ -362,7 +362,7 @@ Retrieves a list of websites from one or more data sources.
 
 ```
 USAGE
-  $ edxcli websites fetch [SOURCE] [--loglevel error|warn|info|debug] [-o <value>]
+  $ edxcli websites fetch [SOURCE] [--loglevel error|info|debug] [-o <value>]
 
 ARGUMENTS
   SOURCE  (Site Scanner|Touchpoints) Website list source
@@ -370,7 +370,7 @@ ARGUMENTS
 FLAGS
   -o, --output=<value>  [default: data/fetch] Output directory. Defualts to current directory
   --loglevel=<option>   [default: info]
-                        <options: error|warn|info|debug>
+                        <options: error|info|debug>
 
 DESCRIPTION
   Retrieves a list of websites from one or more data sources.
@@ -387,12 +387,12 @@ Grabs an extract of Touchpoints data and updates or inserts it into Airtable. If
 
 ```
 USAGE
-  $ edxcli websites push [--loglevel error|warn|info|debug] [-o <value>]
+  $ edxcli websites push [--loglevel error|info|debug] [-o <value>]
 
 FLAGS
   -o, --output=<value>  [default: data/push] Output directory. Defualts to /edxcli/data/push directory
   --loglevel=<option>   [default: info]
-                        <options: error|warn|info|debug>
+                        <options: error|info|debug>
 
 DESCRIPTION
   Grabs an extract of Touchpoints data and updates or inserts it into Airtable. If the data in Touchpoints matches
@@ -410,7 +410,7 @@ Scans websites using various facets to capture information about the sites
 
 ```
 USAGE
-  $ edxcli websites scan -d <value> [--loglevel error|warn|info|debug] [-f <value>] [--headless] [-o <value>] [-p
+  $ edxcli websites scan -d <value> [--loglevel error|info|debug] [-f <value>] [--headless] [-o <value>] [-p
     |all|edx scan] [--auth]
 
 FLAGS
@@ -426,7 +426,7 @@ FLAGS
                              site. Defaults to false
   --[no-]headless            Boolean flag, whether or not to run scans in headless mode. Defaults to true
   --loglevel=<option>        [default: info]
-                             <options: error|warn|info|debug>
+                             <options: error|info|debug>
 
 DESCRIPTION
   Scans websites using various facets to capture information about the sites
@@ -453,7 +453,7 @@ Scans websites using various modules to capture information about the sites
 
 ```
 USAGE
-  $ edxcli websites scan bulk [--loglevel error|warn|info|debug] [-d Airtable|Touchpoints] [-f <value>] [--headless] [-o
+  $ edxcli websites scan bulk [--loglevel error|info|debug] [-d Airtable|Touchpoints] [-f <value>] [--headless] [-o
     <value>] [-p |all|edx scan] [--resume]
 
 FLAGS
@@ -468,7 +468,7 @@ FLAGS
                              <options: |all|edx scan>
   --[no-]headless            Boolean flag, whether or not to run scans in headless mode. Defaults to true
   --loglevel=<option>        [default: info]
-                             <options: error|warn|info|debug>
+                             <options: error|info|debug>
   --resume                   Resumes a previously launched operation. If a local cache file is not found, begins the
                              process from scratch.
 

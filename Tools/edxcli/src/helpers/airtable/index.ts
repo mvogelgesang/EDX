@@ -117,27 +117,24 @@ export function updateWebsites(data: ATWebsite[]): Promise<any> {
 
 /**
  * Creates a new Website record in Airtable.
- * @param {ATWebsiteFields} newWebsite an ATWebsiteFields object containing at least the Site field.
+ * @param {Omit<ATWebsite, 'id'|'createdTime'>[]} newWebsites an ATWebsite object array containing at least the Site field.
  * @returns {Promise<ATWebsite[]>} containing information about the new record
  */
-// export function createWebsites(
-//   newWebsite: ATWebsiteFields,
-// ): Promise<ATWebsite[]> {
-//   return new Promise((resolve, reject) => {
-//     base(TABLE).create(
-//       [{ fields: newWebsite }],
-//       function (err: any, records: ATWebsite[]) {
-//         if (err) {
-//           console.error(err);
-//           console.error('Error occured while creating website', records);
-//           reject();
-//         }
-//
-//         resolve(records);
-//       },
-//     );
-//   });
-// }
+export function createWebsites(
+  newWebsites: Omit<ATWebsite, 'id' | 'createdTime'>[],
+): Promise<ATWebsite[]> {
+  return new Promise((resolve, reject) => {
+    base(TABLE).create(newWebsites, function (err: any, records: any) {
+      if (err) {
+        console.error(err);
+        console.error('Error occured while creating websites:', newWebsites);
+        reject();
+      }
+
+      resolve(records);
+    });
+  });
+}
 
 export type ATListResponseType = {
   records: ATWebsite[];

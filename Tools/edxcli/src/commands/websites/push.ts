@@ -48,13 +48,15 @@ export default class Push extends BaseCommand<typeof Push.flags> {
           };
         });
       });
+
     CliUx.ux.action.stop(`Fetched ${tpData.length} records from Touchpoints`);
     CliUx.ux.action.start('Fetching records from Airtable');
 
     const atData: { [key: string]: Record<string, string> } =
       await Airtable.retrieveWebsites();
-    console.log(atData);
-    CliUx.ux.action.stop(`Fetched ${atData.length} records from Airtable`);
+    CliUx.ux.action.stop(
+      `Fetched ${Object.keys(atData).length} records from Airtable`,
+    );
     CliUx.ux.action.start('Comparing records between Airtable and Touchpoints');
 
     // We want to capture the before/ after state of records and save them as an artifact
@@ -63,11 +65,11 @@ export default class Push extends BaseCommand<typeof Push.flags> {
     const postUpdateWebsiteRecords: any[] = [];
 
     // lists of websites to create or update
-    const websitesToCreate: Airtable.ATWebsiteFields[] = [];
+    const websitesToCreate: Omit<Airtable.ATWebsite, 'id' | 'createdTime'>[] =
+      [];
     const websitesToUpdate: Airtable.ATWebsite[] = [];
 
     // establishing promises arrays which must be resolved prior to the next step
-    const promisesArray: Promise<void>[] = [];
     const upsertPromisesArray: Promise<void>[] = [];
 
     /* The pattern to follow is creating a function which wraps the loop
@@ -86,86 +88,79 @@ export default class Push extends BaseCommand<typeof Push.flags> {
             id: atData[tpDomain].id,
             fields: tpData[item],
           });
-        }
-
-        if (isCountedSite(tpData[item])) {
+        } else if (isCountedSite(tpData[item])) {
           /* Touchpoints contains a lot of information, we don't want to publish all of it to airtable as // records are irrelevant (staging, dev, infrastructure). isCountedSite ensures we don't include bad // mation. This will add to an array and we can do a mass insert later
            */
-          websitesToCreate.push(tpData[item]);
+          websitesToCreate.push({ fields: tpData[item] });
         }
       }
     }
 
     /* Update websites - airtable api allows for 10 records per call */
-    Promise.all(promisesArray).then(() => {
-      //
-      while (websitesToUpdate.length > 0) {
-        upsertPromisesArray.push(
-          Airtable.updateWebsites(websitesToUpdate.splice(0, 10))
-            .then((updatedWebsiteRecords) => {
-              postUpdateWebsiteRecords.push(
-                ...updatedWebsiteRecords.map((record: any) => {
-                  return {
-                    id: record.id,
-                    Site: record.fields.Site,
-                    Active: record.fields.Active,
-                    'Touchpoints URL': record.fields['Touchpoints URL'],
-                    Office: record.fields.Office,
-                    'Sub-Office': record.fields['Sub-Office'],
-                    'Prod Status': record.fields['Prod Status'],
-                    'Digital Brand Category':
-                      record.fields['Digital Brand Category'],
-                    'Type of Domain': record.fields['Type of Domain'],
-                  };
-                }),
-              );
-            })
-            .catch((error: any) => {
-              console.error(error);
-            }),
-        );
-      }
-
-      if (websitesToCreate.length > 0) {
-        for (const element of websitesToCreate) {
-          upsertPromisesArray.push(
-            Airtable.createWebsites(element)
-              .then((newWebsiteRecord) => {
-                newWebsiteRecords.push(newWebsiteRecord);
-              })
-              .catch((error: any) => {
-                console.error(error);
+    while (websitesToUpdate.length > 0) {
+      upsertPromisesArray.push(
+        Airtable.updateWebsites(websitesToUpdate.splice(0, 10))
+          .then((updatedWebsiteRecords) => {
+            postUpdateWebsiteRecords.push(
+              ...updatedWebsiteRecords.map((record: any) => {
+                return {
+                  id: record.id,
+                  Site: record.fields.Site,
+                  Active: record.fields.Active,
+                  'Touchpoints URL': record.fields['Touchpoints URL'],
+                  Office: record.fields.Office,
+                  'Sub-Office': record.fields['Sub-Office'],
+                  'Prod Status': record.fields['Prod Status'],
+                  'Digital Brand Category':
+                    record.fields['Digital Brand Category'],
+                  'Type of Domain': record.fields['Type of Domain'],
+                };
               }),
-          );
-        }
-      }
+            );
+          })
+          .catch((error: any) => {
+            console.error('ERROR UPDATE', error);
+          }),
+      );
+    }
 
-      // write the before/ after content to files
-      Promise.all(upsertPromisesArray).then(() => {
-        writeJSONFile(
-          postUpdateWebsiteRecords,
-          flags.output,
-          'airtablePostUpdate',
-          BaseCommand.formattedDate(),
-        );
+    while (websitesToCreate.length > 0) {
+      upsertPromisesArray.push(
+        Airtable.createWebsites(websitesToCreate.splice(0, 10))
+          .then((newWebsiteRecord) => {
+            newWebsiteRecords.push(newWebsiteRecord);
+          })
+          .catch((error: any) => {
+            console.error('CREATE ERROR', error);
+          }),
+      );
+    }
 
-        writeJSONFile(
-          preUpdateWebsiteRecords,
-          flags.output,
-          'airtablePreUpdateWebsiteRecords',
-          BaseCommand.formattedDate(),
-        );
-        writeJSONFile(
-          newWebsiteRecords,
-          flags.output,
-          'airtableNewWebsiteRecords',
-          BaseCommand.formattedDate(),
-        );
+    // write the before/ after content to files
+    Promise.all(upsertPromisesArray).then(() => {
+      writeJSONFile(
+        postUpdateWebsiteRecords,
+        flags.output,
+        'airtablePostUpdate',
+        BaseCommand.formattedDate(),
+      );
 
-        CliUx.ux.action.stop(
-          `\nCreated ${newWebsiteRecords.length} records in Airtable\nUpdated ${postUpdateWebsiteRecords.length} records in Airtable.\nDone.`,
-        );
-      });
+      writeJSONFile(
+        preUpdateWebsiteRecords,
+        flags.output,
+        'airtablePreUpdateWebsiteRecords',
+        BaseCommand.formattedDate(),
+      );
+      writeJSONFile(
+        newWebsiteRecords,
+        flags.output,
+        'airtableNewWebsiteRecords',
+        BaseCommand.formattedDate(),
+      );
+
+      CliUx.ux.action.stop(
+        `\nCreated ${newWebsiteRecords.length} records in Airtable\nUpdated ${postUpdateWebsiteRecords.length} records in Airtable.\nDone.`,
+      );
     });
   }
 }
