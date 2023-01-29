@@ -321,9 +321,9 @@
     val: 0.5
     max: 1
 - name: cfo.gov
-  office: OGP
+  office: OMB/OGP
   subOffice: MY
-  digitalBrandCategory: Hybrid
+  digitalBrandCategory: External
   typeOfDomain: Informational
   datapointA:
     val: 0.6
@@ -390,9 +390,9 @@
     val: 0.875
     max: 1
 - name: cio.gov
-  office: OGP
+  office: OMB/OGP
   subOffice: MY
-  digitalBrandCategory: Hybrid
+  digitalBrandCategory: External
   typeOfDomain: Informational
   datapointA:
     val: 0.7
@@ -598,8 +598,8 @@
     max: 1
 - name: contractdirectory.gov
   office: FAS
-  subOffice: OSM/IAE
-  digitalBrandCategory: GSA Business
+  subOffice: TTS/IAE
+  digitalBrandCategory: Hybrid
   typeOfDomain: Informational
   datapointA:
     val: 0.7
@@ -644,7 +644,7 @@
     max: 1
 - name: cpars.gov
   office: FAS
-  subOffice: OSM/IAE
+  subOffice: TTS/IAE
   digitalBrandCategory: Hybrid
   typeOfDomain: Application
   datapointA:
@@ -735,7 +735,7 @@
     val: 0.5
     max: 1
 - name: datacenters.cio.gov
-  office: OGP
+  office: OMB/OGP
   subOffice: MY
   digitalBrandCategory: External
   typeOfDomain: Informational
@@ -920,7 +920,7 @@
     max: 1
 - name: fedidcard.gov
   office: FAS
-  subOffice: ICAM
+  subOffice: ITC
   digitalBrandCategory: Hybrid
   typeOfDomain: Informational
   datapointA:
