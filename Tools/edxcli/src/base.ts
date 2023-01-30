@@ -4,6 +4,7 @@ import {
   OutputFlags,
   ParserOutput,
 } from '@oclif/core/lib/interfaces';
+import debug from 'debug';
 
 // This is needed to get type safety working in derived classes
 export type InferredFlagsType<T> = T extends FlagInput<infer F>
@@ -23,7 +24,7 @@ export default abstract class BaseCommand<
 
   static flags = {
     loglevel: Flags.string({
-      options: ['error', 'warn', 'info', 'debug'],
+      options: ['error', 'info', 'debug'],
       default: 'info',
     }),
   };
@@ -52,20 +53,18 @@ export default abstract class BaseCommand<
    */
   log(msg: string, level: string): void {
     // logging is heirarchical. For instance, setting the level at debug should also print info logs
+    const levelRanking: { [key: string]: number } = {
+      debug: 3,
+      info: 2,
+      error: 1,
+    };
+    const rank = levelRanking[this.baseFlags.loglevel];
 
-    if (this.baseFlags.loglevel === 'debug') {
-      level === 'debug'
-        ? console.log(`DEBUG > ${msg}`)
-        : level === 'error'
-        ? console.error(msg)
-        : console.log(msg);
-    }
+    if (rank >= 3 && level === 'debug') debug(msg);
 
-    if (this.baseFlags.loglevel === 'info') {
-      level === 'error' ? console.error(msg) : console.log(msg);
-    }
+    if (rank >= 2 && level === 'info') console.log(msg);
 
-    if (level === 'error') console.error(msg);
+    if (rank >= 1 && level === 'error') console.error(msg);
   }
 
   async init(): Promise<void> {
