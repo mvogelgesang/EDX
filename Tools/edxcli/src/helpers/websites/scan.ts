@@ -14,7 +14,6 @@ import { uswdsComponentsReport } from './uswds-components';
 import { WebsiteMetadata } from './websites-metadata';
 import { WebsiteReportType, websiteReport } from './website-report';
 
-
 export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   const websiteMetadata = new WebsiteMetadata(domain);
 
@@ -35,7 +34,7 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   );
   report.scanStatus = message;
   // certain facets can only be run against websites rather than static files
-  const isWebsite = websiteMetadata.completeUrl.protocol === 'https://';
+  const isWebsite = websiteMetadata.completeUrl.protocol === 'https:';
 
   if (pageFound) {
     if (sh.facets.includes(<facetType>'cui banner')) {
