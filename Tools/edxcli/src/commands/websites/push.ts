@@ -72,18 +72,15 @@ export default class Push extends BaseCommand<typeof Push.flags> {
     // establishing promises arrays which must be resolved prior to the next step
     const upsertPromisesArray: Promise<void>[] = [];
 
-    /* The pattern to follow is creating a function which wraps the loop
-      That function returns a promise
-      Within the loop though, all Promise-based functions get added to an array that holds the promises "let // luesArray: Promise<any>[] = []"
-      At the very end, you Promise.all(valuesArray).then(whatever) to resolve
-      */
     /* iterate through touchpoints data and determine what needs to be updated */
     for (const item in tpData) {
       if (Object.prototype.hasOwnProperty.call(tpData, item)) {
         const tpDomain: string = tpData[item].Site;
         /* if the touchpoints site (domain) exists in atData, start comparing values */
         if (Object.prototype.hasOwnProperty.call(atData, tpDomain)) {
+          // save a copy of the record before update
           preUpdateWebsiteRecords.push(atData[tpDomain]);
+          // add website to list of sites to update
           websitesToUpdate.push({
             id: atData[tpDomain].id,
             fields: tpData[item],
@@ -139,6 +136,12 @@ export default class Push extends BaseCommand<typeof Push.flags> {
     // write the before/ after content to files
     Promise.all(upsertPromisesArray).then(() => {
       writeJSONFile(
+        tpData,
+        flags.output,
+        'touchpoints',
+        BaseCommand.formattedDate(),
+      );
+      writeJSONFile(
         postUpdateWebsiteRecords,
         flags.output,
         'airtablePostUpdate',
@@ -159,7 +162,7 @@ export default class Push extends BaseCommand<typeof Push.flags> {
       );
 
       CliUx.ux.action.stop(
-        `\nCreated ${newWebsiteRecords.length} records in Airtable\nUpdated ${postUpdateWebsiteRecords.length} records in Airtable.\nDone.`,
+        `\nCreated ${newWebsiteRecords.length} records in Airtable\nUpdated ${postUpdateWebsiteRecords.length} records in Airtable.\n\nData backups available in ${flags.output}.\nDone.`,
       );
     });
   }
