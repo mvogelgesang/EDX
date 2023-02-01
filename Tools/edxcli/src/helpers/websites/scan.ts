@@ -71,15 +71,35 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
     }
 
     if (sh.facets.includes(<facetType>'screenshot')) {
-      report.screenCapture.data = await screenshot(
-        sh,
-        websiteMetadata.completeUrl,
-      );
+      report.screenCapture.data = [
+        ...report.screenCapture.data,
+        ...(await screenshot(sh, websiteMetadata.completeUrl, 'webpage')),
+      ];
     }
 
     if (isWebsite && sh.facets.includes(<facetType>'site scanner')) {
       const scanReport = await siteScannerReport(websiteMetadata.completeUrl);
       if (scanReport) report.siteScanner.data = scanReport;
+    }
+
+    if (isWebsite && sh.facets.includes(<facetType>'search engine')) {
+      const searchEngineURLs = [
+        'https://google.com/search?q=',
+        'https://www.bing.com/search?q=',
+        'https://duckduckgo.com/?q=',
+      ];
+
+      for (const item of searchEngineURLs) {
+        report.screenCapture.data = [
+          ...report.screenCapture.data,
+          // eslint-disable-next-line no-await-in-loop
+          ...(await screenshot(
+            sh,
+            new URL(`${item}${websiteMetadata.completeUrl.hostname}`),
+            'search engine',
+          )),
+        ];
+      }
     }
 
     if (sh.facets.includes(<facetType>'uswds components')) {
@@ -152,6 +172,7 @@ const presets = (preset: presetType): facetType[] => {
       'lighthouse mobile',
       'metadata tags',
       'screenshot',
+      'search engine',
       'site scanner',
       'uswds components',
     ],
@@ -161,6 +182,7 @@ const presets = (preset: presetType): facetType[] => {
       'lighthouse mobile',
       'metadata tags',
       'screenshot',
+      'search engine',
       'site scanner',
       'uswds components',
     ],
@@ -246,6 +268,7 @@ export type facetType =
   | 'lighthouse mobile'
   | 'metadata tags'
   | 'screenshot'
+  | 'search engine'
   | 'site scanner'
   | 'uswds components';
 
