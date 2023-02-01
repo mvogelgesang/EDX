@@ -32,7 +32,7 @@ export const websiteReport = (
     scanStatus: '',
     screenCapture: {
       description:
-        'Holds screenshots of website homepage on both desktop and mobile viewport sizes',
+        'Holds screenshots taken throughout scan including homepage, search engine, and others.',
       data: [],
     },
     performanceMetric: {

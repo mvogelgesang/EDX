@@ -4,6 +4,7 @@ import { printHash } from '../global/utils';
 export const screenshot = async (
   sh: ScanHelper,
   domain: URL,
+  type: string,
 ): Promise<ScreenshotType[]> => {
   const screenshotArray: ScreenshotType[] = [];
   const page = await sh.browser.newPage();
@@ -15,7 +16,12 @@ export const screenshot = async (
       // eslint-disable-next-line no-await-in-loop
       await page.emulate(sh.devices[device]);
       // eslint-disable-next-line no-await-in-loop
-      await page.goto(domain.toString());
+      await page
+        .goto(domain.toString(), { waitUntil: 'networkidle2' })
+        .catch((error) => {
+          console.error('Screenshot error:', error);
+        });
+
       // eslint-disable-next-line no-await-in-loop
       const pageHash = await printHash(domain.toString());
       const name =
@@ -29,6 +35,7 @@ export const screenshot = async (
       });
 
       screenshotArray.push({
+        screenshotType: type,
         domain: domain.hostname,
         url: domain.toString(),
         imgPath: imgPath,
@@ -42,6 +49,7 @@ export const screenshot = async (
 };
 
 export type ScreenshotType = {
+  screenshotType: string;
   domain: string;
   url: string;
   imgPath: string;

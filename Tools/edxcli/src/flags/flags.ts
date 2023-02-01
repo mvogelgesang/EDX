@@ -22,7 +22,7 @@ export const domainsSource = Flags.build({
 export const facets = Flags.build({
   char: 'f',
   description:
-    'Comma-separated list of facets to use for the scan. e.g. (-f "screenshot,lighthouse,it metric").\n<options: | cui banner|screenshot|lighthouse desktop|lighthouse mobile|it performance metric|site scanner|uswds components>',
+    'Comma-separated list of facets to use for the scan. e.g. (-f "screenshot,lighthouse,it metric").\n<options: | cui banner|screenshot|lighthouse desktop|lighthouse mobile|it performance metric|screenshot|search engine|site scanner|uswds components>',
   multiple: true,
   helpValue: '<options>',
   required: false,
