@@ -3,6 +3,11 @@
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 
 <!-- toc -->
+* [edxcli](#edxcli)
+* [Usage](#usage)
+* [Commands](#commands)
+* [Release Notes](#release-notes)
+<!-- tocstop -->
 
 - [edxcli](#edxcli)
 - [Usage](#usage)
@@ -24,6 +29,7 @@
   - [`edxcli websites scan`](#edxcli-websites-scan)
   - [`edxcli websites scan bulk`](#edxcli-websites-scan-bulk)
 - [Release Notes](#release-notes)
+  - [0.0.23](#0023)
   - [0.0.22](#0022)
   - [0.0.21](#0021)
   - [0.0.20](#0020)
@@ -50,67 +56,38 @@
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g edx_cli
 $ edxcli COMMAND
 running command...
 $ edxcli (--version)
-edx_cli/0.0.21 darwin-x64 node-v16.14.2
+edx_cli/0.0.23 darwin-x64 node-v16.14.2
 $ edxcli --help [COMMAND]
 USAGE
   $ edxcli COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-
-- [edxcli](#edxcli)
-- [Usage](#usage)
-- [Commands](#commands)
-  - [`edxcli data condense`](#edxcli-data-condense)
-  - [`edxcli help [COMMANDS]`](#edxcli-help-commands)
-  - [`edxcli plugins`](#edxcli-plugins)
-  - [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
-  - [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
-  - [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin-1)
-  - [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
-  - [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
-  - [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin-1)
-  - [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin-2)
-  - [`edxcli plugins update`](#edxcli-plugins-update)
-  - [`edxcli websites`](#edxcli-websites)
-  - [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
-  - [`edxcli websites push`](#edxcli-websites-push)
-  - [`edxcli websites scan`](#edxcli-websites-scan)
-  - [`edxcli websites scan bulk`](#edxcli-websites-scan-bulk)
-- [Release Notes](#release-notes)
-  - [0.0.22](#0022)
-  - [0.0.21](#0021)
-  - [0.0.20](#0020)
-  - [0.0.19](#0019)
-  - [0.0.18](#0018)
-  - [0.0.17](#0017)
-  - [0.0.16](#0016)
-  - [0.0.15](#0015)
-  - [0.0.14](#0014)
-  - [0.0.13](#0013)
-  - [0.0.12](#0012)
-  - [0.0.11](#0011)
-  - [0.0.10](#0010)
-  - [0.0.9](#009)
-  - [0.0.8](#008)
-  - [0.0.7](#007)
-  - [0.0.6](#006)
-  - [0.0.5](#005)
-  - [0.0.4](#004)
-  - [0.0.3](#003)
-  - [0.0.2](#002)
-  - [0.0.1](#001)
+* [`edxcli data condense`](#edxcli-data-condense)
+* [`edxcli help [COMMANDS]`](#edxcli-help-commands)
+* [`edxcli plugins`](#edxcli-plugins)
+* [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin)
+* [`edxcli plugins:inspect PLUGIN...`](#edxcli-pluginsinspect-plugin)
+* [`edxcli plugins:install PLUGIN...`](#edxcli-pluginsinstall-plugin-1)
+* [`edxcli plugins:link PLUGIN`](#edxcli-pluginslink-plugin)
+* [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin)
+* [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin-1)
+* [`edxcli plugins:uninstall PLUGIN...`](#edxcli-pluginsuninstall-plugin-2)
+* [`edxcli plugins update`](#edxcli-plugins-update)
+* [`edxcli websites`](#edxcli-websites)
+* [`edxcli websites fetch SOURCE`](#edxcli-websites-fetch-source)
+* [`edxcli websites push`](#edxcli-websites-push)
+* [`edxcli websites scan`](#edxcli-websites-scan)
+* [`edxcli websites scan bulk`](#edxcli-websites-scan-bulk)
 
 ## `edxcli data condense`
 
@@ -213,7 +190,7 @@ ALIASES
   $ edxcli plugins add
 
 EXAMPLES
-  $ edxcli plugins:install myplugin
+  $ edxcli plugins:install myplugin 
 
   $ edxcli plugins:install https://github.com/someuser/someplugin
 
@@ -273,7 +250,7 @@ ALIASES
   $ edxcli plugins add
 
 EXAMPLES
-  $ edxcli plugins:install myplugin
+  $ edxcli plugins:install myplugin 
 
   $ edxcli plugins:install https://github.com/someuser/someplugin
 
@@ -421,7 +398,7 @@ EXAMPLES
   $ edxcli websites scan bulk
 ```
 
-_See code: [dist/commands/websites/index.ts](https://github.com/gsa/edx/blob/v0.0.21/dist/commands/websites/index.ts)_
+_See code: [dist/commands/websites/index.ts](https://github.com/gsa/edx/blob/v0.0.23/dist/commands/websites/index.ts)_
 
 ## `edxcli websites fetch SOURCE`
 
@@ -485,7 +462,7 @@ FLAGS
   -f, --facets=<options>...  Comma-separated list of facets to use for the scan. e.g. (-f "screenshot,lighthouse,it
                              metric").
                              <options: | cui banner|screenshot|lighthouse desktop|lighthouse mobile|it performance
-                             metric|site scanner|uswds components>
+                             metric|screenshot|search engine|site scanner|uswds components>
   -o, --output=<value>       Output directory. Defualts to current directory
   -p, --preset=<option>      Run a pre-configured suite of scan facets whose results will be output into a single file.
                              <options: |all|edx scan>
@@ -529,7 +506,7 @@ FLAGS
   -f, --facets=<options>...  Comma-separated list of facets to use for the scan. e.g. (-f "screenshot,lighthouse,it
                              metric").
                              <options: | cui banner|screenshot|lighthouse desktop|lighthouse mobile|it performance
-                             metric|site scanner|uswds components>
+                             metric|screenshot|search engine|site scanner|uswds components>
   -o, --output=<value>       Output directory. Defualts to current directory
   -p, --preset=<option>      Run a pre-configured suite of scan facets whose results will be output into a single file.
                              <options: |all|edx scan>
@@ -547,7 +524,6 @@ EXAMPLES
 
   $ edxcli websites scan bulk -d Touchpoints --resume
 ```
-
 <!-- commandsstop -->
 
 <!-- Updating -->
@@ -563,6 +539,10 @@ yarn run prepack
 # Release Notes
 
 All scan contain a `scanVersion` attribute which ties back to the version number listed in package.json. Each time an update has been made to the logic of the scans, the version number gets bumped. Doing so allows all teams to see the criteria at the time of the scan. We expect to update the version regularly so as to provide the most complete and accurate picture of websites at GSA.
+
+## 0.0.23
+
+[Issue 522](https://github.com/GSA/EDX/issues/522) & [Issue 659](https://github.com/GSA/EDX/issues/659) - updated "Contact" criteria to accept the term Feedback and also avoid instances where the term "contact" is included in a CSS class, HTML attribute, or non-user facing location.
 
 ## 0.0.22
 
