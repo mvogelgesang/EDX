@@ -44,7 +44,7 @@ export const itPerfMetricReport = async (
     },
     contact: {
       regex:
-        /([^"#'-.]|^)contact|get in touch|email us|email|get support|help desk|send us an email|d+(s|-)d+(s|-)d+|(d+)sd+-d+/i,
+        /([^"#'-.]|^)contact|feedback|get in touch|email us|email|get support|help desk|send us an email|d+(s|-)d+(s|-)d+|(d+)sd+-d+/i,
       type: 'other',
     },
   };
