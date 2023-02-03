@@ -44,7 +44,7 @@ export const itPerfMetricReport = async (
     },
     contact: {
       regex:
-        /contact us|contact|get in touch|email us|email|get support|help desk|send us an email|d+(s|-)d+(s|-)d+|(d+)sd+-d+/i,
+        /([^"#'-.]|^)contact|get in touch|email us|email|get support|help desk|send us an email|d+(s|-)d+(s|-)d+|(d+)sd+-d+/i,
       type: 'other',
     },
   };
@@ -77,12 +77,11 @@ export const itPerfMetricReport = async (
   // some pages load the content of the identifier at the end, give the page a grace period to see if it all loads
   try {
     await page.waitForSelector('a.usa-identifier__required-link.usa-link', {
-      timeout: 10_000,
+      timeout: 5000,
     });
-  } catch (error) {
-    console.error(
+  } catch {
+    console.log(
       'timeout exceeded while waiting for usa-identifier selector - it may not exist',
-      error,
     );
   }
 
