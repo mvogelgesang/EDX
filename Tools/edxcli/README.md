@@ -498,24 +498,25 @@ Scans websites using various modules to capture information about the sites
 
 ```
 USAGE
-  $ edxcli websites scan bulk [--loglevel error|info|debug] [-d Airtable|Touchpoints] [-f <value>] [--headless] [-o
-    <value>] [-p |all|edx scan] [--resume]
+  $ edxcli websites scan bulk [--loglevel error|info|debug] [-d Touchpoints] [-f <value>] [--headless] [-o <value>] [-p
+    |all|edx scan] [--resume]
 
 FLAGS
-  -d, --domains=<option>     Name of the system to pull the list of domains
-                             <options: Airtable|Touchpoints>
-  -f, --facets=<options>...  Comma-separated list of facets to use for the scan. e.g. (-f "screenshot,lighthouse,it
-                             metric").
-                             <options: | cui banner|screenshot|lighthouse desktop|lighthouse mobile|it performance
-                             metric|screenshot|search engine|site scanner|uswds components>
-  -o, --output=<value>       Output directory. Defualts to current directory
-  -p, --preset=<option>      Run a pre-configured suite of scan facets whose results will be output into a single file.
-                             <options: |all|edx scan>
-  --[no-]headless            Boolean flag, whether or not to run scans in headless mode. Defaults to true
-  --loglevel=<option>        [default: info]
-                             <options: error|info|debug>
-  --resume                   Resumes a previously launched operation. If a local cache file is not found, begins the
-                             process from scratch.
+  -d, --domainsSource=<option>  [default: Touchpoints] Name of the system to pull the list of domains
+                                <options: Touchpoints>
+  -f, --facets=<options>...     Comma-separated list of facets to use for the scan. e.g. (-f "screenshot,lighthouse,it
+                                metric").
+                                <options: | cui banner|screenshot|lighthouse desktop|lighthouse mobile|it performance
+                                metric|screenshot|search engine|site scanner|uswds components>
+  -o, --output=<value>          Output directory. Defualts to current directory
+  -p, --preset=<option>         Run a pre-configured suite of scan facets whose results will be output into a single
+                                file.
+                                <options: |all|edx scan>
+  --[no-]headless               Boolean flag, whether or not to run scans in headless mode. Defaults to true
+  --loglevel=<option>           [default: info]
+                                <options: error|info|debug>
+  --resume                      Resumes a previously launched operation. If a local cache file is not found, begins the
+                                process from scratch.
 
 DESCRIPTION
   Scans websites using various modules to capture information about the sites
