@@ -23,7 +23,7 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
 
   static flags = {
     ...BaseCommand.flags,
-    domains: domainsSource(),
+    domainsSource: domainsSource(),
     facets: facets(),
     headless: headless,
     output: output(),
@@ -56,7 +56,7 @@ export default class Bulk extends BaseCommand<typeof Bulk.flags> {
       );
     }
 
-    if (flags.domains === 'Touchpoints' && domainArray.length === 0) {
+    if (flags.domainsSource === 'Touchpoints' && domainArray.length === 0) {
       const tpData = await fh.getTouchpointsWebsites();
 
       // eslint-disable-next-line unicorn/no-array-reduce

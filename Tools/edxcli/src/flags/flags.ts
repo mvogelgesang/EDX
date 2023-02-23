@@ -14,9 +14,10 @@ export const domainsList = Flags.build({
 
 export const domainsSource = Flags.build({
   char: 'd',
+  default: 'Touchpoints',
   description: 'Name of the system to pull the list of domains',
   required: false,
-  options: ['Airtable', 'Touchpoints'],
+  options: ['Touchpoints'],
 });
 
 export const facets = Flags.build({
