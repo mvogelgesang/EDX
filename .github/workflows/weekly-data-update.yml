@@ -1,12 +1,13 @@
 name: Weekly Data Update
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:        
   schedule:
     - cron: '30 5 * * 0'
 
 jobs:
   build:
+    if: github.repository == 'gsa/edx' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 20        
     steps:
