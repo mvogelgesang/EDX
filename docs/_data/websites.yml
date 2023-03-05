@@ -159,6 +159,52 @@
   datapointF:
     val: 1
     max: 1
+- name: api.data.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: apps.ocfo.gsa.gov
+  office: GSA IT
+  subOffice: ICS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
 - name: ask.gsa.gov
   office: FAS
   subOffice: CASE
@@ -671,7 +717,7 @@
   digitalBrandCategory: GSA Business
   typeOfDomain: Application
   datapointA:
-    val: 0.5
+    val: 0.7
     max: 1
   datapointB:
     val: 0.5
@@ -694,7 +740,7 @@
   digitalBrandCategory: Hybrid
   typeOfDomain: Application
   datapointA:
-    val: 0.5
+    val: 0.8
     max: 1
   datapointB:
     val: 1
@@ -717,7 +763,7 @@
   digitalBrandCategory: Hybrid
   typeOfDomain: Informational
   datapointA:
-    val: 0.5
+    val: 0.7
     max: 1
   datapointB:
     val: 0.625
@@ -740,7 +786,7 @@
   digitalBrandCategory: External
   typeOfDomain: Informational
   datapointA:
-    val: 0.5
+    val: 0.7
     max: 1
   datapointB:
     val: 0
@@ -763,7 +809,7 @@
   digitalBrandCategory: GSA Business
   typeOfDomain: Informational
   datapointA:
-    val: 0.5
+    val: 1
     max: 1
   datapointB:
     val: 1
@@ -786,7 +832,7 @@
   digitalBrandCategory: Hybrid
   typeOfDomain: Informational
   datapointA:
-    val: 0.5
+    val: 0.9
     max: 1
   datapointB:
     val: 0.5
@@ -809,7 +855,7 @@
   digitalBrandCategory: Hybrid
   typeOfDomain: Informational
   datapointA:
-    val: 0.5
+    val: 0.7
     max: 1
   datapointB:
     val: 1
@@ -832,7 +878,7 @@
   digitalBrandCategory: GSA Business
   typeOfDomain: Informational
   datapointA:
-    val: 0.5
+    val: 0.8
     max: 1
   datapointB:
     val: 1
@@ -878,7 +924,7 @@
   digitalBrandCategory: Hybrid
   typeOfDomain: Application
   datapointA:
-    val: 0.5
+    val: 0.7
     max: 1
   datapointB:
     val: 0.625
@@ -901,7 +947,7 @@
   digitalBrandCategory: GSA Business
   typeOfDomain: Application
   datapointA:
-    val: 0.5
+    val: 0.8
     max: 1
   datapointB:
     val: 1
@@ -917,6 +963,259 @@
     max: 1
   datapointF:
     val: 1
+    max: 1
+- name: drivethru.gsa.gov
+  office: FAS
+  subOffice: TTL
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.625
+    max: 1
+  datapointD:
+    val: 0.8
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: ebuy.gsa.gov
+  office: FAS
+  subOffice: MAS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0.1
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: eng-hiring.18f.gov
+  office: FAS
+  subOffice: TTS/18F
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: engineering.18f.gov
+  office: FAS
+  subOffice: TTS/18F
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: eoffer.gsa.gov
+  office: FAS
+  subOffice: MAS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.75
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: esrs.gov
+  office: FAS
+  subOffice: TTS/IAE
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: facadatabase.gov
+  office: OGP
+  subOffice: MA
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 0.75
+    max: 1
+- name: fai.gov
+  office: OGP
+  subOffice: MV
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 2
+    max: 1
+  datapointC:
+    val: 1.375
+    max: 1
+  datapointD:
+    val: 0.8
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 2
+    max: 1
+- name: fapiis.gov
+  office: FAS
+  subOffice: TTS/IAE
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.75
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
+- name: federalist-builder.18f.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Critical infrastructure
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0
+    max: 1
+  datapointC:
+    val: 0
+    max: 1
+  datapointD:
+    val: 0.1
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0
+    max: 1
+- name: federalist.18f.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.875
     max: 1
 - name: fedidcard.gov
   office: FAS
@@ -987,6 +1286,98 @@
   datapointF:
     val: 1
     max: 1
+- name: fsd.gov
+  office: FAS
+  subOffice: TTS/IAE
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
+- name: gsa.gov
+  office: OSC
+  subOffice: ZOD
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 0.5
+    max: 1
+  datapointD:
+    val: 0.8
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: gsaadvantage.gov
+  office: FAS
+  subOffice: GSS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: gsaauctions.gov
+  office: FAS
+  subOffice: GSS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
 - name: navigator.gsa.gov
   office: FAS
   subOffice: ESM
@@ -1056,6 +1447,98 @@
   datapointF:
     val: 1
     max: 1
+- name: property.reporting.gov
+  office: OGP
+  subOffice: MA
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application Login
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: reginfo.gov
+  office: OGP
+  subOffice: MR
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1.625
+    max: 1
+  datapointC:
+    val: 1.125
+    max: 1
+  datapointD:
+    val: 0
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 1.375
+    max: 1
+- name: regulations.gov
+  office: OGP
+  subOffice: MR
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1.125
+    max: 1
+  datapointC:
+    val: 1.5
+    max: 1
+  datapointD:
+    val: 0
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
+- name: sam.gov
+  office: FAS
+  subOffice: TTS/IAE
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1.5
+    max: 1
+  datapointC:
+    val: 1.5
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 1.75
+    max: 1
 - name: sftool.gov
   office: OGP
   subOffice: MG
@@ -1079,6 +1562,29 @@
   datapointF:
     val: 1.5
     max: 1
+- name: str.gsa.gov
+  office: FAS
+  subOffice: TTL
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application Login
+  datapointA:
+    val: 0.5
+    max: 1
+  datapointB:
+    val: 1.25
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 1
+    max: 1
+  datapointF:
+    val: 1
+    max: 1
 - name: usa.gov
   office: FAS
   subOffice: TTS
@@ -1101,4 +1607,27 @@
     max: 1
   datapointF:
     val: 1.75
+    max: 1
+- name: vsc.gsa.gov
+  office: FAS
+  subOffice: MAS
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.8
+    max: 1
+  datapointB:
+    val: 1.25
+    max: 1
+  datapointC:
+    val: 1.5
+    max: 1
+  datapointD:
+    val: 0.1
+    max: 1
+  datapointE:
+    val: 0.5
+    max: 1
+  datapointF:
+    val: 1.25
     max: 1
