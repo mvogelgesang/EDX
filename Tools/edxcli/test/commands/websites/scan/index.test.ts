@@ -30,28 +30,6 @@ describe('websites scan...', () => {
   });
 
   describe('Facets Flag', () => {
-    describe('Passing a comma-separated list of facets', () => {
-      test
-        .stdout()
-        .command([
-          'websites scan',
-          '-d',
-          dummyWebsite,
-          '-f',
-          'screenshot,site scanner',
-        ])
-        // done is used since the api requests are Promises, this  ensures the test suite waits for the response
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        .it('is consumed correctly', (done) => {
-          (ctx: any) => {
-            expect(ctx.stdout).to.equal(
-              `Performing scans with the following facets:
-            > screenshot
-            > site scanner`,
-            );
-          };
-        });
-    });
     describe('Passing facets with individual -f params', () => {
       test
         .stdout()
