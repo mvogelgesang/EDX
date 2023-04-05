@@ -1,26 +1,32 @@
 import { CliUx } from '@oclif/core';
+import * as Debug from 'debug';
+const debug = Debug.default('edxcli:helper:scan');
 import * as fs from 'node:fs';
 import puppeteer from 'puppeteer';
 
 import { browser } from '../../browser';
-import { cuiBanner } from './cui-banner';
+import { CuiBanner } from './cui-banner';
 import { printHash, writeJSONFile } from '../global/utils';
-import { itPerfMetricReport } from './it-performance-metric';
-import { lighthouseReport } from './lighthouse';
-import { metadataTags } from './metadata-tags';
-import { screenshot } from './screenshot';
-import { siteScannerReport } from './site-scanner';
-import { uswdsComponentsReport } from './uswds-components';
+import { ItPerfMetricReport } from './it-performance-metric';
+import { LighthouseReport } from './lighthouse';
+import { MetadataTags } from './metadata-tags';
+import { createScanFacet } from './scan-facet';
+import { Screenshot } from './screenshot';
+import { SiteScannerReport } from './site-scanner';
+import { UswdsComponentsReport } from './uswds-components';
 import { WebsiteMetadata } from './websites-metadata';
-import { WebsiteReportType, websiteReport } from './website-report';
+import { WebsiteReport } from './website-report';
 
+// eslint-disable-next-line complexity
 export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
+  debug('Scanning %s', domain);
   const websiteMetadata = new WebsiteMetadata(domain);
 
   // websiteReport forms the shell that all facets fit into
-  const report = websiteReport(websiteMetadata.completeUrl, sh);
+  const report = new WebsiteReport(websiteMetadata.completeUrl, sh);
   const path = `${sh.outputDirectory}/`;
 
+  debug('Writing output to %s', path);
   // create the directory
   fs.mkdir(path, { recursive: true }, function (dirErr: any) {
     if (dirErr) {
@@ -36,51 +42,122 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
   // certain facets can only be run against websites rather than static files
   const isWebsite = websiteMetadata.completeUrl.protocol === 'https:';
 
+  let data;
+  let error;
+
   if (pageFound) {
     if (sh.facets.includes(<facetType>'cuiBanner')) {
-      report.cuiBanner.data = await cuiBanner(sh, websiteMetadata.completeUrl);
+      debug('CUI Banner facet starting');
+      ({ data, error } = await createScanFacet(
+        CuiBanner,
+        sh,
+        websiteMetadata,
+      ).run());
+      report.addReport({
+        cuiBanner: {
+          description:
+            'Produces a confidence score indicating if the CUI warning banner is present on a given page. ',
+          data: data,
+          errors: error,
+        },
+      });
+      debug('CUI Banner facet completed');
     }
 
     if (sh.facets.includes(<facetType>'itPerformanceMetric')) {
-      report.itPerformanceMetric = await itPerfMetricReport(
+      debug('itPerformanceMetric facet starting');
+
+      ({ data, error } = await createScanFacet(
+        ItPerfMetricReport,
         sh,
         websiteMetadata,
-      );
+      ).run());
+      report.addReport({
+        itPerformanceMetric: {
+          description: 'Represents GSA IT FY22 performance metrics',
+          data: data,
+          errors: error,
+        },
+      });
+      debug('itPerformanceMetric facet completed');
     }
 
     // 'lighthouse desktop',
     if (isWebsite && sh.facets.includes(<facetType>'lighthouseDesktop')) {
-      report.lighthouse.desktopData = await lighthouseReport(
+      ({ data, error } = await createScanFacet(
+        LighthouseReport,
         sh,
         websiteMetadata,
-        'desktop',
-      );
+        { device: 'desktop' },
+      ).run());
+      report.addReport({
+        lighthouseDesktop: {
+          description: 'Google Lighthouse outputs for desktop devices',
+          errors: error,
+          data: data,
+        },
+      });
     }
 
     // 'lighthouse mobile',
     if (isWebsite && sh.facets.includes(<facetType>'lighthouseMobile')) {
-      report.lighthouse.mobileData = await lighthouseReport(
+      debug('lighthouseMobile facet executing');
+      ({ data, error } = await createScanFacet(
+        LighthouseReport,
         sh,
         websiteMetadata,
-        'mobile',
-      );
+        { device: 'mobile' },
+      ).run());
+      report.addReport({
+        lighthouseMobile: {
+          description: 'Google Lighthouse outputs for mobile devices',
+          errors: error,
+          data: data,
+        },
+      });
+      debug('lighthouseMobile facet completed');
     }
 
-    if (sh.facets.includes(<facetType>'metadataTags')) {
-      report.metadataTags.data = await metadataTags(
+    if (isWebsite && sh.facets.includes(<facetType>'metadataTags')) {
+      debug('metadataTags facet executing');
+      ({ data, error } = await createScanFacet(
+        MetadataTags,
         sh,
-        websiteMetadata.completeUrl,
-      );
+        websiteMetadata,
+      ).run());
+      report.addReport({
+        metadataTags: {
+          description: '',
+          errors: error,
+          data: data,
+        },
+      });
+      debug('metadataTags facet completed');
     }
 
     if (sh.facets.includes(<facetType>'screenshot')) {
-      report.screenCapture.data = [
-        ...report.screenCapture.data,
-        ...(await screenshot(sh, websiteMetadata.completeUrl, 'webpage')),
-      ];
+      debug('screenshot facet executing');
+      ({ data, error } = await createScanFacet(
+        Screenshot,
+        sh,
+        websiteMetadata,
+        { type: 'webpage' },
+      ).run());
+      report.addReport({
+        screenshot: {
+          data: data,
+          errors: error,
+          description:
+            'Holds screenshots taken throughout scan including homepage, search engine, and others.',
+        },
+      });
+
+      debug('screenshot facet completed');
     }
 
     if (isWebsite && sh.facets.includes(<facetType>'searchEngine')) {
+      debug('searchEngine facet executing');
+
       const searchEngineURLs = [
         'https://google.com/search?q=',
         'https://www.bing.com/search?q=',
@@ -88,40 +165,81 @@ export const scan = async (sh: ScanHelper, domain: string): Promise<void> => {
       ];
 
       for (const item of searchEngineURLs) {
-        report.screenCapture.data = [
-          ...report.screenCapture.data,
-          // eslint-disable-next-line no-await-in-loop
-          ...(await screenshot(
-            sh,
-            new URL(`${item}${websiteMetadata.completeUrl.hostname}`),
-            'search engine',
-          )),
-        ];
+        // eslint-disable-next-line no-await-in-loop
+        ({ data, error } = await createScanFacet(
+          Screenshot,
+          sh,
+          new WebsiteMetadata(`${item}${websiteMetadata.completeUrl.hostname}`),
+          { type: 'searchEngine' },
+        ).run());
+
+        report.addReport({
+          screenshot: {
+            data:
+              // eslint-disable-next-line no-await-in-loop
+              Array.isArray(data) ? [...data] : [],
+            description:
+              'Holds screenshots taken throughout scan including homepage, search engine, and others.',
+            errors: [],
+          },
+        });
       }
+
+      debug('searchEngine facet completed');
     }
 
     if (isWebsite && sh.facets.includes(<facetType>'siteScanner')) {
-      const scanReport = await siteScannerReport(websiteMetadata.completeUrl);
-      if (scanReport) report.siteScanner.data = scanReport;
+      debug('siteScanner facet executing');
+      ({ data, error } = await createScanFacet(
+        SiteScannerReport,
+        sh,
+        websiteMetadata,
+      ).run());
+      report.addReport({
+        siteScanner: {
+          data: data,
+          errors: error,
+          description:
+            'Represents data retrieved from TTS Site Scanner for the given web property. https://digital.gov/guides/site-scanning/',
+        },
+      });
+      debug('siteScanner facet completed');
     }
 
     if (sh.facets.includes(<facetType>'uswdsComponents')) {
-      report.uswdsComponents = await uswdsComponentsReport(
+      debug('uswdsComponents facet executing');
+      ({ data, error } = await createScanFacet(
+        UswdsComponentsReport,
         sh,
-        websiteMetadata.completeUrl,
-      );
+        websiteMetadata,
+      ).run());
+      report.addReport({
+        uswdsComponents: {
+          data: data,
+          description:
+            'Listing each of the USWDS components as a boolean to indicate if the component is present',
+          errors: error,
+        },
+      });
+      debug('uswdsComponents facet completed');
     }
 
-    // If Site Scanner returns true for DAP but IT Perf metric does not, overwrite the value
-    if (report.siteScanner.data.dap_detected_final_url) {
-      report.itPerformanceMetric.dap = true;
+    // If Site Scanner returns true for DAP but IT Perf metric does not, overwrite the value.
+    if (
+      report.reports?.itPerformanceMetric !== undefined &&
+      report.reports.siteScanner?.data.dap_detected_final_url
+    ) {
+      debug('overwriting DAP value with siteScanner data');
+      report.reports.itPerformanceMetric.data.dap = true;
     }
   }
 
   // scan complete
   report.endTime = new Date().toISOString();
+  debug('Scan for %s complete at %s', domain, report.endTime);
   // close the browser
   // sh.browser.close();
+  // debug('%j', JSON.stringify(report));
   // write the report
   await buildOutput(sh, report);
 };
@@ -194,6 +312,15 @@ const presets = (preset: presetType): facetType[] => {
   return presetMap[preset];
 };
 
+const constructBasicAuth = async (): Promise<userCredsType> => {
+  const username = await CliUx.ux.prompt('Username');
+  const password = await CliUx.ux.prompt('Password', {
+    type: 'hide',
+  });
+
+  return { username, password };
+};
+
 const initialCheck = async function (sh: ScanHelper, url: URL) {
   const scanStatus = { pageFound: true, message: 'Page loaded successfully' };
   const page = await sh.browser.newPage();
@@ -207,7 +334,7 @@ const initialCheck = async function (sh: ScanHelper, url: URL) {
 
   await page
     .goto(url.toString(), { waitUntil: 'networkidle2' })
-    .catch((error) => {
+    .catch((error: any) => {
       console.error('Initial check error:', error);
       scanStatus.pageFound = false;
       scanStatus.message = `Initial check error: ${error}`;
@@ -216,28 +343,14 @@ const initialCheck = async function (sh: ScanHelper, url: URL) {
   return scanStatus;
 };
 
-const buildOutput = async (
-  sh: ScanHelper,
-  websiteReport: WebsiteReportType,
-) => {
+const buildOutput = async (sh: ScanHelper, websiteReport: WebsiteReport) => {
   const pageHash = await printHash(websiteReport.domain);
   await writeJSONFile(
     websiteReport,
     sh.outputDirectory,
     `${websiteReport.domain}_${sh.formattedDate}_${pageHash}`,
   );
-};
-
-const constructBasicAuth = async (): Promise<userCredsType> => {
-  const username = await CliUx.ux.prompt('Username');
-  const password = await CliUx.ux.prompt('Password', {
-    type: 'hide',
-  });
-
-  return { username, password };
-};
-
-/**
+}; /**
  * function accepts any string and transforms to lowercase. The lowercase value is validated against the facetType type.
  * https://stackoverflow.com/questions/43677527/typescript-type-ignore-case#answer-64932909
  * @param {facetType} facet facetType in mixed case

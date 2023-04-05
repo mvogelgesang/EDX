@@ -8,17 +8,18 @@
 * [GitHub Action Maintenance](#github-action-maintenance)
 * [Usage](#usage)
 * [Commands](#commands)
+* [Debugging](#debugging)
 * [Release Notes](#release-notes)
 <!-- tocstop -->
 
-* [edxcli](#edxcli)
-* [Installation](#installation)
+- [edxcli](#edxcli)
+- [Installation](#installation)
   - [Prerequisites](#prerequisites)
     - [Airtable access](#airtable-access)
     - [Touchpoints](#touchpoints)
-* [GitHub Action Maintenance](#github-action-maintenance)
-* [Usage](#usage)
-* [Commands](#commands)
+- [GitHub Action Maintenance](#github-action-maintenance)
+- [Usage](#usage)
+- [Commands](#commands)
   - [`edxcli data condense`](#edxcli-data-condense)
   - [`edxcli help [COMMANDS]`](#edxcli-help-commands)
   - [`edxcli plugins`](#edxcli-plugins)
@@ -35,7 +36,8 @@
   - [`edxcli websites push`](#edxcli-websites-push)
   - [`edxcli websites scan`](#edxcli-websites-scan)
   - [`edxcli websites scan bulk`](#edxcli-websites-scan-bulk)
-* [Release Notes](#release-notes)
+- [Debugging](#debugging)
+- [Release Notes](#release-notes)
   - [0.0.25](#0025)
   - [0.0.24](#0024)
   - [0.0.23](#0023)
@@ -495,15 +497,15 @@ Scans websites using various facets to capture information about the sites. Runn
 ```
 USAGE
   $ edxcli websites scan -d <value> [--loglevel error|info|debug] [-f
-    cuiBanner|screenshot|lighthouseDesktop|lighthouseMobile|itPerformanceMetric|metadataTags|screenshot|searchEngine|sit
-    eScanner|uswdsComponents] [--headless] [-o <value>] [-p |all|edx scan] [--auth]
+    cuiBanner|itPerformanceMetric|lighthouseDesktop|lighthouseMobile|metadataTags|screenshot|searchEngine|siteScanner|us
+    wdsComponents] [--headless] [-o <value>] [-p |all|edx scan] [--auth]
 
 FLAGS
   -d, --domains=<value>     (required) Comma-separated list of domains to scan.
   -f, --facets=<option>...  Comma-separated list of facets to use for the scan. e.g. (-f screenshot -f lighthouseDesktop
                             -f itPerformanceMetric).
-                            <options: cuiBanner|screenshot|lighthouseDesktop|lighthouseMobile|itPerformanceMetric|metada
-                            taTags|screenshot|searchEngine|siteScanner|uswdsComponents>
+                            <options: cuiBanner|itPerformanceMetric|lighthouseDesktop|lighthouseMobile|metadataTags|scre
+                            enshot|searchEngine|siteScanner|uswdsComponents>
   -o, --output=<value>      Output directory. Defualts to current directory
   -p, --preset=<option>     Run a pre-configured suite of scan facets whose results will be output into a single file.
                             <options: |all|edx scan>
@@ -540,16 +542,16 @@ Scans websites using various modules to capture information about the sites
 ```
 USAGE
   $ edxcli websites scan bulk [--loglevel error|info|debug] [-d Touchpoints] [-f
-    cuiBanner|screenshot|lighthouseDesktop|lighthouseMobile|itPerformanceMetric|metadataTags|screenshot|searchEngine|sit
-    eScanner|uswdsComponents] [--headless] [-o <value>] [-p |all|edx scan] [--resume]
+    cuiBanner|itPerformanceMetric|lighthouseDesktop|lighthouseMobile|metadataTags|screenshot|searchEngine|siteScanner|us
+    wdsComponents] [--headless] [-o <value>] [-p |all|edx scan] [--resume]
 
 FLAGS
   -d, --domainsSource=<option>  [default: Touchpoints] Name of the system to pull the list of domains
                                 <options: Touchpoints>
   -f, --facets=<option>...      Comma-separated list of facets to use for the scan. e.g. (-f screenshot -f
                                 lighthouseDesktop -f itPerformanceMetric).
-                                <options: cuiBanner|screenshot|lighthouseDesktop|lighthouseMobile|itPerformanceMetric|me
-                                tadataTags|screenshot|searchEngine|siteScanner|uswdsComponents>
+                                <options: cuiBanner|itPerformanceMetric|lighthouseDesktop|lighthouseMobile|metadataTags|
+                                screenshot|searchEngine|siteScanner|uswdsComponents>
   -o, --output=<value>          Output directory. Defualts to current directory
   -p, --preset=<option>         Run a pre-configured suite of scan facets whose results will be output into a single
                                 file.
@@ -564,7 +566,7 @@ DESCRIPTION
   Scans websites using various modules to capture information about the sites
 
 EXAMPLES
-  $ edxcli websites scan bulk -d Touchpoints
+  $ edxcli websites scan bulk -d Touchpoints -p "edx scan"
 
   $ edxcli websites scan bulk -d Touchpoints --resume
 ```
@@ -578,6 +580,11 @@ yarn run test
 yarn run prepack
 ```
 
+# Debugging
+
+[Debug](https://github.com/debug-js/debug) is used for debugging scans and follows a convention by which
+
+`env DEBUG="edxcli:*" bin/run websites scan -d labs.gsa.gov -f screenshot -f searchEngine`
 <!-- Release Notes -->
 
 # Release Notes
