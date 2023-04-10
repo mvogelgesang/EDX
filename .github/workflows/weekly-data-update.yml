@@ -91,6 +91,7 @@ jobs:
         create_branch: true
 
   deploy:
+    needs: build
     runs-on: ubuntu-20.04
 
     # Allow this job to push changes to your repository
