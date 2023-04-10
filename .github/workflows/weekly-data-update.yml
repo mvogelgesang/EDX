@@ -1,4 +1,4 @@
-name: Weekly Data Update
+name: Weekly Data Update & Site Build
 
 on:
   workflow_dispatch:        
@@ -6,7 +6,7 @@ on:
     - cron: '30 5 * * 0'
 
 jobs:
-  build:
+  fetchAndDeploy:
     if: github.repository == 'gsa/edx' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 20        
@@ -90,33 +90,12 @@ jobs:
         # Optional. Create given branch name in local and remote repository.
         create_branch: true
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-20.04
+    - name: Build Astro
+      working-directory: ./design-consults
+      run: npm run build
 
-    # Allow this job to push changes to your repository
-    permissions:
-      contents: write
-
-    steps:
-      - name: Check out your repository using git
-        uses: actions/checkout@v3
-
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        working-directory: ./design-consults
-        run: npm ci
-
-      - name: Build Astro
-        working-directory: ./design-consults
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./design-consults/dist
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./design-consults/dist
