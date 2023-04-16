@@ -174,7 +174,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 1
     max: 1
   datapointE:
     val: 0
@@ -197,7 +197,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 1
     max: 1
   datapointE:
     val: 0
@@ -312,7 +312,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0
+    val: 0.8
     max: 1
   datapointE:
     val: 0
@@ -818,7 +818,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 0.9
     max: 1
   datapointE:
     val: 0
@@ -1309,6 +1309,51 @@
   datapointF:
     val: 1
     max: 1
+- name: finance.ocfo.gsa.gov
+  office: GSA IT
+  subOffice: Corporate IT
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Application
+  datapointA:
+    val: 0.8
+    max: 1
+  datapointB:
+    val: 0.625
+    max: 1
+  datapointC:
+    val: 0.75
+    max: 1
+  datapointD:
+    val: 0.9
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 0.5
+    max: 1
+- name: financeweb.gsa.gov
+  office: CFO
+  digitalBrandCategory: GSA Business
+  typeOfDomain: Informational
+  datapointA:
+    val: 0.8
+    max: 1
+  datapointB:
+    val: 0.875
+    max: 1
+  datapointC:
+    val: 0.875
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 0
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
 - name: fsd.gov
   office: FAS
   subOffice: TTS/IAE
@@ -1328,6 +1373,29 @@
     max: 1
   datapointE:
     val: 0.5
+    max: 1
+  datapointF:
+    val: 0.875
+    max: 1
+- name: go.usa.gov
+  office: FAS
+  subOffice: TTS
+  digitalBrandCategory: Hybrid
+  typeOfDomain: Application
+  datapointA:
+    val: 0.8
+    max: 1
+  datapointB:
+    val: 1
+    max: 1
+  datapointC:
+    val: 1
+    max: 1
+  datapointD:
+    val: 1
+    max: 1
+  datapointE:
+    val: 0
     max: 1
   datapointF:
     val: 0.875
@@ -1416,7 +1484,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0
+    val: 0.1
     max: 1
   datapointE:
     val: 0
@@ -1439,7 +1507,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 0.9
     max: 1
   datapointE:
     val: 0
@@ -1453,7 +1521,7 @@
   digitalBrandCategory: GSA Business
   typeOfDomain: Informational
   datapointA:
-    val: 0.6
+    val: 0.8
     max: 1
   datapointB:
     val: 1
@@ -1462,7 +1530,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 1
     max: 1
   datapointE:
     val: 0
@@ -1521,7 +1589,7 @@
   digitalBrandCategory: GSA Business
   typeOfDomain: Informational
   datapointA:
-    val: 0.6
+    val: 1.2
     max: 1
   datapointB:
     val: 0.625
@@ -1530,7 +1598,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0
+    val: 0.9
     max: 1
   datapointE:
     val: 0
@@ -1553,7 +1621,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0
+    val: 0.9
     max: 1
   datapointE:
     val: 0
@@ -1599,7 +1667,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 1
     max: 1
   datapointE:
     val: 0
@@ -1645,7 +1713,7 @@
     val: 0.625
     max: 1
   datapointD:
-    val: 0
+    val: 0.9
     max: 1
   datapointE:
     val: 0
@@ -1668,7 +1736,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0
+    val: 0.5
     max: 1
   datapointE:
     val: 0
@@ -1691,7 +1759,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 0.9
     max: 1
   datapointE:
     val: 0
@@ -1760,7 +1828,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0
+    val: 0.1
     max: 1
   datapointE:
     val: 0
@@ -1806,7 +1874,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 0.5
     max: 1
   datapointE:
     val: 0
@@ -1828,7 +1896,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 1
     max: 1
   datapointE:
     val: 0
@@ -1850,7 +1918,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 0.8
     max: 1
   datapointE:
     val: 0
@@ -1896,7 +1964,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 0
+    val: 1
     max: 1
   datapointE:
     val: 0
