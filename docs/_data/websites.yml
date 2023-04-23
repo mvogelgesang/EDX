@@ -10,7 +10,7 @@
     val: 0.625
     max: 1
   datapointC:
-    val: 0.875
+    val: 1
     max: 1
   datapointD:
     val: 0.1
@@ -33,7 +33,7 @@
     val: 1
     max: 1
   datapointC:
-    val: 0.75
+    val: 0.875
     max: 1
   datapointD:
     val: 0.9
@@ -263,7 +263,7 @@
     val: 0.625
     max: 1
   datapointC:
-    val: 0.875
+    val: 0.75
     max: 1
   datapointD:
     val: 0.1
@@ -309,7 +309,7 @@
     val: 1
     max: 1
   datapointC:
-    val: 0.75
+    val: 0.875
     max: 1
   datapointD:
     val: 0.8
@@ -766,10 +766,10 @@
     val: 0.7
     max: 1
   datapointB:
-    val: 0.625
+    val: 1
     max: 1
   datapointC:
-    val: 1
+    val: 0.75
     max: 1
   datapointD:
     val: 0.8
@@ -778,7 +778,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.5
+    val: 1
     max: 1
 - name: datacenters.cio.gov
   office: OMB/OGP
@@ -1137,7 +1137,7 @@
     val: 0.625
     max: 1
   datapointC:
-    val: 1
+    val: 0.875
     max: 1
   datapointD:
     val: 0.9
@@ -1160,7 +1160,7 @@
     val: 1
     max: 1
   datapointC:
-    val: 0.625
+    val: 1
     max: 1
   datapointD:
     val: 0.8
@@ -1249,10 +1249,10 @@
     val: 0.7
     max: 1
   datapointB:
-    val: 0.625
+    val: 1
     max: 1
   datapointC:
-    val: 0.625
+    val: 0.75
     max: 1
   datapointD:
     val: 0.9
@@ -1261,7 +1261,7 @@
     val: 0.5
     max: 1
   datapointF:
-    val: 0.5
+    val: 1
     max: 1
 - name: fedpay.gsa.gov
   office: CFO
@@ -1275,7 +1275,7 @@
     val: 0.625
     max: 1
   datapointC:
-    val: 0.375
+    val: 0.75
     max: 1
   datapointD:
     val: 0.6
@@ -1412,7 +1412,7 @@
     val: 1
     max: 1
   datapointC:
-    val: 0.5
+    val: 0.75
     max: 1
   datapointD:
     val: 0.8
@@ -1550,7 +1550,7 @@
     val: 0.875
     max: 1
   datapointC:
-    val: 0.875
+    val: 1
     max: 1
   datapointD:
     val: 0.1
@@ -1621,7 +1621,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0.9
+    val: 1.8
     max: 1
   datapointE:
     val: 0
@@ -1667,7 +1667,7 @@
     val: 1
     max: 1
   datapointD:
-    val: 1
+    val: 2
     max: 1
   datapointE:
     val: 0
@@ -1713,7 +1713,7 @@
     val: 0.625
     max: 1
   datapointD:
-    val: 0.9
+    val: 1.8
     max: 1
   datapointE:
     val: 0
@@ -1736,7 +1736,7 @@
     val: 0.75
     max: 1
   datapointD:
-    val: 0.5
+    val: 1
     max: 1
   datapointE:
     val: 0
@@ -1970,7 +1970,7 @@
     val: 0
     max: 1
   datapointF:
-    val: 0.875
+    val: 0.75
     max: 1
 - name: vsc.gsa.gov
   office: FAS
